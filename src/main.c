@@ -5,7 +5,7 @@ char *get_cmd_path(char *cmd)
 	return (ft_strjoin("/bin/", cmd));
 }
 
-void exec_command(char **split_input)
+void exec_command(char **split_input, t_mini *sh)
 {
 	char	*cmd_path;
 	int		pid;
@@ -30,7 +30,7 @@ void exec_command(char **split_input)
 	}
 }
 
-int manage_command(char **split_input)
+int manage_command(char **split_input, t_mini *sh)
 {
 	if (!strcmp(split_input[0], "echo"))
 		ft_putstr("calling echo builtin\n");
@@ -39,7 +39,7 @@ int manage_command(char **split_input)
 	else if (!strcmp(split_input[0], "cd"))
 		ft_putstr("calling cd builtin\n");
 	else if (!strcmp(split_input[0], "env"))
-		ft_putstr("calling env builtin\n");
+		env(sh);
 	else if (!strcmp(split_input[0], "export"))
 		ft_putstr("calling export builtin\n");
 	else if (!strcmp(split_input[0], "unset"))
@@ -47,11 +47,10 @@ int manage_command(char **split_input)
 	else if (!strcmp(split_input[0], "exit"))
 		ft_putstr("calling exit builtin\n");
 	else
-		exec_command(split_input);
+		exec_command(split_input, sh);
 }
 
-
-char **split_and_execute(char *str, char *sep, int i)
+char **split_and_execute(char *str, char *sep, int i, t_mini *sh)
 {
 	char **arr;
 	int j;
@@ -59,15 +58,15 @@ char **split_and_execute(char *str, char *sep, int i)
 	j = 0;
 	arr = ft_split(str, sep[i]);
 	if (sep[i] == ' ')
-		manage_command(arr);
+		manage_command(arr, sh);
 	while (arr[j])
 	{
-		split_and_execute(arr[j], sep, i + 1);
+		split_and_execute(arr[j], sep, i + 1, sh);
 		j++;
 	}
 }
 
-void manage_input(void)
+void manage_input(t_mini *sh)
 {
 	char *input;
 	int i;
@@ -77,17 +76,17 @@ void manage_input(void)
 	input = NULL;
 	while (get_next_line(0, &input))
 	{
-		split_and_execute(input, sep, i);
+		split_and_execute(input, sep, i, sh);
 	}
 }
 
 int main(int ac, char **av, char **envp)
 {
-	char **env;
+	t_mini	sh;
 
 	display_ascii_dude();
-	env = ft_envadd(envp, NULL);
+	sh.env = ft_envadd(envp, NULL);
 	ft_putstr("> ");
-	manage_input();
+	manage_input(&sh);
 	return (0);
 }

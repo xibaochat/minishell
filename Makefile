@@ -1,8 +1,20 @@
+#******************************************************************************#
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: maobe <maobe@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/10/01 10:13:39 by maobe             #+#    #+#              #
+#    Updated: 2020/10/01 21:06:11 by maobe            ###   ########.fr        #
+#                                                                              #
+#******************************************************************************#
+
 NAME = minishell
 
 SRCS_PATH = ./src
 
-SRC = main.c display_ascii_dude.c ft_envadd.c
+SRC = main.c display_ascii_dude.c ft_envadd.c env.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
 
@@ -25,13 +37,17 @@ ${NAME}: libft_compile
 libft_compile:
 	make -C ./libft all --silent
 
-clean :
+clean : libft_clean
 		rm -f $(OBJ)
-		rm -f $(LIBFT_DIR)/*.o
 
-fclean: clean
+libft_clean:
+		make -C ./libft clean
+
+fclean: clean libft_fclean
 		rm -f $(NAME)
-		rm -f $(LIBFT_A)
 		rm -f ./*~ $(SRCS_PATH)*~ $(HEADER_DIR)/*~
+
+libft_fclean:
+		make -C ./libft fclean
 
 re: fclean all
