@@ -1,8 +1,8 @@
 NAME = minishell
 
-SRC = main.c
+SRCS_PATH = ./src
 
-SRCS_PATH = ./src/
+SRC = main.c display_ascii_dude.c ft_envadd.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
 

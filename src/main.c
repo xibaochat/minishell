@@ -81,8 +81,13 @@ void manage_input(void)
 	}
 }
 
-int main()
+int main(int ac, char **av, char **envp)
 {
+	char **env;
+
+	display_ascii_dude();
+	env = ft_envadd(envp, NULL);
+	ft_putstr("> ");
 	manage_input();
 	return (0);
 }
