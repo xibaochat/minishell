@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:57:30 by xinwang           #+#    #+#             */
-/*   Updated: 2020/10/01 03:36:58 by maobe            ###   ########.fr       */
+/*   Updated: 2020/10/02 01:30:18 by maobe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ char    *ft_strnew(int size);
 char    *ft_strncat(char *dest, char *src, unsigned int nb);
 int     ft_putchar(char c);
 void     ft_putendl(char *str);
-
-
-
+void	ft_putstr_w_new_line(char *s);
+int		ft_strcmp(char *s1, char *s2);
+char	*ft_strnew(int n);
 
 
 #endif

@@ -35,9 +35,9 @@ int manage_command(char **split_input, t_mini *sh)
 	if (!strcmp(split_input[0], "echo"))
 		ft_putstr("calling echo builtin\n");
 	else if (!strcmp(split_input[0], "pwd"))
-		ft_putstr("calling pwd builtin\n");
+		pwd(sh);
 	else if (!strcmp(split_input[0], "cd"))
-		ft_putstr("calling cd builtin\n");
+		cd(split_input, sh);
 	else if (!strcmp(split_input[0], "env"))
 		env(sh);
 	else if (!strcmp(split_input[0], "export"))
@@ -84,7 +84,7 @@ int main(int ac, char **av, char **envp)
 {
 	t_mini	sh;
 
-	display_ascii_dude();
+	//display_ascii_dude();
 	sh.env = ft_envadd(envp, NULL);
 	ft_putstr("> ");
 	manage_input(&sh);
