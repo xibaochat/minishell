@@ -50,9 +50,6 @@ char	*get_extracted_path(char **av, char *env_var)
 
 void	change_dir(t_mini *sh, char *path, char *old_p)
 {
-//	char *curr_p;
-
-//	curr_p = getcwd(NULL, 0);
 	if (chdir(path) == -1)
 		cd_error_message(path);
 	else
@@ -79,5 +76,4 @@ void cd(char **arr, t_mini *sh)
 		curr_p =  getcwd(NULL, 0);
 		change_dir_for_other_opts(sh, arr[1], curr_p);
 	}
-
 }
