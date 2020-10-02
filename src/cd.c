@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void change_env_var_value(char **env, char *new_p, char *var)
+void change_env_var_value(char **env, char *new_v, char *varname)
 {
     int i;
     char *old_path;
@@ -8,16 +8,18 @@ void change_env_var_value(char **env, char *new_p, char *var)
     char *s;
 
     i = -1;
+	old_path = NULL;
+	tmp = NULL;
     while (env[++i])
     {
-       old_path = ft_strnstr(env[i], var, ft_strlen(env[i]));
-        if (old_path)
+       old_path = ft_strnstr(env[i], varname, ft_strlen(varname));
+	   if (old_path)
             break ;
     }
     tmp = env[i];
-    s = ft_strnew(ft_strlen(var) + ft_strlen(new_p) + 1);
-    ft_strncat(s, var, ft_strlen(var));
-    ft_strncat(s, new_p, ft_strlen(new_p));
+    s = ft_strnew(ft_strlen(varname) + ft_strlen(new_v) + 1);
+    ft_strncat(s, varname, ft_strlen(varname));
+    ft_strncat(s, new_v, ft_strlen(new_v));
     env[i] = s;
     free(tmp);
 }
