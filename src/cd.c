@@ -1,6 +1,28 @@
 #include "minishell.h"
 
-static void cd_error_message(char *str)
+void change_env_var_value(char **env, char *new_p, char *var)
+{
+    int i;
+    char *old_path;
+    char *tmp;
+    char *s;
+
+    i = -1;
+    while (env[++i])
+    {
+       old_path = ft_strnstr(env[i], var, ft_strlen(env[i]));
+        if (old_path)
+            break ;
+    }
+    tmp = env[i];
+    s = ft_strnew(ft_strlen(var) + ft_strlen(new_p) + 1);
+    ft_strncat(s, var, ft_strlen(var));
+    ft_strncat(s, new_p, ft_strlen(new_p));
+    env[i] = s;
+    free(tmp);
+}
+
+void cd_error_message(char *str)
 {
 	ft_putstr_fd("cd: ", 2);
 	ft_putstr_fd(strerror(errno), 2);
@@ -26,10 +48,16 @@ char	*get_extracted_path(char **av, char *env_var)
 
 void	change_dir(t_mini *sh, char *path, char *old_p)
 {
+//	char *curr_p;
+
+//	curr_p = getcwd(NULL, 0);
 	if (chdir(path) == -1)
 		cd_error_message(path);
 	else
+	{
 		change_env_var_value(sh->env, old_p, "OLDPWD=");
+		change_env_var_value(sh->env, path, "PWD=");
+	}
 }
 
 void cd(char **arr, t_mini *sh)
@@ -44,12 +72,10 @@ void cd(char **arr, t_mini *sh)
 		cd_to_current_dir(sh);
 	else if (cd_to_pre_dir_opt(arr))
 		cd_to_pre_dir(arr, sh);
-//		write(1, "wanna go\n", 10);
 	else
 	{
-//		change_oldpwd(sh);
 		curr_p =  getcwd(NULL, 0);
-		change_dir(sh, arr[1], curr_p);
+		change_dir_for_other_opts(sh, arr[1], curr_p);
 	}
 
 }

@@ -28,8 +28,9 @@ void cd_to_current_dir(t_mini *sh);
 void cd_to_pre_dir(char **arr, t_mini *sh);
 void    change_dir(t_mini *sh, char *p, char *path);
 char	*get_extracted_path(char **av, char *env_var);
-void change_oldpwd(t_mini *sh);
 void change_env_var_value(char **env, char *new_p, char *var);
+void    change_dir_for_other_opts(t_mini *sh, char *path, char *old_p);
+void cd_error_message(char *str);
 
 
 #endif
