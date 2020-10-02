@@ -24,23 +24,32 @@ char	*get_extracted_path(char **av, char *env_var)
 	return (path + ft_strlen(env_var));
 }
 
-void	change_dir(char *path)
+void	change_dir(t_mini *sh, char *path, char *old_p)
 {
 	if (chdir(path) == -1)
 		cd_error_message(path);
+	else
+		change_env_var_value(sh->env, old_p, "OLDPWD=");
 }
 
 void cd(char **arr, t_mini *sh)
 {
+	char *curr_p;
+
 	if (ft_tablen(arr) > 2)
         ft_putstr_w_new_line(strerror(EINVAL));
 	else if (cd_to_home_opt(arr))
 		cd_to_home(sh);
 	else if (cd_to_current_dir_opt(arr))
-		cd_to_current_dir();
+		cd_to_current_dir(sh);
 	else if (cd_to_pre_dir_opt(arr))
 		cd_to_pre_dir(arr, sh);
+//		write(1, "wanna go\n", 10);
 	else
-		change_dir(arr[1]);
+	{
+//		change_oldpwd(sh);
+		curr_p =  getcwd(NULL, 0);
+		change_dir(sh, arr[1], curr_p);
+	}
 
 }

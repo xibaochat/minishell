@@ -6,7 +6,7 @@
 #    By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/16 10:08:51 by xinwang           #+#    #+#              #
-#    Updated: 2020/10/02 01:30:37 by maobe            ###   ########.fr        #
+#    Updated: 2020/10/02 03:51:27 by maobe            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -55,7 +55,8 @@ SRCS = ft_strcmp.c\
 		ft_putchar.c \
 		ft_putendl.c \
 		ft_putstr_w_new_line.c \
-		ft_strnew.c
+		ft_strnew.c \
+		ft_strcat.c
 
 
 SRCS_BONUS = ft_lstadd_back.c\
