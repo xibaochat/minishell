@@ -37,6 +37,9 @@ void export(char **arr, t_mini *sh);
 int has_no_equal_sign(char *s);
 int invalid_export_var_val(char *s);
 void    ft_tabfree(char **tab);
+void show_export_error_message(char *s);
+void display_env_w_prefix(char **av, char **env);
+
 
 
 
