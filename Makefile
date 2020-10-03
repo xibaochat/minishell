@@ -6,7 +6,7 @@
 #    By: maobe <maobe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/01 10:13:39 by maobe             #+#    #+#              #
-#    Updated: 2020/10/03 03:47:47 by maobe            ###   ########.fr        #
+#    Updated: 2020/10/03 04:36:06 by maobe            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -26,7 +26,8 @@ CD_PATH = $(addprefix $(SRCS_PATH)/,$(addprefix cd/,$(CD_SRC)))
 
 CD_OBJ =  $(CD_SRC:.c=.o)
 
-EXP_SRC = check_export_var_val.c export.c show_export_var.c
+EXP_SRC = check_export_var_val.c export.c show_export_var.c \
+		rm_quote_in_var_value.c
 
 EXP_PATH = $(addprefix $(SRCS_PATH)/,$(addprefix export/,$(EXP_SRC)))
 

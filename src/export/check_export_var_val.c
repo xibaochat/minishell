@@ -45,7 +45,8 @@ int has_no_equal_sign(char *s)
 int	invalid_export_var_val(char *s)
 {
 	if (has_invald_char_in_env_name(s)
-		|| has_space(s) || has_no_equal_sign(s))
+		|| (has_space(s) && !has_quote_in_str(s))
+		|| has_no_equal_sign(s))
 		return (1);
 	else
 		return (0);

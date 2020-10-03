@@ -5,6 +5,7 @@ void replace_var_value(char **env, char *s)
 	int i;
 	int j;
 	char *tmp;
+	char *s1;
 
 	i = 0;
 	j = -1;
@@ -15,8 +16,9 @@ void replace_var_value(char **env, char *s)
 	{
 		if (!ft_strncmp(env[j], s, i + 1))
 		{
+			s1 = rm_quote_in_str(s);
 			tmp = env[j];
-			env[j] = s;
+			env[j] = s1;
 			free(tmp);
 		}
 	}
@@ -41,7 +43,10 @@ void ft_envadd(char **envp, char *expt, t_mini *sh)
     while (envp[++i])
         env[i] = ft_strdup(envp[i]);
     if (expt != NULL)
+	{
+		expt = rm_quote_in_str(expt);
 		env[i++] = ft_strdup(expt);
+	}
     env[i] = NULL;
 	sh->env = env;
 }
