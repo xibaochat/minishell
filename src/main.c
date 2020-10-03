@@ -41,7 +41,7 @@ int manage_command(char **split_input, t_mini *sh)
 	else if (!strcmp(split_input[0], "env"))
 		env(sh);
 	else if (!strcmp(split_input[0], "export"))
-		ft_putstr("calling export builtin\n");
+		export(split_input, sh);
 	else if (!strcmp(split_input[0], "unset"))
 		ft_putstr("calling unset builtin\n");
 	else if (!strcmp(split_input[0], "exit"))
@@ -85,7 +85,7 @@ int main(int ac, char **av, char **envp)
 	t_mini	sh;
 
 	//display_ascii_dude();
-	sh.env = ft_envadd(envp, NULL);
+	ft_envadd(envp, NULL, &sh);
 	ft_putstr("> ");
 	manage_input(&sh);
 	return (0);

@@ -1,6 +1,7 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# define WRONG_ARG 22
 #include <unistd.h>
 #include <errno.h>
 #include <stdio.h>
@@ -11,11 +12,12 @@
 typedef struct	s_mini
 {
 	char		**env;
+	int nb;
 }				t_mini;
 
 void	display_ascii_dude();
 void	ft_putendl(char *str);
-char	**ft_envadd(char **envp, char *expt);
+void ft_envadd(char **envp, char *expt, t_mini *sh);
 void	env(t_mini *sh);
 void	pwd(t_mini *sh);
 void	cd(char **arr, t_mini *sh);
@@ -31,6 +33,11 @@ char	*get_extracted_path(char **av, char *env_var);
 void change_env_var_value(char **env, char *new_p, char *var);
 void    change_dir_for_other_opts(t_mini *sh, char *path, char *old_p);
 void cd_error_message(char *str);
+void export(char **arr, t_mini *sh);
+int has_no_equal_sign(char *s);
+int invalid_export_var_val(char *s);
+void    ft_tabfree(char **tab);
+
 
 
 #endif

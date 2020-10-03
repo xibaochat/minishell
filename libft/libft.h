@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:57:30 by xinwang           #+#    #+#             */
-/*   Updated: 2020/10/02 03:51:38 by maobe            ###   ########.fr       */
+/*   Updated: 2020/10/02 21:20:20 by maobe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ void	ft_putstr_w_new_line(char *s);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strnew(int n);
 char    *ft_strcat(char *s1, const char *s2);
-
+int		is_space(char c);
 
 #endif

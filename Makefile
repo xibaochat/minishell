@@ -6,7 +6,7 @@
 #    By: maobe <maobe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/01 10:13:39 by maobe             #+#    #+#              #
-#    Updated: 2020/10/02 05:50:38 by maobe            ###   ########.fr        #
+#    Updated: 2020/10/03 02:14:06 by maobe            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,8 +14,8 @@ NAME = minishell
 
 SRCS_PATH = ./src
 
-SRC = main.c display_ascii_dude.c ft_envadd.c env.c pwd.c cd.c ft_tablen.c \
-	cd_options.c manage_cd_opt.c
+SRC = main.c display_ascii_dude.c env.c pwd.c cd.c ft_tablen.c \
+	cd_options.c manage_cd_opt.c change_env_var_value.c export.c check_export_var_val.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
 
