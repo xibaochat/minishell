@@ -43,7 +43,7 @@ int manage_command(char **split_input, t_mini *sh)
 	else if (!strcmp(split_input[0], "export"))
 		export(split_input, sh);
 	else if (!strcmp(split_input[0], "unset"))
-		ft_putstr("calling unset builtin\n");
+		unset(split_input, sh);
 	else if (!strcmp(split_input[0], "exit"))
 		ft_putstr("calling exit builtin\n");
 	else

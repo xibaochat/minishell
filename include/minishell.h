@@ -12,7 +12,6 @@
 typedef struct	s_mini
 {
 	char		**env;
-	int nb;
 }				t_mini;
 
 void	display_ascii_dude();
@@ -41,6 +40,8 @@ void show_export_error_message(char *s);
 void display_env_w_prefix(char **av, char **env);
 char *rm_quote_in_str(char *s);
 int has_quote_in_str(char *s);
+void unset(char **arr, t_mini *sh);
+
 
 
 
