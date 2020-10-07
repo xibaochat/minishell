@@ -6,7 +6,7 @@
 #    By: maobe <maobe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/01 10:13:39 by maobe             #+#    #+#              #
-#    Updated: 2020/10/03 06:37:44 by maobe            ###   ########.fr        #
+#    Updated: 2020/10/07 14:23:31 by maobe            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -58,7 +58,7 @@ libft_clean:
 
 fclean: clean libft_fclean
 		rm -f $(NAME)
-		rm -f ./*~ $(SRCS_PATH)*~ $(CD_PATH)*~ $(EXP_PATH)*~  $(HEADER_DIR)/*~
+		rm -f **/*~
 
 libft_fclean:
 		make -C ./libft fclean
