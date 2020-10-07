@@ -49,6 +49,8 @@ void ft_envadd(char **envp, char *expt, t_mini *sh)
 	}
     env[i] = NULL;
 	sh->env = env;
+
+/* ToDo: Check if basic env var exist, and create them if needed */
 }
 
 void add_new_var_in_env(char *str, t_mini *sh)

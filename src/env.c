@@ -9,8 +9,11 @@ void	env(t_mini *sh)
 	{
 		while ((sh->env)[++i])
 		{
-			ft_putstr((sh->env)[i]);
-			ft_putstr("\n");
+			if ((sh->env)[i][0])
+			{
+				ft_putstr((sh->env)[i]);
+				ft_putstr("\n");
+			}
 		}
 	}
 }

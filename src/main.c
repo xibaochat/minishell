@@ -19,7 +19,7 @@ void exec_command(char **split_input, t_mini *sh)
 		exit(1);
 	}
 	else if (!pid) //not built in
-		execve(cmd_path, split_input,NULL);
+		execve(cmd_path, split_input, sh->env);
 	else if (pid > 0)
 	{
 		waitpid(pid, &status, 0);
