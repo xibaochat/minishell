@@ -21,6 +21,8 @@ char	*get_extracted_path(char **av, char *env_var)
 			break ;
 		i++;
 	}
+	if (!(av[i]))
+		return (NULL);
 	return (path + ft_strlen(env_var));
 }
 

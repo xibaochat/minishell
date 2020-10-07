@@ -5,9 +5,14 @@ void cd_to_home(t_mini *sh)
 	char    *path;
 	char	*curr_p;
 
-	path = get_extracted_path(sh->env, "HOME=");
-	curr_p = getcwd(NULL, 0);
-	change_dir(sh, path, curr_p);
+	path = NULL;
+	if (!(path = get_extracted_path(sh->env, "HOME=")))
+		ft_putstr_fd("[-] Home env variable is not define\n", 2);
+	else
+	{
+		curr_p = getcwd(NULL, 0);
+		change_dir(sh, path, curr_p);
+	}
 }
 
 void cd_to_current_dir(t_mini *sh)
