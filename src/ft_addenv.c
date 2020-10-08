@@ -28,7 +28,6 @@ void ft_envadd(char *expt, t_mini *sh)
 	}
 	while (++i < nb + 2)
 		env[i] = NULL;
-
 	i = 0;
 	if (sh->env)
 	{

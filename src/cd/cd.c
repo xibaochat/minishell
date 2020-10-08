@@ -74,13 +74,24 @@ void    change_dir_for_other_opts(t_mini *sh, char *path, char *old_p)
     }
 }
 
-
 void cd_to_current_dir(t_mini *sh)
 {
 	char *path;
 
 	path = getcwd(NULL, 0);
 	change_dir(sh, path);
+}
+
+void cd_to_home(t_mini *sh)
+{
+	char    *path;
+	char	*curr_p;
+
+	path = NULL;
+	if (!(path = get_extracted_path(sh->env, "HOME=")))
+		ft_putstr_fd("[-] Home env variable is not define\n", 2);
+	else
+		change_dir(sh, path);
 }
 
 void cd(char **arr, t_mini *sh)
@@ -93,6 +104,9 @@ void cd(char **arr, t_mini *sh)
 	//cd .
 	else if (cd_to_current_dir_opt(arr))
 		cd_to_current_dir(sh);
+	//cd ~ or cd
+	else if (ft_tablen(arr) == 1 || !ft_strcmp(arr[1], "~"))
+		cd_to_home(sh);
 	else
 	{
 		curr_p = getcwd(NULL, 0);
