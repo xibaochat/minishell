@@ -29,7 +29,12 @@ char	*get_extracted_path(char **av, char *env_var)
 void	change_dir(t_mini *sh, char *path)
 {
 	if (chdir(path) == -1)
+	{
 		cd_error_message(path);
+		sh->last_return = 1;
+	}
+	else
+		sh->last_return = 0;
 }
 
 void init_env_var(t_mini *sh)
@@ -64,13 +69,18 @@ void    change_dir_for_other_opts(t_mini *sh, char *path, char *old_p)
 {
 	char *curr_path;
 
+	//go to given path
     if (chdir(path) == -1)
-        cd_error_message(path);
+	{
+		cd_error_message(path);
+		sh->last_return = 1;
+	}
     else
     {
 		curr_path = getcwd(NULL, 0);
         change_env_var_value(sh->env, old_p, "OLDPWD=");
         change_env_var_value(sh->env, curr_path, "PWD=");
+		sh->last_return = 0;
     }
 }
 
@@ -89,22 +99,32 @@ void cd_to_home(t_mini *sh)
 
 	path = NULL;
 	if (!(path = get_extracted_path(sh->env, "HOME=")))
+	{
 		ft_putstr_fd("[-] Home env variable is not define\n", 2);
+		sh->last_return = 1;
+	}
 	else
+	{
 		change_dir(sh, path);
+		sh->last_return = 0;
+	}
 }
 
 void cd(char **arr, t_mini *sh)
 {
 	char *curr_p;
 
+	//if env no PWD, OLDPWD, set
 	init_env_var(sh);
 	if (ft_tablen(arr) > 2)
-        ft_putstr_w_new_line(strerror(EINVAL));
-	//cd .
+	{
+		ft_putstr_w_new_line(strerror(EINVAL));
+		sh->last_return = 1;
+	}
+	//manage: cd .
 	else if (cd_to_current_dir_opt(arr))
 		cd_to_current_dir(sh);
-	//cd ~ or cd
+	//cd ~ or cd (to HOME)
 	else if (ft_tablen(arr) == 1 || !ft_strcmp(arr[1], "~"))
 		cd_to_home(sh);
 	else

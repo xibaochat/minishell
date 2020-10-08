@@ -46,6 +46,7 @@ void ft_envadd(char *expt, t_mini *sh)
 	if (sh->env)
 		ft_tabfree(sh->env);
 	sh->env = env;
+	sh->last_return = 0;
 }
 
 void cpy_env(t_mini *sh, char **env)

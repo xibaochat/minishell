@@ -4,6 +4,46 @@
  * Replace given var in sh->env by an empty string
  */
 
+static int unset_var_is_valid(t_mini *sh, char *str)
+{
+	int i;
+
+	i = 0;
+	if (ft_isdigit(str[0])
+		|| !has_no_equal_sign(str))
+		return (0);
+	while (str[i])
+	{
+		if (!ft_isalnum(str[i]) &&
+            str[i] != '_')
+            return (0);
+		i++;
+	}
+	return (1);
+}
+
+static void show_error_messsage(char *s, t_mini *sh)
+{
+	sh->last_return = 1;
+	ft_putstr_fd("bash: unset: '", 2);
+	ft_putstr_fd(s, 2);
+	ft_putstr_fd("': not a valid identifier\n", 2);
+}
+
+static int has_invalid_var(t_mini *sh, char **arr)
+{
+	int i;
+
+	i = 0;
+	while (arr[i])
+	{
+		if (!unset_var_is_valid(sh, arr[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void unset(char **arr, t_mini *sh)
 {
 	int i;
@@ -11,22 +51,32 @@ void unset(char **arr, t_mini *sh)
 	int lens;
 	char *tmp;
 
-	i = 1;  // Skip 'unset'
-	while (arr[i])
+	i = 0;  // Skip 'unset'
+	while (arr[++i])
 	{
-		j = 0;
-		lens = ft_strlen(arr[i]);
-		while (sh->env[j])
+		//check unset var is valid or not ex: unset 1a2b(NOT valid)
+		if (unset_var_is_valid(sh, arr[i]))
 		{
-			if (!ft_strncmp(arr[i], sh->env[j], lens)
-				&& sh->env[j][lens] && sh->env[j][lens] == '=')
+			j = 0;
+			lens = ft_strlen(arr[i]);
+			while (sh->env[j])
 			{
-				tmp = sh->env[j];
-				sh->env[j] = ft_strnew(1);
-				free(tmp);
+				//find which env var should be replaced by an empty str
+				if (!ft_strncmp(arr[i], sh->env[j], lens)
+					&& sh->env[j][lens] && sh->env[j][lens] == '=')
+				{
+					tmp = sh->env[j];
+					sh->env[j] = ft_strnew(1);
+					free_str(tmp);
+				}
+				j++;
 			}
-			j++;
 		}
-		i++;
+		else
+			show_error_messsage(arr[i], sh);
 	}
+	if (has_invalid_var(sh, arr))
+		sh->last_return = 1;
+	else
+		sh->last_return = 0;
 }

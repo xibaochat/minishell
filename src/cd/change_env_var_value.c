@@ -9,7 +9,7 @@ int	get_matched_var_in_env(char **env, char *var)
 	while (env[++i])
 	{
 		if (!ft_strncmp(env[i], var, ft_strlen(var)))
-			return (i);
+				return (i);
 	}
 	return (-1);
 }

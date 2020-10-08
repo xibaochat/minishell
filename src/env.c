@@ -15,5 +15,6 @@ void	env(t_mini *sh)
 				ft_putstr("\n");
 			}
 		}
+		sh->last_return = 0;
 	}
 }

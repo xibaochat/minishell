@@ -79,13 +79,20 @@ void export(char **arr, t_mini *sh)
 {
 	if (ft_tablen(arr) > 2)
     {
-        ft_putstr(strerror(WRONG_ARG));
+        ft_putstr_w_new_line(strerror(WRONG_ARG));
+		sh->last_return = 1;
         return ;
     }
 	else if (ft_tablen(arr) == 1)
+	{
 		display_env_w_prefix(arr,sh-> env);
+		sh->last_return = 0;
+	}
 	else if (invalid_export_var_val(arr[1]))
-		return (show_export_error_message(arr[1]));
+	{
+		show_export_error_message(arr[1]);
+		sh->last_return =1;
+	}
 	else
 		export_add_var(arr[1], sh);
 }
