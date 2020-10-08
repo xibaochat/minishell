@@ -12,10 +12,7 @@ void	ft_tabfree(char **tab)
 		while (tab[i])
 			i++;
 		while (j < i)
-		{
-			free(tab[j]);
-			tab[j] = NULL;
-		}
+			free_str(tab[j]);
 		free(tab);
 		tab = NULL;
 	}
@@ -41,41 +38,11 @@ int replace_var_value(char **env, char *s)
 			s1 = rm_quote_in_str(s);
 			tmp = env[j];
 			env[j] = s1;
-			free(tmp);
+			free_str(tmp);
 			return (1);
 		}
 	}
 	return (0);
-}
-
-void ft_envadd(char **envp, char *expt, t_mini *sh)
-{
-    int i;
-    char    **env;
-
-    i = 0;
-    while (envp[i])
-        i++;
-    if (expt != NULL)
-        i++;
-    if (!(env = malloc(sizeof(char *) * (i + 1))))
-	{
-		ft_putstr_fd("Fail Malloc\n", 2);
-		exit(-1);
-	}
-    i = -1;
-    while (envp[++i])
-        env[i] = ft_strdup(envp[i]);
-    if (expt != NULL)
-	{
-		expt = rm_quote_in_str(expt);
-		env[i++] = ft_strdup(expt);
-	}
-    env[i] = NULL;
-	ft_tabfree(sh->env);
-	sh->env = env;
-
-/* ToDo: Check if basic env var exist, and create them if needed */
 }
 
 void add_new_var_in_env(char *str, t_mini *sh)

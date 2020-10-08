@@ -10,6 +10,6 @@ void		pwd(t_mini *sh)
 	else
 	{
 		ft_putstr_w_new_line(path);
-		free(path);
+		free_str(path);
 	}
 }

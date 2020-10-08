@@ -31,6 +31,6 @@ void change_env_var_value(char **env, char *new_v, char *varname)
 		ft_strncat(s, varname, ft_strlen(varname));
 		ft_strncat(s, new_v, ft_strlen(new_v));
 		env[i] = s;
-		free(tmp);
+		free_str(tmp);
 	}
 }
