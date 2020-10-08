@@ -41,9 +41,9 @@ void init_env_var(t_mini *sh)
 
 	i = -1;
 	path = getcwd(NULL, 0);
-	while (++i < 2)
+	while (arr[++i])
 	{
-		//if did not find oldpwd, or pwd in env, then init
+		//if did not find OLDPWD, or PWD in env, then set them
 		if (get_matched_var_in_env(sh->env, arr[i]) == -1)
 		{
 			new_path = ft_strnew(ft_strlen(arr[i]) + ft_strlen(path) + 1);
