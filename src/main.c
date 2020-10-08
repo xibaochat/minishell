@@ -66,6 +66,27 @@ char **split_and_execute(char *str, char *sep, int i, t_mini *sh)
 	}
 }
 
+int print_prompt(t_mini *sh)
+{
+	char *path;
+	char *s;
+
+	path = getcwd(NULL, 0);
+	if (!sh->last_return)
+		ft_putstr_fd(GREEN, 2);
+	else
+		ft_putstr_fd(RED, 2);
+	ft_putstr_fd("[", 2);
+	s = ft_itoa(sh->last_return);
+	ft_putstr_fd(s, 2);
+	ft_putstr_fd("]", 2);
+	ft_putstr_fd(path, 2);
+	ft_putstr_fd(" : "DEFAULT_COLOR, 2);
+	free_str(path);
+	free_str(s);
+	return (1);
+}
+
 void manage_input(t_mini *sh)
 {
 	char *input;
@@ -74,7 +95,7 @@ void manage_input(t_mini *sh)
 
 	i = 0;
 	input = NULL;
-	while (get_next_line(0, &input))
+	while (print_prompt(sh) && get_next_line(0, &input))
 	{
 		split_and_execute(input, sep, i, sh);
 	}
@@ -85,8 +106,8 @@ int main(int ac, char **av, char **env)
 	t_mini	sh;
 
 	//display_ascii_dude();
+	sh.last_return = 0;
 	cpy_env(&sh, env);
-	ft_putstr("> ");
 	manage_input(&sh);
 	return (0);
 }
