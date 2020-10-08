@@ -41,7 +41,7 @@ void display_env_w_prefix(char **av, char **env);
 char *rm_quote_in_str(char *s);
 int has_quote_in_str(char *s);
 void unset(char **arr, t_mini *sh);
-
+int	get_matched_var_in_env(char **env, char *var);
 
 
 

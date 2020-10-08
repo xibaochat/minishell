@@ -1,6 +1,22 @@
 #include "minishell.h"
 
-void replace_var_value(char **env, char *s)
+void	ft_tabfree(char **tab)
+{
+	int i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		tab[i] = NULL;
+		i++;
+	}
+	free(tab);
+	return ;
+}
+
+//export maobe=kitten, if maobe=cat before, now need to change the value
+int replace_var_value(char **env, char *s)
 {
 	int i;
 	int j;
@@ -20,8 +36,10 @@ void replace_var_value(char **env, char *s)
 			tmp = env[j];
 			env[j] = s1;
 			free(tmp);
+			return (1);
 		}
 	}
+	return (0);
 }
 
 void ft_envadd(char **envp, char *expt, t_mini *sh)
@@ -48,6 +66,7 @@ void ft_envadd(char **envp, char *expt, t_mini *sh)
 		env[i++] = ft_strdup(expt);
 	}
     env[i] = NULL;
+//	ft_tabfree(sh->env);
 	sh->env = env;
 
 /* ToDo: Check if basic env var exist, and create them if needed */
@@ -79,8 +98,8 @@ void export_add_var(char *var_value, t_mini *sh)
 	char *tmp;
 	char *s;
 
-	replace_var_value(sh->env, var_value);
-	add_new_var_in_env(var_value, sh);
+	if (!replace_var_value(sh->env, var_value))
+		add_new_var_in_env(var_value, sh);
 }
 
 void export(char **arr, t_mini *sh)

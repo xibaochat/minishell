@@ -37,10 +37,32 @@ void	change_dir(t_mini *sh, char *path, char *old_p)
 	}
 }
 
+void init_env_var(t_mini *sh)
+{
+	char *path;
+	char *new_path;
+	char *arr[3] = {"OLDPWD=", "PWD=", NULL};
+	int i;
+
+	i = -1;
+	path = getcwd(NULL, 0);
+	while (++i < 2)
+	{
+		if (get_matched_var_in_env(sh->env, arr[i]) == -1)
+		{
+			new_path = ft_strnew(ft_strlen(arr[i]) + ft_strlen(path) + 1);
+			ft_strcat(new_path, arr[i]);
+			ft_strcat(new_path, path);
+			ft_envadd(sh->env, new_path, sh);
+		}
+	}
+}
+
 void cd(char **arr, t_mini *sh)
 {
 	char *curr_p;
 
+	init_env_var(sh);
 	if (ft_tablen(arr) > 2)
         ft_putstr_w_new_line(strerror(EINVAL));
 	else if (cd_to_home_opt(arr))
