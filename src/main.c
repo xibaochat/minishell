@@ -86,7 +86,7 @@ int main(int ac, char **av, char **envp)
 
 	//display_ascii_dude();
 	sh.env = NULL;
-	ft_envadd(envp, NULL, &sh);
+	ft_envadd(NULL, &sh);
 	ft_putstr("> ");
 	manage_input(&sh);
 	return (0);

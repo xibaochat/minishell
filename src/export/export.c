@@ -63,7 +63,7 @@ void add_new_var_in_env(char *str, t_mini *sh)
 		else
 			return ;
 	}
-	ft_envadd(sh->env, str, sh);
+	ft_envadd(str, sh);
 }
 
 void export_add_var(char *var_value, t_mini *sh)

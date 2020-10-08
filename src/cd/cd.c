@@ -54,7 +54,7 @@ void init_env_var(t_mini *sh)
 			new_path = ft_strnew(ft_strlen(arr[i]) + ft_strlen(path) + 1);
 			ft_strcat(new_path, arr[i]);
 			ft_strcat(new_path, path);
-			ft_envadd(sh->env, new_path, sh);
+			ft_envadd(new_path, sh);
 		}
 	}
 }

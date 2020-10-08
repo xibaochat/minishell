@@ -17,7 +17,7 @@ typedef struct	s_mini
 
 void	display_ascii_dude();
 void	ft_putendl(char *str);
-void ft_envadd(char **envp, char *expt, t_mini *sh);
+void ft_envadd(char *expt, t_mini *sh);
 void	env(t_mini *sh);
 void	pwd(t_mini *sh);
 void	cd(char **arr, t_mini *sh);
