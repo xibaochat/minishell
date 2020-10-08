@@ -3,16 +3,22 @@
 void	ft_tabfree(char **tab)
 {
 	int i;
+	int j;
 
 	i = 0;
-	while (tab[i])
+	j = 0;
+	if (tab)
 	{
-		free(tab[i]);
-		tab[i] = NULL;
-		i++;
+		while (tab[i])
+			i++;
+		while (j < i)
+		{
+			free(tab[j]);
+			tab[j] = NULL;
+		}
+		free(tab);
+		tab = NULL;
 	}
-	free(tab);
-	return ;
 }
 
 //export maobe=kitten, if maobe=cat before, now need to change the value
@@ -66,7 +72,7 @@ void ft_envadd(char **envp, char *expt, t_mini *sh)
 		env[i++] = ft_strdup(expt);
 	}
     env[i] = NULL;
-//	ft_tabfree(sh->env);
+	ft_tabfree(sh->env);
 	sh->env = env;
 
 /* ToDo: Check if basic env var exist, and create them if needed */
