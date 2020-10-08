@@ -26,15 +26,10 @@ char	*get_extracted_path(char **av, char *env_var)
 	return (path + ft_strlen(env_var));
 }
 
-void	change_dir(t_mini *sh, char *path, char *old_p)
+void	change_dir(t_mini *sh, char *path)
 {
 	if (chdir(path) == -1)
 		cd_error_message(path);
-	else
-	{
-		change_env_var_value(sh->env, old_p, "OLDPWD=");
-		change_env_var_value(sh->env, path, "PWD=");
-}
 }
 
 void init_env_var(t_mini *sh)
@@ -83,14 +78,9 @@ void    change_dir_for_other_opts(t_mini *sh, char *path, char *old_p)
 void cd_to_current_dir(t_mini *sh)
 {
 	char *path;
-	char *old_p;
 
 	path = getcwd(NULL, 0);
-	old_p = get_extracted_path(sh->env, "OLDPWD=");
-	if (!old_p)
-		old_p = path;
-	else
-		change_dir(sh, path, old_p);
+	change_dir(sh, path);
 }
 
 void cd(char **arr, t_mini *sh)
@@ -104,5 +94,8 @@ void cd(char **arr, t_mini *sh)
 	else if (cd_to_current_dir_opt(arr))
 		cd_to_current_dir(sh);
 	else
+	{
+		curr_p = getcwd(NULL, 0);
 		change_dir_for_other_opts(sh, arr[1], curr_p);
+	}
 }
