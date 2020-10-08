@@ -19,7 +19,7 @@ void exec_command(char **split_input, t_mini *sh)
 		exit(1);
 	}
 	else if (!pid) //not built in
-		execve(cmd_path, split_input, sh->env);
+		execve(cmd_path, split_input, NULL);
 	else if (pid > 0)
 	{
 		waitpid(pid, &status, 0);
@@ -80,13 +80,12 @@ void manage_input(t_mini *sh)
 	}
 }
 
-int main(int ac, char **av, char **envp)
+int main(int ac, char **av, char **env)
 {
 	t_mini	sh;
 
 	//display_ascii_dude();
-	sh.env = NULL;
-	ft_envadd(NULL, &sh);
+	cpy_env(&sh, env);
 	ft_putstr("> ");
 	manage_input(&sh);
 	return (0);
