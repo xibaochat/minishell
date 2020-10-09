@@ -6,16 +6,19 @@
 #    By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/16 10:08:51 by xinwang           #+#    #+#              #
-#    Updated: 2020/10/09 21:22:02 by maobe            ###   ########.fr        #
+#    Updated: 2020/10/09 21:34:02 by maobe            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-.SILENT:
+#.SILENT:
 
 NAME = libft.a
 
 HEADER_DIR = include
 
+########
+# MAIN #
+########
 SRCS_PATH = ./src
 
 SRCS = ft_strcmp.c ft_atoi.c ft_split.c ft_bzero.c ft_strchr.c ft_calloc.c \
@@ -34,6 +37,26 @@ SRC_W_PATH = $(addprefix $(SRCS_PATH)/,$(SRCS))
 
 SRCO = $(SRCS:.c=.o)
 
+##########
+# PRINTF #
+##########
+
+PRINTF_SRC = ft_printf.c ft_putchar.c is_conversion.c is_conversion_char.c \
+	nb_char_to_skip.c do_conversion.c ft_itoa.c char_to_str.c ft_strnew.c ft_trans_x.c \
+	ft_trans_capital_x.c ptr_to_str.c ft_strlen.c ft_putstr.c manage_flags.c apply_flags.c \
+	ft_extract_value_flag.c copy_str_at.c apply_precision.c ft_apply_width.c \
+	replace_star.c ft_strcat.c free_str.c ft_strcmp.c add_hex_chars.c has_invalide_char_in_flag.c \
+	tweak_flags_values.c printf_value.c ft_initialize_flag.c ft_strncat.c
+
+PRINTF_PATH = $(SRCS_PATH)/printf
+
+PRINTF_SRC_W_PATH = $(addprefix $(PRINTF_PATH)/,$(PRINTF_SRC))
+
+PRINTF_SRCO = $(PRINTF_SRC:.c=.o)
+
+##########
+# COMMON #
+##########
 
 CC = gcc
 
@@ -44,11 +67,11 @@ CC_FLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME):
-		$(CC) $(CC_FLAGS) -c  $(SRC_W_PATH) -I $(HEADER_DIR)
-		ar rcs $(NAME) $(SRCO)
+		$(CC) $(CC_FLAGS) -c  $(SRC_W_PATH) $(PRINTF_SRC_W_PATH) -I $(HEADER_DIR)
+		ar rcs $(NAME) $(SRCO) $(PRINTF_SRCO)
 
 clean:
-		 rm -f $(SRCO)
+		 rm -f $(SRCO) $(PRINTF_SRCO)
 
 fclean: clean
 		rm -f $(NAME)
