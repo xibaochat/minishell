@@ -32,8 +32,13 @@ void exec_command(char **split_input, t_mini *sh)
 
 int manage_command(char **split_input, t_mini *sh)
 {
+	char	*tmp;
+
+	tmp = ft_strrmv(split_input[0], SPACE);
+	free(split_input[0]);
+	split_input[0] = tmp;
 	if (!strcmp(split_input[0], "echo"))
-		ft_putstr("calling echo builtin\n");
+		echo(split_input, sh);
 	else if (!strcmp(split_input[0], "pwd"))
 		pwd(sh);
 	else if (!strcmp(split_input[0], "cd"))
@@ -50,15 +55,23 @@ int manage_command(char **split_input, t_mini *sh)
 		exec_command(split_input, sh);
 }
 
+/*
+** ft_split_inc() keeps the separator in the output when splitting
+*/
+
 char **split_and_execute(char *str, char *sep, int i, t_mini *sh)
 {
 	char **arr;
 	int j;
 
 	j = 0;
-	arr = ft_split(str, sep[i]);
 	if (sep[i] == ' ')
+	{
+		arr = ft_split_inc(str, " ");
 		manage_command(arr, sh);
+	}
+	else
+		arr = ft_split(str, sep[i]);
 	while (arr[j])
 	{
 		split_and_execute(arr[j], sep, i + 1, sh);

@@ -57,7 +57,9 @@ SRCS = ft_strcmp.c\
 		ft_putstr_w_new_line.c \
 		ft_strnew.c \
 		ft_strcat.c \
-		ft_is_space.c
+		ft_is_space.c \
+		ft_split_inc.c \
+		ft_strrmv.c
 
 
 SRCS_BONUS = ft_lstadd_back.c\
