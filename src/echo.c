@@ -1,6 +1,19 @@
 #include "minishell.h"
 
 /*
+ ** ft_quoted checks if the whitespace symbol (for ex: \n) is surrounded by quote marks
+ */
+
+int	ft_quoted(char *s, int	j)
+{
+	if (s[j - 1] == '\'' && s[j + 2] == '\'')
+		return (1);
+	if (s[j - 1] == '\"' && s[j + 2] == '\"')
+		return (1);
+	return (0);
+}
+
+/*
  ** ft_printf_space prints the specific whitespace char
  */
 
@@ -105,10 +118,14 @@ void	echo(char **args, t_mini *sh)
 			}
 			if (args[i][j] == '\\')
 			{
-				if (ft_strchr("ftnrv", args[i][j + 1]))
+				if (ft_strchr("ftnrv", args[i][j + 1]) && ft_quoted(args[i], j))
 					ft_print_space(args[i][j + 1]);
 				else if (args[i][j + 1] == '\\')
 					write(1, "\\", 1);
+				else if (args[i][j + 1] == '\0' || ft_strchr(SPACE, args[i][j + 1]))
+					ft_putendl("Can't echo a single \'\\\'");
+				else
+					write(1, &args[i][j + 1], 1);
 				j += 2;
 			}
 			if (args[i][j] == '$' && !quote[0])
