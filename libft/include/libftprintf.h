@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 01:04:48 by xinwang           #+#    #+#             */
-/*   Updated: 2020/01/23 01:20:05 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/10/09 22:06:25 by maobe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stdint.h>
 # include <stdarg.h>
+# include "libft.h"
 
 typedef struct	s_flag
 {
@@ -30,14 +31,11 @@ typedef struct	s_flag
 
 int				ft_printf(const char *format, ...);
 int				has_invalide_char_in_flag(char *format, int i);
-void			ft_putchar(char c);
 int				is_conversion(char *format, int *i_format);
 void			skip_conversion_chars(char *format, int *i);
 int				is_conversion_char(char c);
 int				do_conversion(va_list *ap, char *format, int i);
-char			*ft_itoa(long int n);
 char			*char_to_str(char c);
-size_t			ft_strlen(const char *str);
 char			*ft_strnew_with_char(int size, char c);
 char			*ft_trans_to_x(uintmax_t n);
 char			*ft_trans_capital_x(uintmax_t n);
@@ -59,18 +57,13 @@ void			ncopy_at_the_begining\
 char			*ft_apply_flag_to_adress\
 				(t_flag my_flags, char *value, int v_lens);
 int				get_size_int(long int n);
-char			*ft_strnew(int size);
 char			*replace_star(va_list *ap, char *format, int i);
 int				valid_conversion(char *format, int *i_format);
 char			*manage_star(va_list *ap, char *format, int i);
 int				valide_star_nb_combi(char *format, int i);
-char			*ft_strcat(char *dest, char *src);
-void			free_str(char **s);
 int				is_allowed_char_in_flag(char c);
-int				ft_strcmp(const char *s1, const char *s2);
 void			add_hex_chars(char **value);
 int				is_conversion_char(char c);
-void			ft_putstr(char *s);
 void			ft_putnbr(int n);
 void			ft_put_unsigned_nbr(unsigned int n);
 int				char_is_n(char c);
@@ -82,6 +75,6 @@ void			ft_init_sign(t_flag *my_flags, char *format, int *i);
 int				dot_in_conversion(char *format, int i);
 void			ft_init_sign(t_flag *my_flags, char *format, int *i);
 int				ft_get_flag_value(char *str, int *i);
-char			*ft_strncat(char *dest, char *src, unsigned int nb);
+int         get_size_int(long int n);
 
 #endif

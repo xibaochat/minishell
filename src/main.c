@@ -105,6 +105,7 @@ int main(int ac, char **av, char **env)
 {
 	t_mini	sh;
 
+	ft_printf("Gaoxing to miaobe\n");
 	//display_ascii_dude();
 	sh.last_return = 0;
 	cpy_env(&sh, env);

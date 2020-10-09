@@ -6,7 +6,7 @@
 #    By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/16 10:08:51 by xinwang           #+#    #+#              #
-#    Updated: 2020/10/09 21:34:02 by maobe            ###   ########.fr        #
+#    Updated: 2020/10/09 22:06:14 by maobe            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -31,7 +31,7 @@ SRCS = ft_strcmp.c ft_atoi.c ft_split.c ft_bzero.c ft_strchr.c ft_calloc.c \
 	get_next_line_utils.c  ft_putchar.c  ft_putendl.c  ft_putstr_w_new_line.c \
 	ft_strnew.c  ft_strcat.c ft_is_space.c ft_lstadd_back.c ft_lstadd_front.c \
 	ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c \
-	ft_lstnew.c ft_lstsize.c
+	ft_lstnew.c ft_lstsize.c free_str.c free_p_str.c ft_strnew_with_char.c
 
 SRC_W_PATH = $(addprefix $(SRCS_PATH)/,$(SRCS))
 
@@ -41,12 +41,12 @@ SRCO = $(SRCS:.c=.o)
 # PRINTF #
 ##########
 
-PRINTF_SRC = ft_printf.c ft_putchar.c is_conversion.c is_conversion_char.c \
-	nb_char_to_skip.c do_conversion.c ft_itoa.c char_to_str.c ft_strnew.c ft_trans_x.c \
-	ft_trans_capital_x.c ptr_to_str.c ft_strlen.c ft_putstr.c manage_flags.c apply_flags.c \
+PRINTF_SRC = ft_printf.c is_conversion.c is_conversion_char.c \
+	nb_char_to_skip.c do_conversion.c char_to_str.c ft_trans_x.c \
+	ft_trans_capital_x.c ptr_to_str.c manage_flags.c apply_flags.c \
 	ft_extract_value_flag.c copy_str_at.c apply_precision.c ft_apply_width.c \
-	replace_star.c ft_strcat.c free_str.c ft_strcmp.c add_hex_chars.c has_invalide_char_in_flag.c \
-	tweak_flags_values.c printf_value.c ft_initialize_flag.c ft_strncat.c
+	replace_star.c add_hex_chars.c has_invalide_char_in_flag.c \
+	tweak_flags_values.c printf_value.c ft_initialize_flag.c get_size_int.c
 
 PRINTF_PATH = $(SRCS_PATH)/printf
 

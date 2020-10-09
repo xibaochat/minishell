@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 23:51:34 by xinwang           #+#    #+#             */
-/*   Updated: 2020/01/23 01:21:43 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:56:09 by maobe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int		print_value(char **value, int is_backslash_zero)
 		print_backslash_zero(*value);
 	else
 		ft_putstr(*value);
-	free_str(value);
+	free_p_str(value);
 	return (count);
 }

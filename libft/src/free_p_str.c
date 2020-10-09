@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   free_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maobe <maobe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 00:04:25 by xinwang           #+#    #+#             */
-/*   Updated: 2019/11/19 00:20:12 by xinwang          ###   ########.fr       */
+/*   Created: 2020/10/09 21:53:59 by maobe             #+#    #+#             */
+/*   Updated: 2020/10/09 21:55:25 by maobe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-void	ft_putchar(char c)
+void	free_p_str(char **s)
 {
-	write(1, &c, 1);
+	if (*s)
+	{
+		free(*s);
+		*s = NULL;
+	}
 }

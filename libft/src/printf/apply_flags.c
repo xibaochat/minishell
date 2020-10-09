@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 18:06:58 by xinwang           #+#    #+#             */
-/*   Updated: 2020/01/18 10:56:50 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:55:43 by maobe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	replace_str_by(char **dest, char *src)
 {
-	free_str(dest);
+	free_p_str(dest);
 	*dest = src;
 }
 

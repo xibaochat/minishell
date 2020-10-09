@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   free_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maobe <maobe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 18:28:29 by xinwang           #+#    #+#             */
-/*   Updated: 2019/11/29 17:43:53 by xinwang          ###   ########.fr       */
+/*   Created: 2020/10/09 21:56:39 by maobe             #+#    #+#             */
+/*   Updated: 2020/10/09 21:56:40 by maobe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-size_t		ft_strlen(const char *str)
+void	free_str(char *s)
 {
-	size_t	i;
-	size_t	lens;
-
-	i = -1;
-	lens = 0;
-	if (!str)
-		return (0);
-	while (str[++i])
-		lens++;
-	return (lens);
+	if (s)
+	{
+		free(s);
+		s = NULL;
+	}
 }

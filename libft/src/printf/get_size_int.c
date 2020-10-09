@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   get_size_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maobe <maobe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 01:19:21 by xinwang           #+#    #+#             */
-/*   Updated: 2020/01/23 01:34:25 by xinwang          ###   ########.fr       */
+/*   Created: 2020/10/09 22:05:55 by maobe             #+#    #+#             */
+/*   Updated: 2020/10/09 22:06:00 by maobe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char				*ft_strncat(char *dest, char *src, unsigned int nb)
+int			get_size_int(long int n)
 {
-	unsigned int	lens;
-	unsigned int	i;
+	int				size;
 
-	i = 0;
-	lens = ft_strlen(dest);
-	while (src[i] && i < nb)
-		dest[lens++] = src[i++];
-	dest[lens] = '\0';
-	return (dest);
+	size = 1;
+	if (n < 0)
+	{
+		size++;
+		n = -n;
+	}
+	while (n > 10)
+	{
+		size++;
+		n = n / 10;
+	}
+	return (size + 1);
 }

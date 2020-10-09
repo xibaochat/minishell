@@ -48,7 +48,7 @@ int			printf_core(va_list *ap, char *format)
 		else
 			simple_print(format[i], &nb_output, &i);
 	}
-	free_str(&format);
+	free_str(format);
 	return (nb_output);
 }
 

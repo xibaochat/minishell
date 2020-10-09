@@ -25,8 +25,8 @@ char	*replace_star(va_list *ap, char *format, int i)
 	s_value = ft_itoa(value);
 	ft_strcat(new_str + i, s_value);
 	ft_strcat(new_str + (i + ft_strlen(s_value)), format + i + 1);
-	free_str(&s_value);
-	free_str(&format);
+	free_str(s_value);
+	free_str(format);
 	return (new_str);
 }
 
@@ -37,7 +37,7 @@ char	*remove_current_start(char *format, int i)
 	new_str = ft_strnew(ft_strlen(format));
 	ft_strncat(new_str, format, i);
 	ft_strncat(new_str, format + i + 2, ft_strlen(format) - i - 1);
-	free_str(&format);
+	free_str(format);
 	return (new_str);
 }
 
@@ -57,8 +57,8 @@ char	*manage_precision_star(va_list *ap, char *format, int i)
 	s_value = ft_itoa(value);
 	ft_strcat(new_str + i, s_value);
 	ft_strcat(new_str + (i + ft_strlen(s_value)), format + i + 1);
-	free_str(&s_value);
-	free_str(&format);
+	free_str(s_value);
+	free_str(format);
 	return (new_str);
 }
 

@@ -12,14 +12,14 @@
 # define CYAN           "\033[1;36m"
 # define GREY           "\033[1;37m"
 # define WRONG_ARG 22
-#include <unistd.h>
-#include <errno.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <stdlib.h>
-#include <signal.h>
-#include "../libft/libft.h"
+# include <unistd.h>
+# include <errno.h>
+# include <stdio.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <stdlib.h>
+# include <signal.h>
+# include "libft.h"
 
 typedef struct	s_mini
 {
@@ -51,7 +51,6 @@ char *rm_quote_in_str(char *s);
 int has_quote_in_str(char *s);
 void unset(char **arr, t_mini *sh);
 int	get_matched_var_in_env(char **env, char *var);
-void	free_str(char *s);
 void cpy_env(t_mini *sh, char **env);
 
 
