@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:57:30 by xinwang           #+#    #+#             */
-/*   Updated: 2020/10/09 21:57:04 by maobe            ###   ########.fr       */
+/*   Updated: 2020/10/09 22:10:05 by maobe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void				ft_putstr(char *s);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 char				**ft_split(char const *s, char c);
+char				**ft_split_inc(char *s, char *sep);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strdup(const char *s);
 char				*ft_strjoin(char const *s1, char const *s2);
@@ -84,5 +85,6 @@ int		is_space(char c);
 int                           ft_printf(const char *format, ...);
 void free_str(char *s);
 void free_p_str(char **s);
+char	*ft_strrmv(char *s, char *sep);
 
 #endif

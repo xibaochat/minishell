@@ -12,6 +12,8 @@
 # define CYAN           "\033[1;36m"
 # define GREY           "\033[1;37m"
 # define WRONG_ARG 22
+# define SPACE " \f\t\n\r\v"
+
 # include <unistd.h>
 # include <errno.h>
 # include <stdio.h>
@@ -33,6 +35,8 @@ void ft_envadd(char *expt, t_mini *sh);
 void	env(t_mini *sh);
 void	pwd(t_mini *sh);
 void	cd(char **arr, t_mini *sh);
+void	echo(char **arr, t_mini *sh);
+char	*ft_find_env(char *name, char **env);
 size_t      ft_tablen(char **tab);
 int cd_to_current_dir_opt(char **av);
 void cd_to_current_dir(t_mini *sh);

@@ -6,7 +6,7 @@
 #    By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/16 10:08:51 by xinwang           #+#    #+#              #
-#    Updated: 2020/10/09 22:06:14 by maobe            ###   ########.fr        #
+#    Updated: 2020/10/09 22:12:26 by maobe            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -31,7 +31,9 @@ SRCS = ft_strcmp.c ft_atoi.c ft_split.c ft_bzero.c ft_strchr.c ft_calloc.c \
 	get_next_line_utils.c  ft_putchar.c  ft_putendl.c  ft_putstr_w_new_line.c \
 	ft_strnew.c  ft_strcat.c ft_is_space.c ft_lstadd_back.c ft_lstadd_front.c \
 	ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c \
-	ft_lstnew.c ft_lstsize.c free_str.c free_p_str.c ft_strnew_with_char.c
+	ft_lstnew.c ft_lstsize.c free_str.c free_p_str.c ft_strnew_with_char.c \
+	ft_split_inc.c ft_strrmv.c
+
 
 SRC_W_PATH = $(addprefix $(SRCS_PATH)/,$(SRCS))
 
