@@ -3,16 +3,17 @@
 void exec_command(char **split_input, t_mini *sh)
 {
 	char	*cmd_path;
-	int		pid;
 	int	status;
 
-	pid = fork();
-	if (pid < 0)
+	cmd_path = NULL;
+	sh->last_pid = fork();
+	g_sh.last_pid = sh->last_pid;
+	if (sh->last_pid < 0)
 	{
 		perror("created failed\n");
 		exit(1);
 	}
-	else if (!pid) //not built in, child process
+	else if (!sh->last_pid) //not built in, child process
 	{
 		cmd_path = find_full_binary_path(split_input[0], sh);
 		if (!cmd_path)
@@ -23,14 +24,14 @@ void exec_command(char **split_input, t_mini *sh)
 		else
 			execve(cmd_path, split_input, NULL);
 	}
-	else if (pid > 0)
+	else if (sh->last_pid > 0)
 	{
-		waitpid(pid, &status, 0);
+		waitpid(sh->last_pid, &status, 0);
 		sh->last_return = status;
 		if (WIFSIGNALED(status))
-			printf("%s\n", strerror(errno));
+			ft_printf("%s\n", strerror(errno));
 		if (!WIFEXITED(status))
-			printf("%s\n", strerror(errno));
+			ft_printf("%s\n", strerror(errno));
 	}
 }
 
@@ -90,7 +91,6 @@ char **split_and_execute(char *str, char *sep, int i, t_mini *sh)
 int print_prompt(t_mini *sh)
 {
 	char *path;
-	char *s;
 
 	path = getcwd(NULL, 0);
 	if (!sh->last_return)
@@ -98,13 +98,11 @@ int print_prompt(t_mini *sh)
 	else
 		ft_putstr_fd(RED, 2);
 	ft_putstr_fd("[", 2);
-	s = ft_itoa(sh->last_return);
-	ft_putstr_fd(s, 2);
+	ft_printf("%d", sh->last_return);
 	ft_putstr_fd("]", 2);
 	ft_putstr_fd(path, 2);
 	ft_putstr_fd(" : "DEFAULT_COLOR, 2);
 	free_str(path);
-	free_str(s);
 	return (1);
 }
 
@@ -117,9 +115,7 @@ void manage_input(t_mini *sh)
 	i = 0;
 	input = NULL;
 	while (print_prompt(sh) && get_next_line(0, &input))
-	{
 		split_and_execute(input, sep, i, sh);
-	}
 }
 
 int main(int ac, char **av, char **env)
@@ -127,6 +123,9 @@ int main(int ac, char **av, char **env)
 	t_mini	sh;
 
 	//display_ascii_dude();
+	g_sh = sh;
+	manage_signals();
+	sh.last_pid = 0;
 	sh.last_return = 0;
 	cpy_env(&sh, env);
 	manage_input(&sh);
