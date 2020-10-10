@@ -4,7 +4,7 @@ char *get_cmd_path(char *cmd)
 {
 	char	*tmp;
 
-	if (ft_strncmp(cmd, "./", 2))
+	if (!ft_strncmp(cmd, "./", 2))
 		tmp = cmd;
 	else
 		tmp = ft_strjoin("/bin/", cmd);
