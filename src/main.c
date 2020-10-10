@@ -8,21 +8,21 @@ char *get_cmd_path(char *cmd)
 void exec_command(char **split_input, t_mini *sh)
 {
 	char	*cmd_path;
-	int		pid;
 	int	status;
 
 	cmd_path = get_cmd_path(split_input[0]);
-	pid = fork();
-	if (pid < 0)
+	sh->last_pid = fork();
+	g_sh.last_pid = sh->last_pid;
+	if (sh->last_pid < 0)
 	{
 		perror("created failed\n");
 		exit(1);
 	}
-	else if (!pid) //not built in
+	else if (!sh->last_pid) //not built in
 		execve(cmd_path, split_input, NULL);
-	else if (pid > 0)
+	else if (sh->last_pid > 0)
 	{
-		waitpid(pid, &status, 0);
+		waitpid(sh->last_pid, &status, 0);
 		if (WIFSIGNALED(status))
 			printf("%s\n", strerror(errno));
 		if (!WIFEXITED(status))
@@ -119,6 +119,8 @@ int main(int ac, char **av, char **env)
 	t_mini	sh;
 
 	//display_ascii_dude();
+	g_sh = sh;
+	manage_signals();
 	sh.last_return = 0;
 	cpy_env(&sh, env);
 	manage_input(&sh);

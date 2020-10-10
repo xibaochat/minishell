@@ -15,7 +15,7 @@ NAME = minishell
 SRCS_PATH = ./src
 
 SRC = main.c display_ascii_dude.c env.c pwd.c  ft_tablen.c  unset.c \
-		ft_addenv.c echo.c ft_find_env.c
+		ft_addenv.c echo.c ft_find_env.c signals.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
 

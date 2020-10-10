@@ -27,9 +27,18 @@ typedef struct	s_mini
 {
 	char		**env;
 	int			last_return;
+	int			last_pid;
 }				t_mini;
 
+/*
+** This global variable is needed to deal with signals (cf. signals.c)
+*/
+
+t_mini	g_sh;
+
 void	display_ascii_dude();
+int	manage_signals();
+void	manage_input(t_mini *sh);
 void	ft_putendl(char *str);
 void ft_envadd(char *expt, t_mini *sh);
 void	env(t_mini *sh);
