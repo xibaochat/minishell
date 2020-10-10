@@ -1,28 +1,32 @@
 #include "minishell.h"
 
-char *get_cmd_path(char *cmd)
-{
-	return (ft_strjoin("/bin/", cmd));
-}
-
 void exec_command(char **split_input, t_mini *sh)
 {
 	char	*cmd_path;
 	int		pid;
 	int	status;
 
-	cmd_path = get_cmd_path(split_input[0]);
 	pid = fork();
 	if (pid < 0)
 	{
 		perror("created failed\n");
 		exit(1);
 	}
-	else if (!pid) //not built in
-		execve(cmd_path, split_input, NULL);
+	else if (!pid) //not built in, child process
+	{
+		cmd_path = find_full_binary_path(split_input[0], sh);
+		if (!cmd_path)
+		{
+			ft_putstr_fd("command not found: ", 2);
+			ft_putstr_w_new_line_fd(split_input[0], 2);
+		}
+		else
+			execve(cmd_path, split_input, NULL);
+	}
 	else if (pid > 0)
 	{
 		waitpid(pid, &status, 0);
+		sh->last_return = status;
 		if (WIFSIGNALED(status))
 			printf("%s\n", strerror(errno));
 		if (!WIFEXITED(status))
@@ -35,10 +39,11 @@ int manage_command(char **split_input, t_mini *sh)
 	char	*tmp;
 
 	tmp = ft_strrmv(split_input[0], SPACE);
-	free(split_input[0]);
+	free_str(split_input[0]);
 	split_input[0] = tmp;
 	if (!strcmp(split_input[0], "echo"))
-		echo(split_input, sh);
+//		echo(split_input, sh);
+		ft_putstr_w_new_line("echo");
 	else if (!strcmp(split_input[0], "pwd"))
 		pwd(sh);
 	else if (!strcmp(split_input[0], "cd"))
@@ -52,7 +57,9 @@ int manage_command(char **split_input, t_mini *sh)
 	else if (!strcmp(split_input[0], "exit"))
 		ft_putstr("calling exit builtin\n");
 	else
+	{
 		exec_command(split_input, sh);
+	}
 }
 
 /*
@@ -65,13 +72,14 @@ char **split_and_execute(char *str, char *sep, int i, t_mini *sh)
 	int j;
 
 	j = 0;
+	arr = ft_split(str, sep[i]);
 	if (sep[i] == ' ')
 	{
-		arr = ft_split_inc(str, " ");
+//		arr = ft_split_inc(str, " ");
 		manage_command(arr, sh);
 	}
-	else
-		arr = ft_split(str, sep[i]);
+	/* else */
+	/* 	arr = ft_split(str, sep[i]); */
 	while (arr[j])
 	{
 		split_and_execute(arr[j], sep, i + 1, sh);

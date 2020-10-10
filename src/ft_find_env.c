@@ -11,5 +11,5 @@ char	*ft_find_env(char *name, char **env)
 			if (env[i][ft_strlen(name)] == '=')
 				return (ft_strchr(env[i], '=') + 1);
 	}
-	return ("");
+	return (NULL);
 }

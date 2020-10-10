@@ -27,6 +27,7 @@ typedef struct	s_mini
 {
 	char		**env;
 	int			last_return;
+	char		*path;
 }				t_mini;
 
 void	display_ascii_dude();
@@ -56,6 +57,7 @@ int has_quote_in_str(char *s);
 void unset(char **arr, t_mini *sh);
 int	get_matched_var_in_env(char **env, char *var);
 void cpy_env(t_mini *sh, char **env);
+char *find_full_binary_path(char *cmd, t_mini *sh);
 
 
 

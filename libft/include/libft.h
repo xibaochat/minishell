@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:57:30 by xinwang           #+#    #+#             */
-/*   Updated: 2020/10/09 22:10:05 by maobe            ###   ########.fr       */
+/*   Updated: 2020/10/10 20:38:31 by maobe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ int                           ft_printf(const char *format, ...);
 void free_str(char *s);
 void free_p_str(char **s);
 char	*ft_strrmv(char *s, char *sep);
+void    ft_putstr_w_new_line_fd(char *s, int fd);
 
 #endif
