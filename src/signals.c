@@ -9,10 +9,14 @@ void	signal_interrupt(int sig)
 		if (kill(g_sh.last_pid, sig) < 0)
 			ft_printf("Can't kill process %d\n%s\n", g_sh.last_pid, strerror(errno));
 		ft_printf("Nous venons de INTERRUPT %d\n", g_sh.last_pid);
+		g_sh.last_pid = 0;
 		manage_input(&g_sh);
 	}
 	else
+	{
+		ft_printf("exiting\n");
 		exit(1);
+	}
 //	signal(SIGINT, &signal_interrupt);
 	return ;
 }

@@ -2,7 +2,13 @@
 
 char *get_cmd_path(char *cmd)
 {
-	return (ft_strjoin("/bin/", cmd));
+	char	*tmp;
+
+	if (ft_strncmp(cmd, "./", 2))
+		tmp = cmd;
+	else
+		tmp = ft_strjoin("/bin/", cmd);
+	return (tmp);
 }
 
 void exec_command(char **split_input, t_mini *sh)
@@ -18,16 +24,16 @@ void exec_command(char **split_input, t_mini *sh)
 		perror("created failed\n");
 		exit(1);
 	}
-	else if (!sh->last_pid) //not built in
-		execve(cmd_path, split_input, NULL);
 	else if (sh->last_pid > 0)
 	{
 		waitpid(sh->last_pid, &status, 0);
 		if (WIFSIGNALED(status))
-			printf("%s\n", strerror(errno));
+			ft_printf("%s\n", strerror(errno));
 		if (!WIFEXITED(status))
-			printf("%s\n", strerror(errno));
+			ft_printf("%s\n", strerror(errno));
 	}
+	else if (execve(cmd_path, split_input, sh->env) == -1) //not built in ; in this case, sh->last_pid == 0
+		ft_printf("%s\n", strerror(errno));
 }
 
 int manage_command(char **split_input, t_mini *sh)
@@ -82,7 +88,6 @@ char **split_and_execute(char *str, char *sep, int i, t_mini *sh)
 int print_prompt(t_mini *sh)
 {
 	char *path;
-	char *s;
 
 	path = getcwd(NULL, 0);
 	if (!sh->last_return)
@@ -90,13 +95,11 @@ int print_prompt(t_mini *sh)
 	else
 		ft_putstr_fd(RED, 2);
 	ft_putstr_fd("[", 2);
-	s = ft_itoa(sh->last_return);
-	ft_putstr_fd(s, 2);
+	ft_printf("%d", sh->last_return);
 	ft_putstr_fd("]", 2);
 	ft_putstr_fd(path, 2);
 	ft_putstr_fd(" : "DEFAULT_COLOR, 2);
 	free_str(path);
-	free_str(s);
 	return (1);
 }
 
@@ -109,9 +112,7 @@ void manage_input(t_mini *sh)
 	i = 0;
 	input = NULL;
 	while (print_prompt(sh) && get_next_line(0, &input))
-	{
 		split_and_execute(input, sep, i, sh);
-	}
 }
 
 int main(int ac, char **av, char **env)
@@ -121,6 +122,7 @@ int main(int ac, char **av, char **env)
 	//display_ascii_dude();
 	g_sh = sh;
 	manage_signals();
+	sh.last_pid = 0;
 	sh.last_return = 0;
 	cpy_env(&sh, env);
 	manage_input(&sh);
