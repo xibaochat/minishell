@@ -4,6 +4,7 @@ void exec_command(char **split_input, t_mini *sh)
 {
 	char	*cmd_path;
 	int	status;
+	int d;
 
 	cmd_path = NULL;
 	sh->last_pid = fork();
@@ -22,7 +23,15 @@ void exec_command(char **split_input, t_mini *sh)
 			ft_putstr_w_new_line_fd(split_input[0], 2);
 		}
 		else
-			execve(cmd_path, split_input, NULL);
+		{
+			d = execve(cmd_path, split_input, NULL);
+			if (d == -1)
+			{
+				ft_putstr_fd("Exec format error: ", 2);
+				ft_putstr_w_new_line_fd(cmd_path, 2);
+				sh->last_return = 127;
+			}
+		}
 	}
 	else if (sh->last_pid > 0)
 	{
