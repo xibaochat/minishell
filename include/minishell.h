@@ -45,7 +45,7 @@ void ft_envadd(char *expt, t_mini *sh);
 void	env(t_mini *sh);
 void	pwd(t_mini *sh);
 void	cd(char **arr, t_mini *sh);
-void	echo(char **arr, t_mini *sh);
+void	echo(char **arr);
 char	*ft_find_env(char *name, char **env);
 size_t      ft_tablen(char **tab);
 int cd_to_current_dir_opt(char **av);

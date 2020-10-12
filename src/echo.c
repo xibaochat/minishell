@@ -68,78 +68,20 @@ void	ft_print_var(char **args, int i, int j, char **env)
  ** note : ft_strrmv removes all char of 2nd param from 1st param and returns the new string
  */
 
-void	echo(char **args, t_mini *sh)
+void	echo(char **args)
 {
-	int	i;
-	int	j;
-	int	quote[2];
+	int i;
+	int	n_option;
 
-	if (ft_tablen(args) == 1)
-		write(1, "\n", 1);
 	i = 0;
-	if (!ft_strcmp(ft_strrmv(args[1], SPACE), "-n"))
-	{
-		if (ft_tablen(args) <= 2)
-		{
-			ft_putendl(strerror(WRONG_ARG));
-			return ;
-		}
-		else
-			i = 1;
-	}
-	quote[0] = 0;
-	quote[1] = 0;
+	ft_printf("WUT?\n");
+	n_option = 0;
 	while (args[++i])
-	{
-		j = -1;
-		while (args[i][++j])
-		{
-			if (args[i][j] == '\'' && quote[1])
-				write(1, &args[i][j], 1);
-			if (args[i][j] == '\"' && quote[0])
-				write(1, &args[i][j], 1);
-			if ((args[i][j] == '$' && quote[0]))
-				write(1, &args[i][j], 1);
-			if (!ft_strchr("\'\"$\\", args[i][j]))
-				write(1, &args[i][j], 1);
-			if (args[i][j] == '\'')
-			{
-				if (quote[0])
-					quote[0] = 0;
-				else if (!quote[1])
-					quote[0] = 1;
-			}
-			if (args[i][j] == '\"')
-			{
-				if (quote[1])
-					quote[1] = 0;
-				else if (!quote[0])
-					quote[1] = 1;
-			}
-			if (args[i][j] == '\\')
-			{
-				if (ft_strchr("ftnrv", args[i][j + 1]) && ft_quoted(args[i], j))
-					ft_print_space(args[i][j + 1]);
-				else if (args[i][j + 1] == '\\')
-					write(1, "\\", 1);
-				else if (args[i][j + 1] == '\0' || ft_strchr(SPACE, args[i][j + 1]))
-					ft_putendl("Can't echo a single \'\\\'");
-				else
-					write(1, &args[i][j + 1], 1);
-				j += 2;
-			}
-			if (args[i][j] == '$' && !quote[0])
-			{
-				ft_print_var(args, i, j, sh->env);
-				j++;
-				while (!ft_strchr("$'\" ", args[i][j]))
-					j++;
-				j--;
-			}
-		}
-	}
-	if (!ft_strcmp(ft_strrmv(args[1], SPACE), "-n"))
-		return ;
-	write(1, "\n", 1);
-	return ;
+    {
+        if (!n_option)
+           ft_putstr(args[i]);
+        else
+            ft_putstr_w_new_line(args[i]);
+    }
+
 }

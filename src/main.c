@@ -52,8 +52,7 @@ int manage_command(char **split_input, t_mini *sh)
 	free_str(split_input[0]);
 	split_input[0] = tmp;
 	if (!strcmp(split_input[0], "echo"))
-//		echo(split_input, sh);
-		ft_putstr_w_new_line("echo");
+		echo(split_input);
 	else if (!strcmp(split_input[0], "pwd"))
 		pwd(sh);
 	else if (!strcmp(split_input[0], "cd"))
@@ -82,19 +81,15 @@ char **split_and_execute(char *str, char *sep, int i, t_mini *sh)
 	int j;
 
 	j = 0;
-	arr = ft_split(str, sep[i]);
+	arr = ft_split_w_quotes(str, sep[i]);
 	if (sep[i] == ' ')
-	{
-//		arr = ft_split_inc(str, " ");
 		manage_command(arr, sh);
-	}
-	/* else */
-	/* 	arr = ft_split(str, sep[i]); */
-	while (arr[j])
-	{
-		split_and_execute(arr[j], sep, i + 1, sh);
-		j++;
-	}
+	else
+		while (arr[j])
+		{
+			split_and_execute(arr[j], sep, i + 1, sh);
+			j++;
+		}
 }
 
 int print_prompt(t_mini *sh)
