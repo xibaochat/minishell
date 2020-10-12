@@ -33,7 +33,7 @@ SRCS = ft_strcmp.c ft_atoi.c ft_split.c ft_bzero.c ft_strchr.c ft_calloc.c \
 	ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c \
 	ft_lstnew.c ft_lstsize.c free_str.c free_p_str.c ft_strnew_with_char.c \
 	ft_split_inc.c ft_strrmv.c ft_putstr_w_newline_fd.c ft_split_w_quotes.c \
-	delete_quotes_from_arr.c delete_quotes_from_s.c
+	delete_quotes_from_arr.c delete_quotes_from_s.c init_quotes_struct.c
 
 
 

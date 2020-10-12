@@ -1,46 +1,67 @@
 #include "libft.h"
 
-static void manage_quotes(int *quote, char c)
+static void manage_quotes(t_quo *quo, char c)
 {
-	if (c == '"')
+	if (c == '"' && !(quo->single_quote))
 	{
-		if (*quote)
-			--(*quote);
+		if (quo->double_quote)
+		{
+			--(quo->have_quote);
+			--(quo->double_quote);
+		}
 		else
-			++(*quote);
+		{
+			++(quo->have_quote);
+			++(quo->double_quote);
+		}
 	}
+	else if (c == '\'' && !(quo->double_quote))
+	{
+		if (quo->single_quote)
+		{
+			--(quo->have_quote);
+			--(quo->single_quote);
+		}
+		else
+		{
+			++(quo->have_quote);
+			++(quo->single_quote);
+		}
+	}
+
 }
 
 static int		get_nb_words(char *str, char c)
 {
 	int			i;
 	int			nb_words;
-	int quote;
+	t_quo		quo;
 
 	i = 0;
 	nb_words = 0;
-	quote = 0;
+	quo = init_quotes_struct();
 	while (str[i])
 	{
-		manage_quotes(&quote, str[i]);
+		manage_quotes(&quo, str[i]);
 		if (((!i && (str[i] != c)) ||
-			 (i > 0 && (str[i - 1] == c) && (str[i] != c))) && !quote)
+			 (i > 0 && (str[i - 1] == c) && (str[i] != c))) &&
+			!(quo.have_quote))
 			nb_words++;
 		i++;
 	}
 	return (nb_words);
 }
 
-static int		get_word_len(char *str, int i, char c)
+static int		get_word_len(char *str, int i, char sep)
 {
-	int			lens;
-	int quote;
+	int		lens;
+	t_quo	quo;
 
 	lens = 0;
-	quote = 0;
-	while (str[i] && (str[i] != c || quote))
+	quo = init_quotes_struct();
+	while (str[i] && (str[i] != sep || quo.have_quote))
 	{
-		manage_quotes(&quote, str[i]);
+		manage_quotes(&quo, str[i]);
 		i++;
 		lens++;
 	}

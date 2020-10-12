@@ -74,7 +74,6 @@ void	echo(char **args)
 	int	n_option;
 
 	i = 0;
-	ft_printf("WUT?\n");
 	n_option = 0;
 	while (args[++i])
     {

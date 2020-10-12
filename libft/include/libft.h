@@ -23,6 +23,13 @@ typedef	struct		s_list
 	struct	s_list	*next;
 }					t_list;
 
+typedef struct		s_quo {
+	int have_quote;
+	int double_quote;
+	int single_quote;
+}					t_quo;
+
+
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t nmemb, size_t size);
@@ -91,6 +98,6 @@ void    ft_putstr_w_new_line_fd(char *s, int fd);
 
 void delete_quotes_from_arr(char **arr);
 void delete_quotes_from_s(char **s);
-
+t_quo init_quotes_struct(void);
 
 #endif
