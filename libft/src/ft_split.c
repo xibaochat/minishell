@@ -26,7 +26,7 @@ static int		ger_nb_words(char *str, char c)
 			nb_words++;
 		i++;
 	}
-	return (c);
+	return (nb_words);
 }
 
 static int		get_lens(char *str, int i, char c)
