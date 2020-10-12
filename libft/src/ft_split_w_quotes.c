@@ -1,36 +1,5 @@
 #include "libft.h"
 
-static void manage_quotes(t_quo *quo, char c)
-{
-	if (c == '"' && !(quo->single_quote))
-	{
-		if (quo->double_quote)
-		{
-			--(quo->have_quote);
-			--(quo->double_quote);
-		}
-		else
-		{
-			++(quo->have_quote);
-			++(quo->double_quote);
-		}
-	}
-	else if (c == '\'' && !(quo->double_quote))
-	{
-		if (quo->single_quote)
-		{
-			--(quo->have_quote);
-			--(quo->single_quote);
-		}
-		else
-		{
-			++(quo->have_quote);
-			++(quo->single_quote);
-		}
-	}
-
-}
-
 static int		get_nb_words(char *str, char c)
 {
 	int			i;
@@ -42,7 +11,7 @@ static int		get_nb_words(char *str, char c)
 	quo = init_quotes_struct();
 	while (str[i])
 	{
-		manage_quotes(&quo, str[i]);
+		manage_struct_quotes(&quo, str[i]);
 		if (((!i && (str[i] != c)) ||
 			 (i > 0 && (str[i - 1] == c) && (str[i] != c))) &&
 			!(quo.have_quote))
@@ -61,7 +30,7 @@ static int		get_word_len(char *str, int i, char sep)
 	quo = init_quotes_struct();
 	while (str[i] && (str[i] != sep || quo.have_quote))
 	{
-		manage_quotes(&quo, str[i]);
+		manage_struct_quotes(&quo, str[i]);
 		i++;
 		lens++;
 	}

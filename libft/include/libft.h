@@ -99,5 +99,7 @@ void    ft_putstr_w_new_line_fd(char *s, int fd);
 void delete_quotes_from_arr(char **arr);
 void delete_quotes_from_s(char **s);
 t_quo init_quotes_struct(void);
+void manage_struct_quotes(t_quo *quo, char c);
+
 
 #endif

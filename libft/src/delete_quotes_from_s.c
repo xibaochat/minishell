@@ -4,14 +4,21 @@ static int get_len_wo_quotes(const char *s)
 {
 	int	i;
 	int	len;
+	t_quo quo;
 
-	i = -1;
-	len = 0;
 	if (!s)
 		return (0);
+	i = -1;
+	len = 0;
+	quo = init_quotes_struct();
 	while (s[++i])
-		if (s[i] != '"')
+	{
+		manage_struct_quotes(&quo, s[i]);
+		if ((s[i] == '"' && quo.single_quote)
+			|| (s[i] == '\'' && quo.double_quote)
+			|| (s[i] != '\'' && s[i] != '"'))
 			++len;
+	}
 	return (len);
 }
 
@@ -19,12 +26,21 @@ static void copy_wo_quotes(char *new, const char *s)
 {
 	int	i;
 	int	j;
+	t_quo quo;
 
+	if (!new || !s)
+		return ;
 	i = -1;
 	j = 0;
+	quo = init_quotes_struct();
 	while (s[++i])
-		if (s[i] != '"')
+	{
+		manage_struct_quotes(&quo, s[i]);
+		if ((s[i] == '"' && quo.single_quote)
+			|| (s[i] == '\'' && quo.double_quote)
+			|| (s[i] != '\'' && s[i] != '"'))
 			new[j++] = s[i];
+	}
 }
 
 void delete_quotes_from_s(char **s)
