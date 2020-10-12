@@ -83,7 +83,10 @@ char **split_and_execute(char *str, char *sep, int i, t_mini *sh)
 	j = 0;
 	arr = ft_split_w_quotes(str, sep[i]);
 	if (sep[i] == ' ')
+	{
+		delete_quotes_from_arr(arr);
 		manage_command(arr, sh);
+	}
 	else
 		while (arr[j])
 		{

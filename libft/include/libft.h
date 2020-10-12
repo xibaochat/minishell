@@ -89,4 +89,8 @@ void free_p_str(char **s);
 char	*ft_strrmv(char *s, char *sep);
 void    ft_putstr_w_new_line_fd(char *s, int fd);
 
+void delete_quotes_from_arr(char **arr);
+void delete_quotes_from_s(char **s);
+
+
 #endif
