@@ -11,7 +11,7 @@ static int		get_nb_words(char *str, char c)
 	quo = init_quotes_struct();
 	while (str[i])
 	{
-		manage_struct_quotes(&quo, str[i]);
+		manage_struct_quotes(&quo, str, i);
 		if (((!i && (str[i] != c)) ||
 			 (i > 0 && (str[i - 1] == c) && (str[i] != c))) &&
 			!(quo.have_quote))
@@ -30,7 +30,7 @@ static int		get_word_len(char *str, int i, char sep)
 	quo = init_quotes_struct();
 	while (str[i] && (str[i] != sep || quo.have_quote))
 	{
-		manage_struct_quotes(&quo, str[i]);
+		manage_struct_quotes(&quo, str, i);
 		i++;
 		lens++;
 	}

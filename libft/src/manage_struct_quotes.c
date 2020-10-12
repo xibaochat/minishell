@@ -1,8 +1,8 @@
 #include "libft.h"
 
-void manage_struct_quotes(t_quo *quo, char c)
+void manage_struct_quotes(t_quo *quo,  const char *s, int i)
 {
-	if (c == '"' && !(quo->single_quote))
+	if (is_unescapted_c(s, i, '"') && !(quo->single_quote))
 	{
 		if (!(quo->double_quote))
 		{
@@ -15,7 +15,7 @@ void manage_struct_quotes(t_quo *quo, char c)
 			--(quo->double_quote);
 		}
 	}
-	else if (c == '\'' && !(quo->double_quote))
+	else if (is_unescapted_c(s, i, '\'') && !(quo->double_quote))
 	{
 		if (!(quo->single_quote))
 		{
