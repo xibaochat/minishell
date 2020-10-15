@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:57:30 by xinwang           #+#    #+#             */
-/*   Updated: 2020/10/10 20:38:31 by maobe            ###   ########.fr       */
+/*   Updated: 2020/10/15 16:18:11 by maobe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string.h>
 # include <unistd.h>
 # define BUFFER_SIZE 1024
+
 typedef	struct		s_list
 {
 	void			*content;
@@ -100,8 +101,8 @@ void delete_quotes_from_arr(char **arr);
 void delete_quotes_from_s(char **s);
 t_quo init_quotes_struct(void);
 void manage_struct_quotes(t_quo *quo, const char *s, int i);
-int is_escapted(const char *s, int i);
-int is_unescapted_c(const char *s, int i, const char c);
+int is_escapted(t_quo *q, const char *s, int i);
+int is_unescapted_c(t_quo *q, const char *s, int i, const char c);
 
 
 

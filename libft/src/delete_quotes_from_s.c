@@ -14,9 +14,9 @@ static int get_len_wo_quotes(const char *s)
 	while (s[++i])
 	{
 		manage_struct_quotes(&quo, s, i);
-		if ((is_unescapted_c(s, i, '"') && quo.single_quote)
-			|| (is_unescapted_c(s, i, '\'') && quo.double_quote)
-			|| ((s[i] != '\'' && s[i] != '"') || is_escapted(s, i)))
+		if ((is_unescapted_c(&quo, s, i, '"') && quo.single_quote)
+			|| (is_unescapted_c(&quo, s, i, '\'') && quo.double_quote)
+			|| ((s[i] != '\'' && s[i] != '"') || is_escapted(&quo, s, i)))
 			++len;
 	}
 	return (len);
@@ -36,9 +36,9 @@ static void copy_wo_quotes(char *new, const char *s)
 	while (s[++i])
 	{
 		manage_struct_quotes(&quo, s, i);
-		if ((is_unescapted_c(s, i, '"') && quo.single_quote)
-			|| (is_unescapted_c(s, i, '\'') && quo.double_quote)
-			|| ((s[i] != '\'' && s[i] != '"') || is_escapted(s, i)))
+		if ((is_unescapted_c(&quo, s, i, '"') && quo.single_quote)
+			|| (is_unescapted_c(&quo, s, i, '\'') && quo.double_quote)
+			|| ((s[i] != '\'' && s[i] != '"') || is_escapted(&quo, s, i)))
 			new[j++] = s[i];
 	}
 }
