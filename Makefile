@@ -6,7 +6,7 @@
 #    By: maobe <maobe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/01 10:13:39 by maobe             #+#    #+#              #
-#    Updated: 2020/10/11 01:08:07 by maobe            ###   ########.fr        #
+#    Updated: 2020/10/17 23:20:02 by maobe            ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,7 +16,7 @@ SRCS_PATH = ./src
 
 SRC = main.c display_ascii_dude.c env.c pwd.c  ft_tablen.c  unset.c \
 		ft_addenv.c echo.c ft_find_env.c find_fst_split_arg_in_binary.c \
-		signals.c
+		signals.c print_prompt.c check_quote_close.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
 

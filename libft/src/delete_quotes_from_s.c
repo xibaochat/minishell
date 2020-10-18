@@ -1,46 +1,47 @@
 #include "libft.h"
 
-static int get_len_wo_quotes(const char *s)
+static int get_len_wo_quotes(char *s)
 {
-	int	i;
-	int	len;
-	t_quo quo;
+    int i;
+    int len;
+    t_quo q;
 
-	if (!s)
-		return (0);
-	i = -1;
-	len = 0;
-	quo = init_quotes_struct();
-	while (s[++i])
-	{
-		manage_struct_quotes(&quo, s, i);
-		if ((is_unescapted_c(&quo, s, i, '"') && quo.single_quote)
-			|| (is_unescapted_c(&quo, s, i, '\'') && quo.double_quote)
-			|| ((s[i] != '\'' && s[i] != '"') || is_escapted(&quo, s, i)))
-			++len;
-	}
-	return (len);
+    i = -1;
+    len = 0;
+    q = init_quotes_struct();
+    if (!s)
+        return (0);
+    while (s[++i])
+    {
+     	manage_struct_quotes(&q, s, i);
+        if ((s[i] == SINGLE && q.double_quote && !is_escapted(&q, s, i))
+            || (s[i] == DOUBLE && q.single_quote && !is_escapted(&q, s, i))
+            || (s[i] != DOUBLE && s[i] != SINGLE)
+            || is_escapted(&q, s, i))
+            len++;
+    }
+    return (len);
 }
 
-static void copy_wo_quotes(char *new, const char *s)
-{
-	int	i;
-	int	j;
-	t_quo quo;
 
-	if (!new || !s)
-		return ;
-	i = -1;
-	j = 0;
-	quo = init_quotes_struct();
-	while (s[++i])
-	{
-		manage_struct_quotes(&quo, s, i);
-		if ((is_unescapted_c(&quo, s, i, '"') && quo.single_quote)
-			|| (is_unescapted_c(&quo, s, i, '\'') && quo.double_quote)
-			|| ((s[i] != '\'' && s[i] != '"') || is_escapted(&quo, s, i)))
-			new[j++] = s[i];
-	}
+static void copy_wo_quotes(char *new, char *s)
+{
+    int i;
+    int j;
+    t_quo q;
+
+    i = -1;
+    j = -1;
+    q = init_quotes_struct();
+    while (s[++i])
+    {
+		manage_struct_quotes(&q, s, i);
+		if ((s[i] == SINGLE && q.double_quote && !is_escapted(&q, s, i))
+            || (s[i] == DOUBLE && q.single_quote && !is_escapted(&q, s, i))
+            || (s[i] != DOUBLE && s[i] != SINGLE)
+            || is_escapted(&q, s, i))
+            new[++j] = s[i];
+    }
 }
 
 void delete_quotes_from_s(char **s)

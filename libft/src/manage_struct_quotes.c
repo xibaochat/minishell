@@ -1,32 +1,34 @@
 #include "libft.h"
 
-void manage_struct_quotes(t_quo *quo,  const char *s, int i)
+void manage_struct_quotes(t_quo *q,  const char *str, int i)
 {
-	if (is_unescapted_c(quo, s, i, '"') && !(quo->single_quote))
-	{
-		if (!(quo->double_quote))
-		{
-			++(quo->have_quote);
-			++(quo->double_quote);
-		}
-		else
-		{
-			--(quo->have_quote);
-			--(quo->double_quote);
-		}
-	}
-	else if (is_unescapted_c(quo, s, i, '\'') && !(quo->double_quote))
-	{
-		if (!(quo->single_quote))
-		{
-			++(quo->have_quote);
-			++(quo->single_quote);
-		}
-		else
-		{
-			--(quo->have_quote);
-			--(quo->single_quote);
-		}
-	}
+	char c;
 
+    c = str[i];
+    if (c == DOUBLE && !q->single_quote && !is_escapted(q, str, i))
+    {
+        if (q->double_quote)
+        {
+            q->have_quote = 0;
+            q->double_quote = 0;
+        }
+        else
+        {
+            q->have_quote = 1;
+            q->double_quote = 1;
+        }
+    }
+    if (c == SINGLE && !q->double_quote && !is_escapted(q, str, i))
+    {
+        if (q->single_quote)
+        {
+            q->have_quote = 0;
+            q->single_quote = 0;
+        }
+        else
+        {
+            q->have_quote = 1;
+            q->single_quote = 1;
+        }
+    }
 }

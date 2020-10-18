@@ -48,9 +48,11 @@ int manage_command(char **split_input, t_mini *sh)
 {
 	char	*tmp;
 
-	tmp = ft_strrmv(split_input[0], SPACE);
-	free_str(split_input[0]);
-	split_input[0] = tmp;
+	/* tmp = ft_strrmv(split_input[0], SPACE); */
+	/* free_str(split_input[0]); */
+	/* split_input[0] = tmp; */
+//	ft_putstr("enter\n");
+//	ft_putstr(split_input[0]);
 	if (!strcmp(split_input[0], "echo"))
 		echo(split_input);
 	else if (!strcmp(split_input[0], "pwd"))
@@ -75,17 +77,24 @@ int manage_command(char **split_input, t_mini *sh)
 ** ft_split_inc() keeps the separator in the output when splitting
 */
 
-char **split_and_execute(char *str, char *sep, int i, t_mini *sh)
+void split_and_execute(char *str, char *sep, int i, t_mini *sh)
 {
 	char **arr;
 	int j;
 
 	j = 0;
 	arr = ft_split_w_quotes(str, sep[i]);
+	if (!arr || !arr[0])
+		return;
 	if (sep[i] == ' ')
 	{
-		delete_quotes_from_arr(arr);
-		manage_command(arr, sh);
+		check_quote_close(arr, sh);
+		if (!sh->last_return)
+		{
+			delete_quotes_from_arr(arr);
+			delete_slash_from_arr(arr);
+			manage_command(arr, sh);
+		}
 	}
 	else
 		while (arr[j])
@@ -93,24 +102,6 @@ char **split_and_execute(char *str, char *sep, int i, t_mini *sh)
 			split_and_execute(arr[j], sep, i + 1, sh);
 			j++;
 		}
-}
-
-int print_prompt(t_mini *sh)
-{
-	char *path;
-
-	path = getcwd(NULL, 0);
-	if (!sh->last_return)
-		ft_putstr_fd(GREEN, 2);
-	else
-		ft_putstr_fd(RED, 2);
-	ft_putstr_fd("[", 2);
-	ft_printf("%d", sh->last_return);
-	ft_putstr_fd("]", 2);
-	ft_putstr_fd(path, 2);
-	ft_putstr_fd(" : "DEFAULT_COLOR, 2);
-	free_str(path);
-	return (1);
 }
 
 void manage_input(t_mini *sh)
@@ -122,7 +113,11 @@ void manage_input(t_mini *sh)
 	i = 0;
 	input = NULL;
 	while (print_prompt(sh) && get_next_line(0, &input))
+	{
+		sh->last_return = 0;
+		sh->line = input;
 		split_and_execute(input, sep, i, sh);
+	}
 }
 
 int main(int ac, char **av, char **env)
@@ -130,9 +125,9 @@ int main(int ac, char **av, char **env)
 	t_mini	sh;
 
 	//display_ascii_dude();
-	g_sh = sh;
-	manage_signals();
-	sh.last_pid = 0;
+	//g_sh = sh;
+	//manage_signals();
+	//sh.last_pid = 0;
 	sh.last_return = 0;
 	cpy_env(&sh, env);
 	manage_input(&sh);

@@ -1,8 +1,5 @@
 #include "minishell.h"
 
-/*
- ** ft_quoted checks if the whitespace symbol (for ex: \n) is surrounded by quote marks
- */
 
 int	ft_quoted(char *s, int	j)
 {

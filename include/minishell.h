@@ -1,7 +1,8 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-
+# define SINGLE 39
+# define DOUBLE 34
 # define DEFAULT_COLOR  "\033[0;m"
 # define BLACK          "\033[1;30m"
 # define RED            "\033[1;31m"
@@ -25,11 +26,13 @@
 
 typedef struct	s_mini
 {
+	char		*line;
 	char		**env;
 	int			last_return;
 	char		*path;
 	int			last_pid;
 }				t_mini;
+
 
 /*
 ** This global variable is needed to deal with signals (cf. signals.c)
@@ -67,6 +70,8 @@ void unset(char **arr, t_mini *sh);
 int	get_matched_var_in_env(char **env, char *var);
 void cpy_env(t_mini *sh, char **env);
 char *find_full_binary_path(char *cmd, t_mini *sh);
+int print_prompt(t_mini *sh);
+void check_quote_close(char **arr, t_mini *sh);
 
 
 
