@@ -128,6 +128,7 @@ int main(int ac, char **av, char **env)
 	//g_sh = sh;
 	//manage_signals();
 	//sh.last_pid = 0;
+	show_cat();
 	sh.last_return = 0;
 	cpy_env(&sh, env);
 	manage_input(&sh);
