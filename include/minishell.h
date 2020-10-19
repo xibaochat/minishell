@@ -23,7 +23,7 @@
 # define ENV_PWD "PWD"
 # define ENV_OLDPWD "OLDPWD"
 # define BASIC_ENV_USER "USER=maobe"
-
+# define HOME_ERROR "%s/!\\ NO HOME DEFINE /!\\ \n%s"
 
 
 # include <unistd.h>

@@ -129,6 +129,8 @@ int main(int ac, char **av, char **env)
 	show_cat();
 	sh.last_return = 0;
 	cpy_env(&sh, env);
+	if (!ft_find_env(ENV_HOME, sh.env))
+		ft_printf(HOME_ERROR, RED, WHITE);
 	manage_input(&sh);
 	return (0);
 }
