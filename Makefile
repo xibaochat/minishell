@@ -16,7 +16,7 @@ SRCS_PATH = ./src
 
 SRC = main.c  env.c pwd.c  ft_tablen.c  unset.c \
 		ft_addenv.c echo.c ft_find_env.c find_fst_split_arg_in_binary.c \
-		signals.c print_prompt.c check_quote_close.c cat.c
+		signals.c print_prompt.c check_quote_close.c cat.c error.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
 
@@ -29,7 +29,6 @@ CD_PATH = $(addprefix $(SRCS_PATH)/,$(addprefix cd/,$(CD_SRC)))
 CD_OBJ =  $(CD_SRC:.c=.o)
 
 EXP_SRC = check_export_var_val.c export.c show_export_var.c \
-		rm_quote_in_var_value.c
 
 EXP_PATH = $(addprefix $(SRCS_PATH)/,$(addprefix export/,$(EXP_SRC)))
 

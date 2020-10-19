@@ -51,8 +51,6 @@ int manage_command(char **split_input, t_mini *sh)
 	/* tmp = ft_strrmv(split_input[0], SPACE); */
 	/* free_str(split_input[0]); */
 	/* split_input[0] = tmp; */
-//	ft_putstr("enter\n");
-//	ft_putstr(split_input[0]);
 	if (!strcmp(split_input[0], "echo"))
 		echo(split_input);
 	else if (!strcmp(split_input[0], "pwd"))
@@ -68,9 +66,7 @@ int manage_command(char **split_input, t_mini *sh)
 	else if (!strcmp(split_input[0], "exit"))
 		ft_putstr("calling exit builtin\n");
 	else
-	{
 		exec_command(split_input, sh);
-	}
 }
 
 /*

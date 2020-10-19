@@ -18,7 +18,8 @@ static char **get_bin_path(t_mini *sh)
 	char *path;
 	char ** bin_path;
 
-	path = ft_find_env("PATH", sh->env);
+	path = ft_find_env(ENV_PATH, sh->env);
+	ft_putstr(path);
 	if (!path)
 		path = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";
 	sh->path = path;

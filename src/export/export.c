@@ -1,23 +1,5 @@
 #include "minishell.h"
 
-void	ft_tabfree(char **tab)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	if (tab)
-	{
-		while (tab[i])
-			i++;
-		while (j < i && tab[j])
-			free_str(tab[j++]);
-		free(tab);
-		tab = NULL;
-	}
-}
-
 //export maobe=kitten, if maobe=cat before, now need to change the value
 int replace_var_value(char **env, char *s)
 {
@@ -35,9 +17,8 @@ int replace_var_value(char **env, char *s)
 	{
 		if (!ft_strncmp(env[j], s, i + 1))
 		{
-			s1 = rm_quote_in_str(s);
 			tmp = env[j];
-			env[j] = s1;
+			env[j] = s;
 			free_str(tmp);
 			return (1);
 		}
@@ -77,22 +58,27 @@ void export_add_var(char *var_value, t_mini *sh)
 
 void export(char **arr, t_mini *sh)
 {
-	if (ft_tablen(arr) > 2)
-    {
-        ft_putstr_w_new_line(strerror(WRONG_ARG));
-		sh->last_return = 1;
-        return ;
-    }
-	else if (ft_tablen(arr) == 1)
+	int i;
+
+	i = 0;
+	//only type: export
+	if (ft_tablen(arr) == 1)
 	{
 		display_env_w_prefix(arr,sh-> env);
 		sh->last_return = 0;
 	}
-	else if (invalid_export_var_val(arr[1]))
-	{
-		show_export_error_message(arr[1]);
-		sh->last_return =1;
-	}
+	//ep: xibao!=miao
 	else
-		export_add_var(arr[1], sh);
+	{
+		while (arr[++i])
+		{
+			if (has_invalid_char_in_env_name(arr[i]))
+			{
+				show_key_error_message(EXPORT, arr[i]);
+				sh->last_return = 1;
+			}
+			else if (has_equal_sign(arr[i]))
+				export_add_var(arr[i], sh);
+		}
+	}
 }

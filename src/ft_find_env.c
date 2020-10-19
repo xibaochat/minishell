@@ -1,15 +1,18 @@
 #include "minishell.h"
 
-char	*ft_find_env(char *name, char **env)
+char	*ft_find_env(char *elem, char **env)
 {
 	int i;
+	int j;
 
 	i = -1;
 	while (env[++i])
 	{
-		if (!ft_strncmp(name, env[i], ft_strlen(name)))
-			if (env[i][ft_strlen(name)] == '=')
-				return (ft_strchr(env[i], '=') + 1);
+		j = 0;
+		while (env[i][j] == elem[j])
+			j++;
+		if (j >= 1 && env[i][--j] == '=' && elem[j] == '=')
+			return (env[i] + j + 1);
 	}
 	return (NULL);
 }

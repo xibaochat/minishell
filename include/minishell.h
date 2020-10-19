@@ -3,6 +3,8 @@
 
 # define SINGLE 39
 # define DOUBLE 34
+# define EXPORT 0
+# define UNSET 1
 # define DF  "\033[0;m"
 # define BLACK          "\033[1;30m"
 # define RED            "\033[1;31m"
@@ -15,13 +17,14 @@
 # define WHITE "\033[;0m"
 
 # define WRONG_ARG 22
+# define VAL_ERROR ": not a valid identifier"
 # define SPACE " \f\t\n\r\v"
 
-# define ENV_USER "USER"
-# define ENV_PATH "PATH"
-# define ENV_HOME "HOME"
-# define ENV_PWD "PWD"
-# define ENV_OLDPWD "OLDPWD"
+# define ENV_USER "USER="
+# define ENV_PATH "PATH="
+# define ENV_HOME "HOME="
+# define ENV_PWD "PWD="
+# define ENV_OLDPWD "OLDPWD="
 # define BASIC_ENV_USER "USER=maobe"
 # define HOME_ERROR "%s/!\\ NO HOME DEFINE /!\\ \n%s"
 
@@ -66,24 +69,22 @@ size_t      ft_tablen(char **tab);
 int cd_to_current_dir_opt(char **av);
 void cd_to_current_dir(t_mini *sh);
 void    change_dir(t_mini *sh, char *p);
-char	*get_extracted_path(char **av, char *env_var);
 void change_env_var_value(char **env, char *new_p, char *var);
 void    change_dir_for_other_opts(t_mini *sh, char *path, char *old_p);
 void cd_error_message(char *str);
 void export(char **arr, t_mini *sh);
-int has_no_equal_sign(char *s);
-int invalid_export_var_val(char *s);
+int has_invalid_char_in_env_name(char *str);
+int has_equal_sign(char *s);
 void    ft_tabfree(char **tab);
 void show_export_error_message(char *s);
 void display_env_w_prefix(char **av, char **env);
-char *rm_quote_in_str(char *s);
-int has_quote_in_str(char *s);
 void unset(char **arr, t_mini *sh);
 int	get_matched_var_in_env(char **env, char *var);
 void cpy_env(t_mini *sh, char **env);
 char *find_full_binary_path(char *cmd, t_mini *sh);
 int print_prompt(t_mini *sh);
 void check_quote_close(char **arr, t_mini *sh);
+void show_key_error_message(int key, char *s);
 
 
 

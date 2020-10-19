@@ -107,6 +107,7 @@ int is_escapted(t_quo *q, const char *s, int i);
 int is_unescapted_c(t_quo *q, const char *s, int i, const char c);
 void delete_slash_from_arr(char **arr);
 void delete_slash_from_str(char **s);
+void    ft_tabfree(char **tab);
 
 
 

@@ -10,7 +10,7 @@ static int unset_var_is_valid(t_mini *sh, char *str)
 
 	i = 0;
 	if (ft_isdigit(str[0])
-		|| !has_no_equal_sign(str))
+		|| has_equal_sign(str))
 		return (0);
 	while (str[i])
 	{
@@ -20,14 +20,6 @@ static int unset_var_is_valid(t_mini *sh, char *str)
 		i++;
 	}
 	return (1);
-}
-
-static void show_error_messsage(char *s, t_mini *sh)
-{
-	sh->last_return = 1;
-	ft_putstr_fd("bash: unset: '", 2);
-	ft_putstr_fd(s, 2);
-	ft_putstr_fd("': not a valid identifier\n", 2);
 }
 
 static int has_invalid_var(t_mini *sh, char **arr)
@@ -73,7 +65,7 @@ void unset(char **arr, t_mini *sh)
 			}
 		}
 		else
-			show_error_messsage(arr[i], sh);
+			show_key_error_message(UNSET, arr[i]);
 	}
 	if (has_invalid_var(sh, arr))
 		sh->last_return = 1;
