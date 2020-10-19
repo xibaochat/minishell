@@ -14,7 +14,7 @@ NAME = minishell
 
 SRCS_PATH = ./src
 
-SRC = main.c display_ascii_dude.c env.c pwd.c  ft_tablen.c  unset.c \
+SRC = main.c  env.c pwd.c  ft_tablen.c  unset.c \
 		ft_addenv.c echo.c ft_find_env.c find_fst_split_arg_in_binary.c \
 		signals.c print_prompt.c check_quote_close.c cat.c
 

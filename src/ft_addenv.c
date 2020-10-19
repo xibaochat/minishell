@@ -39,7 +39,6 @@ void ft_envadd(char *expt, t_mini *sh)
 	}
     if (expt)
 	{
-		expt = rm_quote_in_str(expt);
 		env[i++] = ft_strdup(expt);
 		free_str(expt);
 	}

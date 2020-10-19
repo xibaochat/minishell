@@ -114,7 +114,6 @@ void manage_input(t_mini *sh)
 	input = NULL;
 	while (print_prompt(sh) && get_next_line(0, &input))
 	{
-		sh->last_return = 0;
 		sh->line = input;
 		split_and_execute(input, sep, i, sh);
 	}
@@ -124,7 +123,6 @@ int main(int ac, char **av, char **env)
 {
 	t_mini	sh;
 
-	//display_ascii_dude();
 	//g_sh = sh;
 	//manage_signals();
 	//sh.last_pid = 0;

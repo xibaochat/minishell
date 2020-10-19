@@ -1,6 +1,6 @@
-#include <dirent.h>
-#include <stdio.h>
-#include "minishell.h"
+# include <dirent.h>
+# include <stdio.h>
+# include "minishell.h"
 
 static char *get_full_binary_path(char *cmd, char *bin_path)
 {

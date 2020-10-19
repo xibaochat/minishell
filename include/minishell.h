@@ -12,8 +12,19 @@
 # define P         "\033[1;35m"
 # define CYAN           "\033[1;36m"
 # define GREY           "\033[1;37m"
+# define WHITE "\033[;0m"
+
 # define WRONG_ARG 22
 # define SPACE " \f\t\n\r\v"
+
+# define ENV_USER "USER"
+# define ENV_PATH "PATH"
+# define ENV_HOME "HOME"
+# define ENV_PWD "PWD"
+# define ENV_OLDPWD "OLDPWD"
+# define BASIC_ENV_USER "USER=maobe"
+
+
 
 # include <unistd.h>
 # include <errno.h>
