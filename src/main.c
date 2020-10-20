@@ -123,6 +123,7 @@ int main(int ac, char **av, char **env)
 	//manage_signals();
 	//sh.last_pid = 0;
 	show_cat();
+	show_welcome_mes();
 	sh.last_return = 0;
 	cpy_env(&sh, env);
 	if (!ft_find_env(ENV_HOME, sh.env))

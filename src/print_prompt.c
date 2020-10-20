@@ -5,7 +5,7 @@ static void show_smile_face()
 	char *s;
 
 	s = "\U0001F600";
-	ft_putstr(s);
+	ft_printf("%s[%s] ", GR, s);
 }
 
 static void	show_sad_face()
@@ -13,7 +13,7 @@ static void	show_sad_face()
 	char *s;
 
 	s = "\U0001F61E";
-	ft_putstr(s);
+	ft_printf("%s[%s] ", RED, s);
 }
 
 int print_prompt(t_mini *sh)

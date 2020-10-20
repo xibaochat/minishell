@@ -15,6 +15,12 @@
 # define CYAN           "\033[1;36m"
 # define GREY           "\033[1;37m"
 # define WHITE "\033[;0m"
+# define BLINK "\e[5m"
+# define B_YE  "\e[38;5;11m"
+# define ORANGE "\e[38;5;209m"
+# define BOLD_GR "\e[1;92m"
+# define PINK "\e[38;5;198m"
+# define BLUE "\e[38;5;21m"
 
 # define WRONG_ARG 22
 # define VAL_ERROR ": not a valid identifier"
@@ -85,6 +91,7 @@ char *find_full_binary_path(char *cmd, t_mini *sh);
 int print_prompt(t_mini *sh);
 void check_quote_close(char **arr, t_mini *sh);
 void show_key_error_message(int key, char *s);
+void show_welcome_mes();
 
 
 
