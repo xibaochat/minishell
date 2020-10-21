@@ -1,8 +1,5 @@
 #include "minishell.h"
 
-
-
-
 /*
  ** ft_printf_space prints the specific whitespace char
  */

@@ -16,6 +16,8 @@ void exec_command(char **split_input, t_mini *sh)
 	}
 	else if (!sh->last_pid) //not built in, child process
 	{
+
+		// find complete path, ls: /bin/ls
 		cmd_path = find_full_binary_path(split_input[0], sh);
 		if (!cmd_path)
 		{
@@ -54,18 +56,21 @@ int manage_command(char **split_input, t_mini *sh)
 	/* ft_putstr("before\n"); */
 	if (!ft_strcmp(split_input[0], "echo"))
 		echo(split_input);
-	else if (!strcmp(split_input[0], "pwd"))
+	else if (!ft_strcmp(split_input[0], "pwd"))
 		pwd(sh);
-	else if (!strcmp(split_input[0], "cd"))
+	else if (!ft_strcmp(split_input[0], "cd"))
 		cd(split_input, sh);
-	else if (!strcmp(split_input[0], "env"))
+	else if (!ft_strcmp(split_input[0], "env"))
 		env(sh);
-	else if (!strcmp(split_input[0], "export"))
+	else if (!ft_strcmp(split_input[0], "export"))
 		export(split_input, sh);
-	else if (!strcmp(split_input[0], "unset"))
+	else if (!ft_strcmp(split_input[0], "unset"))
 		unset(split_input, sh);
-	else if (!strcmp(split_input[0], "exit"))
-		ft_putstr("calling exit builtin\n");
+	else if (!ft_strcmp(split_input[0], "exit"))
+	{
+		ft_tabfree(sh->env);
+		exit(0);
+	}
 	else
 		exec_command(split_input, sh);
 }
