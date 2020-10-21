@@ -1,5 +1,6 @@
 #include "minishell.h"
 
+//check quotes are in pair or not
 void check_quote_close(char **arr, t_mini *sh)
 {
     int i;

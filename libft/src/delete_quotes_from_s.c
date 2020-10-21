@@ -23,7 +23,6 @@ static int get_len_wo_quotes(char *s)
     return (len);
 }
 
-
 static void copy_wo_quotes(char *new, char *s)
 {
     int i;

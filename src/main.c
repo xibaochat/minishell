@@ -51,7 +51,8 @@ int manage_command(char **split_input, t_mini *sh)
 	/* tmp = ft_strrmv(split_input[0], SPACE); */
 	/* free_str(split_input[0]); */
 	/* split_input[0] = tmp; */
-	if (!strcmp(split_input[0], "echo"))
+	/* ft_putstr("before\n"); */
+	if (!ft_strcmp(split_input[0], "echo"))
 		echo(split_input);
 	else if (!strcmp(split_input[0], "pwd"))
 		pwd(sh);
@@ -87,6 +88,7 @@ void split_and_execute(char *str, char *sep, int i, t_mini *sh)
 		check_quote_close(arr, sh);
 		if (!sh->last_return)
 		{
+			//remove useless quotes and slash
 			delete_quotes_from_arr(arr);
 			delete_slash_from_arr(arr);
 			manage_command(arr, sh);
@@ -122,8 +124,8 @@ int main(int ac, char **av, char **env)
 	//g_sh = sh;
 	//manage_signals();
 	//sh.last_pid = 0;
-	show_cat();
-	show_welcome_mes();
+//	show_cat();
+//	show_welcome_mes();
 	sh.last_return = 0;
 	cpy_env(&sh, env);
 	if (!ft_find_env(ENV_HOME, sh.env))

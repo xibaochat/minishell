@@ -1,5 +1,12 @@
 #include "libft.h"
 
+static int quote_condition(t_quo q, char *s, int i)
+{
+	return (!(q.have_quote) ||
+			(q.have_quote && is_unescapted_c(&q, s, i, DOUBLE))
+			|| (q.have_quote &&	is_unescapted_c(&q, s, i, DOUBLE)));
+}
+
 static int		get_nb_words(char *str, char c)
 {
 	int			i;
@@ -16,7 +23,7 @@ static int		get_nb_words(char *str, char c)
 			 (i > 0 &&
 			  is_unescapted_c(&quo, str, i - 1, c) &&
 			  !is_unescapted_c(&quo, str, i, c) &&
-			  !(quo.have_quote))))
+			  quote_condition(quo, str, i))))
 			nb_words++;
 		i++;
 	}
