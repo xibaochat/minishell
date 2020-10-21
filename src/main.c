@@ -69,6 +69,7 @@ int manage_command(char **split_input, t_mini *sh)
 	else if (!ft_strcmp(split_input[0], "exit"))
 	{
 		ft_tabfree(sh->env);
+		ft_putstr("exit\n");
 		exit(0);
 	}
 	else
@@ -96,6 +97,7 @@ void split_and_execute(char *str, char *sep, int i, t_mini *sh)
 			//remove useless quotes and slash
 			delete_quotes_from_arr(arr);
 			delete_slash_from_arr(arr);
+			replace_var_sub_by_true_value(arr, sh);
 			manage_command(arr, sh);
 		}
 	}
