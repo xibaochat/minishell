@@ -70,9 +70,13 @@ void	echo(char **args)
 		i = 1;
 	while (args[++i])
     {
-		ft_putstr(args[i]);
-		if (args[i + 1])
-			ft_putstr(" ");
+		if (args[i] && args[i][0])
+		{
+			ft_putstr(args[i]);
+			if (args[i + 1] && args[i + 1][0])
+				ft_putstr(" ");
+		}
+		// don't show str if it is empty echo "" v1 v2
 	}
 	if (!n_option)
 		ft_putstr("\n");

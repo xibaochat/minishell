@@ -55,10 +55,15 @@ void replace_var_sub_by_true_value(char **arr, t_mini *sh)
 		// find $ signal, then get its index
 		if ((index = has_env_var(arr[i], sh)) != -1)
 		{
+			//echo $
+			if (!index && !ft_strcmp(arr[i], "$"))
+				continue;
+			// if it is in env, replace var
 			if (v = var_value_is_in_env(arr[i] + index + 1, sh))
 					replace_var_by_value(&arr[i], index, v, sh);
 			else
 			{
+				//if it is not in env, make the var empty
 				free_str(arr[i]);
 				arr[i] = ft_strnew(1);
 			}
