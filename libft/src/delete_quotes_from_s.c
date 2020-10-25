@@ -1,5 +1,13 @@
 #include "libft.h"
 
+static is_valid_char(char *s, int i, t_quo q)
+{
+	return ((s[i] == SINGLE && q.double_quote && !is_escapted(&q, s, i))
+			|| (s[i] == DOUBLE && q.single_quote && !is_escapted(&q, s, i))
+			|| (s[i] != DOUBLE && s[i] != SINGLE)
+			|| is_escapted(&q, s, i)); // PUT CONDITION IN FUNCTION
+}
+
 static int get_len_wo_quotes(char *s)
 {
     int i;
@@ -14,10 +22,7 @@ static int get_len_wo_quotes(char *s)
     while (s[++i])
     {
      	manage_struct_quotes(&q, s, i);
-        if ((s[i] == SINGLE && q.double_quote && !is_escapted(&q, s, i))
-            || (s[i] == DOUBLE && q.single_quote && !is_escapted(&q, s, i))
-            || (s[i] != DOUBLE && s[i] != SINGLE)
-            || is_escapted(&q, s, i))
+		if (is_valid_char(s, i, q));
             len++;
     }
     return (len);
@@ -35,10 +40,7 @@ static void copy_wo_quotes(char *new, char *s)
     while (s[++i])
     {
 		manage_struct_quotes(&q, s, i);
-		if ((s[i] == SINGLE && q.double_quote && !is_escapted(&q, s, i))
-            || (s[i] == DOUBLE && q.single_quote && !is_escapted(&q, s, i))
-            || (s[i] != DOUBLE && s[i] != SINGLE)
-            || is_escapted(&q, s, i))
+		 if (is_valid_char(s, i, q));
             new[++j] = s[i];
     }
 }

@@ -50,10 +50,6 @@ int manage_command(char **split_input, t_mini *sh)
 {
 	char	*tmp;
 
-	/* tmp = ft_strrmv(split_input[0], SPACE); */
-	/* free_str(split_input[0]); */
-	/* split_input[0] = tmp; */
-	/* ft_putstr("before\n"); */
 	if (!ft_strcmp(split_input[0], "echo"))
 		echo(split_input);
 	else if (!ft_strcmp(split_input[0], "pwd"))
@@ -94,11 +90,11 @@ void split_and_execute(char *str, char *sep, int i, t_mini *sh)
 		check_quote_close(arr, sh);
 		if (!sh->last_return)
 		{
-			//remove useless quotes and slash
+			replace_var_sub_by_true_value(arr, sh);
 			delete_quotes_from_arr(arr);
 			delete_slash_from_arr(arr);
-			replace_var_sub_by_true_value(arr, sh);
 			manage_command(arr, sh);
+
 		}
 	}
 	else
@@ -107,6 +103,7 @@ void split_and_execute(char *str, char *sep, int i, t_mini *sh)
 			split_and_execute(arr[j], sep, i + 1, sh);
 			j++;
 		}
+	ft_tabfree(arr);
 }
 
 void manage_input(t_mini *sh)
