@@ -1,54 +1,37 @@
 #include "minishell.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
-void exec_command(char **split_input, t_mini *sh)
+void exec_command(char *full_cmd_path, char **split_input, t_mini *sh)
 {
-	char	*cmd_path;
 	int	status;
-	int d;
 
-	cmd_path = NULL;
 	sh->last_pid = fork();
 	g_sh.last_pid = sh->last_pid;
 	if (sh->last_pid < 0)
 	{
 		perror("created failed\n");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	else if (!sh->last_pid) //not built in, child process
 	{
-
-		// find complete path, ls: /bin/ls
-		cmd_path = find_full_binary_path(split_input[0], sh);
-		if (!cmd_path)
-		{
-			ft_putstr_fd("command not found: ", 2);
-			ft_putstr_w_new_line_fd(split_input[0], 2);
-		}
-		else
-		{
-			d = execve(cmd_path, split_input, NULL);
-			if (d == -1)
-			{
-				ft_putstr_fd("Exec format error: ", 2);
-				ft_putstr_w_new_line_fd(cmd_path, 2);
-				sh->last_return = 127;
-			}
-		}
+		execve(full_cmd_path, split_input, sh->env);
+		ft_putstr_fd("Exec format error: ", 2);
+		ft_putstr_w_new_line_fd(full_cmd_path, 2);
+		exit(EXIT_FAILURE);
 	}
-	else if (sh->last_pid > 0)
+	else
 	{
 		waitpid(sh->last_pid, &status, 0);
-		sh->last_return = status;
-		if (WIFSIGNALED(status))
-			ft_printf("%s\n", strerror(errno));
-		if (!WIFEXITED(status))
-			ft_printf("%s\n", strerror(errno));
+		ft_printf("status is : %d\n", status>>8);
+		sh->last_return = status>>8;
 	}
 }
 
 int manage_command(char **split_input, t_mini *sh)
 {
-	char	*tmp;
+	char	*full_cmd_path;
 
 	if (!ft_strcmp(split_input[0], "echo"))
 		echo(split_input);
@@ -68,13 +51,9 @@ int manage_command(char **split_input, t_mini *sh)
 		ft_putstr("exit\n");
 		exit(0);
 	}
-	else
-		exec_command(split_input, sh);
+	else if (full_cmd_path = get_full_cmd_path(split_input[0], sh))
+		exec_command(full_cmd_path, split_input, sh);
 }
-
-/*
-** ft_split_inc() keeps the separator in the output when splitting
-*/
 
 void split_and_execute(char *str, char *sep, int i, t_mini *sh)
 {

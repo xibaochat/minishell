@@ -93,6 +93,8 @@ void check_quote_close(char **arr, t_mini *sh);
 void show_key_error_message(int key, char *s);
 void show_welcome_mes();
 void replace_var_sub_by_true_value(char **arr, t_mini *sh);
+char	*get_full_cmd_path(char *cmd, t_mini *sh);
+
 
 
 

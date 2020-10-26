@@ -79,7 +79,7 @@ char *find_full_binary_path(char *cmd, t_mini *sh)
 	char *full_path;
 
 	i = -1;
-	//if path is given by user
+	//if complete  path is given by user
 	if (is_path_before_cmd(cmd)) //ex: /bin/ls, cmd is ls, bin_path is /bin/
 	{
 		bin_path = get_arr_based_on_extracted_cmd(cmd);

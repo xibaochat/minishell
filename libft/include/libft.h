@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+#include <fcntl.h>
 # define BUFFER_SIZE 1024
 # define SINGLE 39
 # define DOUBLE 34
@@ -108,6 +109,7 @@ int is_unescapted_c(t_quo *q, const char *s, int i, const char c);
 void delete_slash_from_arr(char **arr);
 void delete_slash_from_str(char **s);
 void    ft_tabfree(char **tab);
+int		ft_get_directory(char *execname, char *dir);
 
 
 
