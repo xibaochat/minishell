@@ -96,20 +96,19 @@ void manage_input(t_mini *sh)
 		sh->line = input;
 		split_and_execute(input, sep, i, sh);
 	}
-	ft_putstr_w_new_line(input);
 }
 
 int main(int ac, char **av, char **env)
 {
 	t_mini	sh;
 
-	//g_sh = sh;
 	//manage_signals();
 	//sh.last_pid = 0;
-//	show_cat();
-//	show_welcome_mes();
+	//show_cat();
+	//show_welcome_mes();
 	sh.last_return = 0;
 	cpy_env(&sh, env);
+	g_sh = sh;
 	if (!ft_find_env(ENV_HOME, sh.env))
 		ft_printf(HOME_ERROR, RED, WHITE);
 	manage_input(&sh);

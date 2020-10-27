@@ -72,15 +72,11 @@ static int			extract_line(char **line, char **str, int *i, int *j)
 	*line = ft_strncat(s, *str, *i);
 	*j = ft_strlen(*str) - *i;
 	if (!*j)
-//		return (nigun_static(str, 0));
-	{
-		*line = *str;
-		return 0;
-	}
+		return (0);
 	if ((s1 = ft_strnew(*j)))
 	{
 		tmp = ft_strncat(s1, *str + *i + 1, *j - 1);
-		//free(*str);
+		free_str(*str);
 		*str = tmp;
 		return (1);
 	}

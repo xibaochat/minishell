@@ -11,7 +11,6 @@ void ft_not_quit(int sig)
 		free(*buffer);
 		*buffer = NULL;
 	}
-
 	g_sh.last_return = 130;
 	ft_putstr_w_new_line_fd("", 2);
 	print_prompt(&g_sh);
