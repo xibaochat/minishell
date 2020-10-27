@@ -16,7 +16,6 @@ void exec_command(char *full_cmd_path, char **split_input, t_mini *sh)
 	}
 	else if (!sh->last_pid) //not built in, child process
 	{
-		signal(SIGINT, NULL);
 		execve(full_cmd_path, split_input, sh->env);
 		// if execve this fnction its self failed, not the result is bad
 		// if execve is success, it will kill the fork, child process
@@ -72,7 +71,6 @@ void split_and_execute(char *str, char *sep, int i, t_mini *sh)
 			delete_quotes_from_arr(arr);
 			delete_slash_from_arr(arr);
 			manage_command(arr, sh);
-
 		}
 	}
 	else
@@ -92,11 +90,13 @@ void manage_input(t_mini *sh)
 
 	i = 0;
 	input = NULL;
+	ft_signal(1, sh);
 	while (print_prompt(sh) && get_next_line(0, &input))
 	{
 		sh->line = input;
 		split_and_execute(input, sep, i, sh);
 	}
+	ft_putstr_w_new_line(input);
 }
 
 int main(int ac, char **av, char **env)

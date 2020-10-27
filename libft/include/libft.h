@@ -83,6 +83,8 @@ int					ft_tolower(int c);
 int					ft_toupper(int c);
 char				*ft_strrchr(const char *str, int c);
 int					is_space(char c);
+char **get_buffer(void);
+void ft_print_buffer(void);
 int					get_next_line(int fd, char **line);
 int     nigun_static(char   **str, int return_value);
 char    *ft_strnew(int size);

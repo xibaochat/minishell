@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+
+
 static int			no_newline_in_str(char *str)
 {
 	int	i;
@@ -34,11 +36,14 @@ static int			get_content_from_file(int fd, char **str)
 
 	if (!(buff = ft_strnew(BUFFER_SIZE + 1)))
 		return (-1);
-	if ((nb_read = read(fd, buff, BUFFER_SIZE)) <= 0)
+	nb_read = read(fd, buff, BUFFER_SIZE);
+	if (!nb_read && !ft_strlen(*str))
 	{
 		free(buff);
 		return (nb_read);
 	}
+	else if (!nb_read)
+		return (get_content_from_file(fd, str));
 	buff[nb_read] = '\0';
 	if (!(s = ft_strnew(ft_strlen(*str) + nb_read + 1)))
 		return (-1);
@@ -102,19 +107,24 @@ static int			manage_str(char **str, char **line)
 
 int					get_next_line(int fd, char **line)
 {
-	static char *str = NULL;
+	char **str;
 
+	str = get_buffer();
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
-		return (-1);
-	if (no_newline_in_str(str))
 	{
-		if (get_content_from_file(fd, &str) == -1)
-			return (nigun_static(&str, -1));
-		if (!str)
+		if (*str)
+			free_str(*str);
+		return (-1);
+	}
+	if (no_newline_in_str(*str))
+	{
+		if (get_content_from_file(fd, str) == -1)
+			return (nigun_static(str, -1));
+		if (!(*str))
 		{
 			*line = ft_strnew(1);
 			return (0);
 		}
 	}
-	return (manage_str(&str, line));
-	}
+	return (manage_str(str, line));
+}
