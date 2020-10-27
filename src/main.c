@@ -16,7 +16,10 @@ void exec_command(char *full_cmd_path, char **split_input, t_mini *sh)
 	}
 	else if (!sh->last_pid) //not built in, child process
 	{
+		signal(SIGINT, NULL);
 		execve(full_cmd_path, split_input, sh->env);
+		// if execve this fnction its self failed, not the result is bad
+		// if execve is success, it will kill the fork, child process
 		ft_putstr_fd("Exec format error: ", 2);
 		ft_putstr_w_new_line_fd(full_cmd_path, 2);
 		exit(EXIT_FAILURE);
@@ -24,8 +27,8 @@ void exec_command(char *full_cmd_path, char **split_input, t_mini *sh)
 	else
 	{
 		waitpid(sh->last_pid, &status, 0);
-		ft_printf("status is : %d\n", status>>8);
 		sh->last_return = status>>8;
+		ft_printf("status id %d\n", status>>8);
 	}
 }
 
@@ -46,11 +49,7 @@ int manage_command(char **split_input, t_mini *sh)
 	else if (!ft_strcmp(split_input[0], "unset"))
 		unset(split_input, sh);
 	else if (!ft_strcmp(split_input[0], "exit"))
-	{
-		ft_tabfree(sh->env);
-		ft_putstr("exit\n");
-		exit(0);
-	}
+		ft_exit(split_input, sh);
 	else if (full_cmd_path = get_full_cmd_path(split_input[0], sh))
 		exec_command(full_cmd_path, split_input, sh);
 }
