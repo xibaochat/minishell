@@ -18,10 +18,9 @@ void ft_not_quit(int sig)
 	ft_putstr_w_new_line_fd("", 2);
 	if ((*sh)->is_cmd)
 	{
-		if ((*sh)->ctrl_c)
-			(*sh)->ctrl_c = 0;
 		print_prompt(*sh);
-		(*sh)->ctrl_c = 1;
+		if (!(*sh)->ctrl_c)
+			(*sh)->ctrl_c = 1;
 	}
 	else
 		print_prompt(*sh);

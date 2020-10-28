@@ -12,8 +12,6 @@
 
 #include "libft.h"
 
-
-
 static int			no_newline_in_str(char *str)
 {
 	int	i;

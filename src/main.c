@@ -97,6 +97,7 @@ void manage_input(t_mini *sh)
 		split_and_execute(input, sep, i, sh);
 		sh->is_cmd = 0;
 	}
+	ft_putstr_fd("exit", 2);
 }
 
 int main(int ac, char **av, char **env)
@@ -112,6 +113,8 @@ int main(int ac, char **av, char **env)
 	if (!ft_find_env(ENV_HOME, (*sh)->env))
 		ft_printf(HOME_ERROR, RED, WHITE);
 	manage_input(*sh);
+	if ((*sh)->env)
+		ft_tabfree((*sh)->env);
 	free(*sh);
 	*sh = NULL;
 	return (0);
