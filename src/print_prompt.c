@@ -20,7 +20,7 @@ int print_prompt(t_mini *sh)
 {
 	char *user;
 
-	if (!g_sh.ctrl_c)
+	if (!sh->ctrl_c)
 	{
 		if (!sh->last_return)
 			show_smile_face();
@@ -34,6 +34,6 @@ int print_prompt(t_mini *sh)
 		return (1);
 	}
 	else
-		g_sh.ctrl_c = 0;
+		sh->ctrl_c = 0;
 	return (1);
 }

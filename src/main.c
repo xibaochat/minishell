@@ -8,7 +8,6 @@ void exec_command(char *full_cmd_path, char **split_input, t_mini *sh)
 	int	status;
 
 	sh->last_pid = fork();
-	g_sh.last_pid = sh->last_pid;
 	if (sh->last_pid < 0)
 	{
 		perror("created failed\n");
@@ -94,27 +93,26 @@ void manage_input(t_mini *sh)
 	while (print_prompt(sh) && get_next_line(0, &input))
 	{
 		sh->line = input;
-		g_sh.is_cmd = 1;
+		sh->is_cmd = 1;
 		split_and_execute(input, sep, i, sh);
-		g_sh.is_cmd = 0;
+		sh->is_cmd = 0;
 	}
 }
 
 int main(int ac, char **av, char **env)
 {
-	t_mini	sh;
+	t_mini **sh;
 
 	//manage_signals();
 	//sh.last_pid = 0;
-	//show_cat();
-	//show_welcome_mes();
-	sh.last_return = 0;
-	sh.is_cmd = 0;
-	sh.ctrl_c = 0;
-	cpy_env(&sh, env);
-	g_sh = sh;
-	if (!ft_find_env(ENV_HOME, sh.env))
+//	show_cat();
+//	show_welcome_mes();
+	init_sh(env);
+	sh = get_sh();
+	if (!ft_find_env(ENV_HOME, (*sh)->env))
 		ft_printf(HOME_ERROR, RED, WHITE);
-	manage_input(&sh);
+	manage_input(*sh);
+	free(*sh);
+	*sh = NULL;
 	return (0);
 }

@@ -60,8 +60,6 @@ typedef struct	s_mini
 ** This global variable is needed to deal with signals (cf. signals.c)
 */
 
-t_mini	g_sh;
-
 void	show_cat();
 void	display_ascii_dude();
 int	manage_signals();
@@ -98,6 +96,8 @@ void replace_var_sub_by_true_value(char **arr, t_mini *sh);
 char	*get_full_cmd_path(char *cmd, t_mini *sh);
 void    ft_exit(char **split_input, t_mini *sh);
 void ft_signal(t_mini *sh);
+void init_sh(char **env);
+t_mini **get_sh();
 
 
 
