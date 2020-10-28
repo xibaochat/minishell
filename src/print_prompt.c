@@ -25,7 +25,7 @@ int print_prompt(t_mini *sh)
 		if (!sh->last_return)
 			show_smile_face();
 		else
-		show_sad_face();
+			show_sad_face();
 		user = ft_find_env(ENV_USER, sh->env);
 		if (!user)
 			user = "maobe";
