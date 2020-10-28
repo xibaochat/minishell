@@ -51,6 +51,8 @@ typedef struct	s_mini
 	int			last_return;
 	char		*path;
 	int			last_pid;
+	int			ctrl_c;
+	int is_cmd;
 }				t_mini;
 
 
@@ -95,7 +97,7 @@ void show_welcome_mes();
 void replace_var_sub_by_true_value(char **arr, t_mini *sh);
 char	*get_full_cmd_path(char *cmd, t_mini *sh);
 void    ft_exit(char **split_input, t_mini *sh);
-void ft_signal(int i, t_mini *sh);
+void ft_signal(t_mini *sh);
 
 
 

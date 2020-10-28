@@ -1,3 +1,4 @@
+
 #include "minishell.h"
 
 void	signal_interrupt(int sig)

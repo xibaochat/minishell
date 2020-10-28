@@ -28,7 +28,7 @@ static int			no_newline_in_str(char *str)
 	return (1);
 }
 
-static int			get_content_from_file(int fd, char **str)
+static int			get_content_from_file(int fd, char **buffer)
 {
 	int		nb_read;
 	char	*s;
@@ -37,53 +37,53 @@ static int			get_content_from_file(int fd, char **str)
 	if (!(buff = ft_strnew(BUFFER_SIZE + 1)))
 		return (-1);
 	nb_read = read(fd, buff, BUFFER_SIZE);
-	if (!nb_read && !ft_strlen(*str))
+	if (!nb_read && !ft_strlen(*buffer))
 	{
 		free(buff);
 		return (nb_read);
 	}
 	else if (!nb_read)
-		return (get_content_from_file(fd, str));
+		return (get_content_from_file(fd, buffer));
 	buff[nb_read] = '\0';
-	if (!(s = ft_strnew(ft_strlen(*str) + nb_read + 1)))
+	if (!(s = ft_strnew(ft_strlen(*buffer) + nb_read + 1)))
 		return (-1);
-	if (*str)
+	if (*buffer)
 	{
-		s = ft_strncat(s, *str, ft_strlen(*str));
-		free(*str);
+		s = ft_strncat(s, *buffer, ft_strlen(*buffer));
+		free_str(*buffer);
 	}
-	*str = ft_strncat(s, buff, nb_read);
-	free(buff);
-	if (no_newline_in_str(*str))
-		return (get_content_from_file(fd, str));
+	*buffer = ft_strncat(s, buff, nb_read);
+	free_str(buff);
+	if (no_newline_in_str(*buffer))
+		return (get_content_from_file(fd, buffer));
 	return (1);
 }
 
-static int			extract_line(char **line, char **str, int *i, int *j)
+static int			extract_line(char **line, char **buffer, int *i, int *j)
 {
 	char	*s;
 	char	*s1;
 	char	*tmp;
 
-	while ((*str)[*i] && (*str)[*i] != '\n')
+	while ((*buffer)[*i] && (*buffer)[*i] != '\n')
 		(*i)++;
 	if (!(s = ft_strnew(*i + 1)))
 		return (-1);
-	*line = ft_strncat(s, *str, *i);
-	*j = ft_strlen(*str) - *i;
+	*line = ft_strncat(s, *buffer, *i);
+	*j = ft_strlen(*buffer) - *i;
 	if (!*j)
 		return (0);
 	if ((s1 = ft_strnew(*j)))
 	{
-		tmp = ft_strncat(s1, *str + *i + 1, *j - 1);
-		free_str(*str);
-		*str = tmp;
+		tmp = ft_strncat(s1, *buffer + *i + 1, *j - 1);
+		free_str(*buffer);
+		*buffer = tmp;
 		return (1);
 	}
-	return (nigun_static(str, -1));
+	return (-1);
 }
 
-static int			manage_str(char **str, char **line)
+static int			manage_buffer(char **buffer, char **line)
 {
 	int res;
 	int	i;
@@ -92,35 +92,35 @@ static int			manage_str(char **str, char **line)
 	i = 0;
 	j = 0;
 	res = 0;
-	if ((res = extract_line(line, str, &i, &j) != 1))
+	if ((res = extract_line(line, buffer, &i, &j) != 1))
 	{
 		if (res == -1)
-			return (nigun_static(str, -1));
-		return (nigun_static(str, 0));
+			return (nigun_static(buffer, -1));
+		return (nigun_static(buffer, 0));
 	}
 	return (1);
 }
 
 int					get_next_line(int fd, char **line)
 {
-	char **str;
+	char **buffer;
 
-	str = get_buffer();
+	buffer = get_buffer();
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 	{
-		if (*str)
-			free_str(*str);
+		if (*buffer)
+			free_str(*buffer);
 		return (-1);
 	}
-	if (no_newline_in_str(*str))
+	if (no_newline_in_str(*buffer))
 	{
-		if (get_content_from_file(fd, str) == -1)
-			return (nigun_static(str, -1));
-		if (!(*str))
+		if (get_content_from_file(fd, buffer) == -1)
+			return (nigun_static(buffer, -1));
+		if (!(*buffer))
 		{
 			*line = ft_strnew(1);
 			return (0);
 		}
 	}
-	return (manage_str(str, line));
+	return (manage_buffer(buffer, line));
 }

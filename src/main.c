@@ -27,7 +27,7 @@ void exec_command(char *full_cmd_path, char **split_input, t_mini *sh)
 	{
 		waitpid(sh->last_pid, &status, 0);
 		sh->last_return = status>>8;
-		ft_printf("status id %d\n", status>>8);
+		//ft_printf("status id %d\n", status>>8);
 	}
 }
 
@@ -90,11 +90,13 @@ void manage_input(t_mini *sh)
 
 	i = 0;
 	input = NULL;
-	ft_signal(1, sh);
+	ft_signal(sh);
 	while (print_prompt(sh) && get_next_line(0, &input))
 	{
 		sh->line = input;
+		g_sh.is_cmd = 1;
 		split_and_execute(input, sep, i, sh);
+		g_sh.is_cmd = 0;
 	}
 }
 
@@ -107,6 +109,8 @@ int main(int ac, char **av, char **env)
 	//show_cat();
 	//show_welcome_mes();
 	sh.last_return = 0;
+	sh.is_cmd = 0;
+	sh.ctrl_c = 0;
 	cpy_env(&sh, env);
 	g_sh = sh;
 	if (!ft_find_env(ENV_HOME, sh.env))
