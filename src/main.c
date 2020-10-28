@@ -112,6 +112,8 @@ int main(int ac, char **av, char **env)
 	if (!ft_find_env(ENV_HOME, (*sh)->env))
 		ft_printf(HOME_ERROR, RED, WHITE);
 	manage_input(*sh);
+	if ((*sh)->env)
+		ft_tabfree((*sh)->env);
 	free(*sh);
 	*sh = NULL;
 	return (0);
