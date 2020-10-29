@@ -95,6 +95,8 @@ void manage_input(t_mini *sh)
 	ft_signal(sh);
 	while (print_prompt(sh) && get_next_line(0, &input))
 	{
+//		ft_printf("inside gnl:%d\n",sh->last_return);
+		sh->exit_v = sh->last_return;
 		sh->line = input;
 		sh->is_cmd = 1;
 		split_and_execute(input, sep, i, sh);
@@ -114,6 +116,7 @@ int main(int ac, char **av, char **env)
 //	show_welcome_mes();
 	init_sh(env);
 	sh = get_sh();
+	(*sh)->exit_v = 0;
 	if (!ft_find_env(ENV_HOME, (*sh)->env))
 		ft_printf(HOME_ERROR, RED, WHITE);
 	manage_input(*sh);

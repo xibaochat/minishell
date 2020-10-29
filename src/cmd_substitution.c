@@ -70,6 +70,19 @@ void replace_var_by_value(char **s, int i, char *v, t_mini *sh)
 	*s = str;
 }
 
+int get_nb_digit(int nb)
+{
+	int i;
+
+	i = 1;
+	while (nb / 10 > 0)
+	{
+		i++;
+		nb /= 10;
+	}
+	return (i);
+}
+
 void replace_var_sub_by_true_value(char **arr, t_mini *sh)
 {
 	int i;
@@ -79,14 +92,13 @@ void replace_var_sub_by_true_value(char **arr, t_mini *sh)
 
 	i = 0;
 	v = NULL;
+//	ft_printf("before cmd_sub: %d\n", sh->last_return);
 	while (arr[++i])
 	{
 		j = 0;
 		q = init_quotes_struct();
 		if (ft_strlen(arr[i]) <= 1)
-		{
-			continue;
-		}
+				continue;
 		else
 		{
 			while (arr[i][j])
@@ -94,6 +106,12 @@ void replace_var_sub_by_true_value(char **arr, t_mini *sh)
 				manage_struct_quotes(&q, arr[i], j);
 				if (!(q.single_quote) && is_unescapted_c(&q, arr[i], j, '$'))
 				{
+					if (arr[i][j + 1] && arr[i][j + 1] == '?')
+					{
+						replace_var_by_value(&arr[i], j, ft_itoa(sh->exit_v), sh);
+						//	ft_printf("cmd_sub: %d\n", sh->exit_v);
+						j += get_nb_digit(sh->exit_v);
+					}
 					if (v = get_value_from_env(arr[i] + j + 1, sh))
 					{
 						replace_var_by_value(&arr[i], j, v, sh);
