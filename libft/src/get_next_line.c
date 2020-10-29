@@ -39,11 +39,14 @@ static int			get_content_from_file(int fd, char **buffer)
 	nb_read = read(fd, buff, BUFFER_SIZE);
 	if (!nb_read && !ft_strlen(*buffer))
 	{
-		free(buff);
+		free_str(buff);
 		return (nb_read);
 	}
 	else if (!nb_read)
+	{
+		free_str(buff);
 		return (get_content_from_file(fd, buffer));
+	}
 	buff[nb_read] = '\0';
 	if (!(s = ft_strnew(ft_strlen(*buffer) + nb_read + 1)))
 		return (-1);
