@@ -2,7 +2,7 @@
 # include <stdio.h>
 # include "minishell.h"
 
-static char *get_full_binary_path(char *cmd, char *bin_path)
+static char *get_full_binary_path(char *cmd, char *bin_path, char **bin)
 {
 	char *full_path;
 	char *tmp;
@@ -10,6 +10,7 @@ static char *get_full_binary_path(char *cmd, char *bin_path)
 	tmp = ft_strjoin(bin_path, "/");
 	full_path = ft_strjoin(tmp, cmd);
 	free_str(tmp);
+ 	ft_tabfree(bin);
 	return (full_path);
 }
 
@@ -21,7 +22,6 @@ static char **get_bin_path(t_mini *sh)
 	path = ft_find_env(ENV_PATH, sh->env);
 	if (!path)
 		path = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";
-	sh->path = path;
 	bin_path = ft_split(path, ':');
 	return (bin_path);
 }
@@ -76,14 +76,22 @@ char *find_full_binary_path(char *cmd, t_mini *sh)
 	struct dirent *dir;
 	char **bin_path;
 	int i;
+	char *tmp;
 	char *full_path;
 
 	i = -1;
+	tmp = NULL;
+	bin_path = NULL;
+	full_path = NULL;
 	//if complete  path is given by user
-	if (is_path_before_cmd(cmd)) //ex: /bin/ls, cmd is ls, bin_path is /bin/
+ 	if (is_path_before_cmd(cmd)) //ex: /bin/ls, cmd is ls, bin_path is /bin/
 	{
 		bin_path = get_arr_based_on_extracted_cmd(cmd);
-		cmd = cmd + extract_cmd(cmd) + 1;
+		//tmp = cmd + extract_cmd(cmd) + 1;
+		tmp = ft_strnew(ft_strlen(cmd) - extract_cmd(cmd) +1);
+		tmp = ft_strncat(tmp , cmd + extract_cmd(cmd) + 1, ft_strlen(cmd) - extract_cmd(cmd));
+		free_str(cmd);
+		cmd = tmp;
 	}
 	else
 		bin_path = get_bin_path(sh);
@@ -99,11 +107,13 @@ char *find_full_binary_path(char *cmd, t_mini *sh)
 				if (!ft_strcmp(cmd, dir->d_name))
 				{
 					closedir(d);
-					return (get_full_binary_path(cmd, bin_path[i]));
+					return (get_full_binary_path(cmd, bin_path[i], bin_path));
 				}
 			}
 			closedir(d);
 		}
 	}
+	if (bin_path)
+		ft_tabfree(bin_path);
 	return (NULL);
 }

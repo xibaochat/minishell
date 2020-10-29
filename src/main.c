@@ -49,7 +49,10 @@ int manage_command(char **split_input, t_mini *sh)
 	else if (!ft_strcmp(split_input[0], "exit"))
 		ft_exit(split_input, sh);
 	else if (full_cmd_path = get_full_cmd_path(split_input[0], sh))
+	{
 		exec_command(full_cmd_path, split_input, sh);
+		free_str(full_cmd_path);
+	}
 }
 
 void split_and_execute(char *str, char *sep, int i, t_mini *sh)
@@ -96,7 +99,9 @@ void manage_input(t_mini *sh)
 		sh->is_cmd = 1;
 		split_and_execute(input, sep, i, sh);
 		sh->is_cmd = 0;
+		free_str(input);
 	}
+	free_str(input);
 }
 
 int main(int ac, char **av, char **env)

@@ -49,7 +49,6 @@ typedef struct	s_mini
 	char		*line;
 	char		**env;
 	int			last_return;
-	char		*path;
 	int			last_pid;
 	int			ctrl_c;
 	int is_cmd;
