@@ -26,7 +26,7 @@ static char **get_bin_path(t_mini *sh)
 	return (bin_path);
 }
 
-static int extract_cmd(char *str)
+static int get_bin_directory_index(char *str)
 {
 	char *new_cmd;
 	int lens;
@@ -42,22 +42,26 @@ static int extract_cmd(char *str)
 }
 
 //cmd : /bin/ls or /meishaonv/ls
-char **get_arr_based_on_extracted_cmd(char *str)
+char **get_bin_directory_path(char *str)
 {
 	char *s;
 	char **arr;
 	int i;
 
-	i = extract_cmd(str);
-	s = ft_strnew(i + 1);
-	s = ft_memcpy(s, str, i);
-	arr = (char **)malloc(sizeof(char *) * 2);
-	arr[0] = s;
-	arr[1] = NULL;
+	arr = NULL;
+	i = get_bin_directory_index(str);
+	if (i)//if /bisdsd it is an err
+	{
+		s = ft_strnew(i + 1);
+		s = ft_memcpy(s, str, i);
+		arr = (char **)malloc(sizeof(char *) * 2);
+		arr[0] = s;
+		arr[1] = NULL;
+	}
 	return (arr);
 }
 
-static int is_path_before_cmd(char *s)
+static int is_binary_path(char *s)
 {
 	int i;
 
@@ -84,18 +88,28 @@ char *find_full_binary_path(char *cmd, t_mini *sh)
 	bin_path = NULL;
 	full_path = NULL;
 	//if complete  path is given by user
- 	if (is_path_before_cmd(cmd)) //ex: /bin/ls, cmd is ls, bin_path is /bin/
+ 	if (is_binary_path(cmd)) //ex: /bin/ls, cmd is ls, bin_path is /bin/
 	{
-		bin_path = get_arr_based_on_extracted_cmd(cmd);
-		//tmp = cmd + extract_cmd(cmd) + 1;
-		tmp = ft_strnew(ft_strlen(cmd) - extract_cmd(cmd) +1);
-		tmp = ft_strncat(tmp , cmd + extract_cmd(cmd) + 1, ft_strlen(cmd) - extract_cmd(cmd));
-		free_str(cmd);
-		cmd = tmp;
+		bin_path = get_bin_directory_path(cmd);
+		if (bin_path)
+		{
+			//tmp = cmd + extract_cmd(cmd) + 1;
+			tmp = ft_strnew(ft_strlen(cmd) - get_bin_directory_index(cmd) +1);
+			tmp = ft_strncat(tmp , cmd + get_bin_directory_index(cmd) + 1, ft_strlen(cmd) - get_bin_directory_index(cmd));
+			//free_str(cmd);
+			cmd = tmp;
+		}
+		else
+		{
+			ft_putstr_fd(cmd, 2);
+			ft_putstr_fd(": No such file or directory\n", 2);
+			sh->last_return = 127;
+			return (NULL);
+		}
 	}
 	else
 		bin_path = get_bin_path(sh);
-	//check cmd is well insede the binary dossier? and in which ?
+	//check cmd is well inside the binary dossier? and in which ?
 	while (bin_path[++i])
 	{
 		d = opendir(bin_path[i]);

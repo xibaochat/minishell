@@ -19,11 +19,7 @@ void ft_not_quit(int sig)
 	if ((*sh)->is_cmd) // ls -R / in the process of execution
 	{
 		print_prompt(*sh);
-<<<<<<< HEAD
-		if (!(*sh)->ctrl_c)
-=======
 		if ((*sh)->ctrl_c == 0)
->>>>>>> origin/maobe
 			(*sh)->ctrl_c = 1;
 	}
 	else
