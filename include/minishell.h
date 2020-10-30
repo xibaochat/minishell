@@ -98,7 +98,8 @@ void    ft_exit(char **split_input, t_mini *sh);
 void ft_signal(t_mini *sh);
 void init_sh(char **env);
 t_mini **get_sh();
-
+int get_nb_digit(int nb);
+void manage_question_mark(char **str, int j, int n, t_mini *sh);
 
 
 

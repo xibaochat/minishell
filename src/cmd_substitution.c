@@ -11,6 +11,7 @@ int get_varname_len(const char *s, int i)
 	{
 		manage_struct_quotes(&q, s, i);
 		if (is_unescapted_c(&q, s, i, '$')
+			|| is_unescapted_c(&q, s, i, '?')
 			|| is_unescapted_c(&q, s, i, SINGLE)
 			|| is_unescapted_c(&q, s, i, DOUBLE))
 			break;
@@ -18,16 +19,7 @@ int get_varname_len(const char *s, int i)
 	}
 	return (len);
 }
-static int get_dollar_index(t_quo *q, char *s, t_mini *sh)
-{
-	int i;
 
-	i = -1;
-	while (s[++i])
-		if (is_unescapted_c(q, s, i, '$'))
-			return (i);
-	return (-1);
-}
 char *extract_str_wo_quote(char *s)
 {
 	char *new;
@@ -108,17 +100,18 @@ void replace_var_sub_by_true_value(char **arr, t_mini *sh)
 				{
 					if (arr[i][j + 1] && arr[i][j + 1] == '?')
 					{
-						replace_var_by_value(&arr[i], j, ft_itoa(sh->exit_v), sh);
-						//	ft_printf("cmd_sub: %d\n", sh->exit_v);
+						manage_question_mark(&arr[i], j, sh->exit_v, sh);
 						j += get_nb_digit(sh->exit_v);
 					}
-					if (v = get_value_from_env(arr[i] + j + 1, sh))
+					else if (v = get_value_from_env(arr[i] + j + 1, sh))
 					{
 						replace_var_by_value(&arr[i], j, v, sh);
 						j += ft_strlen(v);
 					}
-					else
+					else if (!v && arr[i][j + 1])
 						replace_var_by_value(&arr[i], j, "", sh);
+					else
+						j++;
 				}
 				else
 					++j;
