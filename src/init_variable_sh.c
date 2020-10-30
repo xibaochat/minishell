@@ -16,5 +16,6 @@ void init_sh(char **env)
 	(*sh)->last_return = 0;
     (*sh)->is_cmd = 0;
     (*sh)->ctrl_c = 0;
+	(*sh)->exit_v = 0;
 	cpy_env(*sh, env);
 }

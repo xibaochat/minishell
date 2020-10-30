@@ -16,7 +16,7 @@ void exec_command(char *full_cmd_path, char **split_input, t_mini *sh)
 	else if (!sh->last_pid) //not built in, child process
 	{
 		execve(full_cmd_path, split_input, sh->env);
-		// if execve this fnction its self failed, not the result is bad
+		// if execve this function its self failed, not the result is bad
 		// if execve is success, it will kill the fork, child process
 		ft_putstr_fd("Exec format error: ", 2);
 		ft_putstr_w_new_line_fd(full_cmd_path, 2);
@@ -116,7 +116,6 @@ int main(int ac, char **av, char **env)
 //	show_welcome_mes();
 	init_sh(env);
 	sh = get_sh();
-	(*sh)->exit_v = 0;
 	if (!ft_find_env(ENV_HOME, (*sh)->env))
 		ft_printf(HOME_ERROR, RED, WHITE);
 	manage_input(*sh);

@@ -18,16 +18,7 @@ int get_varname_len(const char *s, int i)
 	}
 	return (len);
 }
-static int get_dollar_index(t_quo *q, char *s, t_mini *sh)
-{
-	int i;
 
-	i = -1;
-	while (s[++i])
-		if (is_unescapted_c(q, s, i, '$'))
-			return (i);
-	return (-1);
-}
 char *extract_str_wo_quote(char *s)
 {
 	char *new;
