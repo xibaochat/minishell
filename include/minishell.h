@@ -48,11 +48,11 @@ typedef struct	s_mini
 {
 	char		*line;
 	char		**env;
-	int			last_return;
-	char		*path;
 	int			last_pid;
 	int			ctrl_c;
-	int is_cmd;
+	int			is_cmd;
+	int			last_return;
+	int			exit_v;
 }				t_mini;
 
 

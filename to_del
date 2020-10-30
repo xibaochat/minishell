@@ -1,0 +1,42 @@
+echo kitten ; ls | grep chat
+
+echo kitten
+ls | grep chat
+
+------
+arr = split()
+					ls
+					grep chat
+
+
+if (len(arr) > 1)
+   arr[0][-1] = '|'
+
+					ls|
+					grep chat
+
+split(arr, ' ')
+
+if arr[0][-1] == '|'
+   do_redirection
+
+
+
+-----------------------------------------------------------------------
+
+ls | grep chat
+
+------
+arr = split()
+
+ls
+grep chat
+
+
+if (len(arr) > 1)
+   ft_split_space_and_exec(arr, True)
+else
+   ft_split_space_and_exec(arr, False)
+
+
+void ft_split_space(arr, have_redirection)

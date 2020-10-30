@@ -12,6 +12,8 @@ int has_invalid_char_in_env_name(char *str)
 			return (1);
 		i++;
 	}
+	if (!i && str[i] == '=')
+		return (1);
 	return (0);
 }
 
@@ -22,7 +24,7 @@ int has_equal_sign(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == '=')
+		if (s[i] == '=' && i)
 			return (1);
 		i++;
 	}

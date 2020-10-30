@@ -38,10 +38,7 @@ void ft_envadd(char *expt, t_mini *sh)
 		}
 	}
     if (expt)
-	{
 		env[i++] = ft_strdup(expt);
-		free_str(expt);
-	}
 	if (sh->env)
 		ft_tabfree(sh->env);
 	sh->env = env;
