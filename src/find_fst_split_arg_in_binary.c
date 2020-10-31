@@ -67,10 +67,9 @@ char *find_full_binary_path(char *cmd, t_mini *sh)
 		bin_path = get_bin_path(sh);
 	//check cmd is well inside the binary dossier? and in which ?
 	full_path = check_cmd_and_return_full_bin_path(cmd, bin_path);
-	if (!full_path && is_binary_path(tmp))
+	if (!full_path)
 	{
-		show_bin_error_message(tmp, sh);
-		ft_tabfree(bin_path);
+		show_bin_err_message(cmd, sh, bin_path);
 		return (NULL);
 	}
 	return (full_path);
