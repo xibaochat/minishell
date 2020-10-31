@@ -25,9 +25,13 @@ void exec_command(char *full_cmd_path, char **split_input, t_mini *sh)
 	else
 	{
 		waitpid(sh->last_pid, &status, 0);
-		sh->last_return = status>>8;
-		//ft_printf("status id %d\n", status>>8);
+		if (WIFEXITED(status) && !WEXITSTATUS(status))
+			sh->last_return = 0;
+		else if (WIFEXITED(status) && WEXITSTATUS(status))
+			sh->last_return =  status>>8;
 	}
+	/* if (!sh->is_cmd) */
+	/* 	sh->last_return = status>>8; */
 }
 
 int manage_command(char **split_input, t_mini *sh)

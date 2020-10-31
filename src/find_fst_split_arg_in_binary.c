@@ -1,18 +1,4 @@
-# include <dirent.h>
-# include <stdio.h>
 # include "minishell.h"
-
-static char *get_full_binary_path(char *cmd, char *bin_path, char **bin)
-{
-	char *full_path;
-	char *tmp;
-
-	tmp = ft_strjoin(bin_path, "/");
-	full_path = ft_strjoin(tmp, cmd);
-	free_str(tmp);
- 	ft_tabfree(bin);
-	return (full_path);
-}
 
 static char **get_bin_path(t_mini *sh)
 {
@@ -26,21 +12,6 @@ static char **get_bin_path(t_mini *sh)
 	return (bin_path);
 }
 
-static int get_bin_directory_index(char *str)
-{
-	char *new_cmd;
-	int lens;
-	int i;
-	int index;
-
-	i = 0;
-	lens = ft_strlen(str);
-	index = lens - 1;
-	while (str && str[index] != '/')
-		index--;
-	return index;
-}
-
 //cmd : /bin/ls or /meishaonv/ls
 char **get_bin_directory_path(char *str)
 {
@@ -50,7 +21,7 @@ char **get_bin_directory_path(char *str)
 
 	arr = NULL;
 	i = get_bin_directory_index(str);
-	if (i)//if /bisdsd it is an err
+	if (i)//if it is not an directory
 	{
 		s = ft_strnew(i + 1);
 		s = ft_memcpy(s, str, i);
@@ -61,7 +32,7 @@ char **get_bin_directory_path(char *str)
 	return (arr);
 }
 
-static int is_binary_path(char *s)
+int is_binary_path(char *s)
 {
 	int i;
 
@@ -76,58 +47,30 @@ static int is_binary_path(char *s)
 
 char *find_full_binary_path(char *cmd, t_mini *sh)
 {
-	DIR           *d;
-	struct dirent *dir;
 	char **bin_path;
-	int i;
-	char *tmp;
 	char *full_path;
+	char *tmp;
 
-	i = -1;
-	tmp = NULL;
 	bin_path = NULL;
 	full_path = NULL;
+	tmp = cmd;
 	//if complete  path is given by user
  	if (is_binary_path(cmd)) //ex: /bin/ls, cmd is ls, bin_path is /bin/
 	{
-		bin_path = get_bin_directory_path(cmd);
+		bin_path = manage_binary_cmd(cmd, sh);
 		if (bin_path)
-		{
-			//tmp = cmd + extract_cmd(cmd) + 1;
-			tmp = ft_strnew(ft_strlen(cmd) - get_bin_directory_index(cmd) +1);
-			tmp = ft_strncat(tmp , cmd + get_bin_directory_index(cmd) + 1, ft_strlen(cmd) - get_bin_directory_index(cmd));
-			//free_str(cmd);
-			cmd = tmp;
-		}
+			cmd = extract_cmd_from_bin_cmd(cmd);
 		else
-		{
-			ft_putstr_fd(cmd, 2);
-			ft_putstr_fd(": No such file or directory\n", 2);
-			sh->last_return = 127;
 			return (NULL);
-		}
 	}
 	else
 		bin_path = get_bin_path(sh);
 	//check cmd is well inside the binary dossier? and in which ?
-	while (bin_path[++i])
+	full_path = check_cmd_and_return_full_bin_path(cmd, bin_path);
+	if (!full_path)
 	{
-		d = opendir(bin_path[i]);
-		if (d)
-		{
-			while ((dir = readdir(d)))
-			{
-				// if cmd is inside binary dir
-				if (!ft_strcmp(cmd, dir->d_name))
-				{
-					closedir(d);
-					return (get_full_binary_path(cmd, bin_path[i], bin_path));
-				}
-			}
-			closedir(d);
-		}
+		show_bin_err_message(cmd, sh, bin_path);
+		return (NULL);
 	}
-	if (bin_path)
-		ft_tabfree(bin_path);
-	return (NULL);
+	return (full_path);
 }

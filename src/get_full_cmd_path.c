@@ -11,12 +11,5 @@ char	*get_full_cmd_path(char *cmd, t_mini *sh)
 		return (NULL);
 	}
 	full_cmd_path = find_full_binary_path(cmd, sh);
-	if (!full_cmd_path && cmd[0] != '/')
-	{
-		ft_putstr_fd(cmd, 2);
-		ft_putstr_w_new_line_fd(": command not found", 2);
-		sh->last_return = 127;
-		return (NULL);
-	}
 	return (full_cmd_path);
 }

@@ -7,6 +7,7 @@ int			ft_get_directory(char *execname, char *directory)
 	dir_descriptor = open(directory, O_DIRECTORY);
 	if (dir_descriptor > 0)
 	{
+		close(dir_descriptor);
 		ft_putstr_fd(execname, 2);
 		ft_putstr_fd(": ", 2);
 		ft_putstr_fd(directory, 2);
