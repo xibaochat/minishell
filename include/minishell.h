@@ -42,6 +42,9 @@
 # include <sys/wait.h>
 # include <stdlib.h>
 # include <signal.h>
+# include <dirent.h>
+# include <stdio.h>
+
 # include "libft.h"
 
 typedef struct	s_mini
@@ -53,6 +56,7 @@ typedef struct	s_mini
 	int			is_cmd;
 	int			last_return;
 	int			exit_v;
+	int			cmd_is_bin;
 }				t_mini;
 
 
@@ -100,6 +104,13 @@ void init_sh(char **env);
 t_mini **get_sh();
 int get_nb_digit(int nb);
 void manage_question_mark(char **str, int j, int n, t_mini *sh);
+char *extract_cmd_from_bin_cmd(char *cmd);
+char ** manage_binary_cmd(char *cmd, t_mini *sh);
+int get_bin_directory_index(char *str);
+void show_bin_error_message(char *cmd, t_mini *sh);
+char    *check_cmd_and_return_full_bin_path(char *cmd, char **bin_path);
+
+
 
 
 
