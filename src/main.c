@@ -25,8 +25,9 @@ void exec_command(char *full_cmd_path, char **split_input, t_mini *sh)
 	else
 	{
 		waitpid(sh->last_pid, &status, 0);
-		sh->last_return = status>>8;
-		//ft_printf("status id %d\n", status>>8);
+		if (!sh->is_cmd)
+			sh->last_return = status>>8;
+//		ft_printf("status id %d\n", status>>8);
 	}
 }
 
