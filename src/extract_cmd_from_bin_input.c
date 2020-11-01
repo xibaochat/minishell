@@ -10,53 +10,74 @@ int get_bin_directory_index(char *str)
 	i = 0;
 	lens = ft_strlen(str);
 	index = lens - 1;
-	while (str && str[index] != '/')
+	while (str && str[index] && str[index] != '/')
 		index--;
 	return index;
 }
 
-void show_bin_error_message(char *cmd, t_mini *sh)
+static int is_invalid_bin_path(int index, char *cmd)
 {
-	 ft_putstr_fd(cmd, 2);
-	 ft_putstr_fd(": No such file or directory\n", 2);
-	 sh->last_return = 127;
+	return (!index ||
+			(cmd[0] == '/' && index == (ft_strlen(cmd) - 1)));
 }
 
-char **get_bin_dir_arr(char *cmd, int i)
+char *extract_cmd_from_bin_cmd(int index, char *bin_cmd)
 {
-	char *str;
-	char **arr;
-
-	str = ft_strnew(i + 1);
-	ft_strncat(str, cmd, i);
-	arr = (char **)malloc(sizeof(char *) * 2);
-	arr[0] = str;
-	arr[1] = NULL;
-	return (arr);
-}
-
-char **manage_binary_cmd(char *cmd, t_mini *sh)
-{
-	int index;
-	char **bin_dir_arr;
-
-	bin_dir_arr = NULL;
-	index = get_bin_directory_index(cmd);
-	if (!index)
-		show_bin_error_message(cmd, sh);
-	else
-		bin_dir_arr = get_bin_dir_arr(cmd, index);
-	return (bin_dir_arr);
-}
-
-char *extract_cmd_from_bin_cmd(char *cmd)
-{
-	int index;
 	char *tmp;
 
-	index = get_bin_directory_index(cmd);
-	tmp = ft_strnew(ft_strlen(cmd) - index + 1);
-	ft_strncat(tmp, cmd + index + 1, ft_strlen(cmd) - index);
-	cmd = tmp;
-	return (cmd);
+	tmp = ft_strnew(ft_strlen(bin_cmd) - index + 1);
+	ft_strncat(tmp, bin_cmd + index + 1, ft_strlen(bin_cmd) - index);
+	bin_cmd = tmp;
+	return (bin_cmd);
+}
+
+static int cmd_is_in_bin_dir(char *bin_dir, char *cmd)
+{
+	DIR *d;
+	struct dirent *dir;
+
+	d = opendir(bin_dir);
+	if (d)
+	{
+		while ((dir = readdir(d)))
+		{
+			if(!ft_strcmp(cmd, dir->d_name))
+			{
+				closedir(d);
+				return (1);
+			}
+		}
+		closedir(d);
+	}
+	return (0);
+}
+
+char *manage_binary_cmd(char *bin_cmd, t_mini *sh)
+{
+
+	char *bin_dir;
+	char *cmd;
+	int index;
+	char *path;
+
+	index = get_bin_directory_index(bin_cmd);
+	path = NULL;
+	if (is_invalid_bin_path(index, bin_cmd)) // ex: /path OR /path/sth/
+	{
+		show_error_message(bin_cmd, BIN_ERROR, sh);
+		return (NULL);
+	}
+	cmd = extract_cmd_from_bin_cmd(index, bin_cmd);
+	bin_dir = ft_strnew(index);
+	ft_strncat(bin_dir, bin_cmd, index);
+	if (cmd_is_in_bin_dir(bin_dir, cmd))
+	{
+		path = ft_strnew(ft_strlen(bin_cmd) + 1);
+		ft_strncat(path, bin_cmd, ft_strlen(bin_cmd));
+	}
+	else
+		show_error_message(bin_cmd, BIN_ERROR, sh);
+	free_str(cmd);
+	free_str(bin_dir);
+	return (path);
 }
