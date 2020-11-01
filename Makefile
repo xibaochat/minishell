@@ -16,7 +16,7 @@ SRCS_PATH = ./src
 
 SRC = main.c  env.c pwd.c  ft_tablen.c  unset.c \
 		ft_addenv.c echo.c ft_find_env.c find_fst_split_arg_in_binary.c \
-		 print_prompt.c check_quote_close.c cat.c error.c show_welcome_mes.c cmd_substitution.c get_full_cmd_path.c exit.c ft_signal.c init_variable_sh.c manage_question_mark.c extract_cmd_from_bin_input.c get_full_binary_path.c
+		 print_prompt.c check_quote_close.c cat.c error.c show_welcome_mes.c cmd_substitution.c get_full_cmd_path.c exit.c ft_signal.c init_variable_sh.c manage_question_mark.c extract_cmd_from_bin_input.c get_full_binary_path.c show_message_error_if_cmd_cant_find.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
 

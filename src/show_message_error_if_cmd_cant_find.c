@@ -1,6 +1,6 @@
 # include "minishell.h"
 
-void show_bin_err_message(char *cmd, t_mini *sh, char **arr)
+void show_err_message(char *cmd, t_mini *sh, char **arr)
 {
 	if (is_binary_path(cmd))
 	{

@@ -32,7 +32,7 @@ char **get_bin_directory_path(char *str)
 	return (arr);
 }
 
-static int is_binary_path(char *s)
+int is_binary_path(char *s)
 {
 	int i;
 
@@ -69,7 +69,7 @@ char *find_full_binary_path(char *cmd, t_mini *sh)
 	full_path = check_cmd_and_return_full_bin_path(cmd, bin_path);
 	if (!full_path)
 	{
-		show_bin_err_message(cmd, sh, bin_path);
+		show_err_message(cmd, sh, bin_path);
 		return (NULL);
 	}
 	return (full_path);
