@@ -39,7 +39,7 @@ char	*check_cmd_and_return_full_bin_path(char *cmd, char **bin_path)
 
 	full_bin_path = NULL;
 	i = -1;
-	while (bin_path[++i])
+	while(bin_path[++i])
 	{
 		d =  opendir(bin_path[i]);
 		if (d)

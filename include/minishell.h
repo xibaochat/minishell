@@ -24,7 +24,8 @@
 
 # define WRONG_ARG 22
 # define VAL_ERROR ": not a valid identifier"
-# define SPACE " \f\t\n\r\v"
+# define BIN_ERROR ": No such file or directory"
+# define CMD_NO_FD ": command not found"
 
 # define ENV_USER "USER="
 # define ENV_PATH "PATH="
@@ -104,12 +105,11 @@ void init_sh(char **env);
 t_mini **get_sh();
 int get_nb_digit(int nb);
 void manage_question_mark(char **str, int j, int n, t_mini *sh);
-char *extract_cmd_from_bin_cmd(char *cmd);
-char ** manage_binary_cmd(char *cmd, t_mini *sh);
+char *extract_cmd_from_bin_cmd(int index, char *cmd);
+char * manage_binary_cmd(char *cmd, t_mini *sh);
 int get_bin_directory_index(char *str);
-void show_bin_error_message(char *cmd, t_mini *sh);
+void show_error_message(char *cmd, char *err, t_mini *sh);
 char    *check_cmd_and_return_full_bin_path(char *cmd, char **bin_path);
-void show_bin_err_message(char *cmd, t_mini *sh, char **arr);
 int is_binary_path(char *s);
 
 
