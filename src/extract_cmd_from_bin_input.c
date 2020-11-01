@@ -54,7 +54,6 @@ static int cmd_is_in_bin_dir(char *bin_dir, char *cmd)
 
 char *manage_binary_cmd(char *bin_cmd, t_mini *sh)
 {
-
 	char *bin_dir;
 	char *cmd;
 	int index;
@@ -62,13 +61,15 @@ char *manage_binary_cmd(char *bin_cmd, t_mini *sh)
 
 	index = get_bin_directory_index(bin_cmd);
 	path = NULL;
-	if (is_invalid_bin_path(index, bin_cmd)) // ex: /path OR /path/sth/
+	if (is_invalid_bin_path(index, bin_cmd)) // ex: "/path" OR "/path/sth/"
 	{
 		show_error_message(bin_cmd, BIN_ERROR, sh);
 		return (NULL);
 	}
+	//extract cmd and check it is inside the bin dir or not,
+	// ex: /bin/ls, extract ls then check ls is inside /bin or not
 	cmd = extract_cmd_from_bin_cmd(index, bin_cmd);
-	bin_dir = ft_strnew(index);
+	bin_dir = ft_strnew(index + 1);
 	ft_strncat(bin_dir, bin_cmd, index);
 	if (cmd_is_in_bin_dir(bin_dir, cmd))
 	{

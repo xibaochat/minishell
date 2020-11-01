@@ -1,6 +1,6 @@
 # include "minishell.h"
 
-static char **get_bin_path(t_mini *sh)
+static char **get_bin_path_arr(t_mini *sh)
 {
 	char *path;
 	char ** bin_path;
@@ -35,7 +35,8 @@ char *find_full_binary_path(char *cmd, t_mini *sh)
  	if (is_binary_path(cmd)) //ex: /bin/ls, cmd is ls, bin_path is /bin/
 		return (manage_binary_cmd(cmd, sh));
 	else
-		bin_path = get_bin_path(sh);
+		bin_path = get_bin_path_arr(sh);
+	// check ls is inside $PATH or not
 	full_path = check_cmd_and_return_full_bin_path(cmd, bin_path);
 	if (!full_path)
 	{
