@@ -111,6 +111,10 @@ int get_bin_directory_index(char *str);
 void show_error_message(char *cmd, char *err, t_mini *sh);
 char    *check_cmd_and_return_full_bin_path(char *cmd, char **bin_path);
 int is_binary_path(char *s);
+void free_var(t_mini **sh);
+void parent_process(t_mini *sh);
+void child_process(char *bin_path, char **split_input, t_mini *sh);
+
 
 
 
