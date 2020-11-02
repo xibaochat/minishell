@@ -26,7 +26,7 @@ int manage_command(char **split_input, t_mini *sh)
 	else if (!ft_strcmp(split_input[0], "pwd"))
 		pwd(sh);
 	else if (!ft_strcmp(split_input[0], "cd"))
-		cd(split_input, sh);
+		ft_cd(split_input, sh);
 	else if (!ft_strcmp(split_input[0], "env"))
 		env(sh);
 	else if (!ft_strcmp(split_input[0], "export"))
@@ -82,6 +82,8 @@ void manage_input(t_mini *sh)
 	ft_signal(sh);
 	while (print_prompt(sh) && get_next_line(0, &input))
 	{
+		if (is_syntax_error(input, sh))
+			continue ;
 		sh->exit_v = sh->last_return;
 		sh->line = input;
 		sh->is_cmd = 1;

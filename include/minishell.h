@@ -34,7 +34,7 @@
 # define ENV_OLDPWD "OLDPWD="
 # define BASIC_ENV_USER "USER=maobe"
 # define HOME_ERROR "%s/!\\ NO HOME DEFINE /!\\ \n%s"
-
+# define CD_HOME_ERR "[-] Home env variable is not define"
 
 # include <unistd.h>
 # include <errno.h>
@@ -73,7 +73,7 @@ void	ft_putendl(char *str);
 void ft_envadd(char *expt, t_mini *sh);
 void	env(t_mini *sh);
 void	pwd(t_mini *sh);
-void	cd(char **arr, t_mini *sh);
+void	ft_cd(char **arr, t_mini *sh);
 void	echo(char **arr);
 char	*ft_find_env(char *name, char **env);
 size_t      ft_tablen(char **tab);
@@ -114,6 +114,8 @@ int is_binary_path(char *s);
 void free_var(t_mini **sh);
 void parent_process(t_mini *sh);
 void child_process(char *bin_path, char **split_input, t_mini *sh);
+void init_env_var(t_mini *sh);
+int is_syntax_error(char *s, t_mini *sh);
 
 
 
