@@ -18,6 +18,7 @@ void init_env_var(t_mini *sh)
 			ft_strcat(new_path, arr[i]);
 			ft_strcat(new_path, path);
 			ft_envadd(new_path, sh);
+			free_str(new_path);
 		}
 	}
 	free_str(path);

@@ -59,7 +59,8 @@ void ft_cd(char **arr, t_mini *sh)
 	else if (cd_to_current_dir_opt(arr))
 		;
 	//cd ~ or cd (to HOME)
-	else if (ft_tablen(arr) == 1 || !ft_strcmp(arr[1], "~"))
+	else if (ft_tablen(arr) == 1 || !ft_strcmp(arr[1], "~")
+			 || !ft_strcmp(arr[1], ""))
 		cd_to_home(sh);
 	else
 	{
