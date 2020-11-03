@@ -81,7 +81,7 @@ int cd_to_current_dir_opt(char **av);
 void cd_to_current_dir(t_mini *sh);
 void    change_dir(t_mini *sh, char *p);
 void change_env_var_value(char **env, char *new_p, char *var);
-void    change_dir_for_other_opts(t_mini *sh, char *path, char *old_p);
+void    go_to_required_directory(t_mini *sh, char *dest, char *src);
 void cd_error_message(char *str);
 void export(char **arr, t_mini *sh);
 int has_invalid_char_in_env_name(char *str);

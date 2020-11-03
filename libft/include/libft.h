@@ -113,6 +113,7 @@ void delete_slash_from_str(char **s);
 void    ft_tabfree(char **tab);
 int		ft_get_directory(char *execname, char *dir);
 void show_arr_value(char **arr);
+char *ft_malloc_and_copy(char *src);
 
 
 

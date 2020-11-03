@@ -5,21 +5,18 @@ int replace_var_value(char **env, char *s)
 {
 	int i;
 	int j;
-	char *tmp;
 	char *s1;
 	char *new_v;
 
 	i = 0;
 	j = -1;
-	tmp = NULL;
 	while (s[i] && s[i] != '=')
 		i++;
 	while (env[++j])
 	{
 		if (!ft_strncmp(env[j], s, i + 1))
 		{
-			new_v = ft_strnew(ft_strlen(s) + 1);
-			ft_strncat(new_v, s, ft_strlen(s));
+			new_v = ft_malloc_and_copy(s);
 			free_str(env[j]);
 			env[j] = new_v;
 			return (1);

@@ -14,24 +14,21 @@ int	get_matched_var_in_env(char **env, char *var)
 	return (-1);
 }
 
-void    change_dir_for_other_opts(t_mini *sh, char *path, char *old_p)
+void    go_to_required_directory(t_mini *sh, char *dest, char *src)
 {
-	char *curr_path;
-
-	//go to given path
-    if (chdir(path) == -1)
+    if (chdir(dest) == -1)
 	{
-		cd_error_message(path);
+		cd_error_message(dest);
 		sh->last_return = 1;
-		free_str(old_p);
 	}
     else
     {
-		curr_path = getcwd(NULL, 0);
-		change_env_var_value(sh->env, old_p, ENV_OLDPWD);
-        change_env_var_value(sh->env, curr_path, ENV_PWD);
+		change_env_var_value(sh->env, src, ENV_OLDPWD);
+        change_env_var_value(sh->env, dest, ENV_PWD);
 		sh->last_return = 0;
     }
+	free_str(src);
+	free_str(dest);
 }
 
 void change_env_var_value(char **env, char *new_v, char *varname)
@@ -52,6 +49,5 @@ void change_env_var_value(char **env, char *new_v, char *varname)
 		ft_strncat(s, new_v, ft_strlen(new_v));
 		env[i] = s;
 		free_str(tmp);
-		free_str(new_v);
 	}
 }
