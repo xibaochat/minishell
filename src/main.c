@@ -17,7 +17,7 @@ void exec_command(char *full_cmd_path, char **split_input, t_mini *sh)
 		parent_process(sh);
 }
 
-int manage_command(char **split_input, t_mini *sh)
+void manage_command(char **split_input, t_mini *sh)
 {
 	char	*full_cmd_path;
 

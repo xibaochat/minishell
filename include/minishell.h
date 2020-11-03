@@ -67,7 +67,7 @@ typedef struct	s_mini
 
 void	show_cat();
 void	display_ascii_dude();
-int	manage_signals();
+void	manage_signals();
 void	manage_input(t_mini *sh);
 void	ft_putendl(char *str);
 void ft_envadd(char *expt, t_mini *sh);
@@ -116,6 +116,9 @@ void parent_process(t_mini *sh);
 void child_process(char *bin_path, char **split_input, t_mini *sh);
 void init_env_var(t_mini *sh);
 int is_syntax_error(char *s, t_mini *sh);
+int has_multi_valid_arg(char **arr);
+char *extract_target_path(char **arr);
+int is_go_home_opt(char **arr, t_mini *sh);
 
 
 

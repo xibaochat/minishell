@@ -7,6 +7,7 @@ int replace_var_value(char **env, char *s)
 	int j;
 	char *tmp;
 	char *s1;
+	char *new_v;
 
 	i = 0;
 	j = -1;
@@ -17,9 +18,10 @@ int replace_var_value(char **env, char *s)
 	{
 		if (!ft_strncmp(env[j], s, i + 1))
 		{
-			tmp = env[j];
-			env[j] = s;
-			free_str(tmp);
+			new_v = ft_strnew(ft_strlen(s) + 1);
+			ft_strncat(new_v, s, ft_strlen(s));
+			free_str(env[j]);
+			env[j] = new_v;
 			return (1);
 		}
 	}
