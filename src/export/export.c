@@ -46,6 +46,7 @@ void add_new_var_in_env(char *str, t_mini *sh)
 	ft_envadd(str, sh);
 }
 
+/*check var is inside ENV or not, if not add var and its value in ENV*/
 void export_add_var(char *var_value, t_mini *sh)
 {
 	char *tmp;
@@ -55,6 +56,12 @@ void export_add_var(char *var_value, t_mini *sh)
 		add_new_var_in_env(var_value, sh);
 }
 
+/*if cmd == "export", show env; if cmd does not have "=", do not do anything;
+  if cmd has invalid char, show error message;
+  if have "=" check VAR is in ENV or not(if inside,
+  change its value, if not add new VAR in ENV)
+**
+*/
 void export(char **arr, t_mini *sh)
 {
 	int i;

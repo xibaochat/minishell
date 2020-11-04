@@ -1,5 +1,7 @@
 #include "minishell.h"
 
+/*cherche ENV VAR exists or not, and return its index in the ENV*/
+
 int	get_matched_var_in_env(char **env, char *var)
 {
 	int i;
@@ -13,9 +15,13 @@ int	get_matched_var_in_env(char **env, char *var)
 	}
 	return (-1);
 }
-
+/*if dest direcory is not reacheablem show err message
+** else change OLDPWD and PWD in the ENV, then free malloc var value
+*/
 void    go_to_required_directory(t_mini *sh, char *dest, char *src)
 {
+	char *pwd;
+
     if (chdir(dest) == -1)
 	{
 		cd_error_message(dest);
@@ -23,14 +29,16 @@ void    go_to_required_directory(t_mini *sh, char *dest, char *src)
 	}
     else
     {
+		pwd = getcwd(NULL, 0);
 		change_env_var_value(sh->env, src, ENV_OLDPWD);
-        change_env_var_value(sh->env, dest, ENV_PWD);
+        change_env_var_value(sh->env, pwd, ENV_PWD);
 		sh->last_return = 0;
     }
 	free_str(src);
 	free_str(dest);
+	free_str(pwd);
 }
-
+/*find the index in ENV and change VAR VALUE by new value*/
 void change_env_var_value(char **env, char *new_v, char *varname)
 {
     int i;

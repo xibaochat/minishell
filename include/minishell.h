@@ -104,7 +104,7 @@ void ft_signal(t_mini *sh);
 void init_sh(char **env);
 t_mini **get_sh();
 int get_nb_digit(int nb);
-void manage_question_mark(char **str, int j, int n, t_mini *sh);
+void replace_question_mark_by_exit_value(char **str, int j, int n, t_mini *sh);
 char *extract_cmd_from_bin_cmd(int index, char *cmd);
 char * manage_binary_cmd(char *cmd, t_mini *sh);
 int get_bin_directory_index(char *str);
@@ -119,6 +119,15 @@ int is_syntax_error(char *s, t_mini *sh);
 int has_multi_valid_arg(char **arr);
 char *extract_target_path(char **arr);
 int is_go_home_opt(char **arr, t_mini *sh);
+int next_char_is_question_mark(char *s, int i);
+void manage_question_mark(char **str, int *i, int exit_value, t_mini *sh);
+char *varname_is_in_env(char *s, t_mini *sh);
+int get_varname_len(const char *s, int i);
+void replace_var_by_value(char **s, int *i, char *v, t_mini *sh);
+char *get_value_from_env(char *s, t_mini *sh);
+void manage_substitution_in_str(t_mini *sh, char **str);
+int replace_var_condition(t_quo *q, char *s, int i);
+
 
 
 

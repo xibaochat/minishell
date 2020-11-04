@@ -1,5 +1,8 @@
 #include "minishell.h"
 
+/*find variable name is inside ENV or not
+ and return its value
+*/
 char	*ft_find_env(char *elem, char **env)
 {
 	int i;
@@ -15,13 +18,10 @@ char	*ft_find_env(char *elem, char **env)
 		{
 			if (elem[lens - 1] == '=')
 				return (env[i] + lens);
+			//to avoid elem is part of varname $PW
 			if (env[i][lens] == '=')
 				return (env[i] + lens + 1);
 		}
-		/* while (env[i][j] == elem[j]) */
-		/* 	j++; */
-		/* if (j >= 1 && env[i][--j] == '=' && elem[j] == '=') */
-		/* 	return (env[i] + j + 1); */
 	}
 	return (NULL);
 }

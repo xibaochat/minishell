@@ -40,6 +40,10 @@ void cd_to_home(t_mini *sh, char *curr_p)
 	}
 }
 
+/*extract oath apres cd, analyse in 4 situation: 1. Multipe destation (cd $PWD $OLDPWD $fdewjehr(path does not exist))
+  2.cd to home 3. cd to currect 4. cd to a given directory
+  in step 3 and 4, change value of PWD, OLDPWD in EBV
+ */
 void ft_cd(char **arr, t_mini *sh)
 {
 	char *curr_p;
