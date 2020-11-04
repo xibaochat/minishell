@@ -33,10 +33,10 @@ void    go_to_required_directory(t_mini *sh, char *dest, char *src)
 		change_env_var_value(sh->env, src, ENV_OLDPWD);
         change_env_var_value(sh->env, pwd, ENV_PWD);
 		sh->last_return = 0;
+		free_str(pwd);
     }
 	free_str(src);
 	free_str(dest);
-	free_str(pwd);
 }
 /*find the index in ENV and change VAR VALUE by new value*/
 void change_env_var_value(char **env, char *new_v, char *varname)

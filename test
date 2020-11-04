@@ -1,0 +1,31 @@
+
+cd $HOMEO
+cd $dewer $OLDPWD
+
+unset OLDPWD
+cd $OLDPWD
+
+cd $PWD $OLDPWD
+
+cd $PWD
+
+echo '$'?
+echo '$?'
+echo $'?'
+echo $'?'
+echo "'$'?"
+echo '$'?
+echo "'$'?"
+echo /$PWD
+echo \$PWD
+echo $PWD\$
+echo "'$'?"
+echo "$"
+echo "'$'?"
+echo "'$PWD'"
+echo "'$PWD'"
+echo $PWD\\$
+
+echo $'?'
+echo $'xibao'
+echo $'PWD'
