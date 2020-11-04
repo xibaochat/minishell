@@ -58,6 +58,8 @@ typedef struct	s_mini
 	int			last_return;
 	int			exit_v;
 	int			cmd_is_bin;
+	int			newfd;
+	int			p[2];
 }				t_mini;
 
 
@@ -113,7 +115,7 @@ char    *check_cmd_and_return_full_bin_path(char *cmd, char **bin_path);
 int is_binary_path(char *s);
 void free_var(t_mini **sh);
 void parent_process(t_mini *sh);
-void child_process(char *bin_path, char **split_input, t_mini *sh);
+void child_process(char **split_input, t_mini *sh);
 void init_env_var(t_mini *sh);
 int is_syntax_error(char *s, t_mini *sh);
 int has_multi_valid_arg(char **arr);
@@ -127,8 +129,8 @@ void replace_var_by_value(char **s, int *i, char *v, t_mini *sh);
 char *get_value_from_env(char *s, t_mini *sh);
 void manage_substitution_in_str(t_mini *sh, char **str);
 int replace_var_condition(t_quo *q, char *s, int i);
-
-
+char	**check_for_redir(char **arr, t_mini *sh);
+void	split_and_execute(char *str, char *sep, int i, t_mini *sh);
 
 
 

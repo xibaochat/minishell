@@ -1,8 +1,32 @@
 # include "minishell.h"
 
-void child_process(char *bin_path, char **split_input, t_mini *sh)
+void child_process(char **split_input, t_mini *sh)
 {
-	execve(bin_path, split_input, sh->env);
+	char	*bin_path;
+	char	**tmp;
+
+	tmp = check_for_redir(split_input, sh);
+	if (tmp)
+		split_input = tmp;
+	if (!ft_strcmp(split_input[0], "echo"))
+		echo(split_input);
+	else if (!ft_strcmp(split_input[0], "pwd"))
+		pwd(sh);
+	else if (!ft_strcmp(split_input[0], "cd"))
+		ft_cd(split_input, sh);
+	else if (!ft_strcmp(split_input[0], "env"))
+		env(sh);
+	else if (!ft_strcmp(split_input[0], "export"))
+		export(split_input, sh);
+	else if (!ft_strcmp(split_input[0], "unset"))
+		unset(split_input, sh);
+	else if (!ft_strcmp(split_input[0], "exit"))
+		ft_exit(split_input, sh);
+	else if (bin_path = get_full_cmd_path(split_input[0], sh))
+	{
+		execve(bin_path, split_input, sh->env);
+		free_str(bin_path);
+	}
 	//----pour eviter child process in the dead situation-
 	// if execve this fnction its self failed, not the result is bad
 	// if execve is success, it will kill the fork, child process
