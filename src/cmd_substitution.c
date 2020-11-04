@@ -60,11 +60,14 @@ void manage_substitution_in_str(t_mini *sh, char **str)
 			{
 				if ((value = varname_is_in_env((*str) + i + 1, sh)))
 					replace_var_by_value(str, &i, value, sh);
-				else
+				else if (!value)
 					replace_var_by_value(str, &i, "", sh);
 			}
+			else
+				i++;
 		}
-		i++;
+		else
+			i++;
 	}
 }
 /*replace chaque str in arr*/

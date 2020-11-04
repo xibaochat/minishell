@@ -1,34 +1,35 @@
-
-cd $HOMEO
-cd $dewer $OLDPWD
-
-unset OLDPWD
-cd $OLDPWD
-
-cd $PWD $OLDPWD
-
-cd $PWD
-
-echo '$'?
-echo '$?'
-echo $'?'
-echo $'?'
-echo "'$'?"
-echo '$'?
-echo "'$'?"
-echo /$PWD
-echo \$PWD
-echo $PWD\$
-echo "'$'?"
-echo "$"
-echo "'$'?"
-echo "'$PWD'"
-echo "'$PWD'"
-echo $PWD\\$
-echo \\\'$PWD
-
-echo $'?'
-echo $'xibao'
-echo $'PWD'
-
- echo she"\\\"s"
+LOG_FILE="minishell_res.txt"
+cd $HOMEO >> $LOG_FILE
+cd $dewer $OLDPWD >> $LOG_FILE
+unset OLDPWD >> $LOG_FILE
+cd $OLDPWD >> $LOG_FILE
+cd $PWD $OLDPWD >> $LOG_FILE
+cd $PWD >> $LOG_FILE
+echo '$'? >> $LOG_FILE
+echo '$?' >> $LOG_FILE
+echo $'?' >> $LOG_FILE
+echo $'?' >> $LOG_FILE
+echo "'$'?" >> $LOG_FILE
+echo '$'? >> $LOG_FILE
+echo "'$'?" >> $LOG_FILE
+echo /$PWD >> $LOG_FILE
+echo \$PWD >> $LOG_FILE
+echo $PWD\$ >> $LOG_FILE
+echo "'$'?" >> $LOG_FILE
+echo "$" >> $LOG_FILE
+echo "'$'?" >> $LOG_FILE
+echo "'$PWD'" >> $LOG_FILE
+echo $PWD\\$ >> $LOG_FILE
+echo \\\'$PWD >> $LOG_FILE
+echo $'?' >> $LOG_FILE
+echo $'xibao' >> $LOG_FILE
+echo $'PWD' >> $LOG_FILE
+echo she"\\\"s" >> $LOG_FILE
+echo 'boid' >> $LOG_FILE
+echo ''''''boid""""$boid"" >> $LOG_FILE
+echo \'boid'' >> $LOG_FILE
+echo \'boid'' >> $LOG_FILE
+echo \boid >> $LOG_FILE
+echo \\$boid >> $LOG_FILE
+echo $PW$PWD >> $LOG_FILE
+exit
