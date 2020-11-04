@@ -25,7 +25,10 @@ echo "'$'?"
 echo "'$PWD'"
 echo "'$PWD'"
 echo $PWD\\$
+echo \\\'$PWD
 
 echo $'?'
 echo $'xibao'
 echo $'PWD'
+
+ echo she"\\\"s"

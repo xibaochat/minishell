@@ -9,7 +9,7 @@ static int is_invalid_varname(t_quo *q, const char *s, int i)
              || is_unescapted_c(q, s, i, SINGLE)
      	     || is_unescapted_c(q, s, i, DOUBLE)));
 }
-
+/*var name length*/
 int get_varname_len(const char *s, int i)
 {
 	int len;
@@ -26,7 +26,7 @@ int get_varname_len(const char *s, int i)
 	}
 	return (len);
 }
-
+/*in the situation var should be replaced*/
 int replace_var_condition(t_quo *q, char *s, int i)
 {
 	if (s[i + 1])
@@ -37,7 +37,9 @@ int replace_var_condition(t_quo *q, char *s, int i)
 	}
 	return (0);
 }
-
+/*replace value after $, 1.$? 2. if $VAR exists, replace by value in ENV
+**3. $INVALID_VAR , replace ""
+*/
 void manage_substitution_in_str(t_mini *sh, char **str)
 {
 	int i;
@@ -65,7 +67,7 @@ void manage_substitution_in_str(t_mini *sh, char **str)
 		i++;
 	}
 }
-
+/*replace chaque str in arr*/
 void replace_var_sub_by_true_value(char **arr, t_mini *sh)
 {
 	int i;
