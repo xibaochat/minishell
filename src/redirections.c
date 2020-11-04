@@ -1,7 +1,7 @@
 #include "minishell.h"
 
 /*
- ** new_cmd() returns the copy of the old cmd without the redirection.
+ ** new_cmd() returns the copy of the old cmd without the redirection currently handled.
  ** For ex : new_cmd("echo jojo > lulu") = "echo jojo"
  ** For ex2 : new_cmd("echo jojo > lulu > dodo") = "echo jojo > dodo"
  */
@@ -38,10 +38,10 @@ void	manage_redir(t_mini *sh, char *file, char *elem, int j)
 {
 	if (elem[j] == '<')
 	{
-		if ((sh->newfd = open(file, O_RDONLY, 0444)))
-			printf("DEBUG : OPEN FAILED\n");
+		if ((sh->newfd = open(file, O_RDWR, 0600)) == -1)
+			printf("DEBUG FOR < : OPEN FAILED\n");
 		if (dup2(sh->newfd, 0) < 0)
-			printf("DEBUG : DUP2 FAILED\n");
+			printf("DEBUG FOR < : DUP2 FAILED\n");
 		close(sh->newfd);
 	}
 	else
