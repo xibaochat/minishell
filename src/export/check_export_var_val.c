@@ -1,10 +1,16 @@
 #include "minishell.h"
 
+/*check variable is aloha+num or not,
+**if it contains other char OR export =value,
+it's invalid
+ */
 int has_invalid_char_in_env_name(char *str)
 {
 	int i;
 
 	i = 0;
+	if (!i && str[i] == '=')
+		return (1);
 	while (str[i] && str[i] != '=')
 	{
 		if (!ft_isalnum(str[i]) &&
@@ -12,8 +18,6 @@ int has_invalid_char_in_env_name(char *str)
 			return (1);
 		i++;
 	}
-	if (!i && str[i] == '=')
-		return (1);
 	return (0);
 }
 

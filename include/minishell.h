@@ -34,7 +34,7 @@
 # define ENV_OLDPWD "OLDPWD="
 # define BASIC_ENV_USER "USER=maobe"
 # define HOME_ERROR "%s/!\\ NO HOME DEFINE /!\\ \n%s"
-
+# define CD_HOME_ERR "[-] Home env variable is not define"
 
 # include <unistd.h>
 # include <errno.h>
@@ -67,13 +67,13 @@ typedef struct	s_mini
 
 void	show_cat();
 void	display_ascii_dude();
-int	manage_signals();
+void	manage_signals();
 void	manage_input(t_mini *sh);
 void	ft_putendl(char *str);
 void ft_envadd(char *expt, t_mini *sh);
 void	env(t_mini *sh);
 void	pwd(t_mini *sh);
-void	cd(char **arr, t_mini *sh);
+void	ft_cd(char **arr, t_mini *sh);
 void	echo(char **arr);
 char	*ft_find_env(char *name, char **env);
 size_t      ft_tablen(char **tab);
@@ -81,7 +81,7 @@ int cd_to_current_dir_opt(char **av);
 void cd_to_current_dir(t_mini *sh);
 void    change_dir(t_mini *sh, char *p);
 void change_env_var_value(char **env, char *new_p, char *var);
-void    change_dir_for_other_opts(t_mini *sh, char *path, char *old_p);
+void    go_to_required_directory(t_mini *sh, char *dest, char *src);
 void cd_error_message(char *str);
 void export(char **arr, t_mini *sh);
 int has_invalid_char_in_env_name(char *str);
@@ -104,13 +104,31 @@ void ft_signal(t_mini *sh);
 void init_sh(char **env);
 t_mini **get_sh();
 int get_nb_digit(int nb);
-void manage_question_mark(char **str, int j, int n, t_mini *sh);
+void replace_question_mark_by_exit_value(char **str, int j, int n, t_mini *sh);
 char *extract_cmd_from_bin_cmd(int index, char *cmd);
 char * manage_binary_cmd(char *cmd, t_mini *sh);
 int get_bin_directory_index(char *str);
 void show_error_message(char *cmd, char *err, t_mini *sh);
 char    *check_cmd_and_return_full_bin_path(char *cmd, char **bin_path);
 int is_binary_path(char *s);
+void free_var(t_mini **sh);
+void parent_process(t_mini *sh);
+void child_process(char *bin_path, char **split_input, t_mini *sh);
+void init_env_var(t_mini *sh);
+int is_syntax_error(char *s, t_mini *sh);
+int has_multi_valid_arg(char **arr);
+char *extract_target_path(char **arr);
+int is_go_home_opt(char **arr, t_mini *sh);
+int next_char_is_question_mark(char *s, int i);
+void manage_question_mark(char **str, int *i, int exit_value, t_mini *sh);
+char *varname_is_in_env(char *s, t_mini *sh);
+int get_varname_len(const char *s, int i);
+void replace_var_by_value(char **s, int *i, char *v, t_mini *sh);
+char *get_value_from_env(char *s, t_mini *sh);
+void manage_substitution_in_str(t_mini *sh, char **str);
+int replace_var_condition(t_quo *q, char *s, int i);
+
+
 
 
 

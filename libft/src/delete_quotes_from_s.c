@@ -1,5 +1,9 @@
 #include "libft.h"
 
+/*
+manage cas:  echo she"\\\"s" OR echo \\\"she"\\\
+echo "\""
+ */
 static int is_valid_char(char *s, int i, t_quo q)
 {
 	return ((s[i] == SINGLE && q.double_quote && !is_escapted(&q, s, i))
@@ -23,8 +27,8 @@ static int get_len_wo_quotes(char *s)
     {
      	manage_struct_quotes(&q, s, i);
 		if (is_valid_char(s, i, q))
-            len++;
-    }
+			len++;
+	}
     return (len);
 }
 
