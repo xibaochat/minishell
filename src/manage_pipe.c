@@ -9,9 +9,8 @@ void	ft_manage_pipe_2(t_mini *sh, char **arr, int len)
 	int	fd_out;
 
 	j = -1;
-	i = 0;
-	dup2(fd_out, 1);
-	while (i <= len)
+	i = -1;
+	while (++i <= len)
 		pipe(fd[i]);
 	while (arr[++j])
 	{

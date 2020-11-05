@@ -59,9 +59,6 @@ char	**new_cmd(char **arr, int i, int j)
 	while (arr[i])
 		new[++k] = ft_strdup(arr[i++]);
 	new[++k] = NULL;
-	k = -1;
-	while (new[++k])
-		printf("new[%d] = %s\n", k, new[k]);
 	return (new);
 }
 
