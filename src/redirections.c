@@ -1,22 +1,48 @@
 #include "minishell.h"
 
 /*
+** sticked_next_redir() checks if the next redirection is not separated from the first one
+** in the original command.
+** For example : "echo jojo>lulu>dodo"
+*/
+
+int	sticked_next_redir(char *str)
+{
+	int	i;
+	
+	i = 0;
+	while (!ft_strchr("<>", str[i]) && str[i])
+		i++;
+	while (ft_strchr("<>", str[i]) && str[i])
+		i++;
+	while (!ft_strchr("<>", str[i]) && str[i])
+		i++;
+	if (str[i])
+		return (i);
+	return (0);
+}
+
+/*
  ** new_cmd() returns the copy of the old cmd without the redirection currently handled.
  ** For ex : new_cmd("echo jojo > lulu") = "echo jojo"
  ** For ex2 : new_cmd("echo jojo > lulu > dodo") = "echo jojo > dodo"
  */
+
 
 char	**new_cmd(char **arr, int i, int j)
 {
 	int	len;
 	char	**new;
 	int	k;
+	int	sticked;
 
 	len = (int)ft_tablen(arr);
 	if ((!arr[i][j + 1] || arr[i][j + 1] == '>' && !arr[i][j + 2]) && arr[i + 1])
 		len--;
 	if (!j)
 		len--;
+	if (sticked = sticked_next_redir(arr[i]))
+		len++;
 	if (!(new = malloc(sizeof(char*) * (len + 1))))
 		return (NULL);
 	k = -1;
@@ -24,6 +50,8 @@ char	**new_cmd(char **arr, int i, int j)
 		new[k] = ft_strdup(arr[k]);
 	if (j)
 		new[k] = ft_substr(arr[i], 0, j);
+	if (sticked)
+		new[++k] = ft_substr(arr[i], sticked, ft_strlen(arr[i] - sticked));
 	if ((!arr[i][j + 1] || arr[i][j + 1] == '>' && !arr[i][j + 2]) && arr[i + 1])
 		i += 2;
 	else
@@ -31,8 +59,29 @@ char	**new_cmd(char **arr, int i, int j)
 	while (arr[i])
 		new[++k] = ft_strdup(arr[i++]);
 	new[++k] = NULL;
+	k = -1;
+	while (new[++k])
+		printf("new[%d] = %s\n", k, new[k]);
 	return (new);
 }
+
+/*
+char	**new_cmd(char **arr, int i, int j)
+{
+	int	len;
+	char	**new;
+	int	k;
+
+	new = ft_split_inc(arr, "<>");
+	k = -1;
+	while (new[++k])
+	{
+		if (new[k][0] && !ft_strchr("<>", new[k][0]))
+			i++;
+		
+	}
+}
+*/
 
 void	manage_redir(t_mini *sh, char *file, char *elem, int j)
 {

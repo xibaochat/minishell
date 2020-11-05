@@ -1,37 +1,52 @@
 #include "minishell.h"
 
-void	ft_manage_pipe(t_mini *sh, char **arr)
+void	ft_manage_pipe_2(t_mini *sh, char **arr, int len)
 {
 	int	j;
-	int	len;
 	int	status;
+	int	i;
+	int	fd[len][2];
+	int	fd_out;
 
 	j = -1;
-	len = (int)ft_tablen(arr);
+	i = 0;
+	dup2(fd_out, 1);
+	while (i <= len)
+		pipe(fd[i]);
 	while (arr[++j])
 	{
-		pipe(sh->p);
+		pipe(fd[j]);
 		sh->last_pid = fork();
 		if (sh->last_pid < 0)
 			printf("DEBUG : FORK FAILED \n");
 		else if (!sh->last_pid)
 		{
-			close(sh->p[0]);
+			close(fd[j][0]);
+			write(fd_out, "child\n", 6);
 			printf("SON OF PIPE\n");
-			if (dup2(sh->p[1], 1) == -1)
+			if (dup2(fd[j][1], 1) == -1)
 				printf("DEBUG SON : DUP2 FAILED\n");
 			split_and_execute(arr[j], " ", 0, sh);
-			close(sh->p[1]);
-			exit(EXIT_SUCCESS);
+			close(fd[j][1]);
+			exit(EXIT_FAILURE);
 		}
 		else
 		{
-			close(sh->p[1]);
+			close(fd[j][1]);
 			waitpid(sh->last_pid, &status, 0);
 			printf("FATHER OF PIPE\n");
-			if (dup2(sh->p[0], 0) == -1)
+			write(fd_out, "father\n", 7);
+			if (dup2(fd[j][0], 0) == -1)
 				printf("DEBUG FATHER : DUP2 FAILED\n");
-			close(sh->p[0]);
+			close(fd[j][0]);
 		}
 	}
+}
+
+void	ft_manage_pipe(t_mini *sh, char **arr)
+{
+	int	len;
+
+	len = (int)ft_tablen(arr);
+	ft_manage_pipe_2(sh, arr, len);
 }
