@@ -65,24 +65,6 @@ char	**new_cmd(char **arr, int i, int j)
 	return (new);
 }
 
-/*
-char	**new_cmd(char **arr, int i, int j)
-{
-	int	len;
-	char	**new;
-	int	k;
-
-	new = ft_split_inc(arr, "<>");
-	k = -1;
-	while (new[++k])
-	{
-		if (new[k][0] && !ft_strchr("<>", new[k][0]))
-			i++;
-		
-	}
-}
-*/
-
 void	manage_redir(t_mini *sh, char *file, char *elem, int j)
 {
 	if (elem[j] == '<')
