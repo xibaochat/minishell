@@ -6,7 +6,6 @@ void	ft_manage_pipe_2(t_mini *sh, char **arr, int len)
 	int	status;
 	int	i;
 	int	fd[len][2];
-	int	fd_out;
 
 	j = -1;
 	i = -1;
@@ -21,7 +20,7 @@ void	ft_manage_pipe_2(t_mini *sh, char **arr, int len)
 		else if (!sh->last_pid)
 		{
 			close(fd[j][0]);
-			write(fd_out, "child\n", 6);
+			write(STDOUT_FILENO, "child\n", 6);
 			printf("SON OF PIPE\n");
 			if (dup2(fd[j][1], 1) == -1)
 				printf("DEBUG SON : DUP2 FAILED\n");
@@ -34,7 +33,7 @@ void	ft_manage_pipe_2(t_mini *sh, char **arr, int len)
 			close(fd[j][1]);
 			waitpid(sh->last_pid, &status, 0);
 			printf("FATHER OF PIPE\n");
-			write(fd_out, "father\n", 7);
+			write(STDOUT_FILENO, "father\n", 7);
 			if (dup2(fd[j][0], 0) == -1)
 				printf("DEBUG FATHER : DUP2 FAILED\n");
 			close(fd[j][0]);

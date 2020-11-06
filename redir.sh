@@ -17,12 +17,11 @@ echo jojo >> prout
 echo "cat prout"
 cat prout
 echo should display :
+echo jojo
+echo jojo
 echo
 echo "rm prout"
 rm prout
-echo should display :
-echo jojo
-echo jojo
 
 echo 
 echo essai 3 : "jojo >prout > lulu"
@@ -160,3 +159,5 @@ cat lulu
 echo should display :
 echo titi
 echo titi
+
+rm lulu prout

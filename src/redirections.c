@@ -9,7 +9,7 @@
 int	sticked_next_redir(char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	while (!ft_strchr("<>", str[i]) && str[i])
 		i++;
@@ -23,10 +23,10 @@ int	sticked_next_redir(char *str)
 }
 
 /*
- ** new_cmd() returns the copy of the old cmd without the redirection currently handled.
- ** For ex : new_cmd("echo jojo > lulu") = "echo jojo"
- ** For ex2 : new_cmd("echo jojo > lulu > dodo") = "echo jojo > dodo"
- */
+** new_cmd() returns the copy of the old cmd without the redirection currently handled.
+** For ex : new_cmd("echo jojo > lulu") = "echo jojo"
+** For ex2 : new_cmd("echo jojo > lulu > dodo") = "echo jojo > dodo"
+*/
 
 
 char	**new_cmd(char **arr, int i, int j)
@@ -47,23 +47,37 @@ char	**new_cmd(char **arr, int i, int j)
 		return (NULL);
 	k = -1;
 	while (++k < i)
+	{
 		new[k] = ft_strdup(arr[k]);
+//		printf("1. new[%d] = %s et j = %d\n", k, new[k], j);
+	}
 	if (j)
-		new[k] = ft_substr(arr[i], 0, j);
+		new[k++] = ft_substr(arr[i], 0, j);
+//	printf("2. new[%d] = %s et j = %d\n", k, new[k], j);
 	if (sticked)
-		new[++k] = ft_substr(arr[i], sticked, ft_strlen(arr[i] - sticked));
-	if ((!arr[i][j + 1] || arr[i][j + 1] == '>' && !arr[i][j + 2]) && arr[i + 1])
+		new[k++] = ft_substr(arr[i], sticked, ft_strlen(arr[i]) - sticked);
+//	printf("3. new[%d] = %s\n", k, new[k]);
+//	printf("4. arr[%d] = %s\n", i, arr[i]);
+	if (!arr[i][j + 1] || (arr[i][j + 1] == '>' && !arr[i][j + 2]))
 		i += 2;
 	else
 		i++;
+//	printf("5. arr[%d] = %s\n", i, arr[i]);
 	while (arr[i])
-		new[++k] = ft_strdup(arr[i++]);
-	new[++k] = NULL;
+	{
+		new[k++] = ft_strdup(arr[i++]);
+//		printf("6. new[%d] = %s\n", k, new[k]);
+	}
+	new[k] = NULL;
+//	k = -1;
+//	while (new[++k])
+//		printf("new[%d] = %s et len = %d et sticked = %d\n", k, new[k], len, sticked);
 	return (new);
 }
 
 void	manage_redir(t_mini *sh, char *file, char *elem, int j)
 {
+//	printf("MANAGE REDIR\n");
 	if (elem[j] == '<')
 	{
 		if ((sh->newfd = open(file, O_RDWR, 0600)) == -1)
@@ -91,8 +105,8 @@ void	manage_redir(t_mini *sh, char *file, char *elem, int j)
 }
 
 /*
- ** Note : file_name() can also be used to get the parameter of "<<" even if it is not a file.
- */
+** Note : file_name() can also be used to get the parameter of "<<" even if it is not a file.
+*/
 
 char	*file_name(char **arr, int i, int j, char c)
 {
@@ -130,6 +144,7 @@ char	**check_for_redir(char **arr, t_mini *sh)
 				if (!(file = file_name(arr, i, j, arr[i][j])))
 					printf("DEBUG : NO FILE NAME\n");
 				manage_redir(sh, file, arr[i], j);
+//				printf("AVANT NEW CMD \n");
 				tmp = new_cmd(arr, i, j);
 				ft_tabfree(arr);
 				free(file);
