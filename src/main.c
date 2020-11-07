@@ -4,17 +4,28 @@
 #include <fcntl.h>
 
 void exec_command(char **split_input, t_mini *sh)
-{
-	sh->last_pid = fork();
-	if (sh->last_pid < 0)
-	{
-		perror("created failed\n");
-		exit(EXIT_FAILURE);
-	}
-	else if (!sh->last_pid) //not built in, child process
-		child_process(split_input, sh);
+{  
+	if (!ft_strcmp(split_input[0], "env"))
+		env(sh);
+	else if (!ft_strcmp(split_input[0], "export"))
+		export(split_input, sh);
+	else if (!ft_strcmp(split_input[0], "unset"))
+		unset(split_input, sh);
+	else if (!ft_strcmp(split_input[0], "cd"))
+		ft_cd(split_input, sh);
 	else
-		parent_process(sh);
+	{
+		sh->last_pid = fork();
+		if (sh->last_pid < 0)
+		{
+			perror("created failed\n");
+			exit(EXIT_FAILURE);
+		}
+		else if (!sh->last_pid) //not built in, child process
+			child_process(split_input, sh);
+		else
+			parent_process(sh);
+	}
 }
 
 void split_and_execute(char *str, char *sep, int i, t_mini *sh)
@@ -50,7 +61,7 @@ void manage_input(t_mini *sh)
 {
 	char *input;
 	int i;
-	 char sep[4] = ";| ";
+	char sep[4] = ";| ";
 
 	i = 0;
 	input = NULL;
@@ -76,8 +87,8 @@ int main(int ac, char **av, char **env)
 
 	//manage_signals();
 	//sh.last_pid = 0;
-//	show_cat();
-//	show_welcome_mes();
+	//	show_cat();
+	//	show_welcome_mes();
 	init_sh(env);
 	sh = get_sh();
 	if (!ft_find_env(ENV_HOME, (*sh)->env))
