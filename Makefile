@@ -19,7 +19,7 @@ SRC = main.c  env.c pwd.c  ft_tablen.c  unset.c \
 	print_prompt.c check_quote_close.c cat.c error.c show_welcome_mes.c \
 	cmd_substitution.c get_full_cmd_path.c exit.c ft_signal.c \
 	init_variable_sh.c manage_question_mark.c extract_cmd_from_bin_input.c \
-	get_full_binary_path.c show_message_error_if_cmd_cant_find.c \
+	get_full_binary_path.c \
 	free_var.c manage_child_process_and_execution.c manage_syntax_error.c \
 	manage_substitution_in_str.c redirections.c manage_pipe.c
 

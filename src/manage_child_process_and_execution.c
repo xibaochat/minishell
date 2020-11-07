@@ -24,14 +24,16 @@ void child_process(char **split_input, t_mini *sh)
 		ft_exit(split_input, sh);
 	else if (bin_path = get_full_cmd_path(split_input[0], sh))
 	{
-		execve(bin_path, split_input, sh->env);
+		if (execve(bin_path, split_input, sh->env) == -1)
+		{
+			//----pour eviter child process in the dead situation-
+			// if execve this fnction its self failed, not the result is bad
+			// if execve is success, it will kill the fork, child process
+			ft_putstr_fd("Exec format error: ", 2);
+			ft_putstr_w_new_line_fd(bin_path, 2);
+		}
 		free_str(bin_path);
 	}
-	//----pour eviter child process in the dead situation-
-	// if execve this fnction its self failed, not the result is bad
-	// if execve is success, it will kill the fork, child process
-	ft_putstr_fd("Exec format error: ", 2);
-	ft_putstr_w_new_line_fd(bin_path, 2);
 	exit(EXIT_FAILURE);
 }
 

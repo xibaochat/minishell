@@ -62,11 +62,7 @@ typedef struct	s_mini
 	int			p[2];
 }				t_mini;
 
-
-/*
-** This global variable is needed to deal with signals (cf. signals.c)
-*/
-
+int	ft_error(char *str, int errno_value);
 void	show_cat();
 void	display_ascii_dude();
 void	manage_signals();

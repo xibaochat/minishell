@@ -49,41 +49,33 @@ char	**new_cmd(char **arr, int i, int j)
 	while (++k < i)
 	{
 		new[k] = ft_strdup(arr[k]);
-//		printf("1. new[%d] = %s et j = %d\n", k, new[k], j);
 	}
 	if (j)
 		new[k++] = ft_substr(arr[i], 0, j);
-//	printf("2. new[%d] = %s et j = %d\n", k, new[k], j);
 	if (sticked)
 		new[k++] = ft_substr(arr[i], sticked, ft_strlen(arr[i]) - sticked);
-//	printf("3. new[%d] = %s\n", k, new[k]);
-//	printf("4. arr[%d] = %s\n", i, arr[i]);
 	if (!arr[i][j + 1] || (arr[i][j + 1] == '>' && !arr[i][j + 2]))
 		i += 2;
 	else
 		i++;
-//	printf("5. arr[%d] = %s\n", i, arr[i]);
 	while (arr[i])
-	{
 		new[k++] = ft_strdup(arr[i++]);
-//		printf("6. new[%d] = %s\n", k, new[k]);
-	}
 	new[k] = NULL;
-//	k = -1;
-//	while (new[++k])
-//		printf("new[%d] = %s et len = %d et sticked = %d\n", k, new[k], len, sticked);
 	return (new);
 }
 
+/*
+** manage_redir() will open (or create) the file for the redirection
+*/
+
 void	manage_redir(t_mini *sh, char *file, char *elem, int j)
 {
-//	printf("MANAGE REDIR\n");
 	if (elem[j] == '<')
 	{
 		if ((sh->newfd = open(file, O_RDWR, 0600)) == -1)
-			printf("DEBUG FOR < : OPEN FAILED\n");
+			ft_error("CAN'T OPEN FILE", errno);
 		if (dup2(sh->newfd, 0) < 0)
-			printf("DEBUG FOR < : DUP2 FAILED\n");
+			ft_error("DUP2 FAILED", errno);
 		close(sh->newfd);
 	}
 	else
@@ -91,15 +83,15 @@ void	manage_redir(t_mini *sh, char *file, char *elem, int j)
 		if (elem[j + 1] == '>')
 		{
 			if ((sh->newfd = open(file, O_CREAT | O_RDWR | O_APPEND, 0600)) == -1)
-				printf("DEBUG : OPEN FAILED\n");
+			ft_error("CAN'T OPEN FILE", errno);
 		}
 		else
 		{
 			if ((sh->newfd = open(file, O_CREAT | O_RDWR | O_TRUNC, 0600)) == -1)
-				printf("DEBUG : OPEN FAILED\n");
+			ft_error("CAN'T OPEN FILE", errno);
 		}
 		if (dup2(sh->newfd, 1) < 0)
-			printf("DEBUG : DUP2 FAILED\n");
+			ft_error("DUP2 FAILED", errno);
 		close(sh->newfd);
 	}
 }
@@ -142,9 +134,8 @@ char	**check_for_redir(char **arr, t_mini *sh)
 			if (ft_strchr("<>", arr[i][j]))
 			{
 				if (!(file = file_name(arr, i, j, arr[i][j])))
-					printf("DEBUG : NO FILE NAME\n");
+					return (ft_error("NO FILE NAME", 8) ? NULL : NULL);
 				manage_redir(sh, file, arr[i], j);
-//				printf("AVANT NEW CMD \n");
 				tmp = new_cmd(arr, i, j);
 				ft_tabfree(arr);
 				free(file);
