@@ -29,14 +29,14 @@ void ft_not_quit(int sig)
 	}// jusqu'a ici
 	ft_putstr_w_new_line_fd("", 2);
 	(*sh)->last_return = 130;
-//	if ((*sh)->is_cmd) // ls -R / in the process of execution
-//	{
+	if ((*sh)->is_cmd) // ls -R / in the process of execution
+	{
 		print_prompt(*sh);
-//		if ((*sh)->ctrl_c == 0)
-//			(*sh)->ctrl_c = 1;
-//	}
-//	else
-//		print_prompt(*sh);
+		if ((*sh)->ctrl_c == 0)
+			(*sh)->ctrl_c = 1;
+	}
+	else
+		print_prompt(*sh);
 }
 
 void ft_signal(t_mini *sh)
