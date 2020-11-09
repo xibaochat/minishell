@@ -11,6 +11,7 @@ void	ft_manage_pipe_2(t_mini *sh, char **arr, int len)
 	while (++i <= len)
 		pipe(fd[i]);
 	j = -1;
+	printf("IM HERE\n");
 	while (arr[++j])
 	{
 		pipe(fd[j]);
@@ -31,7 +32,7 @@ void	ft_manage_pipe_2(t_mini *sh, char **arr, int len)
 		else
 		{
 			close(fd[j][1]);
-		//	waitpid(sh->last_pid, &status, 0);
+			waitpid(sh->last_pid, &status, 0);
 			printf("FATHER OF PIPE\n");
 		//	write(STDOUT_FILENO, "father\n", 7);
 			if (dup2(fd[j][0], 0) == -1)

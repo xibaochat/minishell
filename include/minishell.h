@@ -62,6 +62,8 @@ typedef struct	s_mini
 	int			p[2];
 }				t_mini;
 
+
+void	ft_manage_pipe(t_mini *sh, char **arr);
 int	ft_error(char *str, int errno_value);
 void	show_cat();
 void	display_ascii_dude();

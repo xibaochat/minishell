@@ -1,0 +1,12 @@
+CD:
+cd ~ : same as cd alone
+cd - : go to the previous folder with printing pwd
+cd ~- : go to previous folder without printing pwd
+
+ECHO:
+echo $$ : 'gives the shell pid
+echo $! : gives the pid of the most recently executed background process (not sure of what is means)
+echo joie'\n' : joie\n
+echo joie"\n" : joie\n
+BUT BE CAREFUL --> echo joie\n : joien (this one works for now)
+echo ''$USER'' : give the value of $USER (2 single quotes = 1 double quote)

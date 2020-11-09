@@ -5,10 +5,10 @@
 
 void exec_command(char **split_input, t_mini *sh)
 {  
-	if (!ft_strcmp(split_input[0], "env"))
-		env(sh);
-	else if (!ft_strcmp(split_input[0], "export"))
+	if (!ft_strcmp(split_input[0], "export"))
 		export(split_input, sh);
+//	else if (!ft_strcmp(split_input[0], "env"))
+//		env(sh);
 	else if (!ft_strcmp(split_input[0], "unset"))
 		unset(split_input, sh);
 	else if (!ft_strcmp(split_input[0], "cd"))
@@ -37,6 +37,8 @@ void split_and_execute(char *str, char *sep, int i, t_mini *sh)
 	arr = ft_split_w_quotes(str, sep[i]);
 	if (!arr || !arr[0])
 		return;
+	if (sep[i] == '|' && ft_tablen(arr) > 1)
+		ft_manage_pipe(sh, arr);
 	if (sep[i] == ' ')
 	{
 		check_quote_close(arr, sh);

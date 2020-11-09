@@ -15,9 +15,9 @@ int	sticked_next_redir(char *str)
 		i++;
 	while (ft_strchr("<>", str[i]) && str[i])
 		i++;
-	while (!ft_strchr("<>", str[i]) && str[i])
+	while (!ft_strchr("<> ", str[i]) && str[i])
 		i++;
-	if (str[i])
+	if (str[i] && str[i] != ' ')
 		return (i);
 	return (0);
 }
@@ -140,8 +140,8 @@ char	**check_for_redir(char **arr, t_mini *sh)
 				ft_tabfree(arr);
 				free(file);
 				arr = tmp;
-				j = 0;
 				i = 0;
+				j = -1;
 			}
 		}
 	}
