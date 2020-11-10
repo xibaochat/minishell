@@ -18,4 +18,5 @@ void init_sh(char **env)
     (*sh)->ctrl_c = 0;
 	(*sh)->exit_v = 0;
 	cpy_env(*sh, env);
+	(*sh)->is_pipe = 0;
 }

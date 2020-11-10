@@ -5,13 +5,11 @@
 
 void exec_command(char **split_input, t_mini *sh)
 {  
-	if (!ft_strcmp(split_input[0], "export"))
+	if (!ft_strcmp(split_input[0], "export") && !sh->is_pipe)
 		export(split_input, sh);
-//	else if (!ft_strcmp(split_input[0], "env"))
-//		env(sh);
-	else if (!ft_strcmp(split_input[0], "unset"))
+	else if (!ft_strcmp(split_input[0], "unset") && !sh->is_pipe)
 		unset(split_input, sh);
-	else if (!ft_strcmp(split_input[0], "cd"))
+	else if (!ft_strcmp(split_input[0], "cd") && !sh->is_pipe)
 		ft_cd(split_input, sh);
 	else
 	{
@@ -38,8 +36,12 @@ void split_and_execute(char *str, char *sep, int i, t_mini *sh)
 	if (!arr || !arr[0])
 		return;
 	if (sep[i] == '|' && ft_tablen(arr) > 1)
-		ft_manage_pipe(sh, arr);
-	if (sep[i] == ' ')
+	{
+		sh->is_pipe = 1;
+		exec_command(arr, sh);
+		sh->is_pipe = 0;
+	}
+	else if (sep[i] == ' ')
 	{
 		check_quote_close(arr, sh);
 		if (!sh->last_return)
