@@ -115,6 +115,7 @@ int		ft_get_directory(char *execname, char *dir);
 void show_arr_value(char **arr);
 char *ft_malloc_and_copy(char *src);
 int         get_nb_size(int n);
+size_t      ft_tablen(char **tab);
 
 
 

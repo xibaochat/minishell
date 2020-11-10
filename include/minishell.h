@@ -5,6 +5,8 @@
 # define DOUBLE 34
 # define EXPORT 0
 # define UNSET 1
+# define WRITE_END 1
+# define READ_END 0
 # define DF  "\033[0;m"
 # define BLACK          "\033[1;30m"
 # define RED            "\033[1;31m"
@@ -127,13 +129,9 @@ void replace_var_by_value(char **s, int *i, char *v, t_mini *sh);
 char *get_value_from_env(char *s, t_mini *sh);
 void manage_substitution_in_str(t_mini *sh, char **str);
 int replace_var_condition(t_quo *q, char *s, int i);
-
-
-
-
-
-
-
+void manage_sep_space(char **arr, t_mini *sh);
+void manage_command(char **split_input, t_mini *sh);
+void exec_command(char *full_cmd_path, char **split_input, t_mini *sh);
 
 
 
