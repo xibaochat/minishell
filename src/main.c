@@ -27,7 +27,7 @@ void manage_input(t_mini *sh)
 {
 	char *input;
 	int i;
-	 char sep[4] = ";| ";
+	char sep[4] = ";| ";
 
 	i = 0;
 	input = NULL;
