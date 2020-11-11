@@ -63,6 +63,7 @@ typedef struct	s_mini
 }				t_mini;
 
 
+void	sophie_la_girafe(int length);
 void	ft_manage_pipe(t_mini *sh, char **arr);
 int	ft_error(char *str, int errno_value);
 void	show_cat();
