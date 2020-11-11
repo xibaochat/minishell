@@ -69,10 +69,10 @@ void manage_pipe(int i, int nb_cmd, char **arr, t_mini *sh)
 			unset(arr_output, sh);
 		else if (!ft_strcmp(arr_output[0], "exit"))
 		{
-			if (!nb_cmd)
+//			if (!nb_cmd)
 				ft_exit(arr_output, sh, pipe_fd[1]);
-			else
-				continue;
+//			else
+//				continue;
 		}
 		else if (full_cmd = get_full_cmd_path(arr_output[0], sh))
 		{
