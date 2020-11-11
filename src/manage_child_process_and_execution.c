@@ -36,7 +36,7 @@ void child_process(char **split_input, t_mini *sh)
 			free_str(bin_path);
 		}
 	}
-	exit(EXIT_FAILURE);
+	exit(EXIT_SUCCESS);
 }
 
 void parent_process(t_mini *sh)
