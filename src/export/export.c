@@ -62,7 +62,7 @@ void export_add_var(char *var_value, t_mini *sh)
   change its value, if not add new VAR in ENV)
 **
 */
-void export(char **arr, t_mini *sh)
+void export(char **arr, t_mini *sh, int fd)
 {
 	int i;
 
@@ -70,7 +70,7 @@ void export(char **arr, t_mini *sh)
 	//only type: export
 	if (ft_tablen(arr) == 1)
 	{
-		display_env_w_prefix(arr,sh-> env);
+		display_env_w_prefix(arr,sh->env, fd);
 		sh->last_return = 0;
 	}
 	//ep: xibao!=miao

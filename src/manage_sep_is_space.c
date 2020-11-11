@@ -27,11 +27,11 @@ void manage_command(char **split_input, t_mini *sh)
 	else if (!ft_strcmp(split_input[0], "env"))
 		env(sh);
 	else if (!ft_strcmp(split_input[0], "export"))
-		export(split_input, sh);
+		export(split_input, sh, 1);
 	else if (!ft_strcmp(split_input[0], "unset"))
 		unset(split_input, sh);
 	else if (!ft_strcmp(split_input[0], "exit"))
-		ft_exit(split_input, sh);
+		ft_exit(split_input, sh, 2);
 	else if (full_cmd_path = get_full_cmd_path(split_input[0], sh))
 	{
 		exec_command(full_cmd_path, split_input, sh);

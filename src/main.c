@@ -12,8 +12,10 @@ void split_and_execute(char *str, char *sep, int i, t_mini *sh)
 	arr = ft_split_w_quotes(str, sep[i]);
 	if (!arr || !arr[0])
 		return;
-	if (sep[i] == ' ')
-		manage_sep_space(arr, sh);
+	if (sep[i] == '|')
+		manage_pipe_space(arr, sh);
+//	if (sep[i] == ' ')
+//		manage_sep_space(arr, sh);
 	else
 		while (arr[j])
 		{

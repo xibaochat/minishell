@@ -75,6 +75,7 @@ void	ft_putendl(char *str);
 void ft_envadd(char *expt, t_mini *sh);
 void	env(t_mini *sh);
 void	pwd(t_mini *sh);
+void	pipe_pwd(int *pipe_fd, t_mini *sh);
 void	ft_cd(char **arr, t_mini *sh);
 void	echo(char **arr);
 char	*ft_find_env(char *name, char **env);
@@ -85,12 +86,12 @@ void    change_dir(t_mini *sh, char *p);
 void change_env_var_value(char **env, char *new_p, char *var);
 void    go_to_required_directory(t_mini *sh, char *dest, char *src);
 void cd_error_message(char *str);
-void export(char **arr, t_mini *sh);
+void export(char **arr, t_mini *sh, int fd);
 int has_invalid_char_in_env_name(char *str);
 int has_equal_sign(char *s);
 void    ft_tabfree(char **tab);
 void show_export_error_message(char *s);
-void display_env_w_prefix(char **av, char **env);
+void display_env_w_prefix(char **av, char **env, int fd);
 void unset(char **arr, t_mini *sh);
 int	get_matched_var_in_env(char **env, char *var);
 void cpy_env(t_mini *sh, char **env);
@@ -101,7 +102,7 @@ void show_key_error_message(int key, char *s);
 void show_welcome_mes();
 void replace_var_sub_by_true_value(char **arr, t_mini *sh);
 char	*get_full_cmd_path(char *cmd, t_mini *sh);
-void    ft_exit(char **split_input, t_mini *sh);
+void    ft_exit(char **split_input, t_mini *sh, int fd);
 void ft_signal(t_mini *sh);
 void init_sh(char **env);
 t_mini **get_sh();
@@ -132,6 +133,10 @@ int replace_var_condition(t_quo *q, char *s, int i);
 void manage_sep_space(char **arr, t_mini *sh);
 void manage_command(char **split_input, t_mini *sh);
 void exec_command(char *full_cmd_path, char **split_input, t_mini *sh);
+void manage_pipe_space(char **arr, t_mini *sh);
+void	pipe_echo(char **args, int *pipe_fd);
+void    pipe_env(int *fd, t_mini *sh);
+
 
 
 
