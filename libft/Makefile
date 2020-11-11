@@ -75,13 +75,15 @@ CC_FLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME):
-		$(CC) $(CC_FLAGS) -c  $(SRC_W_PATH) $(PRINTF_SRC_W_PATH) -I $(HEADER_DIR)
-		ar rcs $(NAME) $(SRCO) $(PRINTF_SRCO)
+		@printf "Compiling Libft\n"
+		@$(CC) $(CC_FLAGS) -c  $(SRC_W_PATH) $(PRINTF_SRC_W_PATH) -I $(HEADER_DIR)
+		@ar rcs $(NAME) $(SRCO) $(PRINTF_SRCO)
+		@printf "\033[1;32mLibft compiled\033[;0m\n"
 
 clean:
-		 rm -f $(SRCO) $(PRINTF_SRCO)
+		@rm -f $(SRCO) $(PRINTF_SRCO)
 
 fclean: clean
-		rm -f $(NAME)
+		@rm -f $(NAME)
 
 re: fclean all

@@ -20,7 +20,7 @@ SRC = main.c  env.c pwd.c  ft_tablen.c  unset.c \
 	cmd_substitution.c get_full_cmd_path.c exit.c ft_signal.c \
 	init_variable_sh.c manage_question_mark.c extract_cmd_from_bin_input.c \
 	get_full_binary_path.c display_ascii_girafe.c \
-	free_var.c manage_child_process_and_execution.c manage_syntax_error.c \
+	free_var.c manage_child_process_and_execution.c \
 	manage_substitution_in_str.c redirections.c manage_pipe.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
@@ -51,25 +51,32 @@ LIBFT_A = $(LIBFT_DIR)/libft.a
 LIBFT_HEADER = $(LIBFT_DIR)/include
 
 all : ${NAME}
+	@printf "\033[1;32mMinishell compiled\033[;0m\n"
+	@printf "Type \"./$(NAME)\" to launch $(NAME)\n"
+	@mkdir objects
+	@mv *.o objects
 
 ${NAME}: libft_compile
-	$(CC) -c $(SRC_PATH) $(CD_PATH) $(EXP_PATH) -I $(HEADER_DIR) -I $(LIBFT_HEADER) -L $(LIBFT_DIR) -lft
-	$(CC) $(OBJ) $(CD_OBJ) $(EXP_OBJ) -o ${NAME} -L $(LIBFT_DIR) -lft
+	@printf "Compiling Minishell\n"
+	@$(CC) -c $(SRC_PATH) $(CD_PATH) $(EXP_PATH) -I $(HEADER_DIR) -I $(LIBFT_HEADER) -L $(LIBFT_DIR) -lft
+	@$(CC) $(OBJ) $(CD_OBJ) $(EXP_OBJ) -o ${NAME} -L $(LIBFT_DIR) -lft
 
 libft_compile:
-	make -C ./libft all --silent
+	@make -C ./libft all --silent
 
 clean : libft_clean
-		rm -f $(OBJ) $(CD_OBJ) $(EXP_OBJ)
+		@rm -fr objects
+		@printf "Object files removed\n"
 
 libft_clean:
-		make -C ./libft clean
+		@make -C ./libft clean
 
 fclean: clean libft_fclean
-		rm -f $(NAME)
-		rm -f **/*~
+		@rm -f $(NAME)
+		@rm -f **/*~
+		@printf "Executable and object files removed\n"
 
 libft_fclean:
-		make -C ./libft fclean
+		@make -C ./libft fclean
 
 re: fclean all
