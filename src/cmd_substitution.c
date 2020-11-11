@@ -77,13 +77,15 @@ void replace_var_sub_by_true_value(char **arr, t_mini *sh)
 	char *v;
 	t_quo q;
 
-	i = 0;
+	i = -1;
 	v = NULL;
 	while (arr[++i])
 	{
 		q = init_quotes_struct();
 		if (ft_strlen(arr[i]) <= 1)
+		{
 				continue;
+		}
 		else
 			manage_substitution_in_str(sh, &arr[i]);
 	}

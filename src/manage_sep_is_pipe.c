@@ -52,6 +52,9 @@ void manage_pipe(int i, int nb_cmd, char **arr, t_mini *sh)
 			pipe_fd[1] = 1;
 		}
 		arr_output = ft_split_w_quotes(arr[i], ' ');
+		replace_var_sub_by_true_value(arr_output, sh);
+		delete_quotes_from_arr(arr_output);
+		delete_slash_from_arr(arr_output);
 		if (!ft_strcmp(arr_output[0], "echo"))
 			pipe_echo(arr_output, pipe_fd);
 		else if (!ft_strcmp(arr_output[0], "pwd"))
@@ -71,16 +74,20 @@ void manage_pipe(int i, int nb_cmd, char **arr, t_mini *sh)
 			else
 				continue;
 		}
-		else
+		else if (full_cmd = get_full_cmd_path(arr_output[0], sh))
 		{
 			pid = fork();
+			if (pid < 0)
+			{
+				perror("created failed\n");
+				exit(EXIT_FAILURE);
+			}
 			if (pid == 0)
 			{
 				dup_child_rw_pipe(i, nb_cmd, input_fd, pipe_fd);
-				if (full_cmd = get_full_cmd_path(arr_output[0], sh))
-					execve(full_cmd, arr_output, sh->env);
+				execve(full_cmd, arr_output, sh->env);
 				ft_putstr_fd("Exec format error: ", STDERR_FILENO);
-				ft_putstr_w_new_line_fd(bin_path, STDERR_FILENO);
+				ft_putstr_w_new_line_fd(arr_output[0], STDERR_FILENO);
 				exit(EXIT_FAILURE);
 			}
 			else
@@ -101,11 +108,10 @@ void manage_pipe_space(char **arr, t_mini *sh)
 	int nb_cmd;
 	int i;
 
-	nb_cmd = -1;
 	i = -1;
-	replace_var_sub_by_true_value(arr, sh);
-	delete_quotes_from_arr(arr);
-	delete_slash_from_arr(arr);
+//	replace_var_sub_by_true_value(arr, sh);
+//	delete_quotes_from_arr(arr);
+//	delete_slash_from_arr(arr);
 	nb_cmd = ft_tablen(arr) - 1;
 	manage_pipe(i, nb_cmd, arr, sh);
 }
