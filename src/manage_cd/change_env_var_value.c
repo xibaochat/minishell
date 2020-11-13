@@ -5,7 +5,6 @@
 int	get_matched_var_in_env(char **env, char *var)
 {
 	int i;
-	char *old_p;
 
 	i = -1;
 	while (env[++i])
@@ -42,11 +41,11 @@ void    go_to_required_directory(t_mini *sh, char *dest, char *src)
 void change_env_var_value(char **env, char *new_v, char *varname)
 {
     int i;
-    char *old_path;
     char *tmp;
     char *s;
+//    char *old_path;
 
-	old_path = NULL;
+//	old_path = NULL;
 	tmp = NULL;
 	i = get_matched_var_in_env(env, varname);
 	if (i != -1)

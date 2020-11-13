@@ -8,6 +8,7 @@ static int unset_var_is_valid(t_mini *sh, char *str)
 {
 	int i;
 
+	(void)sh;
 	i = 0;
 	if (ft_isdigit(str[0])
 		|| has_equal_sign(str))

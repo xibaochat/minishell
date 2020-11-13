@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int get_nb_env_var(char *s, t_mini *sh)
+int get_nb_env_var(t_mini *sh)
 {
 	int i;
 
@@ -19,7 +19,7 @@ void ft_envadd(char *expt, t_mini *sh)
 	int nb;
     char    **env;
 
-	nb = get_nb_env_var(expt, sh);
+	nb = get_nb_env_var(sh);
 	i = -1;
     if (!(env = (char **)malloc(sizeof(char *) * (nb + 2))))
 	{

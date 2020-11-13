@@ -6,13 +6,11 @@
 char	*ft_find_env(char *elem, char **env)
 {
 	int i;
-	int j;
 	int lens;
 
 	i = -1;
 	while (env[++i])
 	{
-		j = 0;
 		lens = ft_strlen(elem);
 		if (!ft_strncmp(env[i], elem, lens))
 		{

@@ -14,6 +14,8 @@ NAME = minishell
 
 SRCS_PATH = ./src
 
+FLAGS = -Werror -Wextra -Wall
+
 SRC = main.c  env.c pwd.c  ft_tablen.c  unset.c \
 	ft_addenv.c echo.c ft_find_env.c find_fst_split_arg_in_binary.c \
 	print_prompt.c check_quote_close.c cat.c error.c show_welcome_mes.c \
@@ -58,7 +60,7 @@ all : ${NAME}
 
 ${NAME}: libft_compile
 	@printf "Compiling Minishell\n"
-	@$(CC) -c $(SRC_PATH) $(CD_PATH) $(EXP_PATH) -I $(HEADER_DIR) -I $(LIBFT_HEADER) -L $(LIBFT_DIR) -lft
+	@$(CC) $(FLAGS) -c $(SRC_PATH) $(CD_PATH) $(EXP_PATH) -I $(HEADER_DIR) -I $(LIBFT_HEADER) -L $(LIBFT_DIR) -lft
 	@$(CC) $(OBJ) $(CD_OBJ) $(EXP_OBJ) -o ${NAME} -L $(LIBFT_DIR) -lft
 
 libft_compile:

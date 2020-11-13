@@ -37,11 +37,11 @@ char	**new_cmd(char **arr, int i, int j)
 	int	sticked;
 
 	len = (int)ft_tablen(arr);
-	if ((!arr[i][j + 1] || arr[i][j + 1] == '>' && !arr[i][j + 2]) && arr[i + 1])
+	if ((!arr[i][j + 1] || (arr[i][j + 1] == '>' && (!arr[i][j + 2]) && arr[i + 1])))
 		len--;
 	if (!j)
 		len--;
-	if (sticked = sticked_next_redir(arr[i]))
+	if ((sticked = sticked_next_redir(arr[i])))
 		len++;
 	if (!(new = malloc(sizeof(char*) * (len + 1))))
 		return (NULL);
@@ -122,7 +122,6 @@ char	**check_for_redir(char **arr, t_mini *sh)
 	int	j;
 	char	*file;
 	char	**tmp;
-	int	k;
 
 	tmp = NULL;
 	i = -1;

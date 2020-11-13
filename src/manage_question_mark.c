@@ -7,7 +7,7 @@ int next_char_is_question_mark(char *s, int i)
 }
 
 /*replace $? by exit value  in the str*/
-void replace_question_mark_by_exit_value(char **str, int i, int n, t_mini *sh)
+void replace_question_mark_by_exit_value(char **str, int i, int n)
 {
 	char *s;
 	int nb_lens;
@@ -25,8 +25,8 @@ void replace_question_mark_by_exit_value(char **str, int i, int n, t_mini *sh)
 	*str = s;
 }
 
-void manage_question_mark(char **str, int *i, int exit_value, t_mini *sh)
+void manage_question_mark(char **str, int *i, int exit_value)
 {
-	replace_question_mark_by_exit_value(str, *i, exit_value, sh);
+	replace_question_mark_by_exit_value(str, *i, exit_value);
 	*i += get_nb_size(exit_value);
 }

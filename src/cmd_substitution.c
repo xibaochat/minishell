@@ -55,7 +55,7 @@ void manage_substitution_in_str(t_mini *sh, char **str)
 		if (!(q.single_quote) && is_unescapted_c(&q, *str, i, '$'))
 		{
 			if (next_char_is_question_mark(*str, i))
-				manage_question_mark(str, &i, sh->exit_v, sh);
+				manage_question_mark(str, &i, sh->exit_v);
 			else if (replace_var_condition(&q, *str, i))
 			{
 				if ((value = varname_is_in_env((*str) + i + 1, sh)))
@@ -74,14 +74,14 @@ void manage_substitution_in_str(t_mini *sh, char **str)
 void replace_var_sub_by_true_value(char **arr, t_mini *sh)
 {
 	int i;
-	char *v;
-	t_quo q;
+//	char *v;
+//	t_quo q;
 
 	i = 0;
-	v = NULL;
+//	v = NULL;
 	while (arr[++i])
 	{
-		q = init_quotes_struct();
+	//	q = init_quotes_struct();
 		if (ft_strlen(arr[i]) <= 1)
 				continue;
 		else

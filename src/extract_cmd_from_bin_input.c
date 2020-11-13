@@ -2,23 +2,20 @@
 
 int get_bin_directory_index(char *str)
 {
-	char *new_cmd;
 	int lens;
-	int i;
 	int index;
 
-	i = 0;
 	lens = ft_strlen(str);
 	index = lens - 1;
 	while (str && str[index] && str[index] != '/')
 		index--;
-	return index;
+	return (index);
 }
 
 static int is_invalid_bin_path(int index, char *cmd)
 {
 	return (!index ||
-			(cmd[0] == '/' && index == (ft_strlen(cmd) - 1)));
+			(cmd[0] == '/' && index == (int)(ft_strlen(cmd) - 1)));
 }
 
 char *extract_cmd_from_bin_cmd(int index, char *bin_cmd)

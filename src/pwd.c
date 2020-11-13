@@ -12,4 +12,5 @@ void		pwd(t_mini *sh)
 		ft_putstr_w_new_line(path);
 		free_str(path);
 	}
+	(void)sh; 
 }

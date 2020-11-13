@@ -14,12 +14,9 @@ char *extract_str_wo_quote(char *s)
   if it is, return its value*/
 char *varname_is_in_env(char *s, t_mini *sh)
 {
-	int i;
 	char *str;
-	int lens;
 	char *value;
 
-	i = 0;
 	if (s)
 	{
 		str = extract_str_wo_quote(s);
@@ -45,4 +42,5 @@ void replace_var_by_value(char **s, int *i, char *v, t_mini *sh)
     free_str(*s);
     *s = str;
     *i += ft_strlen(v);
+    (void)sh;
 }

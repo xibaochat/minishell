@@ -99,5 +99,7 @@ int main(int ac, char **av, char **env)
 		ft_printf(HOME_ERROR, RED, WHITE);
 	manage_input(*sh);
 	free_var(sh);
+	(void)ac;
+	(void)av;
 	return (0);
 }

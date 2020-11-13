@@ -5,7 +5,6 @@ int replace_var_value(char **env, char *s)
 {
 	int i;
 	int j;
-	char *s1;
 	char *new_v;
 
 	i = 0;
@@ -29,11 +28,11 @@ void add_new_var_in_env(char *str, t_mini *sh)
 {
 	int i;
 	int j;
-	char *tmp;
+//	char *tmp;
 
 	i = 0;
 	j = 0;
-	tmp = NULL;
+//	tmp = NULL;
 	while (str[i] && str[i] != '=')
 		i++;
 	while (sh->env[j])
@@ -49,9 +48,6 @@ void add_new_var_in_env(char *str, t_mini *sh)
 /*check var is inside ENV or not, if not add var and its value in ENV*/
 void export_add_var(char *var_value, t_mini *sh)
 {
-	char *tmp;
-	char *s;
-
 	if (!replace_var_value(sh->env, var_value))
 		add_new_var_in_env(var_value, sh);
 }
