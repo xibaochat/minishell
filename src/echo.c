@@ -1,5 +1,9 @@
 #include "minishell.h"
 
+/*
+** The "-n" option skips the '\n' after executing echo
+*/
+
 int has_n_option(char *s)
 {
 	if (s)
@@ -13,14 +17,10 @@ int has_n_option(char *s)
 void	echo(char **args)
 {
 	int i;
-	int	n_option;
 
-	i = 0;
-	n_option = has_n_option(args[1]);
-	if (n_option)
-		i = 1;
+	i = has_n_option(args[1]);
 	while (args[++i])
-    {
+	{
 		if (args[i] && args[i][0])
 		{
 			ft_putstr(args[i]);
@@ -29,6 +29,6 @@ void	echo(char **args)
 		}
 		// don't show str if it is empty echo "" v1 v2
 	}
-	if (!n_option)
+	if (!has_n_option(args[1]))
 		ft_putstr("\n");
 }

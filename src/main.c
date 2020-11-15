@@ -11,12 +11,14 @@ void exec_command(char **split_input, t_mini *sh)
 		unset(split_input, sh);
 	else if (!ft_strcmp(split_input[0], "cd") && !sh->is_pipe)
 		ft_cd(split_input, sh);
+	else if (!ft_strcmp(split_input[0], "exit"))
+		ft_exit(split_input, sh);
 	else
 	{
 		sh->last_pid = fork();
 		if (sh->last_pid < 0)
 		{
-			perror("created failed\n");
+			ft_error("Fork failed", errno);
 			exit(EXIT_FAILURE);
 		}
 		else if (!sh->last_pid) //not built in, child process
@@ -93,8 +95,8 @@ int main(int ac, char **av, char **env)
 	//sh.last_pid = 0;
 	//	show_cat();
 	//	show_welcome_mes();
-	init_sh(env);
 	sh = get_sh();
+	init_sh(env, sh);
 	if (!ft_find_env(ENV_HOME, (*sh)->env))
 		ft_printf(HOME_ERROR, RED, WHITE);
 	manage_input(*sh);

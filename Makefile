@@ -68,7 +68,7 @@ libft_compile:
 
 clean : libft_clean
 		@rm -fr objects
-		@printf "Object files removed\n"
+		@printf "\033[1;35mObject files removed\033[;0m\n"
 
 libft_clean:
 		@make -C ./libft clean
@@ -76,7 +76,7 @@ libft_clean:
 fclean: clean libft_fclean
 		@rm -f $(NAME)
 		@rm -f **/*~
-		@printf "Executable and object files removed\n"
+		@printf "\033[1;35mExecutable and object files removed\033[;0m\n"
 
 libft_fclean:
 		@make -C ./libft fclean

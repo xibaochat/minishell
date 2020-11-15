@@ -7,10 +7,8 @@ t_mini **get_sh()
 	return (&sh);
 }
 
-void init_sh(char **env)
+void init_sh(char **env, t_mini **sh)
 {
-	t_mini **sh;
-
 	sh = get_sh();
 	(*sh) = (t_mini *)malloc(sizeof(t_mini));
 	(*sh)->last_return = 0;
@@ -19,4 +17,5 @@ void init_sh(char **env)
 	(*sh)->exit_v = 0;
 	cpy_env(*sh, env);
 	(*sh)->is_pipe = 0;
+	(*sh)->exiting = 0;
 }

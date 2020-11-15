@@ -37,14 +37,14 @@ void	ft_exit(char **split_input, t_mini *sh)
 	if (tab_len > 2)
 	{
 		ft_putstr_fd("./Minishell: exit: too many arguments\n", 2);
-        sh->last_return = 1;
+        	sh->last_return = 1;
 	}
 	else if (tab_len == 2)
 		ft_check_exit(split_input, sh);
 	else
 	{
 		ft_tabfree(sh->env);
-        ft_putstr("exit\n");
-        exit(0);
+        	ft_putstr("exit\n");
+		exit(EXIT_SUCCESS);
 	}
 }

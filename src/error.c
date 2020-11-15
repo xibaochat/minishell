@@ -13,7 +13,7 @@ void show_key_error_message(int key, char *s)
 
 
 /*
-** this function was copied from show_message_error_if_cmd_cant_find.c file
+** If can't find cmd : show error message
 */
 
 void show_error_message(char *cmd, char *err, t_mini *sh)
@@ -23,12 +23,20 @@ void show_error_message(char *cmd, char *err, t_mini *sh)
 	sh->last_return = 127;
 }
 
+/*
+** ft_error() uses errno (which is automatically set when failure of malloc, dup2, etc.))
+*/
+
 int	ft_error(char *str, int errno_value)
 {
 	ft_putstr_w_new_line_fd(strerror(errno_value), 2);
 	(void)str;
 	return (0);
 }
+
+/*
+** function used in main.c for the specific error of having 2 ";" in a row
+*/
 
 int is_syntax_error(char *s, t_mini *sh)
 {
