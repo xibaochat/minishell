@@ -8,7 +8,7 @@ void ft_cold_quit(int sig)
 	if ((*sh)->is_cmd == 1)
 	{
 		(*sh)->last_return = 131;
-		ft_putstr_w_new_line_fd("", 2);
+		ft_putstr_w_new_line_fd("", STDERR_FILENO);
 	}
 	else
 		(*sh)->last_return = 0;
@@ -29,7 +29,7 @@ void ft_not_quit(int sig)
 		free(*buffer);
 		*buffer = NULL;
 	}// jusqu'a ici
-	ft_putstr_w_new_line_fd("", 2);
+	ft_putstr_w_new_line_fd("", STDERR_FILENO);
 	if ((*sh)->is_cmd) // ls -R / in the process of execution
 	{
 		print_prompt(*sh);
