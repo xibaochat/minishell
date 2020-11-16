@@ -60,6 +60,7 @@ typedef struct	s_mini
 	int			cmd_is_bin;
 	int			newfd;
 	int			is_pipe;
+	int exiting;
 }				t_mini;
 
 
