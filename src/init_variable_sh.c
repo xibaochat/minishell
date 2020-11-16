@@ -17,5 +17,4 @@ void init_sh(char **env, t_mini **sh)
 	(*sh)->exit_v = 0;
 	cpy_env(*sh, env);
 	(*sh)->is_pipe = 0;
-	(*sh)->exiting = 0;
 }
