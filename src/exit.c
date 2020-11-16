@@ -21,13 +21,13 @@ static void ft_check_exit(char **s, t_mini *sh, int fd)
 		ft_putstr_fd(s[1], fd);
 		ft_putstr_fd(" : numeric argument required\n", fd);
 		ft_tabfree(sh->env);
-		exit(255);
+//		exit(255);
 	}
 	else
 	{
 		ft_putstr_w_new_line_fd("exit", fd);
 		ft_tabfree(sh->env);
-		exit(ft_atoi(s[1]));
+//		exit(ft_atoi(s[1]));
 	}
 }
 
@@ -47,6 +47,6 @@ void	ft_exit(char **split_input, t_mini *sh, int fd)
 	{
 		ft_tabfree(sh->env);
         ft_putstr_w_new_line_fd("exit", fd);
-        exit(0);
+		//      exit(0);
 	}
 }
