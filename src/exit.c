@@ -23,7 +23,7 @@ static void ft_check_exit(char **s, t_mini *sh)
 	}
 	else
 	{
-		ft_putstr_w_new_line("exit");
+	//	ft_putstr_w_new_line("exit");
 		ft_tabfree(sh->env);
 		exit(ft_atoi(s[1]));
 	}
@@ -44,7 +44,7 @@ void	ft_exit(char **split_input, t_mini *sh)
 	else
 	{
 		ft_tabfree(sh->env);
-        	ft_putstr("exit\n");
+        //	ft_putstr("exit\n");
 		exit(EXIT_SUCCESS);
 	}
 }
