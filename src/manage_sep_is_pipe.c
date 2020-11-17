@@ -88,7 +88,7 @@ void manage_pipe(int i, int nb_cmd, char **arr, t_mini *sh)
 				execve(full_cmd, arr_output, sh->env);
 				ft_putstr_fd("Exec format error: ", STDERR_FILENO);
 				ft_putstr_w_new_line_fd(arr_output[0], STDERR_FILENO);
-				exit(EXIT_FAILURE);
+				exit(sh->last_return);
 			}
 			else
 				pipe_parent_process(pid, sh);
