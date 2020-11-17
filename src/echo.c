@@ -4,7 +4,7 @@
 ** The "-n" option skips the '\n' after executing echo
 */
 
-int has_n_option(char *s)
+int	has_n_option(char *s)
 {
 	if (s)
 	{
@@ -16,7 +16,7 @@ int has_n_option(char *s)
 
 void	echo(char **args)
 {
-	int i;
+	int	i;
 
 	i = has_n_option(args[1]);
 	while (args[++i])

@@ -2,11 +2,12 @@
 
 /*find variable name is inside ENV or not
  and return its value
-*/
+ */
+
 char	*ft_find_env(char *elem, char **env)
 {
-	int i;
-	int lens;
+	int	i;
+	int	lens;
 
 	i = -1;
 	while (env[++i])

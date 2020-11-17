@@ -1,9 +1,9 @@
-# include "minishell.h"
+#include "minishell.h"
 
-int get_bin_directory_index(char *str)
+int	get_bin_directory_index(char *str)
 {
-	int lens;
-	int index;
+	int	lens;
+	int	index;
 
 	lens = ft_strlen(str);
 	index = lens - 1;
@@ -12,15 +12,15 @@ int get_bin_directory_index(char *str)
 	return (index);
 }
 
-static int is_invalid_bin_path(int index, char *cmd)
+static int	is_invalid_bin_path(int index, char *cmd)
 {
-	return (!index ||
-			(cmd[0] == '/' && index == (int)(ft_strlen(cmd) - 1)));
+	return (!index
+		|| (cmd[0] == '/' && index == (int)(ft_strlen(cmd) - 1)));
 }
 
-char *extract_cmd_from_bin_cmd(int index, char *bin_cmd)
+char	*extract_cmd_from_bin_cmd(int index, char *bin_cmd)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = ft_strnew(ft_strlen(bin_cmd) - index + 1);
 	ft_strncat(tmp, bin_cmd + index + 1, ft_strlen(bin_cmd) - index);
@@ -28,17 +28,17 @@ char *extract_cmd_from_bin_cmd(int index, char *bin_cmd)
 	return (bin_cmd);
 }
 
-static int cmd_is_in_bin_dir(char *bin_dir, char *cmd)
+static int	cmd_is_in_bin_dir(char *bin_dir, char *cmd)
 {
-	DIR *d;
-	struct dirent *dir;
+	DIR				*d;
+	struct dirent	*dir;
 
 	d = opendir(bin_dir);
 	if (d)
 	{
 		while ((dir = readdir(d)))
 		{
-			if(!ft_strcmp(cmd, dir->d_name))
+			if (!ft_strcmp(cmd, dir->d_name))
 			{
 				closedir(d);
 				return (1);
@@ -49,12 +49,12 @@ static int cmd_is_in_bin_dir(char *bin_dir, char *cmd)
 	return (0);
 }
 
-char *manage_binary_cmd(char *bin_cmd, t_mini *sh)
+char	*manage_binary_cmd(char *bin_cmd, t_mini *sh)
 {
-	char *bin_dir;
-	char *cmd;
-	int index;
-	char *path;
+	char	*bin_dir;
+	char	*cmd;
+	int		index;
+	char	*path;
 
 	index = get_bin_directory_index(bin_cmd);
 	path = NULL;

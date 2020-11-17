@@ -1,17 +1,19 @@
-# include "minishell.h"
+#include "minishell.h"
 
 /*if the char apres $ is ?*/
-int next_char_is_question_mark(char *s, int i)
+
+int	next_char_is_question_mark(char *s, int i)
 {
 	return (s[i + 1] && s[i + 1] == '?');
 }
 
 /*replace $? by exit value  in the str*/
-void replace_question_mark_by_exit_value(char **str, int i, int n)
+
+void	replace_question_mark_by_exit_value(char **str, int i, int n)
 {
-	char *s;
-	int nb_lens;
-	char *s1;
+	char	*s;
+	int		nb_lens;
+	char	*s1;
 
 	s1 = ft_itoa(n);
 	nb_lens = get_nb_size(n);
@@ -25,7 +27,7 @@ void replace_question_mark_by_exit_value(char **str, int i, int n)
 	*str = s;
 }
 
-void manage_question_mark(char **str, int *i, int exit_value)
+void	manage_question_mark(char **str, int *i, int exit_value)
 {
 	replace_question_mark_by_exit_value(str, *i, exit_value);
 	*i += get_nb_size(exit_value);

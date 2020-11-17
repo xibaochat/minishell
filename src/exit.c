@@ -1,8 +1,8 @@
-# include "minishell.h"
+#include "minishell.h"
 
-static int has_alpha(char *s)
+static int	has_alpha(char *s)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (s[++i])
@@ -13,7 +13,7 @@ static int has_alpha(char *s)
 	return (0);
 }
 
-static void ft_check_exit(char **s, t_mini *sh)
+static void	ft_check_exit(char **s, t_mini *sh)
 {
 	if (has_alpha(s[1]))
 	{
@@ -31,7 +31,7 @@ static void ft_check_exit(char **s, t_mini *sh)
 
 void	ft_exit(char **split_input, t_mini *sh)
 {
-	int tab_len;
+	int	tab_len;
 
 	tab_len = ft_tablen(split_input);
 	if (tab_len > 2)

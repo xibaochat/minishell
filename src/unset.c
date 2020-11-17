@@ -1,12 +1,12 @@
 #include "minishell.h"
 
-/**
- * Replace given var in sh->env by an empty string
- */
+/*
+** Replace given var in sh->env by an empty string
+*/
 
-static int unset_var_is_valid(t_mini *sh, char *str)
+static int	unset_var_is_valid(t_mini *sh, char *str)
 {
-	int i;
+	int	i;
 
 	(void)sh;
 	i = 0;
@@ -15,17 +15,16 @@ static int unset_var_is_valid(t_mini *sh, char *str)
 		return (0);
 	while (str[i])
 	{
-		if (!ft_isalnum(str[i]) &&
-            str[i] != '_')
-            return (0);
+		if (!ft_isalnum(str[i]) && str[i] != '_')
+			return (0);
 		i++;
 	}
 	return (1);
 }
 
-static int has_invalid_var(t_mini *sh, char **arr)
+static int	has_invalid_var(t_mini *sh, char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i])
@@ -37,14 +36,14 @@ static int has_invalid_var(t_mini *sh, char **arr)
 	return (0);
 }
 
-void unset(char **arr, t_mini *sh)
+void	unset(char **arr, t_mini *sh)
 {
-	int i;
-	int j;
-	int lens;
-	char *tmp;
+	int		i;
+	int		j;
+	int		lens;
+	char	*tmp;
 
-	i = 0;  // Skip 'unset'
+	i = 0;// Skip 'unset'
 	while (arr[++i])
 	{
 		//check unset var is valid or not ex: unset 1a2b(NOT valid)

@@ -1,9 +1,9 @@
-# include "minishell.h"
+#include "minishell.h"
 
-static char **get_bin_path_arr(t_mini *sh)
+static char	**get_bin_path_arr(t_mini *sh)
 {
-	char *path;
-	char ** bin_path;
+	char	*path;
+	char	**bin_path;
 
 	path = ft_find_env(ENV_PATH, sh->env);
 	if (!path)
@@ -12,9 +12,9 @@ static char **get_bin_path_arr(t_mini *sh)
 	return (bin_path);
 }
 
-int is_binary_path(char *s)
+int	is_binary_path(char *s)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (s[++i])
@@ -25,14 +25,14 @@ int is_binary_path(char *s)
 	return (0);
 }
 
-char *find_full_binary_path(char *cmd, t_mini *sh)
+char	*find_full_binary_path(char *cmd, t_mini *sh)
 {
-	char **bin_path;
-	char *full_path;
+	char	**bin_path;
+	char	*full_path;
 
 	bin_path = NULL;
 	full_path = NULL;
- 	if (is_binary_path(cmd)) //ex: /bin/ls, cmd is ls, bin_path is /bin/
+	if (is_binary_path(cmd)) //ex: /bin/ls, cmd is ls, bin_path is /bin/
 		return (manage_binary_cmd(cmd, sh));
 	else
 		bin_path = get_bin_path_arr(sh);

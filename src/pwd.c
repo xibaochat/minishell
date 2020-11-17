@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void		pwd(t_mini *sh)
+void	pwd(t_mini *sh)
 {
 	char	*path;
 
@@ -12,5 +12,5 @@ void		pwd(t_mini *sh)
 		ft_putstr_w_new_line(path);
 		free_str(path);
 	}
-	(void)sh; 
+	(void)sh;
 }

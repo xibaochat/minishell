@@ -1,6 +1,6 @@
-# include "minishell.h"
+#include "minishell.h"
 
-static int is_invalid_varname(t_quo *q, const char *s, int i)
+static int	is_invalid_varname(t_quo *q, const char *s, int i)
 {
 	(void)q;
 	return (!((ft_isalnum(s[i]) || s[i] == '_')));
@@ -10,13 +10,15 @@ static int is_invalid_varname(t_quo *q, const char *s, int i)
 	/* 		 || is_unescapted_c(q, s, i, '\\') */
 	/*  		 || is_unescapted_c(q, s, i, '/') */
 	/* 		 || is_unescapted_c(q, s, i, SINGLE) */
-    /*   	     || is_unescapted_c(q, s, i, DOUBLE))); */
+	/*   	     || is_unescapted_c(q, s, i, DOUBLE))); */
 }
+
 /*var name length*/
-int get_varname_len(const char *s, int i)
+
+int	get_varname_len(const char *s, int i)
 {
-	int len;
-	t_quo q;
+	int		len;
+	t_quo	q;
 
 	len = 0;
 	q = init_quotes_struct();
@@ -24,13 +26,15 @@ int get_varname_len(const char *s, int i)
 	{
 		manage_struct_quotes(&q, s, i);
 		if (is_invalid_varname(&q, s, i))
-			break;
+			break ;
 		++len;
 	}
 	return (len);
 }
+
 /*in the situation var should be replaced*/
-int replace_var_condition(t_quo *q, char *s, int i)
+
+int	replace_var_condition(t_quo *q, char *s, int i)
 {
 	if (s[i + 1])
 	{
@@ -40,19 +44,21 @@ int replace_var_condition(t_quo *q, char *s, int i)
 	}
 	return (0);
 }
+
 /*replace value after $, 1.$? 2. if $VAR exists, replace by value in ENV
-**3. $INVALID_VAR , replace ""
-*/
-void manage_substitution_in_str(t_mini *sh, char **str)
+ **3. $INVALID_VAR , replace ""
+ */
+
+void	manage_substitution_in_str(t_mini *sh, char **str)
 {
-	int i;
-	t_quo q;
-	char *value;
+	int		i;
+	t_quo	q;
+	char	*value;
 
 	i = 0;
 	q = init_quotes_struct();
 	value = NULL;
-	while((*str)[i])
+	while ((*str)[i])
 	{
 		manage_struct_quotes(&q, *str, i);
 		if (!(q.single_quote) && is_unescapted_c(&q, *str, i, '$'))
@@ -75,20 +81,22 @@ void manage_substitution_in_str(t_mini *sh, char **str)
 			i++;
 	}
 }
+
 /*replace chaque str in arr*/
-void replace_var_sub_by_true_value(char **arr, t_mini *sh)
+
+void	replace_var_sub_by_true_value(char **arr, t_mini *sh)
 {
-	int i;
-//	char *v;
-//	t_quo q;
+	int	i;
+	//	char *v;
+	//	t_quo q;
 
 	i = 0;
-//	v = NULL;
+	//	v = NULL;
 	while (arr[++i])
 	{
-	//	q = init_quotes_struct();
+		//	q = init_quotes_struct();
 		if (ft_strlen(arr[i]) <= 1)
-				continue;
+			continue ;
 		else
 			manage_substitution_in_str(sh, &arr[i]);
 	}

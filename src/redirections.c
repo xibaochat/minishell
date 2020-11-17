@@ -28,22 +28,22 @@ int	sticked_next_redir(char *str)
 ** For ex2 : new_cmd("echo jojo > lulu > dodo") = "echo jojo > dodo"
 */
 
-
 char	**new_cmd(char **arr, int i, int j)
 {
-	int	len;
+	int		len;
 	char	**new;
-	int	k;
-	int	sticked;
+	int		k;
+	int		sticked;
 
 	len = (int)ft_tablen(arr);
-	if ((!arr[i][j + 1] || (arr[i][j + 1] == '>' && (!arr[i][j + 2]) && arr[i + 1])))
+	if ((!arr[i][j + 1] || (arr[i][j + 1] == '>'
+				&& (!arr[i][j + 2]) && arr[i + 1])))
 		len--;
 	if (!j)
 		len--;
 	if ((sticked = sticked_next_redir(arr[i])))
 		len++;
-	if (!(new = malloc(sizeof(char*) * (len + 1))))
+	if (!(new = malloc(sizeof(char *) * (len + 1))))
 		return (NULL);
 	k = -1;
 	while (++k < i)
@@ -73,9 +73,9 @@ void	manage_redir(t_mini *sh, char *file, char *elem, int j)
 	if (elem[j] == '<')
 	{
 		if ((sh->newfd = open(file, O_RDWR, 0600)) == -1)
-			ft_error("CAN'T OPEN FILE", errno);
+			ft_error("CAN'T OPEN FILE", errno, sh);
 		if (dup2(sh->newfd, 0) < 0)
-			ft_error("DUP2 FAILED", errno);
+			ft_error("DUP2 FAILED", errno, sh);
 		close(sh->newfd);
 	}
 	else
@@ -83,15 +83,15 @@ void	manage_redir(t_mini *sh, char *file, char *elem, int j)
 		if (elem[j + 1] == '>')
 		{
 			if ((sh->newfd = open(file, O_CREAT | O_RDWR | O_APPEND, 0600)) == -1)
-			ft_error("CAN'T OPEN FILE", errno);
+				ft_error("CAN'T OPEN FILE", errno, sh);
 		}
 		else
 		{
 			if ((sh->newfd = open(file, O_CREAT | O_RDWR | O_TRUNC, 0600)) == -1)
-			ft_error("CAN'T OPEN FILE", errno);
+				ft_error("CAN'T OPEN FILE", errno, sh);
 		}
 		if (dup2(sh->newfd, 1) < 0)
-			ft_error("DUP2 FAILED", errno);
+			ft_error("DUP2 FAILED", errno, sh);
 		close(sh->newfd);
 	}
 }
@@ -118,8 +118,8 @@ char	*file_name(char **arr, int i, int j, char c)
 
 char	**check_for_redir(char **arr, t_mini *sh)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*file;
 	char	**tmp;
 
@@ -133,7 +133,10 @@ char	**check_for_redir(char **arr, t_mini *sh)
 			if (ft_strchr("<>", arr[i][j]))
 			{
 				if (!(file = file_name(arr, i, j, arr[i][j])))
-					return (ft_error("NO FILE NAME", 8) ? NULL : NULL);
+				{
+					ft_error("NO FILE NAME", 8, sh);
+					return (NULL);
+				}
 				manage_redir(sh, file, arr[i], j);
 				tmp = new_cmd(arr, i, j);
 				ft_tabfree(arr);

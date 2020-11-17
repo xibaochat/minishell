@@ -3,7 +3,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-void exec_command(char **split_input, t_mini *sh)
+void	exec_command(char **split_input, t_mini *sh)
 {
 	if (!ft_strcmp(split_input[0], "export") && !sh->is_pipe)
 		export(split_input, sh);
@@ -18,7 +18,7 @@ void exec_command(char **split_input, t_mini *sh)
 		sh->last_pid = fork();
 		if (sh->last_pid < 0)
 		{
-			ft_error("Fork failed", errno);
+			ft_error("Fork failed", errno, sh);
 			exit(EXIT_FAILURE);
 		}
 		else if (!sh->last_pid) //not built in, child process
@@ -28,15 +28,15 @@ void exec_command(char **split_input, t_mini *sh)
 	}
 }
 
-void split_and_execute(char *str, char *sep, int i, t_mini *sh)
+void	split_and_execute(char *str, char *sep, int i, t_mini *sh)
 {
-	char **arr;
-	int j;
+	char	**arr;
+	int		j;
 
 	j = 0;
 	arr = ft_split_w_quotes(str, sep[i]);
 	if (!arr || !arr[0])
-		return;
+		return ;
 	if (sep[i] == '|' && ft_tablen(arr) > 1)
 	{
 		sh->is_pipe = 1;
@@ -63,11 +63,11 @@ void split_and_execute(char *str, char *sep, int i, t_mini *sh)
 	ft_tabfree(arr);
 }
 
-void manage_input(t_mini *sh)
+void	manage_input(t_mini *sh)
 {
-	char *input;
-	int i;
-	char sep[4] = ";| ";
+	char	*input;
+	int		i;
+	char	sep[4] = ";| ";
 
 	i = 0;
 	input = NULL;
@@ -88,9 +88,9 @@ void manage_input(t_mini *sh)
 	free_str(input);
 }
 
-int main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
-	t_mini **sh;
+	t_mini	**sh;
 
 	//manage_signals();
 	//sh.last_pid = 0;

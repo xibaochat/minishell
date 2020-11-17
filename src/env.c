@@ -2,9 +2,9 @@
 
 void	env(t_mini *sh)
 {
-    int i;
+	int	i;
 
-    i = -1;
+	i = -1;
 	if (sh->env)
 	{
 		while ((sh->env)[++i])

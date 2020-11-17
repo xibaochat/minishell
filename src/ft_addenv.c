@@ -1,8 +1,8 @@
 #include "minishell.h"
 
-int get_nb_env_var(t_mini *sh)
+int	get_nb_env_var(t_mini *sh)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (sh->env)
@@ -13,15 +13,15 @@ int get_nb_env_var(t_mini *sh)
 	return (i);
 }
 
-void ft_envadd(char *expt, t_mini *sh)
+void	ft_envadd(char *expt, t_mini *sh)
 {
-    int i;
-	int nb;
-    char    **env;
+	int		i;
+	int		nb;
+	char	**env;
 
 	nb = get_nb_env_var(sh);
 	i = -1;
-    if (!(env = (char **)malloc(sizeof(char *) * (nb + 2))))
+	if (!(env = (char **)malloc(sizeof(char *) * (nb + 2))))
 	{
 		ft_putstr_fd("Fail Malloc\n", 2);
 		exit(-1);
@@ -37,7 +37,7 @@ void ft_envadd(char *expt, t_mini *sh)
 			++i;
 		}
 	}
-    if (expt)
+	if (expt)
 		env[i++] = ft_strdup(expt);
 	if (sh->env)
 		ft_tabfree(sh->env);
@@ -45,10 +45,10 @@ void ft_envadd(char *expt, t_mini *sh)
 	sh->last_return = 0;
 }
 
-void cpy_env(t_mini *sh, char **env)
+void	cpy_env(t_mini *sh, char **env)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
