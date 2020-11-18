@@ -3,8 +3,22 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-void	exec_command(char **split_input, t_mini *sh)
+int	ft_max(int a, int b)
 {
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+int	exec_command(char **split_input, t_mini *sh)
+{
+	int	last_ret_child;
+	int	last_ret_parent;
+	int	p[2];
+	
+	last_ret_child = 0;
+	last_ret_parent = 0;
+	pipe(p);
 	if (!ft_strcmp(split_input[0], "export") && !sh->is_pipe)
 		export(split_input, sh);
 	else if (!ft_strcmp(split_input[0], "unset") && !sh->is_pipe)
@@ -22,25 +36,33 @@ void	exec_command(char **split_input, t_mini *sh)
 			exit(EXIT_FAILURE);
 		}
 		else if (!sh->last_pid) //not built in, child process
-			child_process(split_input, sh);
+		{
+			last_ret_child = child_process(split_input, sh);
+			write(p[1], &last_ret_child, sizeof(int));
+			exit(EXIT_SUCCESS);
+		}
 		else
-			parent_process(sh);
+			last_ret_parent = parent_process(sh);
 	}
+	read(p[0], &last_ret_child, sizeof(int));
+	return (ft_max(last_ret_child, last_ret_parent));
 }
 
-void	split_and_execute(char *str, char *sep, int i, t_mini *sh)
+int	split_and_execute(char *str, char *sep, int i, t_mini *sh)
 {
 	char	**arr;
 	int		j;
+	int	last_ret;
 
 	j = 0;
+	last_ret = 0;
 	arr = ft_split_w_quotes(str, sep[i]);
 	if (!arr || !arr[0])
-		return ;
+		return (0);
 	if (sep[i] == '|' && ft_tablen(arr) > 1)
 	{
 		sh->is_pipe = 1;
-		exec_command(arr, sh);
+		last_ret = exec_command(arr, sh);
 		sh->is_pipe = 0;
 	}
 	else if (sep[i] == ' ')
@@ -51,16 +73,20 @@ void	split_and_execute(char *str, char *sep, int i, t_mini *sh)
 			replace_var_sub_by_true_value(arr, sh);
 			delete_quotes_from_arr(arr);
 			delete_slash_from_arr(arr);
-			exec_command(arr, sh);
+			last_ret = exec_command(arr, sh);
 		}
 	}
 	else
 		while (arr[j])
 		{
-			split_and_execute(arr[j], sep, i + 1, sh);
+			if ((sh->last_return = split_and_execute(arr[j], sep, i + 1, sh)))
+				last_ret = sh->last_return;
 			j++;
 		}
+	if (last_ret > sh->last_return)
+		sh->last_return = last_ret;
 	ft_tabfree(arr);
+	return (sh->last_return);
 }
 
 void	manage_input(t_mini *sh)
@@ -80,7 +106,7 @@ void	manage_input(t_mini *sh)
 		sh->exit_v = sh->last_return;
 		sh->line = input;
 		sh->is_cmd = 1;
-		split_and_execute(input, sep, i, sh);
+		sh->last_return = split_and_execute(input, sep, i, sh);
 		sh->is_cmd = 0;
 		free_str(input);
 	}
