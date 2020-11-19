@@ -9,12 +9,13 @@ echo $! : gives the pid of the most recently executed background process (not su
 echo joie'\n' : joie\n
 echo joie"\n" : joie\n
 BUT BE CAREFUL --> echo joie\n : joien (this one works for now)
-echo ''$USER'' : give the value of $USER (2 single quotes = 1 double quote)
+echo ''$USER'' : give the value of $USER
 
 --------------NEW_ERR---------------
-cat < test4 ; echo $?
-< test4 cat ; echo $?
-< notworking.txt ; echo $?
+cat < test4 ; echo $? done
+< test4 cat ; echo $? done 
+< notworking.txt ; echo $? done
+LEAK when exec : echo qsdf | qfsdqss ; echo $?
 
 
 -----MAOBE_ERR-----

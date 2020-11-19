@@ -30,7 +30,7 @@ int	ft_error(char *str, int errno_value, t_mini *sh)
 {
 	ft_putstr_w_new_line_fd(strerror(errno_value), 2);
 	sh->last_return = errno_value;
-	printf("JE SUIS LA : last return = %d\n", sh->last_return);
+	exit(EXIT_FAILURE);
 	(void)str;
 	return (0);
 }

@@ -23,7 +23,7 @@ int	sticked_next_redir(char *str)
 }
 
 /*
-** new_cmd() returns the copy of the old cmd without the redirection currently handled.
+** new_cmd() returns the copy of the old cmd WITHOUT the redirection currently handled.
 ** For ex : new_cmd("echo jojo > lulu") = "echo jojo"
 ** For ex2 : new_cmd("echo jojo > lulu > dodo") = "echo jojo > dodo"
 */
@@ -68,15 +68,22 @@ char	**new_cmd(char **arr, int i, int j)
 ** manage_redir() will open (or create) the file for the redirection
 */
 
-void	manage_redir(t_mini *sh, char *file, char *elem, int j)
+int	manage_redir(t_mini *sh, char *file, char *elem, int j)
 {
 	if (elem[j] == '<')
 	{
 		if ((sh->newfd = open(file, O_RDWR, 0600)) == -1)
+		{
 			ft_error("CAN'T OPEN FILE", errno, sh);
+			return (1);
+		}
 		if (dup2(sh->newfd, 0) < 0)
+		{
 			ft_error("DUP2 FAILED", errno, sh);
+			return (1);
+		}
 		close(sh->newfd);
+		return (0);
 	}
 	else
 	{
@@ -84,15 +91,18 @@ void	manage_redir(t_mini *sh, char *file, char *elem, int j)
 		{
 			if ((sh->newfd = open(file, O_CREAT | O_RDWR | O_APPEND, 0600)) == -1)
 				ft_error("CAN'T OPEN FILE", errno, sh);
+			return (1);
 		}
 		else
 		{
 			if ((sh->newfd = open(file, O_CREAT | O_RDWR | O_TRUNC, 0600)) == -1)
 				ft_error("CAN'T OPEN FILE", errno, sh);
+			return (1);
 		}
 		if (dup2(sh->newfd, 1) < 0)
 			ft_error("DUP2 FAILED", errno, sh);
 		close(sh->newfd);
+		return (0);
 	}
 }
 
@@ -137,7 +147,8 @@ char	**check_for_redir(char **arr, t_mini *sh)
 					ft_error("NO FILE NAME", 8, sh);
 					return (NULL);
 				}
-				manage_redir(sh, file, arr[i], j);
+				if (manage_redir(sh, file, arr[i], j))
+					return (NULL);
 				tmp = new_cmd(arr, i, j);
 				ft_tabfree(arr);
 				free(file);
