@@ -90,7 +90,7 @@ void	replace_var_sub_by_true_value(char **arr, t_mini *sh)
 	//	char *v;
 	//	t_quo q;
 
-	i = 0;
+	i = -1;
 	//	v = NULL;
 	while (arr[++i])
 	{
