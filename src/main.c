@@ -14,11 +14,11 @@ int	exec_command(char **split_input, t_mini *sh)
 {
 	int	last_ret_child;
 	int	last_ret_parent;
-	int	p[2];
-	
+//	int	p[2];
+
 	last_ret_child = 0;
 	last_ret_parent = 0;
-	pipe(p);
+//	pipe(p);
 	if (!ft_strcmp(split_input[0], "export") && !sh->is_pipe)
 		export(split_input, sh);
 	else if (!ft_strcmp(split_input[0], "unset") && !sh->is_pipe)
@@ -38,13 +38,14 @@ int	exec_command(char **split_input, t_mini *sh)
 		else if (!sh->last_pid) //not built in, child process
 		{
 			last_ret_child = child_process(split_input, sh);
-			write(p[1], &last_ret_child, sizeof(int));
+//			ft_printf("last_ret_child %d", last_ret_child);
+//			write(p[1], &last_ret_child, sizeof(int));
 			exit(EXIT_SUCCESS);
 		}
 		else
 			last_ret_parent = parent_process(sh);
 	}
-	read(p[0], &last_ret_child, sizeof(int));
+//	read(p[0], &last_ret_child, sizeof(int));
 	return (ft_max(last_ret_child, last_ret_parent));
 }
 
@@ -85,6 +86,7 @@ int	split_and_execute(char *str, char *sep, int i, t_mini *sh)
 		}
 	if (last_ret > sh->last_return)
 		sh->last_return = last_ret;
+//	ft_printf("last return is %d\n", sh->last_return);
 	ft_tabfree(arr);
 	return (sh->last_return);
 }
@@ -98,8 +100,8 @@ void	manage_input(t_mini *sh)
 	i = 0;
 	input = NULL;
 	ft_signal(sh);
-//	while (print_prompt(sh) && get_next_line(0, &input))
-	while (get_next_line(0, &input))
+	while (print_prompt(sh) && get_next_line(0, &input))
+//	while (get_next_line(0, &input))
 	{
 		if (is_syntax_error(input, sh))
 			continue ;
