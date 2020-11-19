@@ -24,7 +24,10 @@ int	exec_command(char **split_input, t_mini *sh)
 	else if (!ft_strcmp(split_input[0], "unset") && !sh->is_pipe)
 		unset(split_input, sh);
 	else if (!ft_strcmp(split_input[0], "cd") && !sh->is_pipe)
+	{
 		ft_cd(split_input, sh);
+//		ft_printf("cd %d\n", sh->last_return);
+	}
 	else if (!ft_strcmp(split_input[0], "exit"))
 		ft_exit(split_input, sh);
 	else
@@ -40,12 +43,16 @@ int	exec_command(char **split_input, t_mini *sh)
 			last_ret_child = child_process(split_input, sh);
 //			ft_printf("last_ret_child %d", last_ret_child);
 //			write(p[1], &last_ret_child, sizeof(int));
-			exit(EXIT_SUCCESS);
+			exit(sh->last_return);
+//			exit(EXIT_SUCCESS);
 		}
 		else
+		{
 			last_ret_parent = parent_process(sh);
+		}
 	}
 //	read(p[0], &last_ret_child, sizeof(int));
+//	ft_printf("here %d %d %d\n", last_ret_child, last_ret_parent , ft_max(last_ret_child, last_ret_parent));
 	return (ft_max(last_ret_child, last_ret_parent));
 }
 
@@ -80,8 +87,12 @@ int	split_and_execute(char *str, char *sep, int i, t_mini *sh)
 	else
 		while (arr[j])
 		{
-			if ((sh->last_return = split_and_execute(arr[j], sep, i + 1, sh)))
-				last_ret = sh->last_return;
+			/* show_arr_value(arr); */
+			/* ft_printf("%c j is %d\n", sep[i], j); */
+//			if ((sh->last_return = split_and_execute(arr[j], sep, i + 1, sh)))
+//				last_ret = sh->last_return;
+			sh->last_return = split_and_execute(arr[j], sep, i + 1, sh);
+			sh->exit_v = sh->last_return;
 			j++;
 		}
 	if (last_ret > sh->last_return)
@@ -100,8 +111,8 @@ void	manage_input(t_mini *sh)
 	i = 0;
 	input = NULL;
 	ft_signal(sh);
-	while (print_prompt(sh) && get_next_line(0, &input))
-//	while (get_next_line(0, &input))
+//	while (print_prompt(sh) && get_next_line(0, &input))
+	while (get_next_line(0, &input))
 	{
 		if (is_syntax_error(input, sh))
 			continue ;

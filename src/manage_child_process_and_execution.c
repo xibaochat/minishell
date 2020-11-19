@@ -37,6 +37,7 @@ int	child_process(char **split_input, t_mini *sh)
 			free_str(bin_path);
 		}
 	}
+	//ft_printf("-----in child pro %d----\n", sh->last_return);
 	return (sh->last_return);
 }
 
@@ -52,5 +53,6 @@ int	parent_process(t_mini *sh)
 	// ex: touch /filename, you will get error: permission denied
 	else if (WIFEXITED(status) && WEXITSTATUS(status))
 		sh->last_return = status >> 8;
+	//ft_printf("-----in papa pro %d----\n", sh->last_return);
 	return (sh->last_return);
 }
