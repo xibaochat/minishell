@@ -3,8 +3,8 @@
 static int quote_condition(t_quo q, char *s, int i)
 {
 	return (!(q.have_quote) ||
-			(q.have_quote && is_unescapted_c(&q, s, i, DOUBLE))
-			|| (q.have_quote &&	is_unescapted_c(&q, s, i, DOUBLE)));
+			(is_unescapted_c(&q, s, i, SINGLE)
+			 || is_unescapted_c(&q, s, i, DOUBLE)));
 }
 
 static int		get_nb_words(char *str, char c)
