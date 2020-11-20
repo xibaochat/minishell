@@ -62,7 +62,7 @@ static char	get_conversion_char(char *format, int i)
 	return (format[i]);
 }
 
-int			do_conversion(va_list *ap, char *format, int i)
+int	do_conversion(va_list *ap, char *format, int i)
 {
 	char	conversion_char;
 	char	*value;

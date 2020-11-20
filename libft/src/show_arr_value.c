@@ -1,8 +1,8 @@
-# include "libft.h"
+#	include "libft.h"
 
-void show_arr_value(char **arr)
+void	show_arr_value(char **arr)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (arr)

@@ -1,6 +1,6 @@
-# include "libft.h"
+#	include "libft.h"
 
-int			ft_get_directory(char *execname, char *directory)
+int	ft_get_directory(char *execname, char *directory)
 {
 	int		dir_descriptor;
 

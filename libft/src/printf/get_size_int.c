@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-int			get_size_int(long int n)
+int	get_size_int(long int n)
 {
 	int				size;
 

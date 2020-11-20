@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-static int			get_size(uintmax_t n)
+static int	get_size(uintmax_t n)
 {
 	int				size;
 
@@ -25,9 +25,9 @@ static int			get_size(uintmax_t n)
 	return (size);
 }
 
-static char			*get_converted_str(char *str, uintmax_t res, int *i)
+static char	*get_converted_str(char *str, uintmax_t res, int *i)
 {
-	static char base[17] = "0123456789ABCDEF";
+	static char	base[17] = "0123456789ABCDEF";
 
 	if (res >= 16)
 		get_converted_str(str, res / 16, i);
@@ -35,7 +35,7 @@ static char			*get_converted_str(char *str, uintmax_t res, int *i)
 	return (str);
 }
 
-char				*ft_trans_capital_x(uintmax_t n)
+char	*ft_trans_capital_x(uintmax_t n)
 {
 	int				i;
 	uintmax_t		res;
@@ -43,7 +43,8 @@ char				*ft_trans_capital_x(uintmax_t n)
 
 	i = 0;
 	res = n;
-	if (!(str = (char *)malloc(get_size(n) + 1)))
+	str = (char *)malloc(get_size(n) + 1);
+	if (!str)
 		return (NULL);
 	str = get_converted_str(str, res, &i);
 	str[i] = '\0';

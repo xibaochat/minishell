@@ -17,7 +17,8 @@ char	*ft_strnew_with_char(int size, char c)
 	char	*ptr;
 	int		i;
 
-	if (!(ptr = (char *)malloc(size + 1)))
+	ptr = ft_strnew(size + 1);
+	if (!ptr)
 		return (NULL);
 	i = 0;
 	while (i < size)

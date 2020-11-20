@@ -36,13 +36,15 @@ static int	cmd_is_in_bin_dir(char *bin_dir, char *cmd)
 	d = opendir(bin_dir);
 	if (d)
 	{
-		while ((dir = readdir(d)))
+		dir = readdir(d);
+		while (dir)
 		{
 			if (!ft_strcmp(cmd, dir->d_name))
 			{
 				closedir(d);
 				return (1);
 			}
+			dir = readdir(d);
 		}
 		closedir(d);
 	}
@@ -63,8 +65,6 @@ char	*manage_binary_cmd(char *bin_cmd, t_mini *sh)
 		show_error_message(bin_cmd, BIN_ERROR, sh);
 		return (NULL);
 	}
-	//extract cmd and check it is inside the bin dir or not,
-	// ex: /bin/ls, extract ls then check ls is inside /bin or not
 	cmd = extract_cmd_from_bin_cmd(index, bin_cmd);
 	bin_dir = ft_strnew(index + 1);
 	ft_strncat(bin_dir, bin_cmd, index);

@@ -1,20 +1,16 @@
 #include "libft.h"
 
-int is_escapted(t_quo *q, const char *s, int i)
+int	is_escapted(t_quo *q, const char *s, int i)
 {
-	int nb_bslash;
-	(void)q;
+	int		nb_bslash;
 
 	nb_bslash = 0;
 	while (--i >= 0 && s[i] && s[i] == '\\')
 		++nb_bslash;
 	return (nb_bslash % 2);
+	(void)q;
 }
 
-/**
- * Check if current char (=s[i]) is equal to given char (=c)
- * If so, also check that the char is not escaped
-*/
 int	is_unescapted_c(t_quo *q, const char *s, int i, const char c)
 {
 	if (s[i] != c)

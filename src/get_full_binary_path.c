@@ -18,7 +18,8 @@ char	*get_full_path(char *cmd, DIR *d, char **bin_path, int i)
 	char			*full_path;
 
 	full_path = NULL;
-	while ((dir = readdir(d)))
+	dir = readdir(d);
+	while (dir)
 	{
 		if (!ft_strcmp(cmd, dir->d_name))
 		{
@@ -26,6 +27,7 @@ char	*get_full_path(char *cmd, DIR *d, char **bin_path, int i)
 			full_path = get_full_bin_path(bin_path[i], cmd, bin_path);
 			return (full_path);
 		}
+		dir = readdir(d);
 	}
 	closedir(d);
 	return (NULL);

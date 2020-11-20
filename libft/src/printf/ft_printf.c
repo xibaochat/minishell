@@ -21,8 +21,8 @@ static void	simple_print(char c, int *nb_output, int *i)
 
 static void	manage_conversion(va_list *ap, char **format, int *i, int *nb_out)
 {
-	if (valide_star_nb_combi(*format, *i) &&
-		!has_invalide_char_in_flag(*format, *i))
+	if (valide_star_nb_combi(*format, *i)
+		&& !has_invalide_char_in_flag(*format, *i))
 	{
 		*format = manage_star(ap, *format, *i);
 		*nb_out += do_conversion(ap, *format, *i);
@@ -34,7 +34,7 @@ static void	manage_conversion(va_list *ap, char **format, int *i, int *nb_out)
 		++(*i);
 }
 
-int			printf_core(va_list *ap, char *format)
+int	printf_core(va_list *ap, char *format)
 {
 	int	i;
 	int	nb_output;
@@ -52,7 +52,7 @@ int			printf_core(va_list *ap, char *format)
 	return (nb_output);
 }
 
-int			ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	char	*new_format;

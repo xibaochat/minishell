@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int			is_space(char c)
+int	is_space(char c)
 {
 	return ((c >= 9 && c <= 13) || c == ' ');
 }

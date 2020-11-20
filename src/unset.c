@@ -1,9 +1,5 @@
 #include "minishell.h"
 
-/*
-** Replace given var in sh->env by an empty string
-*/
-
 static int	unset_var_is_valid(t_mini *sh, char *str)
 {
 	int	i;
@@ -36,34 +32,36 @@ static int	has_invalid_var(t_mini *sh, char **arr)
 	return (0);
 }
 
-void	unset(char **arr, t_mini *sh)
+static void	remove_var_in_env(char *str, t_mini *sh)
 {
 	int		i;
-	int		j;
 	int		lens;
 	char	*tmp;
 
-	i = 0;// Skip 'unset'
+	i = 0;
+	lens = ft_strlen(str);
+	while (sh->env[i])
+	{
+		if (!ft_strncmp(str, sh->env[i], lens)
+			&& sh->env[i][lens] && sh->env[i][lens] == '=')
+		{
+			tmp = sh->env[i];
+			sh->env[i] = ft_strnew(1);
+			free_str(tmp);
+		}
+		i++;
+	}
+}
+
+void	unset(char **arr, t_mini *sh)
+{
+	int		i;
+
+	i = 0;
 	while (arr[++i])
 	{
-		//check unset var is valid or not ex: unset 1a2b(NOT valid)
 		if (unset_var_is_valid(sh, arr[i]))
-		{
-			j = 0;
-			lens = ft_strlen(arr[i]);
-			while (sh->env[j])
-			{
-				//find which env var should be replaced by an empty str
-				if (!ft_strncmp(arr[i], sh->env[j], lens)
-					&& sh->env[j][lens] && sh->env[j][lens] == '=')
-				{
-					tmp = sh->env[j];
-					sh->env[j] = ft_strnew(1);
-					free_str(tmp);
-				}
-				j++;
-			}
-		}
+			remove_var_in_env(arr[i], sh);
 		else
 			show_key_error_message(UNSET, arr[i]);
 	}

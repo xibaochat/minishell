@@ -4,23 +4,33 @@
 **	ft_strrmv removes all char of sep in s and returns the new string
 */
 
-char	*ft_strrmv(char *s, char *sep)
+static int	get_new_len(char *s, char *sep)
 {
 	int	i;
-	int	len;
-	char	*d;
+	int	lens;
 
 	i = 0;
-	len = 0;
+	lens = 0;
 	while (s[i])
 	{
 		if (!ft_strchr(sep, s[i]))
-			len++;
+			lens++;
 		i++;
 	}
-	if (!(d = malloc(sizeof(char) * (len + 1))))
-		return (NULL);
+	return (lens);
+}
+
+char	*ft_strrmv(char *s, char *sep)
+{
+	int		i;
+	int		len;
+	char	*d;
+
 	i = 0;
+	len = get_new_len(s, sep);
+	d = ft_strnew(len + 1);
+	if (!d)
+		return (NULL);
 	while (len)
 	{
 		if (!ft_strchr(sep, *s))

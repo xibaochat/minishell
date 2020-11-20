@@ -1,13 +1,12 @@
-#include "libft.h"
+#	include "libft.h"
 
-static int quote_condition(t_quo q, char *s, int i)
+static int	quote_condition(t_quo q, char *s, int i)
 {
-	return (!(q.have_quote) ||
-			(is_unescapted_c(&q, s, i, SINGLE)
-			 || is_unescapted_c(&q, s, i, DOUBLE)));
+	return (!(q.have_quote) || (is_unescapted_c(&q, s, i, SINGLE)
+				|| is_unescapted_c(&q, s, i, DOUBLE)));
 }
 
-static int		get_nb_words(char *str, char c)
+static int	get_nb_words(char *str, char c)
 {
 	int			i;
 	int			nb_words;
@@ -19,18 +18,17 @@ static int		get_nb_words(char *str, char c)
 	while (str[i])
 	{
 		manage_struct_quotes(&quo, str, i);
-		if (((!i && (str[i] != c)) ||
-			 (i > 0 &&
-			  is_unescapted_c(&quo, str, i - 1, c) &&
-			  !is_unescapted_c(&quo, str, i, c) &&
-			  quote_condition(quo, str, i))))
+		if ((!i && (str[i] != c))
+			|| (i > 0 && is_unescapted_c(&quo, str, i - 1, c)
+					&& !is_unescapted_c(&quo, str, i, c)
+					&& quote_condition(quo, str, i)))
 			nb_words++;
 		i++;
 	}
 	return (nb_words);
 }
 
-static int		get_word_len(char *str, int i, char sep)
+static int	get_word_len(char *str, int i, char sep)
 {
 	int		lens;
 	t_quo	quo;
@@ -46,7 +44,7 @@ static int		get_word_len(char *str, int i, char sep)
 	return (lens);
 }
 
-char			**split_into_tab(char **arr, char *str, char sep)
+char	**split_into_tab(char **arr, char *str, char sep)
 {
 	int			i;
 	int			j;
@@ -73,16 +71,7 @@ char			**split_into_tab(char **arr, char *str, char sep)
 	return (arr);
 }
 
-static char		**empty_arr(void)
-{
-	char		**res;
-
-	res = (char **)malloc(sizeof(char *));
-	res[0] = NULL;
-	return (res);
-}
-
-char			**ft_split_w_quotes(char const *s, char c)
+char	**ft_split_w_quotes(char const *s, char c)
 {
 	char		*str;
 	int			words_nb;
@@ -100,9 +89,5 @@ char			**ft_split_w_quotes(char const *s, char c)
 		return (NULL);
 	arr[words_nb] = NULL;
 	arr = split_into_tab(arr, str, c);
-	/* ft_printf("-------------- START for [%c]\n", c); */
-	/* for (int k = 0; arr[k]; k++) */
-	/* 	ft_printf("### .%s.\n", arr[k]); */
-	/* ft_printf("-------------- END for [%c]\n", c); */
 	return (arr);
 }

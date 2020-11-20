@@ -1,8 +1,8 @@
-# include "libft.h"
+#	include "libft.h"
 
 void	ft_tabfree(char **tab)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (tab)

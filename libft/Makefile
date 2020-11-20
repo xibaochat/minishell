@@ -32,11 +32,11 @@ SRCS = ft_strcmp.c ft_atoi.c ft_split.c ft_bzero.c ft_strchr.c ft_calloc.c \
 	ft_strnew.c  ft_strcat.c ft_is_space.c ft_lstadd_back.c ft_lstadd_front.c \
 	ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c \
 	ft_lstnew.c ft_lstsize.c free_str.c free_p_str.c ft_strnew_with_char.c \
-	ft_split_inc.c ft_strrmv.c ft_putstr_w_newline_fd.c ft_split_w_quotes.c \
+	ft_strrmv.c ft_putstr_w_newline_fd.c ft_split_w_quotes.c \
 	delete_quotes_from_arr.c delete_quotes_from_s.c init_quotes_struct.c \
 	manage_struct_quotes.c escapted_char_management.c delete_slash_from_str.c \
 	delete_slash_from_arr.c ft_tabfree.c ft_is_directory.c get_buffer.c show_arr_value.c \
-	malloc_and_copy.c get_nb_size.c ft_rmv_elem.c ft_max_min.c
+	malloc_and_copy.c get_nb_size.c ft_max_min.c empty_arr.c no_new_line_in_str.c ft_strncat.c
 
 
 

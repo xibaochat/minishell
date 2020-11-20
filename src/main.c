@@ -105,7 +105,7 @@ int	main(int ac, char **av, char **env)
 
 	//manage_signals();
 	//sh.last_pid = 0;
-	//	show_cat();
+	//show_cat();
 	//	show_welcome_mes();
 	sh = get_sh();
 	init_sh(env, sh);

@@ -4,13 +4,13 @@ static int	is_invalid_varname(t_quo *q, const char *s, int i)
 {
 	(void)q;
 	return (!((ft_isalnum(s[i]) || s[i] == '_')));
-	 return (s[i] && 
+	 return (s[i] &&
 	 		(is_unescapted_c(q, s, i, '$')
-	 		 || is_unescapted_c(q, s, i, '?') 
-	 		 || is_unescapted_c(q, s, i, '\\') 
-	  		 || is_unescapted_c(q, s, i, '/') 
-	 		 || is_unescapted_c(q, s, i, SINGLE) 
-	   	     || is_unescapted_c(q, s, i, DOUBLE))); 
+	 		 || is_unescapted_c(q, s, i, '?')
+	 		 || is_unescapted_c(q, s, i, '\\')
+	  		 || is_unescapted_c(q, s, i, '/')
+	 		 || is_unescapted_c(q, s, i, SINGLE)
+	   	     || is_unescapted_c(q, s, i, DOUBLE)));
 }
 */
 /*var name length*/
@@ -45,6 +45,17 @@ int	replace_var_condition(t_quo *q, char *s, int i)
 	return (0);
 }
 
+static void	replace_sub_by_true_value(char **str, int *i, t_mini *sh)
+{
+	char	*value;
+
+	value = varname_is_in_env((*str) + *i + 1, sh);
+	if (value)
+		replace_var_by_value(str, i, value, sh);
+	else
+		replace_var_by_value(str, i, "", sh);
+}
+
 /*replace value after $, 1.$? 2. if $VAR exists, replace by value in ENV
  **3. $INVALID_VAR , replace ""
  */
@@ -53,11 +64,9 @@ void	manage_substitution_in_str(t_mini *sh, char **str)
 {
 	int		i;
 	t_quo	q;
-	char	*value;
 
 	i = 0;
 	q = init_quotes_struct();
-	value = NULL;
 	while ((*str)[i])
 	{
 		manage_struct_quotes(&q, *str, i);
@@ -68,13 +77,7 @@ void	manage_substitution_in_str(t_mini *sh, char **str)
 			else if (is_unescapted_c(&q, *str, i + 1, '/'))
 				i++;
 			else if (replace_var_condition(&q, *str, i))
-			{
-				value = varname_is_in_env((*str) + i + 1, sh);
-				if (value)
-					replace_var_by_value(str, &i, value, sh);
-				else
-					replace_var_by_value(str, &i, "", sh);
-			}
+				replace_sub_by_true_value(str, &i, sh);
 			else
 				i++;
 		}
@@ -88,14 +91,10 @@ void	manage_substitution_in_str(t_mini *sh, char **str)
 void	replace_var_sub_by_true_value(char **arr, t_mini *sh)
 {
 	int	i;
-	//	char *v;
-	//	t_quo q;
 
 	i = -1;
-	//	v = NULL;
 	while (arr[++i])
 	{
-		//	q = init_quotes_struct();
 		if (ft_strlen(arr[i]) <= 1)
 			continue ;
 		else

@@ -12,41 +12,31 @@
 
 #include "libft.h"
 
-static int			no_newline_in_str(char *str)
+static int	nb_read_is_zero(char *buff, int fd, char **buffer)
 {
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (1);
-	while (str[i] && str[i] != '\n')
-		i++;
-	if (str[i] == '\n')
+	free_str(buff);
+	if (!ft_strlen(*buffer))
 		return (0);
-	return (1);
+	else
+		return (get_content_from_file(fd, buffer));
+	return (0);
 }
 
-static int			get_content_from_file(int fd, char **buffer)
+int	get_content_from_file(int fd, char **buffer)
 {
 	int		nb_read;
 	char	*s;
 	char	*buff;
 
-	if (!(buff = ft_strnew(BUFFER_SIZE + 1)))
+	buff = ft_strnew(BUFFER_SIZE + 1);
+	if (!buff)
 		return (-1);
 	nb_read = read(fd, buff, BUFFER_SIZE);
-	if (!nb_read && !ft_strlen(*buffer))
-	{
-		free_str(buff);
-		return (nb_read);
-	}
-	else if (!nb_read)
-	{
-		free_str(buff);
-		return (get_content_from_file(fd, buffer));
-	}
+	if (!nb_read)
+		return (nb_read_is_zero(buff, fd, buffer));
 	buff[nb_read] = '\0';
-	if (!(s = ft_strnew(ft_strlen(*buffer) + nb_read + 1)))
+	s = ft_strnew(ft_strlen(*buffer) + nb_read + 1);
+	if (!s)
 		return (-1);
 	if (*buffer)
 	{
@@ -60,7 +50,7 @@ static int			get_content_from_file(int fd, char **buffer)
 	return (1);
 }
 
-static int			extract_line(char **line, char **buffer, int *i, int *j)
+static int	extract_line(char **line, char **buffer, int *i, int *j)
 {
 	char	*s;
 	char	*s1;
@@ -68,13 +58,15 @@ static int			extract_line(char **line, char **buffer, int *i, int *j)
 
 	while ((*buffer)[*i] && (*buffer)[*i] != '\n')
 		(*i)++;
-	if (!(s = ft_strnew(*i + 1)))
+	s = ft_strnew(*i + 1);
+	if (!s)
 		return (-1);
 	*line = ft_strncat(s, *buffer, *i);
 	*j = ft_strlen(*buffer) - *i;
 	if (!*j)
 		return (0);
-	if ((s1 = ft_strnew(*j)))
+	s1 = ft_strnew(*j);
+	if (s1)
 	{
 		tmp = ft_strncat(s1, *buffer + *i + 1, *j - 1);
 		free_str(*buffer);
@@ -84,16 +76,16 @@ static int			extract_line(char **line, char **buffer, int *i, int *j)
 	return (-1);
 }
 
-static int			manage_buffer(char **buffer, char **line)
+static int	manage_buffer(char **buffer, char **line)
 {
-	int res;
+	int	res;
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	res = 0;
-	if ((res = extract_line(line, buffer, &i, &j) != 1))
+	res = extract_line(line, buffer, &i, &j);
+	if (res != 1)
 	{
 		if (res == -1)
 			return (nigun_static(buffer, -1));
@@ -102,9 +94,9 @@ static int			manage_buffer(char **buffer, char **line)
 	return (1);
 }
 
-int					get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
-	char **buffer;
+	char	**buffer;
 
 	buffer = get_buffer();
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)

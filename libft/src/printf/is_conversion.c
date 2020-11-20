@@ -12,15 +12,15 @@
 
 #include "libftprintf.h"
 
-int			is_allowed_char_in_flag(char c)
+int	is_allowed_char_in_flag(char c)
 {
-	return ((c >= '0' && c <= '9') || c == '*' || c == '.' ||
-			c == '-');
+	return ((c >= '0' && c <= '9') || c == '*' || c == '.'
+		|| c == '-');
 }
 
 static int	has_nb_and_star(char *format, int *i)
 {
-	int mark;
+	int	mark;
 
 	mark = 0;
 	while (format[*i] && format[*i] == '-')
@@ -39,7 +39,7 @@ static int	has_nb_and_star(char *format, int *i)
 
 static	int	nb_stars(char *format, int *i)
 {
-	int nb_stars;
+	int	nb_stars;
 
 	nb_stars = 0;
 	while (format[*i] && format[*i] == '*')
@@ -50,7 +50,7 @@ static	int	nb_stars(char *format, int *i)
 	return (nb_stars);
 }
 
-int			valide_star_nb_combi(char *format, int i)
+int	valide_star_nb_combi(char *format, int i)
 {
 	if (has_nb_and_star(format, &i))
 		return (0);
@@ -63,9 +63,9 @@ int			valide_star_nb_combi(char *format, int i)
 	return (1);
 }
 
-int			is_conversion(char *format, int *i)
+int	is_conversion(char *format, int *i)
 {
-	int j;
+	int	j;
 
 	j = *i;
 	if (format[j] != '%' || !format[j + 1])

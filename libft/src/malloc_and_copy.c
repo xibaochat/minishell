@@ -1,9 +1,9 @@
-# include "libft.h"
+#	include "libft.h"
 
-char *ft_malloc_and_copy(char *src)
+char	*ft_malloc_and_copy(char *src)
 {
-	int lens;
-	char *str;
+	int		lens;
+	char	*str;
 
 	if (src)
 	{

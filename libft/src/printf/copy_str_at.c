@@ -34,7 +34,7 @@ void	copy_at_the_begining(char *value, char **new_value)
 
 void	ncopy_at_the_begining(unsigned int n, char *value, char **new_value)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (value && value[++i] && n--)

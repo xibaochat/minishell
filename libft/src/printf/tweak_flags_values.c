@@ -14,12 +14,11 @@
 
 static int	special_case_one(t_flag *my_flags, char *value, char c)
 {
-	return (c == 's' &&
-			my_flags->precision_from_zero &&
-			(size_t)my_flags->f_precision < ft_strlen(value));
+	return (c == 's' && my_flags->precision_from_zero
+		&& (size_t)my_flags->f_precision < ft_strlen(value));
 }
 
-void		tweak_flags_values(t_flag *my_flags, char *value, char c)
+void	tweak_flags_values(t_flag *my_flags, char *value, char c)
 {
 	if (special_case_one(my_flags, value, c))
 	{

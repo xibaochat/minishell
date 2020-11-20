@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int			is_space(char c)
+int	is_space(char c)
 {
 	return ((c >= 9 && c <= 13) || c == ' ');
 }
@@ -25,7 +25,7 @@ static int	get_start_index(char *str)
 	return (i);
 }
 
-int			ft_atoi(const char *s)
+int	ft_atoi(const char *s)
 {
 	int		sign;
 	int		res;

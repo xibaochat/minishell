@@ -33,7 +33,7 @@ static char	*apply_precision_on_neg(t_flag *my_flags, char *str)
 	return (NULL);
 }
 
-char		*apply_precision(t_flag *my_flags, char *str)
+char	*apply_precision(t_flag *my_flags, char *str)
 {
 	char	*new_str;
 
@@ -48,7 +48,7 @@ char		*apply_precision(t_flag *my_flags, char *str)
 	return (NULL);
 }
 
-char		*apply_precision_on_str(t_flag my_flags, char *value)
+char	*apply_precision_on_str(t_flag my_flags, char *value)
 {
 	char	*new_value;
 

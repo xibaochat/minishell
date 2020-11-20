@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int		ger_nb_words(char *str, char c)
+static int	ger_nb_words(char *str, char c)
 {
 	int			i;
 	int			nb_words;
@@ -21,15 +21,15 @@ static int		ger_nb_words(char *str, char c)
 	nb_words = 0;
 	while (str[i])
 	{
-		if ((!i && (str[i] != c)) ||
-			(i > 0 && (str[i - 1] == c) && (str[i] != c)))
+		if ((!i && (str[i] != c))
+			|| (i > 0 && (str[i - 1] == c) && (str[i] != c)))
 			nb_words++;
 		i++;
 	}
 	return (nb_words);
 }
 
-static int		get_lens(char *str, int i, char c)
+static int	get_lens(char *str, int i, char c)
 {
 	int			lens;
 
@@ -42,7 +42,7 @@ static int		get_lens(char *str, int i, char c)
 	return (lens);
 }
 
-char			**get_tab(char **arr, char *str, char c)
+char	**get_tab(char **arr, char *str, char c)
 {
 	int			i;
 	int			j;
@@ -69,7 +69,7 @@ char			**get_tab(char **arr, char *str, char c)
 	return (arr);
 }
 
-static char		**empty_arr(void)
+char	**empty_arr(void)
 {
 	char		**res;
 
@@ -78,7 +78,7 @@ static char		**empty_arr(void)
 	return (res);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char		*str;
 	int			words_nb;

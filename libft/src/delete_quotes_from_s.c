@@ -1,22 +1,18 @@
-#include "libft.h"
+#	include "libft.h"
 
-/*
-   manage cas:  echo she"\\\"s" OR echo \\\"she"\\\
-   echo "\""
-   */
-static int is_valid_char(char *s, int i, t_quo q)
+static int	is_valid_char(char *s, int i, t_quo q)
 {
 	return ((s[i] == SINGLE && q.double_quote && !is_escapted(&q, s, i))
-			|| (s[i] == DOUBLE && q.single_quote && !is_escapted(&q, s, i))
-			|| (s[i] != DOUBLE && s[i] != SINGLE)
-			|| is_escapted(&q, s, i));
+		|| (s[i] == DOUBLE && q.single_quote && !is_escapted(&q, s, i))
+		|| (s[i] != DOUBLE && s[i] != SINGLE)
+		|| is_escapted(&q, s, i));
 }
 
-static int get_len_wo_quotes(char *s)
+static int	get_len_wo_quotes(char *s)
 {
-	int i;
-	int len;
-	t_quo q;
+	int		i;
+	int		len;
+	t_quo	q;
 
 	i = -1;
 	len = 0;
@@ -32,11 +28,11 @@ static int get_len_wo_quotes(char *s)
 	return (len);
 }
 
-static void copy_wo_quotes(char *new, char *s)
+static void	copy_wo_quotes(char *new, char *s)
 {
-	int i;
-	int j;
-	t_quo q;
+	int		i;
+	int		j;
+	t_quo	q;
 
 	i = -1;
 	j = -1;
@@ -49,7 +45,7 @@ static void copy_wo_quotes(char *new, char *s)
 	}
 }
 
-void delete_quotes_from_s(char **s)
+void	delete_quotes_from_s(char **s)
 {
 	int		final_len;
 	char	*new;

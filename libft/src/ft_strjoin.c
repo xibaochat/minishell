@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		total_lens;
 	int		i;
@@ -24,12 +24,15 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 && !s2)
 		return (NULL);
 	if (!s1 || !s2)
-		return ((!s1) ? ft_strdup(s2) : ft_strdup(s1));
+	{
+		if (!s1)
+			return (ft_strdup(s2));
+		return (ft_strdup(s1));
+	}
 	total_lens = ft_strlen((char *)s1) + ft_strlen((char *)s2);
-	str = (char *)malloc((total_lens + 1) * sizeof(char));
+	str = ft_strnew(total_lens + 1);
 	if (!str)
 		return (NULL);
-	str[total_lens] = '\0';
 	while ((char)s1[++i])
 		str[i] = (char)s1[i];
 	while ((char)s2[++j])

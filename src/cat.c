@@ -24,8 +24,8 @@ void	show_cat(void)
 			BLUE, DF, B, DF);
 	ft_printf("%s▀█%s▒▒▒%s█▌%s▒▒%s█%s▒▒%s▐█%s▒▒▒%s▀▀%s▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒%s▌%s\n",
 			BLUE, DF, P, DF, GR, DF, P, DF, BLUE, DF, B, DF);
-	ft_printf("%s▀▌%s▒▒▒▒▒▒%s▀%s %s▀%s▒▒▒▒▒▒%s▀▀▀%s▒▒▒▒▒▒▒▒▒▒▒▒▒▒%s▐%s  %s▄▄%s\n",
-			BLUE, DF, GR, GREY, GR, DF, BLUE, DF, B, DF, B, DF);
+	ft_printf("%s▀▌%s▒▒▒▒▒▒%s▀%s %s▀%s▒▒▒▒▒▒", BLUE, DF, GR, GREY, GR, DF);
+	ft_printf("%s▀▀▀%s▒▒▒▒▒▒▒▒▒▒▒▒▒▒%s▐%s  %s▄▄%s\n", BLUE, DF, B, DF, B, DF);
 	ft_printf("%s▐%s▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒%s▌%s▄█%s▒%s%s█%s\n", B, DF,
 			B, B, CYAN, DF, B, DF);
 	show_cat_1();

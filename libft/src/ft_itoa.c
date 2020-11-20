@@ -20,7 +20,7 @@ static char	*get_converted_str(char *str, unsigned int res, int *i)
 	return (str);
 }
 
-char				*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int				i;
 	unsigned int	res;
@@ -28,7 +28,8 @@ char				*ft_itoa(int n)
 
 	i = 0;
 	res = n;
-	if (!(str = (char *)malloc(get_nb_size(n) + 1)))
+	str = (char *)malloc(get_nb_size(n) + 1);
+	if (!str)
 		return (NULL);
 	if (n < 0)
 	{

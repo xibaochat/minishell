@@ -1,17 +1,19 @@
-# include "minishell.h"
+#	include "minishell.h"
 
-void init_env_var(t_mini *sh)
+void	init_env_var(t_mini *sh)
 {
-	char *path;
-	char *new_path;
-	char *arr[3] = {ENV_OLDPWD, ENV_PWD, NULL};
-	int i;
+	char	*path;
+	char	*new_path;
+	char	*arr[3];
+	int		i;
 
 	i = -1;
+	arr[0] = ENV_OLDPWD;
+	arr[1] = ENV_PWD;
+	arr[2] = NULL;
 	path = getcwd(NULL, 0);
 	while (++i < 2)
 	{
-		//if did not find OLDPWD, or PWD in env, then set them
 		if (!ft_find_env(arr[i], sh->env))
 		{
 			new_path = ft_strnew(ft_strlen(arr[i]) + ft_strlen(path) + 1);

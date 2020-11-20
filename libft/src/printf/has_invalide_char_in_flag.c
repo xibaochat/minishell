@@ -14,7 +14,7 @@
 
 int	has_invalide_char_in_flag(char *format, int i)
 {
-	int init;
+	int	init;
 
 	init = i;
 	while (format[i] && !is_conversion_char(format[i]))

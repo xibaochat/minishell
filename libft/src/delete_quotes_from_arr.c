@@ -1,8 +1,8 @@
 #include "libft.h"
 
-void delete_quotes_from_arr(char **arr)
+void	delete_quotes_from_arr(char **arr)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (!arr)

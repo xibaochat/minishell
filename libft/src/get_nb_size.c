@@ -1,6 +1,6 @@
-# include "libft.h"
+#	include "libft.h"
 
-int			get_nb_size(int n)
+int	get_nb_size(int n)
 {
 	int				size;
 

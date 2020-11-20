@@ -1,6 +1,6 @@
 #include "libft.h"
 
-t_quo init_quotes_struct(void)
+t_quo	init_quotes_struct(void)
 {
 	t_quo	quo;
 

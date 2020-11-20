@@ -13,14 +13,9 @@ echo ''$USER'' : give the value of $USER
 
 --------------NEW_ERR---------------
 cat < test4 ; echo $? done
-< test4 cat ; echo $? done 
+< test4 cat ; echo $? done
 < notworking.txt ; echo $? done
 LEAK when exec : echo qsdf | qfsdqss ; echo $?
-
-
------MAOBE_ERR-----
-hallo$USER ; echo $?
-$USER
-$USERmaran$USER/maran ; echo $?
-maran/$USER
-“$rewtwet”
+------------MAOBE------
+/bin/ls echo $?
+echo $?

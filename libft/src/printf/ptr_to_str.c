@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-char			*ptr_to_str(void *ptr)
+char	*ptr_to_str(void *ptr)
 {
 	uintmax_t	p;
 	char		*new;

@@ -20,7 +20,7 @@
 # include <stdarg.h>
 # include "libft.h"
 
-typedef struct	s_flag
+typedef struct s_flag
 {
 	int			is_signed;
 	int			f_max_width;
@@ -52,10 +52,8 @@ char			*ft_apply_flag_to_nb(t_flag my_flags, int v_lens, char *value);
 char			*ft_apply_flag_to_char(t_flag my_flags, char *value);
 char			*ft_apply_flag_to_str(t_flag my_flags, char *value, int v_lens);
 char			*apply_precision_on_str(t_flag my_flags, char *value);
-void			ncopy_at_the_begining\
-				(unsigned int n, char *value, char **new_value);
-char			*ft_apply_flag_to_adress\
-				(t_flag my_flags, char *value, int v_lens);
+void			ncopy_at_the_begining(unsigned int n, char *v, char **new);
+char			*ft_apply_flag_to_adress(t_flag my_flags, char *value, int v);
 int				get_size_int(long int n);
 char			*replace_star(va_list *ap, char *format, int i);
 int				valid_conversion(char *format, int *i_format);
@@ -75,6 +73,6 @@ void			ft_init_sign(t_flag *my_flags, char *format, int *i);
 int				dot_in_conversion(char *format, int i);
 void			ft_init_sign(t_flag *my_flags, char *format, int *i);
 int				ft_get_flag_value(char *str, int *i);
-int         get_size_int(long int n);
+int				get_size_int(long int n);
 
 #endif

@@ -1,10 +1,10 @@
-# include "libft.h"
+#	include "libft.h"
 
-int get_len_wo_extra_slash(char *s)
+int	get_len_wo_extra_slash(char *s)
 {
-	int i;
-	int nb_slash;
-	int j;
+	int	i;
+	int	nb_slash;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -28,10 +28,10 @@ int get_len_wo_extra_slash(char *s)
 	return (i - j + (nb_slash / 2));
 }
 
-void copy_part_str_wo_slash(char *s, int *i, char *new, int *j)
+void	copy_part_str_wo_slash(char *s, int *i, char *new, int *j)
 {
-	int nb_slash;
-	int k;
+	int	nb_slash;
+	int	k;
 
 	nb_slash = 0;
 	while (s[*i] && s[*i] == '\\')
@@ -47,10 +47,10 @@ void copy_part_str_wo_slash(char *s, int *i, char *new, int *j)
 		new[(*j)++] = '\\';
 }
 
-void copy_wo_slash(char *new, char *s)
+void	copy_wo_slash(char *new, char *s)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -63,10 +63,10 @@ void copy_wo_slash(char *new, char *s)
 	}
 }
 
-void delete_slash_from_str(char **s)
+void	delete_slash_from_str(char **s)
 {
-	char *new;
-	int final_len;
+	char	*new;
+	int		final_len;
 
 	final_len = get_len_wo_extra_slash(*s);
 	new = ft_strnew(final_len + 1);

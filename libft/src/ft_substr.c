@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static char		*empty_string(void)
+static char	*empty_string(void)
 {
 	char	*p;
 
@@ -35,7 +35,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str = (char *)s;
 	if (start >= (unsigned int)ft_strlen(str))
 		return (empty_string());
-	sub_str = (char *)malloc((len + 1) * sizeof(char));
+	sub_str = ft_strnew(len + 1);
 	if (!s || !sub_str)
 		return (NULL);
 	while (i < len && str[start])

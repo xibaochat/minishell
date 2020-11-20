@@ -1,11 +1,12 @@
 #include "minishell.h"
 
 //export maobe=kitten, if maobe=cat before, now need to change the value
-int replace_var_value(char **env, char *s)
+
+int	replace_var_value(char **env, char *s)
 {
-	int i;
-	int j;
-	char *new_v;
+	int		i;
+	int		j;
+	char	*new_v;
 
 	i = 0;
 	j = -1;
@@ -24,15 +25,13 @@ int replace_var_value(char **env, char *s)
 	return (0);
 }
 
-void add_new_var_in_env(char *str, t_mini *sh)
+void	add_new_var_in_env(char *str, t_mini *sh)
 {
-	int i;
-	int j;
-//	char *tmp;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-//	tmp = NULL;
 	while (str[i] && str[i] != '=')
 		i++;
 	while (sh->env[j])
@@ -46,27 +45,22 @@ void add_new_var_in_env(char *str, t_mini *sh)
 }
 
 /*check var is inside ENV or not, if not add var and its value in ENV*/
-void export_add_var(char *var_value, t_mini *sh)
+
+void	export_add_var(char *var_value, t_mini *sh)
 {
 	if (!replace_var_value(sh->env, var_value))
 		add_new_var_in_env(var_value, sh);
 }
 
-/*if cmd == "export", show env; if cmd does not have "=", do not do anything;
-  if cmd has invalid char, show error message;
-  if have "=" check VAR is in ENV or not(if inside,
-  change its value, if not add new VAR in ENV)
-**
-*/
-void export(char **arr, t_mini *sh)
+void	export(char **arr, t_mini *sh)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	//only type: export
 	if (ft_tablen(arr) == 1)
 	{
-		display_env_w_prefix(arr,sh-> env);
+		display_env_w_prefix(arr, sh->env);
 		sh->last_return = 0;
 	}
 	//ep: xibao!=miao

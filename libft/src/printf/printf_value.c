@@ -14,7 +14,7 @@
 
 void	print_backslash_zero(char *s)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (s[++i])
@@ -26,7 +26,7 @@ void	print_backslash_zero(char *s)
 	}
 }
 
-int		print_value(char **value, int is_backslash_zero)
+int	print_value(char **value, int is_backslash_zero)
 {
 	int	count;
 
