@@ -21,13 +21,15 @@ int	exec_command(char **split_input, t_mini *sh)
 	return (ret);
 }
 
-int	split_and_execute_2(char **arr, char *sep, int i, t_mini *sh)
+int	split_and_execute_2(int last_ret, char **arr, char delim, t_mini *sh)
 {
-	int	j;
-	int	last_ret;
-
-	last_ret = 0;
-	if (sep[i] == ' ')
+	if (delim == '|' && ft_tablen(arr) > 1)
+	{
+		sh->is_pipe = 1;
+		last_ret = exec_command(arr, sh);
+		sh->is_pipe = 0;
+	}
+	else if (delim == ' ')
 	{
 		check_quote_close(arr, sh);
 		if (!sh->last_return)
@@ -38,35 +40,30 @@ int	split_and_execute_2(char **arr, char *sep, int i, t_mini *sh)
 			last_ret = exec_command(arr, sh);
 		}
 	}
-	else
-	{
-		j = -1;
-		while (arr[++j])
-		{
-			sh->last_return = split_and_execute(arr[j], sep, i + 1, sh);
-			sh->exit_v = sh->last_return;
-		}
-	}
 	return (last_ret);
 }
 
 int	split_and_execute(char *str, char *sep, int i, t_mini *sh)
 {
 	char	**arr;
+	int		j;
 	int		last_ret;
 
+	j = -1;
 	last_ret = 0;
 	arr = ft_split_w_quotes(str, sep[i]);
 	if (!arr || !arr[0])
 		return (0);
-	if (sep[i] == '|' && ft_tablen(arr) > 1)
-	{
-		sh->is_pipe = 1;
-		last_ret = exec_command(arr, sh);
-		sh->is_pipe = 0;
-	}
+	if ((sep[i] == '|' && ft_tablen(arr) > 1) || sep[i] == ' ')
+		last_ret = split_and_execute_2(last_ret, arr, sep[i], sh);
 	else
-		last_ret = split_and_execute_2(arr, sep, i, sh);
+	{
+		while (arr[++j])
+		{
+			sh->last_return = split_and_execute(arr[j], sep, i + 1, sh);
+			sh->exit_v = sh->last_return;
+		}
+	}
 	if (last_ret > sh->last_return)
 		sh->last_return = last_ret;
 	ft_tabfree(arr);
@@ -79,8 +76,8 @@ void	manage_input(t_mini *sh)
 	int		i;
 	char	*sep;
 
-	sep = ";| ";
 	i = 0;
+	sep = ";| ";
 	input = NULL;
 	ft_signal(sh);
 	//	while (print_prompt(sh) && get_next_line(0, &input))
@@ -103,8 +100,6 @@ int	main(int ac, char **av, char **env)
 {
 	t_mini	**sh;
 
-	//show_cat();
-	//	show_welcome_mes();
 	sh = get_sh();
 	init_sh(env, sh);
 	if (!ft_find_env(ENV_HOME, (*sh)->env))
