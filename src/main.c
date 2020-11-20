@@ -26,7 +26,7 @@ int	split_and_execute_2(char **arr, char *sep, int i, t_mini *sh)
 	int	j;
 	int	last_ret;
 
-	j = 0;
+	last_ret = 0;
 	if (sep[i] == ' ')
 	{
 		check_quote_close(arr, sh);
@@ -40,11 +40,11 @@ int	split_and_execute_2(char **arr, char *sep, int i, t_mini *sh)
 	}
 	else
 	{
-		while (arr[j])
+		j = -1;
+		while (arr[++j])
 		{
 			sh->last_return = split_and_execute(arr[j], sep, i + 1, sh);
 			sh->exit_v = sh->last_return;
-			j++;
 		}
 	}
 	return (last_ret);
