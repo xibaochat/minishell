@@ -88,7 +88,7 @@ void	manage_input(t_mini *sh)
 	{
 		if (is_syntax_error(input, sh))
 			continue ;
-		sh->exit_v = sh->last_return;
+		//sh->exit_v = sh->last_return;
 		sh->line = input;
 		sh->is_cmd = 1;
 		sh->last_return = split_and_execute(input, sep, i, sh);
@@ -103,8 +103,6 @@ int	main(int ac, char **av, char **env)
 {
 	t_mini	**sh;
 
-	//manage_signals();
-	//sh.last_pid = 0;
 	//show_cat();
 	//	show_welcome_mes();
 	sh = get_sh();
