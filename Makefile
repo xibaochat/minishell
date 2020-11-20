@@ -23,7 +23,7 @@ SRC = main.c  env.c pwd.c  ft_tablen.c  unset.c \
 	init_variable_sh.c manage_question_mark.c extract_cmd_from_bin_input.c \
 	get_full_binary_path.c display_ascii_girafe.c \
 	free_var.c manage_child_process_and_execution.c \
-	manage_substitution_in_str.c redirections.c manage_pipe.c
+	manage_substitution_in_str.c redirections.c manage_pipe.c redirections_2.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
 

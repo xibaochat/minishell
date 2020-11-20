@@ -33,6 +33,8 @@ typedef struct		s_quo {
 	int single_quote;
 }					t_quo;
 
+int	ft_max(int a, int b);
+int	ft_min(int a, int b);
 size_t	ft_tablen(char **arr);
 char				**ft_rmv_elem(char **tab, int i);
 int					ft_atoi(const char *str);

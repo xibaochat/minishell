@@ -1,18 +1,18 @@
 #include "minishell.h"
-
+/*
 static int	is_invalid_varname(t_quo *q, const char *s, int i)
 {
 	(void)q;
 	return (!((ft_isalnum(s[i]) || s[i] == '_')));
-	/* return (s[i] && */
-	/* 		(is_unescapted_c(q, s, i, '$') */
-	/* 		 || is_unescapted_c(q, s, i, '?') */
-	/* 		 || is_unescapted_c(q, s, i, '\\') */
-	/*  		 || is_unescapted_c(q, s, i, '/') */
-	/* 		 || is_unescapted_c(q, s, i, SINGLE) */
-	/*   	     || is_unescapted_c(q, s, i, DOUBLE))); */
+	 return (s[i] && 
+	 		(is_unescapted_c(q, s, i, '$')
+	 		 || is_unescapted_c(q, s, i, '?') 
+	 		 || is_unescapted_c(q, s, i, '\\') 
+	  		 || is_unescapted_c(q, s, i, '/') 
+	 		 || is_unescapted_c(q, s, i, SINGLE) 
+	   	     || is_unescapted_c(q, s, i, DOUBLE))); 
 }
-
+*/
 /*var name length*/
 
 int	get_varname_len(const char *s, int i)
@@ -25,7 +25,7 @@ int	get_varname_len(const char *s, int i)
 	while (s[++i])
 	{
 		manage_struct_quotes(&q, s, i);
-		if (is_invalid_varname(&q, s, i))
+		if (!((ft_isalnum(s[i]) || s[i] == '_')))
 			break ;
 		++len;
 	}
@@ -69,9 +69,10 @@ void	manage_substitution_in_str(t_mini *sh, char **str)
 				i++;
 			else if (replace_var_condition(&q, *str, i))
 			{
-				if ((value = varname_is_in_env((*str) + i + 1, sh)))
+				value = varname_is_in_env((*str) + i + 1, sh);
+				if (value)
 					replace_var_by_value(str, &i, value, sh);
-				else if (!value)
+				else
 					replace_var_by_value(str, &i, "", sh);
 			}
 			else

@@ -1,57 +1,76 @@
 #include "minishell.h"
 
+void	pipe_child(int *fd, char **arr, int i, t_mini *sh)
+{
+	int	nb_pipes;
+	int	last_ret;
+
+	nb_pipes = ft_tablen(arr) - 1;
+	close(fd[0]);
+	close(sh->p[0]);
+	if (i != nb_pipes)
+	{
+		if (dup2(fd[1], 1) == -1)
+			ft_error("DUP2 FAILED", errno, sh);
+	}
+	last_ret = split_and_execute(arr[i], " ", 0, sh);
+	write(sh->p[1], &last_ret, sizeof(int));
+	close(fd[1]);
+	close(sh->p[1]);
+	exit(1);
+}
+
+int	pipe_parent(t_mini *sh, int *fd, int i, int nb_pipes)
+{
+	int	last_ret;
+	int	status;
+
+	last_ret = 0;
+	waitpid(sh->last_pid, &status, 0);
+	close(sh->p[1]);
+	close(fd[1]);
+	if (i != nb_pipes)
+	{
+		if (dup2(fd[0], 0) == -1)
+			ft_error("DUP2 FAILED", errno, sh);
+	}
+	read(sh->p[0], &last_ret, sizeof(int));
+	close(fd[0]);
+	close(sh->p[0]);
+	return (last_ret);
+}
+
+void	ft_piping(t_mini *sh, int *fd)
+{
+	pipe(sh->p);
+	if (pipe(fd) == -1)
+		ft_error("PIPE FAILED", errno, sh);
+	sh->last_pid = fork();
+}
+
 int	ft_manage_pipe(t_mini *sh, char	**arr)
 {
 	int	fd[2];
-	int	p[2];
-	int	status;
 	int	nb_pipes;
 	int	i;
-	int	last_ret;
 	int	pipe_last_ret;
+	int	last_ret;
 
-	last_ret = 0;
 	pipe_last_ret = 0;
 	nb_pipes = ft_tablen(arr) - 1;
 	i = -1;
 	while (++i <= nb_pipes)
 	{
-		pipe(p);
-		if (pipe(fd) == -1)
-			ft_error("PIPE FAILED", errno, sh);
-		sh->last_pid = fork();
+		ft_piping(sh, fd);
 		if (sh->last_pid < 0)
 			ft_error("FORK FAILED", errno, sh);
 		else if (!sh->last_pid)
-		{
-			close(fd[0]);
-			close(p[0]);
-			if (i != nb_pipes)
-			{
-				if (dup2(fd[1], 1) == -1)
-					ft_error("DUP2 FAILED", errno, sh);
-			}
-			last_ret = split_and_execute(arr[i], " ", 0, sh);
-			write(p[1], &last_ret, sizeof(int));
-			close(fd[1]);
-			close(p[1]);
-			exit(1);
-		}
+			pipe_child(fd, arr, i, sh);
 		else
 		{
-			waitpid(sh->last_pid, &status, 0);
-			close(p[1]);
-			close(fd[1]);
-			if (i != nb_pipes)
-			{
-				if (dup2(fd[0], 0) == -1)
-					ft_error("DUP2 FAILED", errno, sh);
-			}
-			read(p[0], &last_ret, sizeof(int));
+			last_ret = pipe_parent(sh, fd, i, nb_pipes);
 			if (last_ret > pipe_last_ret)
 				pipe_last_ret = last_ret;
-			close(fd[0]);
-			close(p[0]);
 		}
 	}
 	return (pipe_last_ret);

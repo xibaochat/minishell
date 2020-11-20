@@ -1,114 +1,52 @@
 #include "minishell.h"
 
-/*
-** sticked_next_redir() checks if the next redirection is not separated from the first one
-** in the original command.
-** For example : "echo jojo>lulu>dodo"
-*/
-
-int	sticked_next_redir(char *str)
+int	manage_redir_input(t_mini *sh, char *file)
 {
-	int	i;
-
-	i = 0;
-	while (!ft_strchr("<>", str[i]) && str[i])
-		i++;
-	while (ft_strchr("<>", str[i]) && str[i])
-		i++;
-	while (!ft_strchr("<> ", str[i]) && str[i])
-		i++;
-	if (str[i] && str[i] != ' ')
-		return (i);
+	sh->newfd = open(file, O_RDWR, 0600);
+	if (sh->newfd == -1)
+	{
+		ft_error("CAN'T OPEN FILE", errno, sh);
+	}
+	if (dup2(sh->newfd, 0) < 0)
+	{
+		ft_error("DUP2 FAILED", errno, sh);
+	}
+	close(sh->newfd);
 	return (0);
 }
 
 /*
-** new_cmd() returns the copy of the old cmd WITHOUT the redirection currently handled.
-** For ex : new_cmd("echo jojo > lulu") = "echo jojo"
-** For ex2 : new_cmd("echo jojo > lulu > dodo") = "echo jojo > dodo"
-*/
-
-char	**new_cmd(char **arr, int i, int j)
-{
-	int		len;
-	char	**new;
-	int		k;
-	int		sticked;
-
-	len = (int)ft_tablen(arr);
-	if ((!arr[i][j + 1] || (arr[i][j + 1] == '>'
-				&& (!arr[i][j + 2]) && arr[i + 1])))
-		len--;
-	if (!j)
-		len--;
-	if ((sticked = sticked_next_redir(arr[i])))
-		len++;
-	if (!(new = malloc(sizeof(char *) * (len + 1))))
-		return (NULL);
-	k = -1;
-	while (++k < i)
-	{
-		new[k] = ft_strdup(arr[k]);
-	}
-	if (j)
-		new[k++] = ft_substr(arr[i], 0, j);
-	if (sticked)
-		new[k++] = ft_substr(arr[i], sticked, ft_strlen(arr[i]) - sticked);
-	if (!arr[i][j + 1] || (arr[i][j + 1] == '>' && !arr[i][j + 2]))
-		i += 2;
-	else
-		i++;
-	while (arr[i])
-		new[k++] = ft_strdup(arr[i++]);
-	new[k] = NULL;
-	return (new);
-}
-
-/*
-** manage_redir() will open (or create) the file for the redirection
-*/
+ ** manage_redir() will open (or create) the file for the redirection
+ */
 
 int	manage_redir(t_mini *sh, char *file, char *elem, int j)
 {
 	if (elem[j] == '<')
-	{
-		if ((sh->newfd = open(file, O_RDWR, 0600)) == -1)
-		{
-			ft_error("CAN'T OPEN FILE", errno, sh);
-			return (1);
-		}
-		if (dup2(sh->newfd, 0) < 0)
-		{
-			ft_error("DUP2 FAILED", errno, sh);
-			return (1);
-		}
-		close(sh->newfd);
-		return (0);
-	}
+		return (manage_redir_input(sh, file));
 	else
 	{
 		if (elem[j + 1] == '>')
 		{
-			if ((sh->newfd = open(file, O_CREAT | O_RDWR | O_APPEND, 0600)) == -1)
+			sh->newfd = open(file, O_CREAT | O_RDWR | O_APPEND, 0600);
+			if (sh->newfd == -1)
 				ft_error("CAN'T OPEN FILE", errno, sh);
-			return (1);
 		}
 		else
 		{
-			if ((sh->newfd = open(file, O_CREAT | O_RDWR | O_TRUNC, 0600)) == -1)
+			sh->newfd = open(file, O_CREAT | O_RDWR | O_TRUNC, 0600);
+			if (sh->newfd == -1)
 				ft_error("CAN'T OPEN FILE", errno, sh);
-			return (1);
 		}
 		if (dup2(sh->newfd, 1) < 0)
 			ft_error("DUP2 FAILED", errno, sh);
 		close(sh->newfd);
-		return (0);
 	}
+	return (0);
 }
 
 /*
-** Note : file_name() can also be used to get the parameter of "<<" even if it is not a file.
-*/
+ ** Note : file_name() can also be used to get the parameter of "<<" even if it is not a file.
+ */
 
 char	*file_name(char **arr, int i, int j, char c)
 {
@@ -126,11 +64,25 @@ char	*file_name(char **arr, int i, int j, char c)
 	return (file);
 }
 
+char	**exec_redir(t_mini *sh, char **arr, int i, int j)
+{
+	sh->file = file_name(arr, i, j, arr[i][j]);
+	if (!sh->file)
+	{
+		ft_error("NO FILE NAME", 8, sh);
+		return (NULL);
+	}
+	if (manage_redir(sh, sh->file, arr[i], j))
+		return (NULL);
+	free(sh->file);
+	sh->file = NULL;
+	return (arr);
+}
+
 char	**check_for_redir(char **arr, t_mini *sh)
 {
 	int		i;
 	int		j;
-	char	*file;
 	char	**tmp;
 
 	tmp = NULL;
@@ -142,16 +94,10 @@ char	**check_for_redir(char **arr, t_mini *sh)
 		{
 			if (ft_strchr("<>", arr[i][j]))
 			{
-				if (!(file = file_name(arr, i, j, arr[i][j])))
-				{
-					ft_error("NO FILE NAME", 8, sh);
-					return (NULL);
-				}
-				if (manage_redir(sh, file, arr[i], j))
+				if (!exec_redir(sh, arr, i, j))
 					return (NULL);
 				tmp = new_cmd(arr, i, j);
 				ft_tabfree(arr);
-				free(file);
 				arr = tmp;
 				i = 0;
 				j = -1;

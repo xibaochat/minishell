@@ -60,11 +60,13 @@ typedef struct	s_mini
 	int			cmd_is_bin;
 	int			newfd;
 	int			is_pipe;
-	int exiting;
+	char		*file;
+	int			p[2];
 }				t_mini;
 
-
+int	ft_forking(char **split_input, t_mini *sh);
 void	sophie_la_girafe(int length);
+char	**new_cmd(char **arr, int i, int j);
 int	ft_manage_pipe(t_mini *sh, char **arr);
 int	ft_error(char *str, int errno_value, t_mini *sh);
 void	show_cat();
