@@ -23,7 +23,8 @@ void	echo(char **args)
 	{
 		if (args[i] && args[i][0])
 		{
-			ft_putstr(args[i]);
+//			ft_putstr(args[i]);
+			ft_putstr_echo(args[i]);
 			if (args[i + 1] && args[i + 1][0])
 				ft_putstr(" ");
 		}

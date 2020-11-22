@@ -12,6 +12,22 @@
 
 #include "libft.h"
 
+void	ft_putstr_echo(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (s)
+	{
+		while (s[i])
+		{
+			if (s[i] != 3)
+				write(1, &s[i], 1);
+			i++;
+		}
+	}
+}
+
 void	ft_putstr(char *s)
 {
 	if (s)

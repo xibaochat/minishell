@@ -60,7 +60,7 @@ void	ft_cd(char **arr, t_mini *sh)
 	else if (cd_to_current_dir_opt(arr))
 	{
 		curr_p = getcwd(NULL, 0);
-		change_env_var_value(sh->env, curr_p, ENV_OLDPWD);
+		change_env_var_value(sh->env, curr_p, ENV_OLDPWD, sh);
 		free_str(curr_p);
 	}
 	else

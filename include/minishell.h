@@ -85,7 +85,7 @@ size_t	ft_tablen(char **tab);
 int		cd_to_current_dir_opt(char **av);
 void	cd_to_current_dir(t_mini *sh);
 void	change_dir(t_mini *sh, char *p);
-void	change_env_var_value(char **env, char *new_p, char *var);
+void	change_env_var_value(char **env, char *new_p, char *var, t_mini *s);
 void	go_to_required_directory(t_mini *sh, char *dest, char *src);
 void	cd_error_message(char *str);
 void	export(char **arr, t_mini *sh);
