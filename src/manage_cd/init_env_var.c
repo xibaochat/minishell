@@ -12,7 +12,7 @@ void	init_env_var(t_mini *sh)
 	arr[1] = ENV_PWD;
 	arr[2] = NULL;
 	path = getcwd(NULL, 0);
-	while (++i < 2)
+	while (++i < 2 && sh->fst_init == 1)
 	{
 		if (!ft_find_env(arr[i], sh->env))
 		{
@@ -23,5 +23,6 @@ void	init_env_var(t_mini *sh)
 			free_str(new_path);
 		}
 	}
+	sh->fst_init = 0;
 	free_str(path);
 }

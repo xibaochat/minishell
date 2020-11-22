@@ -18,4 +18,5 @@ void	init_sh(char **env, t_mini **sh)
 	cpy_env(*sh, env);
 	(*sh)->is_pipe = 0;
 	(*sh)->newfd = 0;
+	(*sh)->fst_init = 1;
 }

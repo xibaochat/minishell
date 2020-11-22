@@ -32,7 +32,7 @@ void	go_to_required_directory(t_mini *sh, char *dest, char *src)
 		sh->last_return = 0;
 		free_str(pwd);
 	}
-	free_str(src);
+//	free_str(src);
 	free_str(dest);
 }
 
@@ -49,7 +49,8 @@ void	change_env_var_value(char **env, char *new_v, char *varname)
 		tmp = env[i];
 		s = ft_strnew(ft_strlen(varname) + ft_strlen(new_v) + 1);
 		ft_strncat(s, varname, ft_strlen(varname));
-		ft_strncat(s, new_v, ft_strlen(new_v));
+		if (new_v)
+			ft_strncat(s, new_v, ft_strlen(new_v));
 		env[i] = s;
 		free_str(tmp);
 	}

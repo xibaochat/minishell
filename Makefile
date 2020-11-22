@@ -55,8 +55,7 @@ LIBFT_HEADER = $(LIBFT_DIR)/include
 all : ${NAME}
 	@printf "\033[1;32mMinishell compiled\033[;0m\n"
 	@printf "Type \"./$(NAME)\" to launch $(NAME)\n"
-	@mkdir objects
-	@mv *.o objects
+
 
 ${NAME}: libft_compile
 	@printf "Compiling Minishell\n"

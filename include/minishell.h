@@ -62,6 +62,7 @@ typedef struct s_mini
 	int			is_pipe;
 	char		*file;
 	int			p[2];
+	int			fst_init;
 }				t_mini;
 
 int		ft_forking(char **split_input, t_mini *sh);

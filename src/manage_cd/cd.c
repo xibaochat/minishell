@@ -32,10 +32,24 @@ void	cd_to_home(t_mini *sh, char *curr_p)
 	}
 }
 
-void	ft_cd(char **arr, t_mini *sh)
+static void	cd_to_required_place(char **arr, t_mini *sh)
 {
 	char	*curr_p;
 	char	*valid_path;
+
+	curr_p = ft_find_env(ENV_PWD, sh->env);
+	if (is_go_home_opt(arr, sh))
+		cd_to_home(sh, curr_p);
+	else
+	{
+		valid_path = ft_malloc_and_copy(extract_target_path(arr));
+		go_to_required_directory(sh, valid_path, curr_p);
+	}
+}
+
+void	ft_cd(char **arr, t_mini *sh)
+{
+	char	*curr_p;
 
 	init_env_var(sh);
 	if (has_multi_valid_arg(arr) > 1)
@@ -44,16 +58,11 @@ void	ft_cd(char **arr, t_mini *sh)
 		sh->last_return = 1;
 	}
 	else if (cd_to_current_dir_opt(arr))
-		;
-	else
 	{
 		curr_p = getcwd(NULL, 0);
-		if (is_go_home_opt(arr, sh))
-			cd_to_home(sh, curr_p);
-		else
-		{
-			valid_path = ft_malloc_and_copy(extract_target_path(arr));
-			go_to_required_directory(sh, valid_path, curr_p);
-		}
+		change_env_var_value(sh->env, curr_p, ENV_OLDPWD);
+		free_str(curr_p);
 	}
+	else
+		cd_to_required_place(arr, sh);
 }
