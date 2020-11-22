@@ -100,7 +100,7 @@ void			free_str(char *s);
 void			free_p_str(char **s);
 char			*ft_strrmv(char *s, char *sep);
 void			ft_putstr_w_new_line_fd(char *s, int fd);
-void			delete_quotes_from_arr(char **arr);
+void			delete_quotes_from_arr(char **arr, int d);
 void			delete_quotes_from_s(char **s);
 t_quo			init_quotes_struct(void);
 void			manage_struct_quotes(t_quo *quo, const char *s, int i);

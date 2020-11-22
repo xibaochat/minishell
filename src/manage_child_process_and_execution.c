@@ -18,7 +18,7 @@ int	child_no_pipe(char **split_input, t_mini *sh)
 	else if (!ft_strcmp(split_input[0], "sophie"))
 		sophie_la_girafe(ft_atoi(split_input[1]));
 	else
-	{	
+	{
 		bin_path = get_full_cmd_path(split_input[0], sh);
 		if (bin_path)
 		{

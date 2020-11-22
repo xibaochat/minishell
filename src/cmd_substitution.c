@@ -54,6 +54,7 @@ static void	replace_sub_by_true_value(char **str, int *i, t_mini *sh)
 		replace_var_by_value(str, i, value, sh);
 	else
 		replace_var_by_value(str, i, "", sh);
+	sh->has_sub = 1;
 }
 
 /*replace value after $, 1.$? 2. if $VAR exists, replace by value in ENV

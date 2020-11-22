@@ -65,7 +65,7 @@ void	change_q_by_space(char **arr)
 	}
 }
 
-void	delete_quotes_from_arr(char **arr)
+void	delete_quotes_from_arr(char **arr, int has_sub)
 {
 	int		i;
 
@@ -76,9 +76,13 @@ void	delete_quotes_from_arr(char **arr)
 		cmd_is_cd_and_q(arr);
 	else
 	{
-		if (!ft_strcmp(arr[0], "echo") && cmd_is_echo_and_q(arr))
+		if (!ft_strcmp(arr[0], "echo")
+			&& cmd_is_echo_and_q(arr) && !has_sub)
 			change_q_by_space(arr);
 		while (arr[++i])
-		delete_quotes_from_s(&arr[i]);
+		{
+			if (!has_sub)
+				delete_quotes_from_s(&arr[i]);
+		}
 	}
 }

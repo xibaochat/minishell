@@ -63,6 +63,7 @@ typedef struct s_mini
 	char		*file;
 	int			p[2];
 	int			fst_init;
+	int			has_sub;
 }				t_mini;
 
 int		ft_forking(char **split_input, t_mini *sh);

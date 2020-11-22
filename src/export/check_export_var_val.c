@@ -5,7 +5,7 @@ int	has_invalid_char_in_env_name(char *str)
 	int	i;
 
 	i = 0;
-	if (!i && str[i] == '=')
+	if (!i && (str[i] == '=' || ft_isdigit(str[i])))
 		return (1);
 	while (str[i] && str[i] != '=')
 	{
