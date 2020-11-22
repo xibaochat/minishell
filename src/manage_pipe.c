@@ -53,10 +53,9 @@ int	ft_manage_pipe(t_mini *sh, char	**arr)
 	int	fd[2];
 	int	nb_pipes;
 	int	i;
-	int	pipe_last_ret;
 	int	last_ret;
 
-	pipe_last_ret = 0;
+	last_ret = 0;
 	nb_pipes = ft_tablen(arr) - 1;
 	i = -1;
 	while (++i <= nb_pipes)
@@ -67,11 +66,7 @@ int	ft_manage_pipe(t_mini *sh, char	**arr)
 		else if (!sh->last_pid)
 			pipe_child(fd, arr, i, sh);
 		else
-		{
 			last_ret = pipe_parent(sh, fd, i, nb_pipes);
-			if (last_ret > pipe_last_ret)
-				pipe_last_ret = last_ret;
-		}
 	}
-	return (pipe_last_ret);
+	return (last_ret);
 }
