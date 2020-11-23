@@ -5,9 +5,26 @@
 // if execve this fnction its self failed, not the result is bad
 // if execve is success, it will kill the fork, child process
 
+int	has_space(char *s)
+{
+	int		i;
+	t_quo   q;
+
+	q = init_quotes_struct();
+	i = -1;
+	while (s[++i])
+	{
+		manage_struct_quotes(&q, s, i);
+		if (s[i] == ' ' && !q.have_quote)
+			return (1);
+	}
+	return (0);
+}
+
 int	child_no_pipe(char **split_input, t_mini *sh)
 {
 	char	*bin_path;
+	char	**new_arr;
 
 	if (!ft_strcmp(split_input[0], "echo"))
 		echo(split_input);
@@ -15,16 +32,19 @@ int	child_no_pipe(char **split_input, t_mini *sh)
 		pwd(sh);
 	else if (!ft_strcmp(split_input[0], "env"))
 		env(sh);
-	else if (!ft_strcmp(split_input[0], "sophie"))
-		sophie_la_girafe(ft_atoi(split_input[1]));
 	else
 	{
+		if (has_space(split_input[0]))
+		{
+			new_arr = ft_split_w_quotes(split_input[0], ' ');
+			ft_tabfree(split_input);
+			split_input = new_arr;
+		}
 		bin_path = get_full_cmd_path(split_input[0], sh);
 		if (bin_path)
 		{
 			if (execve(bin_path, split_input, sh->env) == -1)
 			{
-				show_arr_value(split_input);
 				sh->last_return = 126;
 				ft_putstr_w_new_line_fd(strerror(errno), 2);
 				exit(126);
