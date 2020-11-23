@@ -24,7 +24,6 @@ int	has_space(char *s)
 int	child_no_pipe(char **split_input, t_mini *sh)
 {
 	char	*bin_path;
-//	char	**new_arr;
 
 	if (!ft_strcmp(split_input[0], "echo"))
 		echo(split_input);
