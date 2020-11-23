@@ -68,7 +68,7 @@ typedef struct s_mini
 	int			has_sub;
 }				t_mini;
 
-int	empty_cmd(char **arr);
+int		empty_cmd(char **arr);
 int		ft_forking(char **split_input, t_mini *sh);
 void	sophie_la_girafe(int length);
 char	**new_cmd(char **arr, int i, int j);
@@ -92,7 +92,7 @@ void	change_dir(t_mini *sh, char *p);
 void	change_env_var_value(char **env, char *new_p, char *var, t_mini *s);
 void	go_to_required_directory(t_mini *sh, char *dest, char *src);
 void	cd_error_message(char *str);
-void	export(char **arr, t_mini *sh);
+void	ft_export(char **arr, t_mini *sh);
 int		has_invalid_char_in_env_name(char *str);
 int		has_equal_sign(char *s);
 void	ft_tabfree(char **tab);

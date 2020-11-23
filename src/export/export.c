@@ -52,7 +52,7 @@ void	export_add_var(char *var_value, t_mini *sh)
 		add_new_var_in_env(var_value, sh);
 }
 
-void	export(char **arr, t_mini *sh)
+void	ft_export(char **arr, t_mini *sh)
 {
 	int	i;
 

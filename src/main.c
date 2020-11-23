@@ -11,7 +11,7 @@ int	exec_command(char **split_input, t_mini *sh)
 	if (ft_strcmp(split_input[0], ""))
 	{
 		if (!ft_strcmp(split_input[0], "export") && !sh->is_pipe)
-			export(split_input, sh);
+			ft_export(split_input, sh);
 		else if (!ft_strcmp(split_input[0], "unset") && !sh->is_pipe)
 			unset(split_input, sh);
 		else if (!ft_strcmp(split_input[0], "cd") && !sh->is_pipe)
