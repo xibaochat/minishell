@@ -29,9 +29,10 @@ void	show_error_message(char *cmd, char *err, t_mini *sh)
 int	ft_error(char *str, int errno_value, t_mini *sh)
 {
 	ft_putstr_w_new_line_fd(strerror(errno_value), 2);
-	sh->last_return = errno_value;
+	//sh->last_return = errno_value;
 	exit(EXIT_FAILURE);
 	(void)str;
+	(void)sh;
 	return (0);
 }
 
@@ -55,6 +56,13 @@ int	is_syntax_error(char *s, t_mini *sh)
 
 	quo = init_quotes_struct();
 	i = -1;
+	if (sep_in_str_is_invalid(s, ';')
+		|| sep_in_str_is_invalid(s, '|'))
+	{
+		free_str(s);
+		sh->last_return = 2;
+		return (1);
+	}
 	while (s[++i])
 	{
 		manage_struct_quotes(&quo, s, i);

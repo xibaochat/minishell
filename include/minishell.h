@@ -136,5 +136,6 @@ int		replace_var_condition(t_quo *q, char *s, int i);
 char	**check_for_redir(char **arr, t_mini *sh);
 int		split_and_execute(char *str, char *sep, int i, t_mini *sh);
 int		ft_max(int a, int b);
+int		sep_in_str_is_invalid(char *str, char c);
 
 #endif

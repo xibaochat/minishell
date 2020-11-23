@@ -5,7 +5,8 @@ char	*get_full_cmd_path(char *cmd, t_mini *sh)
 	char	*full_cmd_path;
 
 	full_cmd_path = NULL;
-	if (ft_get_directory("minishell", cmd))
+	if (is_binary_path(cmd)
+		&& ft_get_directory("minishell", cmd))
 	{
 		sh->last_return = 126;
 		return (NULL);

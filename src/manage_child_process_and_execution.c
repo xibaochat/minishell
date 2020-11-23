@@ -24,9 +24,10 @@ int	child_no_pipe(char **split_input, t_mini *sh)
 		{
 			if (execve(bin_path, split_input, sh->env) == -1)
 			{
-				ft_putstr_fd("Exec format error: ", 2);
-				ft_putstr_w_new_line_fd(bin_path, 2);
-				ft_error("CMD NOT FOUND", errno, sh);
+				show_arr_value(split_input);
+				sh->last_return = 126;
+				ft_putstr_w_new_line_fd(strerror(errno), 2);
+				exit(126);
 			}
 			free_str(bin_path);
 		}
