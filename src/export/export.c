@@ -74,10 +74,7 @@ void	export(char **arr, t_mini *sh)
 				sh->last_return = 1;
 			}
 			else if (has_equal_sign(arr[i]))
-			{
-				rmv_space_in_val(&arr[i]);
 				export_add_var(arr[i], sh);
-			}
 		}
 	}
 }

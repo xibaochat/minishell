@@ -81,7 +81,8 @@ void	delete_quotes_from_arr(char **arr, int has_sub)
 			change_q_by_space(arr);
 		while (arr[++i])
 		{
-			if (!has_sub)
+			//			if (!has_sub)
+//			  export TEST='bonjour'] echo "|$TEST|"*/
 				delete_quotes_from_s(&arr[i]);
 		}
 	}
