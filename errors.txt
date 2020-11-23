@@ -3,12 +3,10 @@
 ##########
 
 [ENTER] ~> 8 bytes leaks
-| wc -c
 echo \$PWD
 echo \>boid
 echo \>\>boid
 cat \< Makefile
-$pwd
 
 
 #################
@@ -19,12 +17,19 @@ echo boid[Ctrl+/][ENTER]
 cat | wc -c [ENTER] ~> test [ENTER] -> [CTRL+C]
 ./minishell < /dev/random
 env -i ./minishell ~> echo $PWD
-echo boid | | wc -c
-[TAB]echo boid
 ;cat;env>/etc/null
 ;cat;env>/etc/null [CTRL+C]
 ./minishell < /dev/urandom
-cat > boid | wc -c
-; ; ; ; ; ; ; ; ; ; ;
 echo -nnnnnnnn boid
 echo $^? --> must return $^?
+
+##########
+# FIXED? #
+##########
+
+DONE : | wc -c
+DONE : $pwd 
+DONE : echo boid | | wc -c
+DONE : cat > boid | wc -c
+DONE : ; ; ; ; ; ; ; ; ; ; ;
+DONE : [TAB]echo boid
