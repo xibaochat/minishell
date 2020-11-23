@@ -24,7 +24,7 @@ int	has_space(char *s)
 int	child_no_pipe(char **split_input, t_mini *sh)
 {
 	char	*bin_path;
-	char	**new_arr;
+	char    **new_arr;
 
 	if (!ft_strcmp(split_input[0], "echo"))
 		echo(split_input);
@@ -35,18 +35,14 @@ int	child_no_pipe(char **split_input, t_mini *sh)
 	else
 	{
 		if (has_space(split_input[0]))
-			split_fst_arg(split_input);
+		{
+			new_arr = ft_split_w_quotes(split_input[0], ' ');
+			ft_tabfree(split_input);
+			split_input = new_arr;
+		}
 		bin_path = get_full_cmd_path(split_input[0], sh);
 		if (bin_path)
-		{
-			if (execve(bin_path, split_input, sh->env) == -1)
-			{
-				sh->last_return = 126;
-				ft_putstr_w_new_line_fd(strerror(errno), 2);
-				exit(126);
-			}
-			free_str(bin_path);
-		}
+			exec_not_build_in_cmd(bin_path, split_input, sh);
 	}
 	return (sh->last_return);
 }

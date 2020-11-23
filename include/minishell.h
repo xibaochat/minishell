@@ -137,6 +137,6 @@ char	**check_for_redir(char **arr, t_mini *sh);
 int		split_and_execute(char *str, char *sep, int i, t_mini *sh);
 int		ft_max(int a, int b);
 int		sep_in_str_is_invalid(char *str, char c);
-void	split_fst_arg(char **split_input);
+void	exec_not_build_in_cmd(char *bin_path, char **arr, t_mini *sh);
 
 #endif

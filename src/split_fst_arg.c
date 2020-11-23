@@ -1,11 +1,12 @@
 #	include "minishell.h"
 
-void	split_fst_arg(char **split_input)
+void	exec_not_build_in_cmd(char *bin_path, char **arr, t_mini *sh)
 {
-	char	**new_arr;
-
-	new_arr = NULL;
-	new_arr = ft_split_w_quotes(split_input[0], ' ');
-	ft_tabfree(split_input);
-	split_input = new_arr;
+	if (execve(bin_path, arr, sh->env) == -1)
+	{
+		sh->last_return = 126;
+		ft_putstr_w_new_line_fd(strerror(errno), 2);
+		exit(126);
+	}
+	free_str(bin_path);
 }
