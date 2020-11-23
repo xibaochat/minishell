@@ -1,5 +1,9 @@
 #include "minishell.h"
 
+/*
+ ** manage_redir_input() handles "<" situation, ">" and ">>" are directly handled in manage_redir()
+ */
+
 int	manage_redir_input(t_mini *sh, char *file)
 {
 	sh->newfd = open(file, O_RDWR, 0600);
@@ -64,6 +68,10 @@ char	*file_name(char **arr, int i, int j, char c)
 	return (file);
 }
 
+/*
+ ** exec_redir() will get the name of the redirection file and then call manage_redir()
+ */
+
 char	**exec_redir(t_mini *sh, char **arr, int i, int j)
 {
 	sh->file = file_name(arr, i, j, arr[i][j]);
@@ -92,7 +100,7 @@ char	**check_for_redir(char **arr, t_mini *sh)
 		j = -1;
 		while (arr[i][++j])
 		{
-			if (ft_strchr("<>", arr[i][j]))
+			if (ft_strchr("<>", arr[i][j]) && !(j > 0 && arr[i][j - 1] == '\\'))
 			{
 				if (!exec_redir(sh, arr, i, j))
 					return (NULL);

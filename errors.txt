@@ -4,9 +4,6 @@
 
 [ENTER] ~> 8 bytes leaks
 echo \$PWD
-echo \>boid
-echo \>\>boid
-cat \< Makefile
 
 
 #################
@@ -33,3 +30,6 @@ DONE : echo boid | | wc -c
 DONE : cat > boid | wc -c
 DONE : ; ; ; ; ; ; ; ; ; ; ;
 DONE : [TAB]echo boid
+DONE : echo \>boid
+DONE : echo \>\>boid
+DONE : cat \< Makefile
