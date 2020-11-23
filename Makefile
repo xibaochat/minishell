@@ -24,7 +24,7 @@ SRC = main.c  env.c pwd.c  ft_tablen.c  unset.c \
 	get_full_binary_path.c display_ascii_girafe.c \
 	free_var.c manage_child_process_and_execution.c \
 	manage_substitution_in_str.c redirections.c manage_pipe.c redirections_2.c \
-	validity_sep_in_str.c
+	validity_sep_in_str.c split_fst_arg.c error_2.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
 
@@ -54,6 +54,8 @@ LIBFT_A = $(LIBFT_DIR)/libft.a
 LIBFT_HEADER = $(LIBFT_DIR)/include
 
 all : ${NAME}
+	@mkdir objects
+	@mv *.o objects
 	@printf "\033[1;32mMinishell compiled\033[;0m\n"
 	@printf "Type \"./$(NAME)\" to launch $(NAME)\n"
 
@@ -76,6 +78,7 @@ libft_clean:
 fclean: clean libft_fclean
 		@rm -f $(NAME)
 		@rm -f **/*~
+		@rm -rf objects
 		@printf "\033[1;35mExecutable and object files removed\033[;0m\n"
 
 libft_fclean:

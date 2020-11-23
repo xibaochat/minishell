@@ -57,7 +57,9 @@ int	split_and_execute(char *str, char *sep, int i, t_mini *sh)
 	last_ret = 0;
 	arr = ft_split_w_quotes(str, sep[i]);
 	if (!arr || !arr[0])
-		return (0);
+		return (free_empty_tab(arr));
+	if (sep[i] == ';' && empty_cmd(arr))
+		return (2);
 	if ((sep[i] == '|' && ft_tablen(arr) > 1) || sep[i] == ' ')
 		last_ret = split_and_execute_2(last_ret, arr, sep[i], sh);
 	else
@@ -90,11 +92,11 @@ void	manage_input(t_mini *sh)
 		if (is_syntax_error(input, sh))
 			continue ;
 		sh->exit_v = sh->last_return;
-		sh->line = input;
-		sh->is_cmd = 1;
-		sh->last_return = split_and_execute(input, sep, i, sh);
-		sh->is_cmd = 0;
+		sh->line = ft_strtrim(input, SPACE);
 		free_str(input);
+		sh->is_cmd = 1;
+		sh->last_return = split_and_execute(sh->line, sep, i, sh);
+		sh->is_cmd = 0;
 		sh->has_sub = 0;
 	}
 	ft_putstr_fd("exit", 2);
