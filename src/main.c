@@ -8,17 +8,21 @@ int	exec_command(char **split_input, t_mini *sh)
 	int	ret;
 
 	ret = 0;
-	if (!ft_strcmp(split_input[0], "export") && !sh->is_pipe)
-		export(split_input, sh);
-	else if (!ft_strcmp(split_input[0], "unset") && !sh->is_pipe)
-		unset(split_input, sh);
-	else if (!ft_strcmp(split_input[0], "cd") && !sh->is_pipe)
-		ft_cd(split_input, sh);
-	else if (!ft_strcmp(split_input[0], "exit"))
-		ft_exit(split_input, sh);
-	else
-		ret = ft_forking(split_input, sh);
-	return (ret);
+	if (ft_strcmp(split_input[0], ""))
+	{
+		if (!ft_strcmp(split_input[0], "export") && !sh->is_pipe)
+			export(split_input, sh);
+		else if (!ft_strcmp(split_input[0], "unset") && !sh->is_pipe)
+			unset(split_input, sh);
+		else if (!ft_strcmp(split_input[0], "cd") && !sh->is_pipe)
+			ft_cd(split_input, sh);
+		else if (!ft_strcmp(split_input[0], "exit"))
+			ft_exit(split_input, sh);
+		else
+			ret = ft_forking(split_input, sh);
+		return (ret);
+	}
+	return (0);
 }
 
 int	split_and_execute_2(int last_ret, char **arr, char delim, t_mini *sh)

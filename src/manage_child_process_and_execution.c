@@ -8,7 +8,7 @@
 int	has_space(char *s)
 {
 	int		i;
-	t_quo   q;
+	t_quo	q;
 
 	q = init_quotes_struct();
 	i = -1;
@@ -35,11 +35,7 @@ int	child_no_pipe(char **split_input, t_mini *sh)
 	else
 	{
 		if (has_space(split_input[0]))
-		{
-			new_arr = ft_split_w_quotes(split_input[0], ' ');
-			ft_tabfree(split_input);
-			split_input = new_arr;
-		}
+			split_fst_arg(split_input);
 		bin_path = get_full_cmd_path(split_input[0], sh);
 		if (bin_path)
 		{

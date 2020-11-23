@@ -6,8 +6,6 @@ static char	**get_bin_path_arr(t_mini *sh)
 	char	**bin_path;
 
 	path = ft_find_env(ENV_PATH, sh->env);
-	/* if (!path) */
-	/* 	path = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"; */
 	bin_path = ft_split(path, ':');
 	return (bin_path);
 }
