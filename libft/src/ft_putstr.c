@@ -12,22 +12,15 @@
 
 #include "libft.h"
 
-void	ft_putstr_echo(char *s, int d)
+void	ft_putstr_echo(char *s)
 {
 	int	i;
-	t_quo	q;
 
-	ft_printf("s is %s\n", s);
 	i = 0;
-	q = init_quotes_struct();
 	if (s)
 	{
-		if (d)
-			while (s[i] && s[i] == ' ')
-				i++;
 		while (s[i])
 		{
-			manage_struct_quotes(&q, s, i);
 			if (s[i] != 3)
 				write(1, &s[i], 1);
 			i++;

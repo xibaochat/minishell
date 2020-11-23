@@ -27,7 +27,7 @@ int	has_n_option(char *s)
 	return (0);
 }
 
-void	echo(char **args, t_mini *sh)
+void	echo(char **args)
 {
 	int	i;
 	int	mark;
@@ -44,7 +44,7 @@ void	echo(char **args, t_mini *sh)
 		}
 		if (args[i] && args[i][0])
 		{
-			ft_putstr_echo(args[i], sh->has_sub);
+			ft_putstr_echo(args[i]);
 			if (args[i + 1] && args[i + 1][0])
 				ft_putstr(" ");
 			mark = 1;
