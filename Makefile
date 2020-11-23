@@ -38,6 +38,7 @@ CD_PATH = $(addprefix $(SRCS_PATH)/,$(addprefix manage_cd/,$(CD_SRC)))
 CD_OBJ =  $(CD_SRC:.c=.o)
 
 EXP_SRC = check_export_var_val.c export.c show_export_var.c \
+			rm_space_in_val.c
 
 EXP_PATH = $(addprefix $(SRCS_PATH)/,$(addprefix export/,$(EXP_SRC)))
 

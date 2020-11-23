@@ -137,5 +137,6 @@ char	**check_for_redir(char **arr, t_mini *sh);
 int		split_and_execute(char *str, char *sep, int i, t_mini *sh);
 int		ft_max(int a, int b);
 int		sep_in_str_is_invalid(char *str, char c);
+void	rmv_space_in_val(char **s);
 
 #endif
