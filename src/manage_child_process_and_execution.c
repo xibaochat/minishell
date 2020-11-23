@@ -10,7 +10,7 @@ int	child_no_pipe(char **split_input, t_mini *sh)
 	char	*bin_path;
 
 	if (!ft_strcmp(split_input[0], "echo"))
-		echo(split_input);
+		echo(split_input, sh);
 	else if (!ft_strcmp(split_input[0], "pwd"))
 		pwd(sh);
 	else if (!ft_strcmp(split_input[0], "env"))

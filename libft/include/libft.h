@@ -117,6 +117,6 @@ char			**empty_arr(void);
 int				get_content_from_file(int fd, char **buffer);
 int				no_newline_in_str(char *str);
 char			*ft_strncat(char *dest, char *src, unsigned int nb);
-void			ft_putstr_echo(char *s);
+void			ft_putstr_echo(char *s, int d);
 
 #endif
