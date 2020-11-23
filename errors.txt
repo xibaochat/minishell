@@ -27,3 +27,4 @@ echo boid | | wc -c
 cat > boid | wc -c
 ; ; ; ; ; ; ; ; ; ; ;
 echo -nnnnnnnn boid
+echo $^? --> must return $^?

@@ -36,6 +36,8 @@
 # define HOME_ERROR "%s/!\\ NO HOME DEFINE /!\\ \n%s"
 # define CD_HOME_ERR "[-] Home env variable is not define"
 
+# define SPACE " \f\t\n\r\v"
+
 # include <unistd.h>
 # include <errno.h>
 # include <stdio.h>
@@ -66,6 +68,7 @@ typedef struct s_mini
 	int			has_sub;
 }				t_mini;
 
+int	empty_cmd(char **arr);
 int		ft_forking(char **split_input, t_mini *sh);
 void	sophie_la_girafe(int length);
 char	**new_cmd(char **arr, int i, int j);
