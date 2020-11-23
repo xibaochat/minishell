@@ -92,11 +92,11 @@ void	manage_input(t_mini *sh)
 		if (is_syntax_error(input, sh))
 			continue ;
 		sh->exit_v = sh->last_return;
-		sh->line = ft_strtrim(input, SPACE);
-		free_str(input);
+		sh->line = input;
 		sh->is_cmd = 1;
 		sh->last_return = split_and_execute(sh->line, sep, i, sh);
 		sh->is_cmd = 0;
+		free_str(input);
 		sh->has_sub = 0;
 	}
 	ft_putstr_fd("exit", 2);
