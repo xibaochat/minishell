@@ -177,10 +177,10 @@ int store_fd_from_filename(t_red *red)
 }
 
 /*
-  Manage redirection extract:
-  1. filename extraction
+  Manage redirection extractaction:
+  1. validate redirection chars combinaison
   2. redirection type identification (< or > or >>)
-  3. redirection char combinaison validity
+  3. open related filename
   return:
       on error: 0
 	  on success: 1
