@@ -62,6 +62,7 @@ char	**new_cmd(char **arr, int i, int j)
 	int		sticked;
 
 	len = (int)ft_tablen(arr);
+	new = NULL;
 	if ((!arr[i][j + 1] || (arr[i][j + 1] == '>'
 				&& (!arr[i][j + 2]) && arr[i + 1])))
 		len--;
