@@ -54,27 +54,17 @@ int jump_to_redir_char(const char *cmd, int *i)
 	  2. "><"
 	  3. "<<"
 	  4. ">>>"
+	  5. ">\0"
   return:
       on error: 0
 	  on success: 1
 */
 int valid_red_char_combinaison(const char *cmd, int i)
 {
+	if (!cmd[i])
+		return (0);
 	return (1);
 }
-
-/*
-  Validate that the combinaison of redirection char is a valid one
-  Examples:
-      1. "> > >"
-	  2. "><"
-	  3. "<<"
-	  4. ">>>"
-	  5. ">\0"
-  return:
-      on error: 0
-	  on success: 1
-*/
 
 /*
   Identify redirection type of first occurence in given cmd
@@ -82,9 +72,14 @@ int valid_red_char_combinaison(const char *cmd, int i)
 	  - >  = WRITE  = 1
 	  - >> = APPEND = 2
 */
-void set_red_type(const char *cmd, int *i, t_red *red)
+void set_red_type(const char *cmd, int i, t_red *red)
 {
-	red->red_type = 1;
+	if (cmd[i] == '<')
+		red->red_type = READ;
+	else if (cmd[i] == '>' && cmd[i + 1] == '>')
+		red->red_type = APPEND;
+	else
+		red->red_type = WRITE;
 }
 
 /*
@@ -93,9 +88,9 @@ void set_red_type(const char *cmd, int *i, t_red *red)
       on error: -1
 	  on success: 0
 */
-int manage_redir_type(const char *cmd, int *i, t_red *red)
+int manage_redir_type(const char *cmd, int i, t_red *red)
 {
-	if (!valid_red_char_combinaison(cmd, *i))
+	if (!valid_red_char_combinaison(cmd, i))
 	{
 		red->error = 1;
 		red->error_msg = ft_strdup("minishell: error invalid redirection");
@@ -146,15 +141,39 @@ void store_red_filename(char *cmd, int i, t_red *red)
 	int		name_len;
 	char	*filename;
 
-	ft_printf("[%d] _%s_\n", i, cmd);
-	ft_printf("0: _%s_\n", cmd + i);
 	jump_i_to_filename(cmd, &i);
-	ft_printf("1: _%s_\n", cmd + i);
 	name_len = get_filename_len(cmd, i);
-	ft_printf("name_len: _%d_\n", name_len);
 	filename = ft_strnew(name_len + 1);
 	ft_strncat(filename, cmd + i, name_len);
 	red->filename = filename;
+}
+
+/*
+  Try to open red->filename based on redirection type (for permission)
+  and store the fd on success
+  return:
+      on error: -1
+	  on sucess: 0
+*/
+int store_fd_from_filename(t_red *red)
+{
+	char *f;
+
+	f = red->filename;
+	if (red->red_type == READ)
+		red->fd = open(f, O_RDWR, 0600);
+	else if (red->red_type == WRITE)
+		red->fd = open(f, O_CREAT | O_RDWR | O_APPEND, 0600);
+	else if (red->red_type == APPEND)
+		red->fd = open(f, O_CREAT | O_RDWR | O_TRUNC, 0600);
+	if (red->fd == -1)
+	{
+		red->error = 1;
+		/* Possibly manage error based on red->red_type */
+		red->error_msg = ft_strdup("Invalid file: ");
+		return (-1);
+	}
+	return (0);
 }
 
 /*
@@ -168,11 +187,20 @@ void store_red_filename(char *cmd, int i, t_red *red)
  */
 int extract_red(char *cmd, int i, t_red *red)
 {
-	if (manage_redir_type(cmd, &i, red) == -1)
+	if (manage_redir_type(cmd, i, red) == -1)
 		return (0);
 	store_red_filename(cmd, i, red);
-	ft_printf("%s\n", red->filename);
+	if (store_fd_from_filename(red) == -1)
+		return (0);
 	return (1);
+}
+
+void skip_redir_char(t_red *red, int *i)
+{
+	if (red->red_type == READ || red->red_type == WRITE)
+		++(*i);
+	else
+		(*i) = (*i) + 2;
 }
 
 int manage_redir(char *cmd, t_mini *sh)
@@ -186,10 +214,10 @@ int manage_redir(char *cmd, t_mini *sh)
 		return (-1);
 	while (extract_red(cmd, i, &red))
 	{
-		exit(0);
+		ft_printf("_%s_\n", red.filename);
 		/* make_io_redirection(cmd[i], filename); */
 		/* cmd = remove_redir_from_cmd(cmd); */
-		/* ++i; */
+		skip_redir_char(&red, &i);
 		if (!jump_to_redir_char(cmd, &i))
 			return (0);
 	}
@@ -198,6 +226,12 @@ int manage_redir(char *cmd, t_mini *sh)
 	return (0);
 }
 
+/*
+  Check if given string contain a redirection char
+  return:
+      True: 1
+	  False: 0
+*/
 int redir_in_str(const char *s)
 {
 	int i;
