@@ -56,6 +56,9 @@ static int	extract_line(char **line, char **buffer, int *i, int *j)
 	char	*s1;
 	char	*tmp;
 
+	s = NULL;
+	s1 = NULL;
+	tmp = NULL;
 	while ((*buffer)[*i] && (*buffer)[*i] != '\n')
 		(*i)++;
 	s = ft_strnew(*i + 1);

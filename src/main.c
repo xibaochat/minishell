@@ -22,6 +22,12 @@ int	exec_command(char **split_input, t_mini *sh)
 			ret = ft_forking(split_input, sh);
 		return (ret);
 	}
+	else if (!ft_strcmp(split_input[0], "") && !sh->has_sub)
+	{
+		ft_putstr_fd("Command not found\n", 2);
+		sh->last_return = 127;
+		return (sh->last_return);
+	}
 	return (0);
 }
 
@@ -58,8 +64,8 @@ int	split_and_execute(char *str, char *sep, int i, t_mini *sh)
 	arr = ft_split_w_quotes(str, sep[i]);
 	if (!arr || !arr[0])
 		return (free_empty_tab(arr));
-	if (sep[i] == ';' && empty_cmd(arr))
-		return (2);
+	/* if (sep[i] == ';' && empty_cmd(arr)) */
+	/* 	return (2); */
 	if ((sep[i] == '|' && ft_tablen(arr) > 1) || sep[i] == ' ')
 		last_ret = split_and_execute_2(last_ret, arr, sep[i], sh);
 	else

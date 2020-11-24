@@ -15,13 +15,16 @@ void	replace_question_mark_by_exit_value(char **str, int i, int n)
 	int		nb_lens;
 	char	*s1;
 
+	s1 = NULL;
+	s = NULL;
+	nb_lens = 0;
 	s1 = ft_itoa(n);
 	nb_lens = get_nb_size(n);
 	s = ft_strnew(ft_strlen(*str) - 1 + nb_lens);
 	ft_strncat(s, *str, i);
 	ft_strcat(s, s1);
 	free_str(s1);
-	if ((*str)[i + nb_lens + 1])
+	if ((*str)[i + 2])
 		ft_strncat(s, (*str) + i + 2, ft_strlen(*str) - i - 2);
 	free_str(*str);
 	*str = s;

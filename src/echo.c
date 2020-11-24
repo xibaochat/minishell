@@ -35,11 +35,12 @@ void	echo(char **args)
 
 	mark = 0;
 	i = 0;
+	has_n = 1;
 	while (args[++i])
 	{
 		while (has_n_option(args[i]) && !mark)
 		{
-			has_n = 1;
+			has_n = 0;
 			i++;
 		}
 		if (args[i] && args[i][0])

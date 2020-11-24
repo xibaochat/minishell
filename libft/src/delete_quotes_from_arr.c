@@ -79,23 +79,18 @@ void	change_q_by_space(char **arr)
 
 void	delete_quotes_from_arr(char **arr, int has_sub)
 {
-	int		i;
+	int	i;
 
 	i = -1;
 	if (!arr)
 		return ;
 	else if (!ft_strcmp(arr[0], "cd"))
-		cmd_is_cd_and_q(arr);
-	else
 	{
-		if (!ft_strcmp(arr[0], "echo")
-			&& cmd_is_echo_and_q(arr) && !has_sub)
-			change_q_by_space(arr);
-		while (arr[++i])
-		{
-			/* 	if (!has_sub) */
-			/* export TEST='bonjour'] echo "|$TEST|"*\/ */
-			delete_quotes_from_s(&arr[i]);
-		}
+		cmd_is_cd_and_q(arr);
+		return ;
 	}
+	if (!ft_strcmp(arr[0], "echo") && cmd_is_echo_and_q(arr) && !has_sub)
+		change_q_by_space(arr);
+	while (arr[++i])
+		delete_quotes_from_s(&arr[i]);
 }
