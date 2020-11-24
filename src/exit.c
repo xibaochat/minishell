@@ -9,7 +9,8 @@ static int	has_alpha(char *s)
 	{
 		if (ft_isalpha(s[i]))
 			return (1);
-		if (i > 0 && ((s[i] == '+' || s[i] == '-') || !ft_isalpha(s[i])))
+//		if (i > 0 && ((s[i] == '+' || s[i] == '-')))
+		if (i > 0 && (s[i] != ' ') && !ft_isdigit(s[i]))
 			return (1);
 	}
 	return (0);
