@@ -54,7 +54,7 @@ LIBFT_A = $(LIBFT_DIR)/libft.a
 LIBFT_HEADER = $(LIBFT_DIR)/include
 
 all : ${NAME}
-	@mkdir objects
+	@mkdir -p objects
 	@mv *.o objects
 	@printf "\033[1;32mMinishell compiled\033[;0m\n"
 	@printf "Type \"./$(NAME)\" to launch $(NAME)\n"
