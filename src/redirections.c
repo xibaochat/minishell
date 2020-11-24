@@ -248,6 +248,27 @@ char **invalid_redir(t_mini *sh)
 	;
 }
 
+/*
+  Check if current s only contain redirection char
+  example:
+      cmd = "ls > boid"
+	  s = ">"
+  return:
+      True: 1
+	  False: 0
+*/
+int lonely_redir_char(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i] && (is_white_space(s[i]) || is_redir_char(s[i])))
+		   ++i;
+	if (!s[i])
+		return (1);
+	return (0);
+}
+
 char	**check_for_redir(char **arr, t_mini *sh)
 {
 	int		i;
@@ -261,11 +282,7 @@ char	**check_for_redir(char **arr, t_mini *sh)
 		ft_printf("boid0\n");
 		if (redir_in_str(arr[i]))
 		{
-			/* ls > boid */
- 			/* arr[0] = "ls" */
-			/* arr[1] = ">" */
-			/* arr[2] = "boid" */
-			/* if (lonely_redir_char(arr[i])) */
+			/* if (lonely_redir_char(arr[i]) && arr[i + 1]) */
 			/* 	merge_two_args(&arr, i); */
 			if (manage_redir(arr[i], sh) == -1)
 				return (invalid_redir(sh));
