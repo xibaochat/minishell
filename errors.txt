@@ -1,3 +1,11 @@
+echo bonjour>test>je>suis
+>test echo bonjour>je>suis
+echo bonjour>>test>je>>suis -> cat<test<je
+
+
+
+
+
 ##########
 # TO FIX #
 ##########
@@ -25,7 +33,7 @@ echo $^? --> must return $^?
 ##########
 
 DONE : | wc -c
-DONE : $pwd 
+DONE : $pwd
 DONE : echo boid | | wc -c
 DONE : cat > boid | wc -c
 DONE : ; ; ; ; ; ; ; ; ; ; ;
