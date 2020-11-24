@@ -1,0 +1,3732 @@
+|> WITH echo $PWD; echo $OLDPWD; cd .; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ..; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ../..; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ../../..; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ../../../..; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ../../../../..; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ../../../../../..; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ''; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd '' ''; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd '' '' ''; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ' '; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir d] echo $PWD; echo $OLDPWD; cd d ''; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir d] echo $PWD; echo $OLDPWD; cd d d; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir d] echo $PWD; echo $OLDPWD; cd d ' '; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS HOME='/home/maobe'] echo $PWD; echo $OLDPWD; cd $HOME; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /.; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /./; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /././././; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd //; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ///; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ////; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd //////////////////////////////////////////////////////; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS HOME='/home/maobe'] echo $PWD; echo $OLDPWD; cd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ' /'; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ' / '; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd '                  /'; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd '                  /              '; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ' // '; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd //home; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd ' //home'; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd '     //home    '; pwd; echo $PWD; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 001 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 002 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 003 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 004 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 005 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 006 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 007 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 010 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 020 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 030 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 040 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 050 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 060 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 070 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 100 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 200 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 300 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 400 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 500 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 600 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 700 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 755 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 644 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 311 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 111 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 222 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 333 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 0777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 1000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 2000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 3000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 4000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 5000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 6000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 7000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 1777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 2777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 3777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 4777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 5777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 6777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 7777 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 0000 d] echo $PWD; echo $OLDPWD; cd d; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /; echo $PWD; echo $OLDPWD; unset PWD; cd /dev; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo $PWD; echo $OLDPWD; cd /; echo $PWD; echo $OLDPWD; export PWD=bonjour; cd /dev; echo $OLDPWD
+TIMEOUT
+================================================================================
+
+|> WITH echo
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo lalalala lalalalal alalalalal alalalala
+TIMEOUT
+================================================================================
+
+|> WITH echo lalalala                lalalalal      alalalalal alalalala
+TIMEOUT
+================================================================================
+
+|> WITH echo  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum. 
+TIMEOUT
+================================================================================
+
+|> WITH echo -n
+TIMEOUT
+================================================================================
+
+|> WITH echo -n bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo -n lalalala lalalalal alalalalal alalalala
+TIMEOUT
+================================================================================
+
+|> WITH echo -n lalalala                lalalalal      alalalalal alalalala
+TIMEOUT
+================================================================================
+
+|> WITH echo -n  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum. 
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour -n
+TIMEOUT
+================================================================================
+
+|> WITH echo -n bonjour -n
+TIMEOUT
+================================================================================
+
+|> WITH                         echo                     bonjour             je
+TIMEOUT
+================================================================================
+
+|> WITH                         echo       -n            bonjour             je
+TIMEOUT
+================================================================================
+
+|> WITH echo a '' b '' c '' d
+TIMEOUT
+================================================================================
+
+|> WITH echo a "" b "" c "" d
+TIMEOUT
+================================================================================
+
+|> WITH echo -n a '' b '' c '' d
+TIMEOUT
+================================================================================
+
+|> WITH echo -n a "" b "" c "" d
+TIMEOUT
+================================================================================
+
+|> WITH echo '' '' ''
+TIMEOUT
+================================================================================
+
+|> WITH Echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH eCho bonjour
+TIMEOUT
+================================================================================
+
+|> WITH ecHo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echO bonjour
+TIMEOUT
+================================================================================
+
+|> WITH EchO bonjour
+TIMEOUT
+================================================================================
+
+|> WITH eCHo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH EcHo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH eChO bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/bin:/usr/bin'] Echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/bin:/usr/bin'] eCho bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/bin:/usr/bin'] ecHo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/bin:/usr/bin'] echO bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/bin:/usr/bin'] EchO bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/bin:/usr/bin'] eCHo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/bin:/usr/bin'] EcHo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/bin:/usr/bin'] eChO bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/bin:/usr/bin'] eChO -e 'bonjo\nur'
+TIMEOUT
+================================================================================
+
+|> WITH echo -n -n -n -n bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo -nnnnnnnnnnnnnnnnnnnnn bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo -nnnnnnnnnnnnnnnnnnnnn -n -n -n bonjour -n -n
+TIMEOUT
+================================================================================
+
+|> WITH env
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP export A=a] env
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP export A=a B=b C=c] env
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP export A=a B=b C=c] env | cat -e
+TIMEOUT
+================================================================================
+
+|> WITH exit
+TIMEOUT
+================================================================================
+
+|> WITH exit 1
+TIMEOUT
+================================================================================
+
+|> WITH exit 2
+TIMEOUT
+================================================================================
+
+|> WITH exit 3
+TIMEOUT
+================================================================================
+
+|> WITH exit ' 3'
+TIMEOUT
+================================================================================
+
+|> WITH exit '\t3'
+TIMEOUT
+================================================================================
+
+|> WITH exit '\t\f\r 3'
+TIMEOUT
+================================================================================
+
+|> WITH exit '3 '
+TIMEOUT
+================================================================================
+
+|> WITH exit '3\t'
+TIMEOUT
+================================================================================
+
+|> WITH exit '3\r'
+TIMEOUT
+================================================================================
+
+|> WITH exit '3\t\f\r '
+TIMEOUT
+================================================================================
+
+|> WITH exit '3     a'
+TIMEOUT
+================================================================================
+
+|> WITH exit '3\t\t\ta'
+TIMEOUT
+================================================================================
+
+|> WITH exit 0
+TIMEOUT
+================================================================================
+
+|> WITH exit -0
+TIMEOUT
+================================================================================
+
+|> WITH exit -1
+TIMEOUT
+================================================================================
+
+|> WITH exit 255
+TIMEOUT
+================================================================================
+
+|> WITH exit 256
+TIMEOUT
+================================================================================
+
+|> WITH exit 2000000
+TIMEOUT
+================================================================================
+
+|> WITH exit -2000000
+TIMEOUT
+================================================================================
+
+|> WITH exit 2147483647
+TIMEOUT
+================================================================================
+
+|> WITH exit -2147483648
+TIMEOUT
+================================================================================
+
+|> WITH exit 2147483648
+TIMEOUT
+================================================================================
+
+|> WITH exit -2147483649
+TIMEOUT
+================================================================================
+
+|> WITH exit 3147483648
+TIMEOUT
+================================================================================
+
+|> WITH exit -3147483649
+TIMEOUT
+================================================================================
+
+|> WITH exit 4294967295
+TIMEOUT
+================================================================================
+
+|> WITH exit 4294967296
+TIMEOUT
+================================================================================
+
+|> WITH exit -9223372036854775808
+TIMEOUT
+================================================================================
+
+|> WITH exit 9223372036854775807
+TIMEOUT
+================================================================================
+
+|> WITH exit -9223372036854775809
+TIMEOUT
+================================================================================
+
+|> WITH exit 9223372036854775808
+TIMEOUT
+================================================================================
+
+|> WITH exit 18446744073709551615
+TIMEOUT
+================================================================================
+
+|> WITH exit 18446744073709551616
+TIMEOUT
+================================================================================
+
+|> WITH exit +1
+TIMEOUT
+================================================================================
+
+|> WITH exit +2
+TIMEOUT
+================================================================================
+
+|> WITH exit +3
+TIMEOUT
+================================================================================
+
+|> WITH exit +0
+TIMEOUT
+================================================================================
+
+|> WITH exit +255
+TIMEOUT
+================================================================================
+
+|> WITH exit +256
+TIMEOUT
+================================================================================
+
+|> WITH exit +2000000
+TIMEOUT
+================================================================================
+
+|> WITH exit +2147483647
+TIMEOUT
+================================================================================
+
+|> WITH exit ++1
+TIMEOUT
+================================================================================
+
+|> WITH exit ++2
+TIMEOUT
+================================================================================
+
+|> WITH exit ++3
+TIMEOUT
+================================================================================
+
+|> WITH exit ++0
+TIMEOUT
+================================================================================
+
+|> WITH exit ++255
+TIMEOUT
+================================================================================
+
+|> WITH exit ++256
+TIMEOUT
+================================================================================
+
+|> WITH exit ++2000000
+TIMEOUT
+================================================================================
+
+|> WITH exit ++2147483647
+TIMEOUT
+================================================================================
+
+|> WITH exit --1
+TIMEOUT
+================================================================================
+
+|> WITH exit --2
+TIMEOUT
+================================================================================
+
+|> WITH exit --3
+TIMEOUT
+================================================================================
+
+|> WITH exit --0
+TIMEOUT
+================================================================================
+
+|> WITH exit --255
+TIMEOUT
+================================================================================
+
+|> WITH exit --256
+TIMEOUT
+================================================================================
+
+|> WITH exit --2000000
+TIMEOUT
+================================================================================
+
+|> WITH exit --2147483647
+TIMEOUT
+================================================================================
+
+|> WITH exit bonjour
+TIMEOUT
+================================================================================
+
+|> WITH exit 0_
+TIMEOUT
+================================================================================
+
+|> WITH exit _0
+TIMEOUT
+================================================================================
+
+|> WITH exit 0123456789
+TIMEOUT
+================================================================================
+
+|> WITH exit -0123456789
+TIMEOUT
+================================================================================
+
+|> WITH exit 00000000000000000000000000000000000000000000001
+TIMEOUT
+================================================================================
+
+|> WITH exit 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001
+TIMEOUT
+================================================================================
+
+|> WITH exit 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+TIMEOUT
+================================================================================
+
+|> WITH exit -0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001
+TIMEOUT
+================================================================================
+
+|> WITH exit -9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+TIMEOUT
+================================================================================
+
+|> WITH exit 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+TIMEOUT
+================================================================================
+
+|> WITH exit 0 bonjour
+TIMEOUT
+================================================================================
+
+|> WITH exit bonjour 0
+TIMEOUT
+================================================================================
+
+|> WITH exit 0 1
+TIMEOUT
+================================================================================
+
+|> WITH exit 0 1 2 3 4 5 6 7 8 9
+TIMEOUT
+================================================================================
+
+|> WITH exit  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum. 
+TIMEOUT
+================================================================================
+
+|> WITH export
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=''] export
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='"'] export
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='\t'] export
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='''] export
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a'] export
+TIMEOUT
+================================================================================
+
+|> WITH export A=a; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH export A=a B=b C=c; echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH export A=a B=b C=c D=d E=e F=f G=g H=h I=i J=j K=k L=lM=m N=n O=o P=p Q=q R=r S=s T=t U=u V=v W=w X=x Y=y Z=z; echo $A$B$C$D$E$F$G$H$I$J$K$L$M$N$O$P$Q$R$S$T$U$V$W$X$Y$Z
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOURJESUIS=a; echo $BONJOURJESUIS
+TIMEOUT
+================================================================================
+
+|> WITH export bonjourjesuis=a; echo $bonjourjesuis
+TIMEOUT
+================================================================================
+
+|> WITH export bonjour_je_suis=a; echo $bonjour_je_suis
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOURJESUIS1=a; echo $BONJOURJESUIS1
+TIMEOUT
+================================================================================
+
+|> WITH export bO_nJq123o__1ju_je3234sui__a=a; echo $bO_nJq123o__1ju_je3234sui__a
+TIMEOUT
+================================================================================
+
+|> WITH export a0123456789=a; echo $a0123456789
+TIMEOUT
+================================================================================
+
+|> WITH export abcdefghijklmnopqrstuvwxyz=a; echo $abcdefghijklmnopqrstuvwxyz
+TIMEOUT
+================================================================================
+
+|> WITH export ABCDEFGHIJKLMNOPQRSTUVWXYZ=a; echo $ABCDEFGHIJKLMNOPQRSTUVWXYZ
+TIMEOUT
+================================================================================
+
+|> WITH export __________________________=a; echo $__________________________
+TIMEOUT
+================================================================================
+
+|> WITH export _bonjour_=a; echo $_bonjour_
+TIMEOUT
+================================================================================
+
+|> WITH export _=a; echo $_a
+TIMEOUT
+================================================================================
+
+|> WITH export 1=a
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOURJESUIS =a
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOURJESUIS= a
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\\JESUIS=a
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\'JESUIS=a
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\"JESUIS=a
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\$JESUIS=a
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\&JESUIS=a
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\|JESUIS=a
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\;JESUIS=a
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\_JESUIS=a
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\0JESUIS=a
+TIMEOUT
+================================================================================
+
+|> WITH export \B\O\N\ \ \ \ \ \ \ JOURJESUIS=a
+TIMEOUT
+================================================================================
+
+|> WITH export A=\B\O\N\ \ \ \ \ \ \ JOURJESUIS; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH export A='bonjour je suis charles'; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH export A="bonjour je suis charles"; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH export A==a; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH export A===a; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH export A====a; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH export A=====a; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH export A======a; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH export A=a=a=a=a=a; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH export A 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf ' C; echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH export 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf ' C; echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH export A 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf '; echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH export A B C; echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH export A B C; env
+TIMEOUT
+================================================================================
+
+|> WITH export 'AH@'=nop
+TIMEOUT
+================================================================================
+
+|> WITH export "AH'"=nop
+TIMEOUT
+================================================================================
+
+|> WITH export 'AH"'=nop
+TIMEOUT
+================================================================================
+
+|> WITH export 'AH$'=nop
+TIMEOUT
+================================================================================
+
+|> WITH export 'AH!'=nop
+TIMEOUT
+================================================================================
+
+|> WITH export 'AH|'=nop
+TIMEOUT
+================================================================================
+
+|> WITH export 'AH;'=nop
+TIMEOUT
+================================================================================
+
+|> WITH export 'AH&'=nop
+TIMEOUT
+================================================================================
+
+|> WITH export 'AH\'=nop
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS TEST='A=a'] export $TEST
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\\JESUIS
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\'JESUIS
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\"JESUIS
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\$JESUIS
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\&JESUIS
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\|JESUIS
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\;JESUIS
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\_JESUIS
+TIMEOUT
+================================================================================
+
+|> WITH export BONJOUR\0JESUIS
+TIMEOUT
+================================================================================
+
+|> WITH pwd
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP cd ..] pwd
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP cd ../..] pwd
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP cd ../../..] pwd
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP cd /] pwd
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP cd $HOME] pwd
+TIMEOUT
+================================================================================
+
+|> WITH pwd | cat -e
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PWD='/etc'] pwd
+TIMEOUT
+================================================================================
+
+|> WITH unset PWD; pwd; echo $PWD
+TIMEOUT
+================================================================================
+
+|> WITH export PWD=foo; pwd; echo $PWD
+TIMEOUT
+================================================================================
+
+|> WITH unset
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a'] unset A; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a'] unset 'A '; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a'] unset 'A='; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a' B='b' C='c'] unset A B C; echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a' B='b' C='c'] unset A 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf ' C; echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a' B='b' C='c'] unset 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf ' C; echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a' B='b' C='c'] unset A 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf '; echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a' B='b' C='c'] unset A; echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a' B='b' C='c'] unset C; echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a' B='b' C='c'] unset A B C
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a' B='b' C='c'] unset A 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf ' C
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a' B='b' C='c'] unset 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf ' C
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a' B='b' C='c'] unset A 'asdf ' B ' asdf asdf asd f' ' asdf ' '' 'asdf '
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a' B='b' C='c'] unset A
+TIMEOUT
+================================================================================
+
+|> WITH unset 'AH@'=nop
+TIMEOUT
+================================================================================
+
+|> WITH unset "AH'"=nop
+TIMEOUT
+================================================================================
+
+|> WITH unset 'AH"'=nop
+TIMEOUT
+================================================================================
+
+|> WITH unset 'AH$'=nop
+TIMEOUT
+================================================================================
+
+|> WITH unset 'AH!'=nop
+TIMEOUT
+================================================================================
+
+|> WITH unset 'AH|'=nop
+TIMEOUT
+================================================================================
+
+|> WITH unset 'AH;'=nop
+TIMEOUT
+================================================================================
+
+|> WITH unset 'AH&'=nop
+TIMEOUT
+================================================================================
+
+|> WITH unset 'AH\'=nop
+TIMEOUT
+================================================================================
+
+|> WITH notfound
+TIMEOUT
+================================================================================
+
+|> WITH notfound a b c
+TIMEOUT
+================================================================================
+
+|> WITH echo "\"" >>a"b""c"  
+TIMEOUT
+================================================================================
+
+|> WITH echo \t\v\f\r !#$%*+,-./0123456789:;=?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_abcdefghijklmnopqrstuvwxyz{}~
+TIMEOUT
+================================================================================
+
+|> WITH echo foo>bar
+TIMEOUT
+================================================================================
+
+|> WITH echo foo >bar
+TIMEOUT
+================================================================================
+
+|> WITH echo foo> bar
+TIMEOUT
+================================================================================
+
+|> WITH echo foo > bar
+TIMEOUT
+================================================================================
+
+|> WITH echo a as df sad f as df qw e  qwe  as df asd f as df as d fas d fasd f asd f asdf asdf  asdf  asd f asd f asd f asd f as df as df aasd f asd f asdf asdf  asdf  asd f asd f asd f asd f as df as df aasd f asd f asdf asdf  asdf  asd f asd f asd f asd f as df as df a
+TIMEOUT
+================================================================================
+
+|> WITH echo  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum. 
+TIMEOUT
+================================================================================
+
+|> WITH echo  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum. 
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c] /usr/bin/ls
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c] /usr/bin/ls -l
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c; cp /usr/bin/ls bonjour] ./bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c; cp /usr/bin/ls bonjour] ./bonjour -l
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir somedir; touch a b c; touch somedir/d somedir/e;cp /usr/bin/ls somedir/bonjour] ./somedir/bonjour -l
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c; echo bonjour > a; cp /usr/bin/cat ls] ./ls . a b c
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c; echo bonjour > a; cp /usr/bin/cat ls] ls . a b c
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 000 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 001 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 002 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 003 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 004 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 005 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 006 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 007 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 010 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 020 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 030 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 040 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 050 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 060 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 070 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 100 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 200 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 300 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 400 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 500 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 600 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 700 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 755 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 644 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 311 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 111 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 222 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile; chmod 333 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir somedir] somedir/
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir somedir] ./somedir/
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir somedir] somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir somedir] somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir somedir; ln -s somedir somedirsoftlink] somedirsoftlink/
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir somedir; ln -s somedir somedirsoftlink] ./somedirsoftlink/
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir somedir; ln -s somedir somedirsoftlink] somedirsoftlink
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir somedir; ln -s somedir somedirsoftlink] ./somedirsoftlink
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir somedir; ln -s somedir somedirsoftlink] somedirsoftlink
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch somefile; ln -s somefile someremovedlink; rm -f somefile] ./someremovedlink
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch somefile; ln -s somefile somelink1; ln -s somelink1 somelink2] ./somelink2
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch somefile; ln -s somefile somelink1; ln -s somelink1 somelink2;ln -s somelink2 somelink3] ./somelink3
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch somefile; ln -s somefile somelink1; ln -s somelink1 somelink2;ln -s somelink2 somelink3; ln -s somelink3 somelink4] ./somelink4
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP cp /usr/bin/ls somefile;ln -s somefile somelink1; ln -s somelink1 somelink2] ./somelink2ls
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP cp /usr/bin/ls somefile;ln -s somefile somelink1; ln -s somelink1 somelink2;ln -s somelink2 somelink3] ./somelink3ls
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP cp /usr/bin/ls somefile;ln -s somefile somelink1; ln -s somelink1 somelink2;ln -s somelink2 somelink3; ln -s somelink3 somelink4] ./somelink4ls
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch _] _
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch -] '-'
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch _] ./_
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a; mv a ./-] ./-
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch .] ./.
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch ..] ./..
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 0777 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 1000 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 2000 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 3000 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 4000 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 5000 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 6000 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 7000 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 1777 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 2777 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 3777 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 4777 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 5777 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 6777 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 7777 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 0000 somefile] ./somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 0777 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 1000 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 2000 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 3000 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 4000 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 5000 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 6000 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 7000 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 1777 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 2777 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 3777 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 4777 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 5777 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 6777 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir -m 0000 somedir] ./somedir
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 000 somefile] ./Somefile
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo > somefile && chmod 000 somefile] ./someFILE
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour > test
+TIMEOUT
+================================================================================
+
+|> WITH echo > test bonjour
+TIMEOUT
+================================================================================
+
+|> WITH > test echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour >> test
+TIMEOUT
+================================================================================
+
+|> WITH echo >> test bonjour
+TIMEOUT
+================================================================================
+
+|> WITH >> test echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > test] cat < test
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour > test
+TIMEOUT
+================================================================================
+
+|> WITH echo > test'sticked' bonjour
+TIMEOUT
+================================================================================
+
+|> WITH > test'sticked' echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour >> test'sticked'
+TIMEOUT
+================================================================================
+
+|> WITH echo >> test'sticked' bonjour
+TIMEOUT
+================================================================================
+
+|> WITH >> test'sticked' echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > test'sticked'] cat < test'sticked'
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > test'sticked'] < test'sticked' cat
+TIMEOUT
+================================================================================
+
+|> WITH echo > test"sticked" bonjour
+TIMEOUT
+================================================================================
+
+|> WITH > test"sticked" echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour >> test"sticked"
+TIMEOUT
+================================================================================
+
+|> WITH echo >> test"sticked" bonjour
+TIMEOUT
+================================================================================
+
+|> WITH >> test"sticked" echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > test"sticked"] cat < test"sticked"
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > test"sticked"] < test"sticked" cat
+TIMEOUT
+================================================================================
+
+|> WITH echo > test'yo'"sticked" bonjour
+TIMEOUT
+================================================================================
+
+|> WITH > test'yo'"sticked" echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour >> test'yo'"sticked"
+TIMEOUT
+================================================================================
+
+|> WITH echo >> test'yo'"sticked" bonjour
+TIMEOUT
+================================================================================
+
+|> WITH >> test'yo'"sticked" echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > test'yo'"sticked"] cat < test'yo'"sticked"
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > test'yo'"sticked"] < test'yo'"sticked" cat
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour > test > je > suis
+TIMEOUT
+================================================================================
+
+|> WITH echo > test > je bonjour > suis
+TIMEOUT
+================================================================================
+
+|> WITH > test echo bonjour > je > suis
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour >> test > je >> suis
+TIMEOUT
+================================================================================
+
+|> WITH echo >> test bonjour > je > suis
+TIMEOUT
+================================================================================
+
+|> WITH >> test echo > je bonjour > suis
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > test; echo salut > je] cat < test < je
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour>test>je>suis
+TIMEOUT
+================================================================================
+
+|> WITH >test echo bonjour>je>suis
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour>>test>je>>suis
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > test; echo salut > je] cat<test<je
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour > a'b'c'd'e'f'g'h'i'j'k'l'm'n'o'p'q'r's't'u'v'w'x'y'z'
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour > a"b"c"d"e"f"g"h"i"j"k"l"m"n"o"p"q"r"s"t"u"v"w"x"y"z"
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour > a'b'c"d"e'f'g"h"i'j'k"l"m'n'o"p'q'r"s't'u"v"w"x"y'z'
+TIMEOUT
+================================================================================
+
+|> WITH > file
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > file] < file
+TIMEOUT
+================================================================================
+
+|> WITH >
+TIMEOUT
+================================================================================
+
+|> WITH >>
+TIMEOUT
+================================================================================
+
+|> WITH <
+TIMEOUT
+================================================================================
+
+|> WITH echo >
+TIMEOUT
+================================================================================
+
+|> WITH echo >>
+TIMEOUT
+================================================================================
+
+|> WITH echo <
+TIMEOUT
+================================================================================
+
+|> WITH > test
+TIMEOUT
+================================================================================
+
+|> WITH >> test
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch test] < test
+TIMEOUT
+================================================================================
+
+|> WITH echo foo >>> bar
+TIMEOUT
+================================================================================
+
+|> WITH echo foo >>>> bar
+TIMEOUT
+================================================================================
+
+|> WITH echo foo >>>>> bar
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > bar] cat << < bar
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > bar] cat << << bar
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > bar] cat <<<<< bar
+TIMEOUT
+================================================================================
+
+|> WITH cat < doesnotexist
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo a > a] echo bonjour >> a
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo a > a] echo bonjour >> a >> a
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo a > a] echo bonjour > a
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo a > a] echo bonjour > a >> a
+TIMEOUT
+================================================================================
+
+|> WITH echo $?
+TIMEOUT
+================================================================================
+
+|> WITH echo; echo $?
+TIMEOUT
+================================================================================
+
+|> WITH notfound; echo $?
+TIMEOUT
+================================================================================
+
+|> WITH cat < doesntexist; echo $?
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > noperm; chmod 000 noperm] cat < noperm; echo $?
+TIMEOUT
+================================================================================
+
+|> WITH echo
+TIMEOUT
+================================================================================
+
+|> WITH notfound
+TIMEOUT
+================================================================================
+
+|> WITH cat < doesntexist
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo bonjour > noperm; chmod 000 noperm] cat < noperm
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour; echo je
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour ;echo je
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour ; echo je
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour;
+TIMEOUT
+================================================================================
+
+|> WITH echo; 
+TIMEOUT
+================================================================================
+
+|> WITH echo ; 
+TIMEOUT
+================================================================================
+
+|> WITH echo ;
+TIMEOUT
+================================================================================
+
+|> WITH ; echo
+TIMEOUT
+================================================================================
+
+|> WITH  ;echo
+TIMEOUT
+================================================================================
+
+|> WITH  ; echo
+TIMEOUT
+================================================================================
+
+|> WITH echo a; echo b; echo c; echo d; echo e; echo f; echo g; echo h; echo i;echo j; echo k; echo l; echo m; echo c; echo c; echo c; echo c; echo c;echo c; echo c; echo c; echo v; echo w; echo x; echo y; echo z
+TIMEOUT
+================================================================================
+
+|> WITH echo a ; echo b; echo c ;echo d     ;   echo e   ;echo f;        echo g  ;echo h; echo i;echo j  ; echo k; echo l; echo m; echo c    ; echo c; echo c    ; echo c; echo c;echo c; echo c   ; echo c; echo v   ; echo w;    echo x; echo y    ; echo z
+TIMEOUT
+================================================================================
+
+|> WITH ls doesnotexists ; echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH ls doesnotexists; echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour; ls doesnotexists
+TIMEOUT
+================================================================================
+
+|> WITH echo a ; ;
+TIMEOUT
+================================================================================
+
+|> WITH echo a ; ;
+TIMEOUT
+================================================================================
+
+|> WITH ;
+TIMEOUT
+================================================================================
+
+|> WITH ; ;
+TIMEOUT
+================================================================================
+
+|> WITH ; ; ;
+TIMEOUT
+================================================================================
+
+|> WITH echo a ; ; echo b
+TIMEOUT
+================================================================================
+
+|> WITH ;;
+TIMEOUT
+================================================================================
+
+|> WITH ;;;
+TIMEOUT
+================================================================================
+
+|> WITH ;;;;;
+TIMEOUT
+================================================================================
+
+|> WITH echo a ;; echo b
+TIMEOUT
+================================================================================
+
+|> WITH echo a ;;;;; echo b
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c] ls  ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c] ls  ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c] ls  ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls;
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c] ls  ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls ; ls;
+TIMEOUT
+================================================================================
+
+|> WITH cat /etc/shells | head -c 10
+TIMEOUT
+================================================================================
+
+|> WITH cat -e /etc/shells | head -c 10
+TIMEOUT
+================================================================================
+
+|> WITH cat -e /etc/shells | cat -e | head -c 10
+TIMEOUT
+================================================================================
+
+|> WITH cat -e /etc/shells | cat -e | cat -e | head -c 10
+TIMEOUT
+================================================================================
+
+|> WITH cat -e /dev/random | head -c 10
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour | cat
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour | cat -e
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c d; mkdir m1 m2 m3] ls | cat -e
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c d; mkdir m1 m2 m3] ls -l | cat -e
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c d; mkdir m1 m2 m3] ls -l | cat -e | cat | cat | cat
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c d; mkdir m1 m2 m3] ls -l | cat -e | cat -e | cat -e | cat -e
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c d; mkdir m1 m2 m3; echo bonjour > a] ls -l | cat -e < a
+TIMEOUT
+================================================================================
+
+|> WITH echo|
+TIMEOUT
+================================================================================
+
+|> WITH echo |
+TIMEOUT
+================================================================================
+
+|> WITH echo | 
+TIMEOUT
+================================================================================
+
+|> WITH |cat
+TIMEOUT
+================================================================================
+
+|> WITH | cat
+TIMEOUT
+================================================================================
+
+|> WITH  | cat
+TIMEOUT
+================================================================================
+
+|> WITH echo a | export A=a; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH export A=a | cat; echo $A
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour | | cat -e
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour | asdf
+TIMEOUT
+================================================================================
+
+|> WITH asdf | echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo a ||| echo b
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c] ls  | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP touch a b c] ls  | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour  | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e
+TIMEOUT
+================================================================================
+
+|> WITH echo bonjour  | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e
+TIMEOUT
+================================================================================
+
+|> WITH ls asdfasdf | echo a
+TIMEOUT
+================================================================================
+
+|> WITH echo a | ls asdfasdf
+TIMEOUT
+================================================================================
+
+|> WITH ls asdfasdf | echo a; echo b
+TIMEOUT
+================================================================================
+
+|> WITH echo a | ls asdfasdf; echo b
+TIMEOUT
+================================================================================
+
+|> WITH echo a > foo | cat -e
+TIMEOUT
+================================================================================
+
+|> WITH echo a >> foo | cat -e
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo b > foo] echo a | cat -e < foo
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo b > foo] echo a > bar | cat -e < foo
+TIMEOUT
+================================================================================
+
+|> WITH < | a
+TIMEOUT
+================================================================================
+
+|> WITH > | a
+TIMEOUT
+================================================================================
+
+|> WITH >> | a
+TIMEOUT
+================================================================================
+
+|> WITH < ; a
+TIMEOUT
+================================================================================
+
+|> WITH > ; a
+TIMEOUT
+================================================================================
+
+|> WITH >> ; a
+TIMEOUT
+================================================================================
+
+|> WITH ; | a
+TIMEOUT
+================================================================================
+
+|> WITH ; < a
+TIMEOUT
+================================================================================
+
+|> WITH ; > a
+TIMEOUT
+================================================================================
+
+|> WITH ; >> a
+TIMEOUT
+================================================================================
+
+|> WITH | ; a
+TIMEOUT
+================================================================================
+
+|> WITH | < a
+TIMEOUT
+================================================================================
+
+|> WITH | > a
+TIMEOUT
+================================================================================
+
+|> WITH | >> a
+TIMEOUT
+================================================================================
+
+|> WITH > a ; a
+TIMEOUT
+================================================================================
+
+|> WITH < a ; a
+TIMEOUT
+================================================================================
+
+|> WITH >> a ; a
+TIMEOUT
+================================================================================
+
+|> WITH  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  > > Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum. 
+TIMEOUT
+================================================================================
+
+|> WITH  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  < < Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum. 
+TIMEOUT
+================================================================================
+
+|> WITH  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  ; | Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum. 
+TIMEOUT
+================================================================================
+
+|> WITH  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  | ; Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum. 
+TIMEOUT
+================================================================================
+
+|> WITH echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=''] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 1'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 2'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 3'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' ' 3''] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' '\t3''] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' '\t\f\r 3''] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' '3 ''] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' '3\t''] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' '3\r''] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' '3\t\f\r ''] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' '3     a''] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' '3\t\t\ta''] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 0'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' -0'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' -1'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 255'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 256'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 2000000'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' -2000000'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 2147483647'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' -2147483648'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 2147483648'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' -2147483649'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 3147483648'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' -3147483649'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 4294967295'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 4294967296'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' -922337203685477580'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 9223372036854775807'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' -922337203685477580'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 9223372036854775808'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 1844674407370955161'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 1844674407370955161'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' +1'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' +2'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' +3'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' +0'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' +255'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' +256'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' +2000000'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' +2147483647'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' ++1'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' ++2'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' ++3'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' ++0'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' ++255'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' ++256'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' ++2000000'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' ++2147483647'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' --1'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' --2'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' --3'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' --0'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' --255'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' --256'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' --2000000'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' --2147483647'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' bonjour'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 0_'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' _0'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 0123456789'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' -0123456789'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 0000000000000000000'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS SHLVL=' 0000000000000000000'] echo $SHLVL
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 000 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 001 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 002 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 003 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 004 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 005 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 006 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 007 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 010 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 020 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 030 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 040 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 050 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 060 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 070 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 100 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 200 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 300 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 400 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 500 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 600 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 700 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 755 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 644 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 311 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 111 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 222 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 333 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 0777 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 1000 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 2000 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 3000 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 4000 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 5000 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 6000 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 7000 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 1777 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 2777 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 3777 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 4777 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 5777 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 6777 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 7777 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 0000 ./path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && cp /usr/bin/which ./path/a && chmod 000 ./path/a] A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir path && ln -s /usr/bin/which ./path/b] b
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir path && mkfifo path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP mkdir path && mkfifo path/a && chmod 777 path/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path2:path1'] [SETUP mkdir path1 path2 && cp /usr/bin/which path1/a&& cp /usr/bin/which path2/a && chmod 000 path1/a] a
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='path'] [SETUP mkdir -p path/a; cp /usr/bin/which path/a/b] a/b
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='doesnotexits'] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='doesnotexits:asdfasd'] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='a:b:c:d:e:f:g:h:i:j:'] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='________'] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='        '] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='   :    '] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='     /bin      '] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='     /sbin      '] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/bin:/bin:/bin:/bin'] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/sbin:/sbin:/sbin:/s'] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH=''] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH=':'] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH=':::::::::::::::::::'] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/asdfasdf'] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/usr/asdf:/usr/lib/a'] echo $PATH
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='doesnotexits'] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='doesnotexits:asdfasd'] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='a:b:c:d:e:f:g:h:i:j:'] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='________'] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='        '] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='   :    '] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='     /usr/bin      '] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/usr/bin:/usr/bin:/u'] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='     /sbin      '] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/sbin:/sbin:/sbin:/s'] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH=''] whoami
+TIMEOUT
+================================================================================
+
+|> WITH unset PATH; whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH=':'] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH=':::::::::::::::::::'] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/asdfasdf'] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/usr/asdf:/usr/lib/a'] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP unset PATH] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH=''] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH=':'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='::::::::'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/asdfasdf'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/usr/asdf:/usr/lib/a'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+TIMEOUT
+================================================================================
+
+|> WITH [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd; unset PATH] somecmd
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/bin:'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH=':/bin'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH=':/bin:'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/usr/bin'] Whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/usr/bin'] wHoAMi
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/usr/bIn'] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/Usr/bin'] whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/usr/bIn'] Whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH='/Usr/bin'] wHoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH=''] Whoami
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS PATH=''] wHoami
+TIMEOUT
+================================================================================
+
+|> WITH echo \a
+TIMEOUT
+================================================================================
+
+|> WITH \e\c\h\o bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo charles\ 
+TIMEOUT
+================================================================================
+
+|> WITH echo \ \ jesuis\ \ charles
+TIMEOUT
+================================================================================
+
+|> WITH echo \ \ jesuis\; \ charles
+TIMEOUT
+================================================================================
+
+|> WITH echo \ \ jesuis\&\& \ charles
+TIMEOUT
+================================================================================
+
+|> WITH echo \ \ jesuis\|\| \ charles
+TIMEOUT
+================================================================================
+
+|> WITH echo \ \ jesuis \|\| \ charles
+TIMEOUT
+================================================================================
+
+|> WITH echo \ \ jesuis\; \ charles
+TIMEOUT
+================================================================================
+
+|> WITH echo \ \ \ \ \ \ \ \ 
+TIMEOUT
+================================================================================
+
+|> WITH echo \ \ \ \ \ \ \ \               \ \ \ \ \ \ 
+TIMEOUT
+================================================================================
+
+|> WITH echo \$PATH
+TIMEOUT
+================================================================================
+
+|> WITH echo \$\P\A\T\H
+TIMEOUT
+================================================================================
+
+|> WITH echo\ bonjour
+TIMEOUT
+================================================================================
+
+|> WITH \ echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH  \ echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH                  \ echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH  \                 echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH                  \                    echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \  "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \" "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \' "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \a "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \b "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \| "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \! "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \@ "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \$ "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \$LESS "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \$? "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \\ "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \\\ "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \\\\ "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \\\\\ "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \\\\\\ "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \\\\\\\ "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo " \\\\\\\\ "
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo ' \  '
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo ' \" '
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo ' \a '
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo ' \b '
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo ' \| '
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo ' \! '
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo ' \@ '
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo ' \$ '
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo ' $LESS '
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo ' \$? '
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo ' \\ '
+TIMEOUT
+================================================================================
+
+|> WITH /bin/echo ' \\\ '
+TIMEOUT
+================================================================================
+
+|> WITH echo \
+TIMEOUT
+================================================================================
+
+|> WITH echo "\""'bonjour'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS TEST='bonjour'] echo $TEST
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS TEST='bonjour'] echo $TES
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS TEST='bonjour'] echo $TEST_
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS TEST='bonjour'] echo "|$TEST|"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS TEST='bonjour'] echo "|$TES|"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS TEST='bonjour'] echo "|$TEST_|"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS TEST='bonjour'] echo '|$TEST|'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS TEST='bonjour'] echo '|$TES|'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS TEST='bonjour'] echo '|$TEST_|'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='foo' B='bar' C='baz'] echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='foo' B='bar' C='baz'] echo "$A$B$C"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='foo' B='bar' C='baz'] echo '$A$B$C'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='foo' B='bar' C='baz'] echo $A,$B,$C
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='foo' B='bar' C='baz'] echo "$A,$B,$C"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='foo' B='bar' C='baz'] echo '$A,$B,$C'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='foo' B='bar' C='baz'] echo $A"$B"$C"A"$B"$C"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='foo' B='bar' C='baz'] echo $A'$B'$C'A'$B'$C'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='foo ' B=' bar  ' C='baz '] echo $A"$B"$C"A"$B"$C"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='foo ' B=' bar  ' C='baz '] echo $A'$B'$C'A'$B'$C'
+TIMEOUT
+================================================================================
+
+|> WITH echo $A
+TIMEOUT
+================================================================================
+
+|> WITH echo $A$B
+TIMEOUT
+================================================================================
+
+|> WITH echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH echo $A$B$C$D
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='bonjour\je'] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='\b\\o\\\nj\\\\\\\our'] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='   \b\\o\\\nj\\\\\\\'] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='\b\\o\\\nj\\\\\\\our'] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='  \b\\o\\\nj\\\\\\\o'] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a  \b\\o\\\nj\\\\\\\'] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' a  \b\\o\\\nj\\\\\\'] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='    '] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='\ '] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' \  '] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='bonjour'] echo \ \ \ \ \ \ \ $A\ \ \ \ \ \ 
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='bonjour je suis'] echo \ \ \ \ \ \ \ $A\ \ \ \ \ \ 
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='  bonjour je suis  '] echo \ \ \ \ \ \ \ $A\ \ \ \ \ \ 
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='bonjour je suis spli'] echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='bonjour     je     s'] echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='   bonjour     je   '] echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='bonjour je suis spli'] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='bonjour     je     s'] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='   bonjour     je   '] echo [$A]
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='bonjour je suis spli'] echo "[$A]"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='bonjour     je     s'] echo "[$A]"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='   bonjour     je   '] echo "[$A]"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='bonjour je suis spli'] echo \ $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='bonjour     je     s'] echo \ $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='   bonjour     je   '] echo \ $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='bonjour je suis spli'] echo $A\ 
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='bonjour     je     s'] echo $A\ 
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='   bonjour     je   '] echo $A\ 
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='   bonjour     je   '] echo $A$A$A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='' Mollitia asperiore'] echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='' Mollitia asperiore'] echo "$A"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='' Mollitia asperiore'] echo '$A'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS ECHO='echo'] $ECHO $ECHO
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='ec' B='ho'] $A$B bonjour
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS LS='ls -l'] [SETUP touch a b c] $LS
+TIMEOUT
+================================================================================
+
+|> WITH echo $
+TIMEOUT
+================================================================================
+
+|> WITH echo \$
+TIMEOUT
+================================================================================
+
+|> WITH echo \$\$\$\$
+TIMEOUT
+================================================================================
+
+|> WITH echo \$$\$$
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a' B='b'] echo $\A $\B
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='a' B='b'] echo $\A$\B
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='  '] echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='   '] echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='    '] echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='  a '] echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='                    '] echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='                    '] echo $A
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo @$A@
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo @ $A@
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo @$A @
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='       '] echo @$A@
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo '@'$A'@'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo '@' $A'@'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo '@'$A '@'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo "@"$A"@"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo "@" $A"@"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo "@"$A "@"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo @"$A"@
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo @ "$A"@
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo @"$A" @
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='       '] echo @"$A"@
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo '@'"$A"'@'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo '@' "$A"'@'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo '@'"$A" '@'
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo "@""$A""@"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo "@" "$A""@"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A=' '] echo "@""$A" "@"
+TIMEOUT
+================================================================================
+
+|> WITH [EXPORTS A='' B='' C=''] echo $A$B$C
+TIMEOUT
+================================================================================
+
+|> WITH 'echo' 'bonjour'
+TIMEOUT
+================================================================================
+
+|> WITH 'echo' 'je' 'suis' 'charles'
+TIMEOUT
+================================================================================
+
+|> WITH "echo" "bonjour"
+TIMEOUT
+================================================================================
+
+|> WITH "echo" "je" "suis" "charles"
+TIMEOUT
+================================================================================
+
+|> WITH echo je'suis'"charles"
+TIMEOUT
+================================================================================
+
+|> WITH echo "je"suis'charles'
+TIMEOUT
+================================================================================
+
+|> WITH echo 'je'"suis"charles
+TIMEOUT
+================================================================================
+
+|> WITH echo "\""
+TIMEOUT
+================================================================================
+
+|> WITH echo "\$"
+TIMEOUT
+================================================================================
+
+|> WITH echo "\\"
+TIMEOUT
+================================================================================
+
+|> WITH echo "\a"
+TIMEOUT
+================================================================================
+
+|> WITH echo "\A"
+TIMEOUT
+================================================================================
+
+|> WITH ls ""
+TIMEOUT
+================================================================================
+
+|> WITH ls ''
+TIMEOUT
+================================================================================
+
+|> WITH ls "" "" "" '' """"
+TIMEOUT
+================================================================================
+
+|> WITH ls '' '' '''' ''
+TIMEOUT
+================================================================================
+
+|> WITH '     echo' bonjour
+TIMEOUT
+================================================================================
+
+|> WITH 'echo     ' bonjour
+TIMEOUT
+================================================================================
+
+|> WITH "     echo" bonjour
+TIMEOUT
+================================================================================
+
+|> WITH "echo     " bonjour
+TIMEOUT
+================================================================================
+
+|> WITH ''echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH ""echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH """"""""""""""""""""""""""""""""""""""""""""""""""""""""""echo bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo'' bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo"" bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo'''''''''''''''''''''''''''''''''''''''''''''''''''''''''' bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo"""""""""""""""""""""""""""""""""""""""""""""""""""""""""" bonjour
+TIMEOUT
+================================================================================
+
+|> WITH ec''ho bonjour
+TIMEOUT
+================================================================================
+
+|> WITH ec""ho bonjour
+TIMEOUT
+================================================================================
+
+|> WITH ec''''''''''''''''''''''''''''''''''''''''''''''''''''''''''ho bonjour
+TIMEOUT
+================================================================================
+
+|> WITH ec""""""""""""""""""""""""""""""""""""""""""""""""""""""""""ho bonjour
+TIMEOUT
+================================================================================
+
+|> WITH '''''''e''''''''''c''''''''''''h''''''''o''''''''''''''''''''' bonjour
+TIMEOUT
+================================================================================
+
+|> WITH """""""e""""""""""c""""""""""""h""""""""o""""""""""""""""""""" bonjour
+TIMEOUT
+================================================================================
+
+|> WITH echo '"'
+TIMEOUT
+================================================================================
+
+|> WITH echo '""""""""""""""""""""""""""'
+TIMEOUT
+================================================================================
+
+|> WITH echo "'"
+TIMEOUT
+================================================================================
+
+|> WITH echo "''''''''''''''''''''''''''"
+TIMEOUT
+================================================================================
+
+|> WITH echo '
+TIMEOUT
+================================================================================
+
+|> WITH echo "
+TIMEOUT
+================================================================================
+
+|> WITH echo '''
+TIMEOUT
+================================================================================
+
+|> WITH echo """
+TIMEOUT
+================================================================================
+
+|> WITH echo '''''''''''''''''''''''''''''''''''''''''''
+TIMEOUT
+================================================================================
+
+|> WITH echo """""""""""""""""""""""""""""""""""""""""""
+TIMEOUT
+================================================================================
+
+|> WITH echo 'AH\'
+TIMEOUT
+================================================================================
+
+|> WITH echo "AH\"
+TIMEOUT
+================================================================================
+
+|> WITH echo "AH\""
+TIMEOUT
+================================================================================
+
+|> WITH echo '\''
+TIMEOUT
+================================================================================
+
+|> WITH echo "\""
+TIMEOUT
+================================================================================
+
+|> WITH echo "\\""
+TIMEOUT
+================================================================================
+
+|> WITH echo foo
+TIMEOUT
+================================================================================
+
+|> WITH echo                    foo
+TIMEOUT
+================================================================================
+
+|> WITH              echo foo
+TIMEOUT
+================================================================================
+
+|> WITH echo foo             
+TIMEOUT
+================================================================================
+
+|> WITH          echo           foo             
+TIMEOUT
+================================================================================
+
+|> WITH echo\t\t\t\t\t\t\t\t\t\tfoo
+TIMEOUT
+================================================================================
+
+|> WITH \t\t\t\t\t\techo\tfoo
+TIMEOUT
+================================================================================
+
+|> WITH echo\tfoo\t\t\t\t\t\t
+TIMEOUT
+================================================================================
+
+|> WITH \t\t\t\techo\t\t\t\tfoo\t\t\t\t
+TIMEOUT
+================================================================================
+
+|> WITH 
+TIMEOUT
+================================================================================
+
+|> WITH                                           
+TIMEOUT
+================================================================================
+
+|> WITH \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t
+TIMEOUT
+================================================================================
+
+|> WITH             \t\t\t           \t\t\t       
+TIMEOUT
+================================================================================
+
