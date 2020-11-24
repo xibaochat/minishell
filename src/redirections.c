@@ -1,90 +1,217 @@
 #include "minishell.h"
 
-/*
- ** manage_redir_input() handles "<" situation, ">" and ">>" are directly handled in manage_redir()
- */
+#define READ 0
+#define WRITE 1
+#define APPEND 2
 
-int	manage_redir_input(t_mini *sh, char *file)
+typedef struct	t_red
 {
-	sh->newfd = open(file, O_RDWR, 0600);
-	if (sh->newfd == -1)
+	int		red_type;
+	char	*filename;
+	int		fd;
+	int		error;
+	char	*error_msg;
+	int		p[2];
+
+}				t_red;
+
+t_red init_red_struct(void)
+{
+	t_red s;
+
+	s.filename = NULL;
+	s.fd = -1;
+	s.error = 0;
+	s.p[0] = -1;
+	s.p[1] = -1;
+	return (s);
+}
+
+int is_redir_char(const char c)
+{
+	return (c == '>' || c == '<');
+}
+
+int is_white_space(const char c)
+{
+	return (c == ' ' || c == '\t' || c == '\n' ||
+			c == '\v' || c == '\f' ||c == '\r');
+}
+
+int jump_to_redir_char(const char *cmd, int *i)
+{
+	while (cmd[*i] && !(is_redir_char(cmd[*i])))
+		++(*i);
+	if (!cmd[*i])
+		return (0);
+	return (1);
+}
+
+/*
+  Validate that the combinaison of redirection char is a valid one
+  Examples:
+      1. "> > >"
+	  2. "><"
+	  3. "<<"
+	  4. ">>>"
+  return:
+      on error: 0
+	  on success: 1
+*/
+int valid_red_char_combinaison(const char *cmd, int i)
+{
+	return (1);
+}
+
+/*
+  Validate that the combinaison of redirection char is a valid one
+  Examples:
+      1. "> > >"
+	  2. "><"
+	  3. "<<"
+	  4. ">>>"
+	  5. ">\0"
+  return:
+      on error: 0
+	  on success: 1
+*/
+
+/*
+  Identify redirection type of first occurence in given cmd
+      - <  = READ   = 0
+	  - >  = WRITE  = 1
+	  - >> = APPEND = 2
+*/
+void set_red_type(const char *cmd, int *i, t_red *red)
+{
+	red->red_type = 1;
+}
+
+/*
+  Validate and set redirection type of first redirection occurence in given cmd
+  return:
+      on error: -1
+	  on success: 0
+*/
+int manage_redir_type(const char *cmd, int *i, t_red *red)
+{
+	if (!valid_red_char_combinaison(cmd, *i))
 	{
-		ft_error("CAN'T OPEN FILE", errno, sh);
+		red->error = 1;
+		red->error_msg = ft_strdup("minishell: error invalid redirection");
+		return (-1);
 	}
-	if (dup2(sh->newfd, 0) < 0)
+	set_red_type(cmd, i, red);
+}
+
+/*
+  Increase given index until meeting the begining of a filename
+  At this point in the code, only a valid redirection is expected.
+*/
+int jump_i_to_filename(const char *cmd, int *i)
+{
+	while (cmd[*i] && is_redir_char(cmd[*i]))
+		++(*i);
+	while (cmd[*i] && is_white_space(cmd[*i]))
+		++(*i);
+}
+
+/*
+  Count how much char their is in the first filename occurence from given cmd
+  Example:
+      cmd = "   boid 42 > test2"
+	  return: 4
+*/
+int get_filename_len(const char *cmd, int i)
+{
+	int len;
+
+	len = 0;
+	while (cmd[i] && !is_white_space(cmd[i]) && !is_redir_char(cmd[i]))
 	{
-		ft_error("DUP2 FAILED", errno, sh);
+		++len;
+		++i;
 	}
-	close(sh->newfd);
+	return (len);
+}
+
+/*
+  Extract first filename from given cmd and store it in red->filename
+  Exemple:
+      cmd = ">file0>file1"
+	  stored: "file0"
+*/
+void store_red_filename(char *cmd, int i, t_red *red)
+{
+	int		name_len;
+	char	*filename;
+
+	ft_printf("[%d] _%s_\n", i, cmd);
+	ft_printf("0: _%s_\n", cmd + i);
+	jump_i_to_filename(cmd, &i);
+	ft_printf("1: _%s_\n", cmd + i);
+	name_len = get_filename_len(cmd, i);
+	ft_printf("name_len: _%d_\n", name_len);
+	filename = ft_strnew(name_len + 1);
+	ft_strncat(filename, cmd + i, name_len);
+	red->filename = filename;
+}
+
+/*
+  Manage redirection extract:
+  1. filename extraction
+  2. redirection type identification (< or > or >>)
+  3. redirection char combinaison validity
+  return:
+      on error: 0
+	  on success: 1
+ */
+int extract_red(char *cmd, int i, t_red *red)
+{
+	if (manage_redir_type(cmd, &i, red) == -1)
+		return (0);
+	store_red_filename(cmd, i, red);
+	ft_printf("%s\n", red->filename);
+	return (1);
+}
+
+int manage_redir(char *cmd, t_mini *sh)
+{
+	t_red red;
+	int		i;
+
+	red = init_red_struct();
+	i = 0;
+	if (!jump_to_redir_char(cmd, &i))
+		return (-1);
+	while (extract_red(cmd, i, &red))
+	{
+		exit(0);
+		/* make_io_redirection(cmd[i], filename); */
+		/* cmd = remove_redir_from_cmd(cmd); */
+		/* ++i; */
+		if (!jump_to_redir_char(cmd, &i))
+			return (0);
+	}
+	if (red.error)
+		return (-1);
 	return (0);
 }
 
-/*
- ** manage_redir() will open (or create) the file for the redirection
- */
-
-int	manage_redir(t_mini *sh, char *file, char *elem, int j)
+int redir_in_str(const char *s)
 {
-	if (elem[j] == '<')
-		return (manage_redir_input(sh, file));
-	else
-	{
-		if (elem[j + 1] == '>')
-		{
-			sh->newfd = open(file, O_CREAT | O_RDWR | O_APPEND, 0600);
-			if (sh->newfd == -1)
-				ft_error("CAN'T OPEN FILE", errno, sh);
-		}
-		else
-		{
-			sh->newfd = open(file, O_CREAT | O_RDWR | O_TRUNC, 0600);
-			if (sh->newfd == -1)
-				ft_error("CAN'T OPEN FILE", errno, sh);
-		}
-		if (dup2(sh->newfd, 1) < 0)
-			ft_error("DUP2 FAILED", errno, sh);
-		close(sh->newfd);
-	}
+	int i;
+
+	i = -1;
+	while (s[++i])
+		if (is_redir_char(s[i]))
+			return (1);
 	return (0);
 }
 
-/*
- ** Note : file_name() can also be used to get the parameter of "<<" even if it is not a file.
- */
-
-char	*file_name(char **arr, int i, int j, char c)
+char **invalid_redir(t_mini *sh)
 {
-	char	*file;
-
-	if (!arr[i][j + 1] || (arr[i][j + 1] == c && !arr[i][j + 2]))
-		file = ft_strdup(arr[i + 1]);
-	else
-	{
-		if (arr[i][j + 1] == c)
-			file = ft_strdup(arr[i] + j + 2);
-		else
-			file = ft_strdup(arr[i] + j + 1);
-	}
-	return (file);
-}
-
-/*
- ** exec_redir() will get the name of the redirection file and then call manage_redir()
- */
-
-char	**exec_redir(t_mini *sh, char **arr, int i, int j)
-{
-	sh->file = file_name(arr, i, j, arr[i][j]);
-	if (!sh->file)
-	{
-		ft_error("NO FILE NAME", 8, sh);
-		return (NULL);
-	}
-	if (manage_redir(sh, sh->file, arr[i], j))
-		return (NULL);
-	free(sh->file);
-	sh->file = NULL;
-	return (arr);
+	;
 }
 
 char	**check_for_redir(char **arr, t_mini *sh)
@@ -97,19 +224,17 @@ char	**check_for_redir(char **arr, t_mini *sh)
 	i = -1;
 	while (arr[++i])
 	{
-		j = -1;
-		while (arr[i][++j])
+		ft_printf("boid0\n");
+		if (redir_in_str(arr[i]))
 		{
-			if (ft_strchr("<>", arr[i][j]) && !(j > 0 && arr[i][j - 1] == '\\'))
-			{
-				if (!exec_redir(sh, arr, i, j))
-					return (NULL);
-				tmp = new_cmd(arr, i, j);
-				ft_tabfree(arr);
-				arr = tmp;
-				i = 0;
-				j = -1;
-			}
+			/* ls > boid */
+ 			/* arr[0] = "ls" */
+			/* arr[1] = ">" */
+			/* arr[2] = "boid" */
+			/* if (lonely_redir_char(arr[i])) */
+			/* 	merge_two_args(&arr, i); */
+			if (manage_redir(arr[i], sh) == -1)
+				return (invalid_redir(sh));
 		}
 	}
 	return (tmp);

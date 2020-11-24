@@ -51,6 +51,7 @@ int	child_process(char **split_input, t_mini *sh)
 {
 	char	**tmp;
 
+	tmp = NULL;
 	if (sh->is_pipe == 1)
 	{
 		sh->is_pipe = 0;
