@@ -7,7 +7,19 @@ static int	str_is_all_quote(char *s)
 	i = -1;
 	while (s[++i])
 	{
-		if (s[i] != SINGLE && s[i] != DOUBLE)
+		//	if (s[i] != SINGLE && s[i] != DOUBLE)
+		//	return (0);
+		if (s[0] == SINGLE)
+		{
+			if (s[i] != SINGLE)
+				return (0);
+		}
+		else if (s[0] == DOUBLE)
+		{
+			if (s[i] != DOUBLE)
+				return (0);
+		}
+		else
 			return (0);
 	}
 	return (1);
