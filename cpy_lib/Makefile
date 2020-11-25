@@ -19,7 +19,6 @@ HEADER_DIR = include
 ########
 # MAIN #
 ########
-SRCS_PATH = ./src
 
 SRCS = ft_strcmp.c ft_atoi.c ft_split.c ft_bzero.c ft_strchr.c ft_calloc.c \
 	ft_strdup.c ft_isdigit.c ft_strjoin.c ft_isalpha.c ft_memccpy.c \
@@ -41,7 +40,6 @@ SRCS = ft_strcmp.c ft_atoi.c ft_split.c ft_bzero.c ft_strchr.c ft_calloc.c \
 
 
 
-SRC_W_PATH = $(addprefix $(SRCS_PATH)/,$(SRCS))
 
 SRCO = $(SRCS:.c=.o)
 
@@ -70,14 +68,17 @@ CC = gcc
 
 CC_FLAGS = -Wall -Werror -Wextra
 
+
 .c.o:
-	@$(CC) $(FLAGS) -c $<
+	@$(CC) $(FLAGS) -c $< -o ${<:.c=.o}
+	@printf "before"
 	@printf "\033[2K\033[0;35mLIBFT\033[0;0m:        \033[0;33mCompilation...    \033[0;31m%-15.15s\033[0;0m\r" $(notdir ${<})
+	@printf "after"
+all: $(NAME)
 
-all:  $(NAME)
-
-$(NAME): $(SRCO) $(PRINTF_SRCO)
-		@ar rcs $(NAME) $(SRCO) $(PRINTF_SRCO)
+$(NAME): ${SRCO}
+		@ar rcs $(NAME) $(SRCO)
+		@printf "\033[1;32mLibft compiled\033[;0m\n"
 
 clean:
 		@rm -f $(SRCO) $(PRINTF_SRCO)

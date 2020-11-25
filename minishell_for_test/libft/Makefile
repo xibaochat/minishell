@@ -70,14 +70,15 @@ CC = gcc
 
 CC_FLAGS = -Wall -Werror -Wextra
 
-.c.o:
-	@$(CC) $(FLAGS) -c $<
-	@printf "\033[2K\033[0;35mLIBFT\033[0;0m:        \033[0;33mCompilation...    \033[0;31m%-15.15s\033[0;0m\r" $(notdir ${<})
 
-all:  $(NAME)
 
-$(NAME): $(SRCO) $(PRINTF_SRCO)
+all: $(NAME)
+
+$(NAME):
+		@printf "Compiling Libft\n"
+		@$(CC) $(CC_FLAGS) -c  $(SRC_W_PATH) $(PRINTF_SRC_W_PATH) -I $(HEADER_DIR)
 		@ar rcs $(NAME) $(SRCO) $(PRINTF_SRCO)
+		@printf "\033[1;32mLibft compiled\033[;0m\n"
 
 clean:
 		@rm -f $(SRCO) $(PRINTF_SRCO)
