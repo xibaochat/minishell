@@ -10,6 +10,8 @@
 #                                                                              #
 #******************************************************************************#
 
+MAKEFLAGS += --no-print-directory
+
 NAME = minishell
 
 SRCS_PATH = ./src
@@ -24,6 +26,8 @@ SRC = main.c  env.c pwd.c  ft_tablen.c  unset.c \
 	get_full_binary_path.c display_ascii_girafe.c \
 	free_var.c manage_child_process_and_execution.c \
 	manage_substitution_in_str.c redirections.c manage_pipe.c redirections_2.c \
+	check_export_var_val.c  export.c  show_export_var.c \
+	cd.c check_cd_arg.c change_env_var_value.c  init_env_var.c \
 	validity_sep_in_str.c split_fst_arg.c error_2.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
@@ -53,25 +57,58 @@ LIBFT_A = $(LIBFT_DIR)/libft.a
 
 LIBFT_HEADER = $(LIBFT_DIR)/include
 
-all : ${NAME}
-	@mkdir -p objects
-	@mv *.o objects
-	@printf "\033[1;32mMinishell compiled\033[;0m\n"
-	@printf "Type \"./$(NAME)\" to launch $(NAME)\n"
+OBJS_DIR    = ./objects
+
+OBJS =${SRC:%.c=${OBJS_DIR}/%.o}
+
+BLINK=\e[5m
+RED=\033[91m
+ORANGE=\e[38;5;202m
+PURPLE=\e[38;5;57m
+BLUE=\033[94m
+DARK_YELLOW=\033[0;33m
+YELLOW=\033[93m
+GREEN=\033[0;32m
+NC=\033[0;0m
+
+${OBJS_DIR}/%.o: %.c
+			@mkdir -p ${OBJS_DIR}
+			@printf "${BLUE}MINISHELL${NC}:    ${DARK_YELLOW}Compilation...    ${YELLOW}%-15.15s${NC}\r" $(notdir ${<})
+			@${CC} ${FLAGS} -I ${HEADER_DIR}  -c $< -o $@
 
 
-${NAME}: libft_compile
-	@printf "Compiling Minishell\n"
-	@$(CC) $(FLAGS) -c $(SRC_PATH) $(CD_PATH) $(EXP_PATH) -I $(HEADER_DIR) -I $(LIBFT_HEADER) -L $(LIBFT_DIR) -lft
-	@$(CC) $(OBJ) $(CD_OBJ) $(EXP_OBJ) -o ${NAME} -L $(LIBFT_DIR) -lft
+${NAME}: header  ${OBJS}
+	@printf "${BLUE}MINISHELL${NC}:    ${GREEN}Completed         ${YELLOW}----${NC}          \r\n"
+	@make -C ./libft all
+	@printf "${BLUE}LIBFT${NC}:        ${GREEN}Completed         ${YELLOW}----${NC}          \r\n"
+	@${CC} ${FLAGS} ${OBJS} -L ./libft -lft -o ${NAME}
+	@printf "\n${NC}⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤\n"
+	@printf "${BLUE}MINISHELL${NC}:    ${GREEN}Ready             ${YELLOW}----          ${NC}\n"
+	@printf "⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤\n"
+
+	@echo "\n\n${RED}███╗   ███╗██╗ █████╗  ██████╗    ███╗   ███╗██╗ █████╗  ██████╗"
+	@echo "${ORANGE}████╗ ████║██║██╔══██╗██╔═══██╗   ████╗ ████║██║██╔══██╗██╔═══██╗"
+	@echo "${YELLOW}██╔████╔██║██║███████║██║   ██║   ██╔████╔██║██║███████║██║   ██║"
+	@echo "${GREEN}██║╚██╔╝██║██║██╔══██║██║   ██║   ██║╚██╔╝██║██║██╔══██║██║   ██║"
+	@echo "${BLUE}██║ ╚═╝ ██║██║██║  ██║╚██████╔╝   ██║ ╚═╝ ██║██║██║  ██║╚██████╔╝"
+	@echo "${PURPLE}╚═╝     ╚═╝╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝     ╚═╝╚═╝╚═╝  ╚═╝ ╚═════╝ ${NC}\n\n"
+	@echo "\t\t    ${GREEN}${BLINK}${NAME} binary ready !!${NC}\n\n"
+
+
+
+all: ${NAME}
+
+header:
+	@printf "${NC}⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤\n"
+	@printf "PROJECT       ${NC}STATUS            FILE          ${NC}\n"
+	@printf "⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤\n"
 
 libft_compile:
-	@make -C ./libft all --silent
-
+	@make -C ./libft all
+	@printf "${BLUE}LIBFT${NC}:        ${GREEN}Completed         ${YELLOW}----${NC}          \r\n"
 clean : libft_clean
-		@rm -fr $(OBJ) $(CD_OBJ) $(EXP_OBJ)
-		@printf "\033[1;35mObject files removed\033[;0m\n"
-		@printf "\033[0;35mPROJECT\033[0;0m:      \033[0;32mCleaned\033[0;0m\n"
+		@rm -fr $(OBJ) $(CD_OBJ) $(EXP_OBJ) ${OBJS_DIR}
+		@printf "${BLUE}PROJECT${NC}:      ${GREEN}Cleaned${NC}\n"
 
 libft_clean:
 		@make -C ./libft clean
@@ -79,8 +116,7 @@ libft_clean:
 fclean: clean libft_fclean
 		@rm -f $(NAME)
 		@rm -f **/*~
-		@rm -rf objects
-		@printf "\033[1;35mExecutable and object files removed\033[;0m\n"
+		@printf "${BLUE}Executable and object files removed${NC}\n"
 
 libft_fclean:
 		@make -C ./libft fclean
