@@ -63,9 +63,28 @@ int valid_red_char_combinaison(const char *cmd, int i)
 {
 	if (!cmd[i])
 		return (0);
+	else if (char_is_red_char(cmd, i, '>')
+		&& char_is_red_char(cmd, i + 1, '<'))
+		return (0);
+	else if (char_is_red_char(cmd, i , '<')
+			 && char_is_red_char(cmd, i , '<'))
+		return (0);
+	else if ((char_is_red_char(cmd, i, '>')
+			  && (char_is_red_char(cmd, i + 1, '>')
+				  && char_is_red_char(cmd, i + 2, '>')))
+			 || char_is_red_char(cmd, i + 1, '\0'))
+		return (0);
 	return (1);
 }
 
+
+int char_is_red_char(char *str, int i, char c)
+{
+	if (s[i] && s[i] == c)
+		return (1);
+	else
+		return (0);
+}
 /*
   Identify redirection type of first occurence in given cmd
       - <  = READ   = 0
