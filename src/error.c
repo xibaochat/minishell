@@ -26,13 +26,13 @@ void	show_error_message(char *cmd, char *err, t_mini *sh)
 ** ft_error() uses errno (which is automatically set when failure of malloc, dup2, etc.))
 */
 
-int	ft_error(char *str, int errno_value, t_mini *sh)
+int	ft_error(char *str, int errno_value)
 {
 	ft_putstr_w_new_line_fd(strerror(errno_value), 2);
 	//sh->last_return = errno_value;
 	exit(EXIT_FAILURE);
 	(void)str;
-	(void)sh;
+//	(void)sh;
 	return (0);
 }
 

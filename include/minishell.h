@@ -73,7 +73,7 @@ int		ft_forking(char **split_input, t_mini *sh);
 void	sophie_la_girafe(int length);
 char	**new_cmd(char **arr, int i, int j);
 int		ft_manage_pipe(t_mini *sh, char **arr);
-int		ft_error(char *str, int errno_value, t_mini *sh);
+int		ft_error(char *str, int errno_value);
 void	show_cat(void);
 void	display_ascii_dude(void);
 void	manage_signals(void);

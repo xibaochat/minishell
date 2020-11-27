@@ -93,7 +93,7 @@ int	ft_forking(char **split_input, t_mini *sh)
 	sh->last_pid = fork();
 	if (sh->last_pid < 0)
 	{
-		ft_error("Fork failed", errno, sh);
+		ft_error("Fork failed", errno);
 		exit(EXIT_FAILURE);
 	}
 	else if (!sh->last_pid) //not built in, child process

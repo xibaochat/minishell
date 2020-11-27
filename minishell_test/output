@@ -1,0 +1,145 @@
+ WITH echo "\"" >>a"b""c"  
+ WITH echo foo>bar
+ WITH echo foo >bar
+ WITH echo foo> bar
+ WITH echo foo > bar
+ WITH [SETUP touch a b c; echo bonjour > a; cp /usr/bin/cat ls] ./ls . a b c
+ WITH [SETUP touch a b c; echo bonjour > a; cp /usr/bin/cat ls] ls . a b c
+ WITH [SETUP echo > somefile; chmod 000 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 001 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 002 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 003 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 004 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 005 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 006 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 007 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 010 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 020 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 030 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 040 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 050 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 060 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 070 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 100 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 200 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 300 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 400 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 500 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 600 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 700 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 755 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 644 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 311 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 111 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 222 somefile] ./somefile
+ WITH [SETUP echo > somefile; chmod 333 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 0777 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 1000 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 2000 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 3000 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 4000 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 5000 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 6000 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 7000 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 1777 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 2777 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 3777 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 4777 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 5777 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 6777 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 7777 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 0000 somefile] ./somefile
+ WITH [SETUP echo > somefile && chmod 000 somefile] ./Somefile
+ WITH [SETUP echo > somefile && chmod 000 somefile] ./someFILE
+
+
+********************REMAINING TESTS***************************
+
+ WITH echo bonjour > test
+ WITH echo > test bonjour
+ WITH > test echo bonjour
+ WITH echo bonjour >> test
+ WITH echo >> test bonjour
+ WITH >> test echo bonjour
+ WITH [SETUP echo bonjour > test] cat < test
+ WITH echo bonjour > test
+ WITH echo > test'sticked' bonjour
+ WITH > test'sticked' echo bonjour
+ WITH echo bonjour >> test'sticked'
+ WITH echo >> test'sticked' bonjour
+ WITH >> test'sticked' echo bonjour
+ WITH [SETUP echo bonjour > test'sticked'] cat < test'sticked'
+ WITH [SETUP echo bonjour > test'sticked'] < test'sticked' cat
+ WITH echo > test"sticked" bonjour
+ WITH > test"sticked" echo bonjour
+ WITH echo bonjour >> test"sticked"
+ WITH echo >> test"sticked" bonjour
+ WITH >> test"sticked" echo bonjour
+ WITH [SETUP echo bonjour > test"sticked"] cat < test"sticked"
+ WITH [SETUP echo bonjour > test"sticked"] < test"sticked" cat
+ WITH echo > test'yo'"sticked" bonjour
+ WITH > test'yo'"sticked" echo bonjour
+ WITH echo bonjour >> test'yo'"sticked"
+ WITH echo >> test'yo'"sticked" bonjour
+ WITH >> test'yo'"sticked" echo bonjour
+ WITH [SETUP echo bonjour > test'yo'"sticked"] cat < test'yo'"sticked"
+ WITH [SETUP echo bonjour > test'yo'"sticked"] < test'yo'"sticked" cat
+ WITH echo bonjour > test > je > suis
+ WITH echo > test > je bonjour > suis
+ WITH > test echo bonjour > je > suis
+ WITH echo bonjour >> test > je >> suis
+ WITH echo >> test bonjour > je > suis
+ WITH >> test echo > je bonjour > suis
+ WITH [SETUP echo bonjour > test; echo salut > je] cat < test < je
+ WITH echo bonjour>test>je>suis
+ WITH >test echo bonjour>je>suis
+ WITH echo bonjour>>test>je>>suis
+ WITH [SETUP echo bonjour > test; echo salut > je] cat<test<je
+ WITH echo bonjour > a'b'c'd'e'f'g'h'i'j'k'l'm'n'o'p'q'r's't'u'v'w'x'y'z'
+ WITH echo bonjour > a"b"c"d"e"f"g"h"i"j"k"l"m"n"o"p"q"r"s"t"u"v"w"x"y"z"
+ WITH echo bonjour > a'b'c"d"e'f'g"h"i'j'k"l"m'n'o"p'q'r"s't'u"v"w"x"y'z'
+ WITH > file
+ WITH [SETUP echo bonjour > file] < file
+ WITH >
+ WITH >>
+ WITH echo >
+ WITH echo >>
+ WITH > test
+ WITH >> test
+ WITH echo foo >>> bar
+ WITH echo foo >>>> bar
+ WITH echo foo >>>>> bar
+ WITH [SETUP echo bonjour > bar] cat << < bar
+ WITH [SETUP echo bonjour > bar] cat << << bar
+ WITH [SETUP echo bonjour > bar] cat <<<<< bar
+ WITH [SETUP echo a > a] echo bonjour >> a
+ WITH [SETUP echo a > a] echo bonjour >> a >> a
+ WITH [SETUP echo a > a] echo bonjour > a
+ WITH [SETUP echo a > a] echo bonjour > a >> a
+ WITH [SETUP echo bonjour > noperm; chmod 000 noperm] cat < noperm; echo $?
+ WITH [SETUP echo bonjour > noperm; chmod 000 noperm] cat < noperm
+ WITH [SETUP touch a b c d; mkdir m1 m2 m3; echo bonjour > a] ls -l | cat -e < a
+ WITH echo a > foo | cat -e
+ WITH echo a >> foo | cat -e
+ WITH [SETUP echo b > foo] echo a | cat -e < foo
+ WITH [SETUP echo b > foo] echo a > bar | cat -e < foo
+ WITH > | a
+ WITH >> | a
+ WITH > ; a
+ WITH >> ; a
+ WITH ; > a
+ WITH ; >> a
+ WITH | > a
+ WITH | >> a
+ WITH > a ; a
+ WITH >> a ; a
+ WITH  Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum.  > > Mollitia asperiores assumenda excepturi et ipsa. Nihil corporis facere aut a rem consequatur. Quas molestiae corporis et quibusdam maiores. Molestiae sed unde aut at sed. Deserunt quidem quidem aspernatur pariatur vel illum voluptatum. Culpa unde dolor aspernatur sit. Mollitia tenetur sed eaque autem placeat a aut in. Ipsam ea consequuntur omnis. Non et qui vel corrupti similique eum aut voluptatibus. Iste consequatur voluptatum et omnis debitis. Sit quia neque nihil consequatur sint. Velit libero ut aut et et rerum. Placeat cumque incidunt non repellat sunt perspiciatis ullam. Repellendus repudiandae nostrum quia quis corrupti. Rerum veniam earum cumque pariatur accusantium voluptatum omnis. Alias ut et et adipisci. Tempore omnis numquam ullam et animi et eveniet. Dolor itaque distinctio in. Magnam rerum quia est laboriosam repellat perspiciatis eos. Consequuntur quae corrupti atque. Numquam enim ut ut. Perspiciatis ut maxime et libero quo voluptas consequatur illum. Pariatur porro dolor cumque molestiae harum. 
+ WITH [EXPORTS PATH=''] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+ WITH [EXPORTS PATH=':'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+ WITH [EXPORTS PATH='::::::::'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+ WITH [EXPORTS PATH='/asdfasdf'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+ WITH [EXPORTS PATH='/usr/asdf:/usr/lib/a'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+ WITH [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd; unset PATH] somecmd
+ WITH [EXPORTS PATH='/bin:'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+ WITH [EXPORTS PATH=':/bin'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd
+ WITH [EXPORTS PATH=':/bin:'] [SETUP echo '#!/bin/sh\necho bonjour' > somecmd; chmod +x somecmd] somecmd

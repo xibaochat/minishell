@@ -11,7 +11,7 @@ void	pipe_child(int *fd, char **arr, int i, t_mini *sh)
 	if (i != nb_pipes)
 	{
 		if (dup2(fd[1], 1) == -1)
-			ft_error("DUP2 FAILED", errno, sh);
+			ft_error("DUP2 FAILED", errno);
 	}
 	else
 	{
@@ -37,7 +37,7 @@ int	pipe_parent(t_mini *sh, int *fd, int i, int nb_pipes)
 	if (i != nb_pipes)
 	{
 		if (dup2(fd[0], 0) == -1)
-			ft_error("DUP2 FAILED", errno, sh);
+			ft_error("DUP2 FAILED", errno);
 	}
 	read(sh->p[0], &last_ret, sizeof(int));
 	close(fd[0]);
@@ -49,7 +49,7 @@ void	ft_piping(t_mini *sh, int *fd)
 {
 	pipe(sh->p);
 	if (pipe(fd) == -1)
-		ft_error("PIPE FAILED", errno, sh);
+		ft_error("PIPE FAILED", errno);
 	sh->last_pid = fork();
 }
 
@@ -67,7 +67,7 @@ int	ft_manage_pipe(t_mini *sh, char	**arr)
 	{
 		ft_piping(sh, fd);
 		if (sh->last_pid < 0)
-			ft_error("FORK FAILED", errno, sh);
+			ft_error("FORK FAILED", errno);
 		else if (!sh->last_pid)
 			pipe_child(fd, arr, i, sh);
 		else
