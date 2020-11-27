@@ -13,6 +13,11 @@ void	pipe_child(int *fd, char **arr, int i, t_mini *sh)
 		if (dup2(fd[1], 1) == -1)
 			ft_error("DUP2 FAILED", errno, sh);
 	}
+	else
+	{
+		fd[0] = 0;
+		fd[1] = 1;
+	}
 	last_ret = split_and_execute(arr[i], " ", 0, sh);
 	write(sh->p[1], &last_ret, sizeof(int));
 	close(fd[1]);
