@@ -142,5 +142,6 @@ int		ft_max(int a, int b);
 int		sep_in_str_is_invalid(char *str, char c);
 void	exec_not_build_in_cmd(char *bin_path, char **arr, t_mini *sh);
 int		free_empty_tab(char **arr);
+char	**maobe_check_for_redir(char **arr, t_mini *sh);
 
 #endif

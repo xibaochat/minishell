@@ -25,10 +25,10 @@ SRC = main.c  env.c pwd.c  ft_tablen.c  unset.c \
 	init_variable_sh.c manage_question_mark.c extract_cmd_from_bin_input.c \
 	get_full_binary_path.c display_ascii_girafe.c \
 	free_var.c manage_child_process_and_execution.c \
-	manage_substitution_in_str.c redirections.c manage_pipe.c redirections_2.c \
+	manage_substitution_in_str.c manage_pipe.c  \
 	check_export_var_val.c  export.c  show_export_var.c \
 	cd.c check_cd_arg.c change_env_var_value.c  init_env_var.c \
-	validity_sep_in_str.c split_fst_arg.c error_2.c
+	validity_sep_in_str.c split_fst_arg.c error_2.c maobe_util.c maobe_check_for_redir.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
 
