@@ -21,6 +21,7 @@ void store_red_filename(char *str, int i, t_red *red)
 	name_lens = get_filename_len(str, i);
 	filename = ft_strnew(name_lens + 1);
 	ft_strncat(filename, str + i, name_lens);
+	free_str(red->filename);
 	red->filename = filename;
 }
 
@@ -76,9 +77,10 @@ void	remove_redir_from_cmd(t_red *red, char **str, int i)
 	ft_strncat(new_str, *str + i + removed_lens, total_lens - removed_lens);
 	if (!new_str[0])
 	{
+		free_str(new_str);
 		new_str = ft_strnew(2);
 		new_str[0] = 2;
 	}
-//	free_str(*str);
+	free_str(*str);
 	*str = new_str;
 }

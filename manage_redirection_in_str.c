@@ -6,7 +6,6 @@ t_red init_red_struct(void)
 
     s.filename = NULL;
     s.fd = -1;
-    s.error = 0;
     return (s);
 }
 
@@ -23,7 +22,6 @@ int manage_redir_type(char *str, int i, t_red *red)
 {
 	if (!valid_red_char_combinaison(str, i))
 	{
-		red->error = 1;
 		redirection_message_err(str[i]);
 		return (-1);
 	}
