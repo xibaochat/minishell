@@ -28,7 +28,9 @@ SRC = main.c  env.c pwd.c  ft_tablen.c  unset.c \
 	manage_substitution_in_str.c manage_pipe.c  \
 	check_export_var_val.c  export.c  show_export_var.c \
 	cd.c check_cd_arg.c change_env_var_value.c  init_env_var.c \
-	validity_sep_in_str.c split_fst_arg.c error_2.c maobe_util.c maobe_check_for_redir.c
+	validity_sep_in_str.c split_fst_arg.c error_2.c maobe_util.c maobe_check_for_redir.c \
+	check_redirection_in_line.c  check_redirection_in_arr.c \
+	manage_loney_redir_char_in_arr.c manage_redirection_in_str.c  manage_redirection_arr_and_str.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
 

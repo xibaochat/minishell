@@ -22,6 +22,10 @@
 # define PINK "\e[38;5;198m"
 # define BLUE "\e[38;5;21m"
 
+#define READ 0
+#define WRITE 1
+#define APPEND 2
+
 # define WRONG_ARG 22
 # define VAL_ERROR ": not a valid identifier"
 # define BIN_ERROR ": No such file or directory"
@@ -66,7 +70,16 @@ typedef struct s_mini
 	int			p[2];
 	int			fst_init;
 	int			has_sub;
+	int			has_redir;
 }				t_mini;
+
+
+typedef struct  t_red
+{
+    int     red_type;
+    char    *filename;
+    int     fd;
+}               t_red;
 
 int		empty_cmd(char **arr);
 int		ft_forking(char **split_input, t_mini *sh);
@@ -143,5 +156,39 @@ int		sep_in_str_is_invalid(char *str, char c);
 void	exec_not_build_in_cmd(char *bin_path, char **arr, t_mini *sh);
 int		free_empty_tab(char **arr);
 char	**maobe_check_for_redir(char **arr, t_mini *sh);
+void	merge_two_args(char ***arr, int index);
+int		valid_red_char_combinaison(char *cmd, int i);
+int		is_redir_char(const char c);
+int		redirection_syntax_error(char *s);
+int		valid_red_char_combinaison(char *cmd, int i);
+void	redirection_message_err(char c);
+void	redirection_message_err_2();
+int		is_redir_char(const char c);
+int		redir_in_str(const char *s);
+int		has_pluseur_red_char(char *cmd, int i);
+int		has_mix_red_char(char *cmd, int i);
+int		has_only_red_char(char *cmd, int i);
+int		redirection_syntax_error(char *s);
+void	merge_two_args(char ***arr, int index);
+int		merge_str_and_create_new_arr(char ***arr, int i);
+int		manage_lonely_redir_char(int i, char ***arr);
+int		lonely_redir_char(char *str);
+t_red	init_red_struct(void);
+int		manage_redir_in_str(char **str);
+int		jump_to_redir_char(const char *cmd, int *i);
+int		get_filename_len(const char *cmd, int i);
+int		jump_i_to_filename(char *str, int i);
+int		extract_red(char *str, int i, t_red *red);
+int		dup_fd_redirection(t_red *red);
+void	remove_redir_from_cmd(t_red *red, char **str, int i);
+int		is_white_space(const char c);
+void	set_red_type(char *str, int i, t_red *red);
+void	store_red_filename(char *str, int i, t_red *red);
+int		store_fd_from_filename(t_red *red);
+
+
+
+
+
 
 #endif

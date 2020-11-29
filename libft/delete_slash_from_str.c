@@ -71,6 +71,6 @@ void	delete_slash_from_str(char **s)
 	final_len = get_len_wo_extra_slash(*s);
 	new = ft_strnew(final_len + 1);
 	copy_wo_slash(new, *s);
-	free(*s);
+	free_str(*s);
 	*s = new;
 }
