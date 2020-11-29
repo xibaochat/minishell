@@ -57,7 +57,8 @@ int	is_syntax_error(char *s, t_mini *sh)
 	quo = init_quotes_struct();
 	i = -1;
 	if (sep_in_str_is_invalid(s, ';')
-		|| sep_in_str_is_invalid(s, '|'))
+		|| sep_in_str_is_invalid(s, '|')
+		||redirection_syntax_error(s))
 	{
 		free_str(s);
 		sh->last_return = 2;
