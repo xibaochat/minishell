@@ -60,6 +60,7 @@ int	is_syntax_error(char *s, t_mini *sh)
 		|| sep_in_str_is_invalid(s, '|')
 		||redirection_syntax_error(s))
 	{
+
 		free_str(s);
 		sh->last_return = 2;
 		return (1);
