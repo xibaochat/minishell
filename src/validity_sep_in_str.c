@@ -33,41 +33,33 @@ int	sep_is_between_space(char *s, char c)
 	return (0);
 }
 
+static int	display_error_and_free(char **arr_tmp, char c)
+{
+	ft_tabfree(arr_tmp);
+	redirection_message_err(c);
+	return (1);
+}
+
 int	sep_in_str_is_invalid(char *str, char c)
 {
 	char	**arr_tmp;
 	int		i;
 	int		nb;
 
-	i = 0;
-	nb = 0;
 	arr_tmp = ft_split_w_quotes(str, c);
 	if (!arr_tmp || sep_is_between_space(str, c))
-	{
-		ft_tabfree(arr_tmp);
-		ft_printf("syntax error near unexpect\
-ed token `%c'\n", c);
-		return (1);
-	}
+		return (display_error_and_free(arr_tmp, c));
 	else
 	{
-		while (arr_tmp[i])
+		i = -1;
+		nb = 0;
+		while (arr_tmp[++i])
 		{
 			if (is_all_space(arr_tmp[i]))
-			{
-				/* ft_printf("syntax error near unexpected token `%c'\n", c); */
-				/* ft_tabfree(arr_tmp); */
-				/* return (1); */
 				nb++;
-			}
-			i++;
 		}
 		if (nb > 1)
-		{
-			ft_printf("syntax error near unexpected token `%c'\n", c);
-			ft_tabfree(arr_tmp);
-			return (1);
-		}
+			return (display_error_and_free(arr_tmp, c));
 	}
 	ft_tabfree(arr_tmp);
 	return (0);
