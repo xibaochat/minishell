@@ -58,7 +58,9 @@ int redirection_syntax_error(char *s)
 			i++;
 			while (s[i] && is_white_space(s[i]))
 				i++;
-			if (s[i] == ';' || s[i] == '|' || is_redir_char(s[i]))
+			if (!s[i])
+				return (redirection_syntax_error_return());
+			if (s[i] && (s[i] == ';' || s[i] == '|' || is_redir_char(s[i])))
 				return (redirection_syntax_error_return());
 		}
 		i++;

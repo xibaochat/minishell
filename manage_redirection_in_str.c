@@ -59,6 +59,7 @@ int manage_redir_in_str(char **str)
 			return (-1);
 		remove_redir_from_cmd(&red, str, i);
 	}
+	free_str(red.filename);
 	return (0);
 
 }

@@ -38,6 +38,7 @@ int store_fd_from_filename(t_red *red)
 		red->fd = open(f, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (red->fd == -1)
 	{
+		free_str(f);
 		ft_putstr("Permission denied\n");
 		return (-1);
 	}

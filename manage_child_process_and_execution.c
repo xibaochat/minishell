@@ -65,7 +65,7 @@ int	child_process(char **split_input, t_mini *sh)
 			sh->last_return = child_no_pipe(tmp, sh);
 			ft_tabfree(tmp);
 		}
-		else
+		else if (!tmp && !sh->last_return)
 			sh->last_return = child_no_pipe(split_input, sh);
 	}
 	//ft_printf("-----in child pro %d----\n", sh->last_return);

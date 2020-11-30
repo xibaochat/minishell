@@ -32,6 +32,7 @@ void merge_two_args(char ***arr, int index)
 		index++;
 		i++;
 	}
+	//ft_tabfree(*arr);
 	*arr = new_arr;
 }
 
