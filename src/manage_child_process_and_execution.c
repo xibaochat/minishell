@@ -60,8 +60,12 @@ int	child_process(char **split_input, t_mini *sh)
 	{
 		tmp = check_for_redir(split_input, sh);
 		if (tmp)
-			split_input = tmp;
-		sh->last_return = child_no_pipe(split_input, sh);
+		{
+			sh->last_return = child_no_pipe(tmp, sh);
+			ft_tabfree(tmp);
+		}
+		else
+			sh->last_return = child_no_pipe(split_input, sh);
 	}
 	//ft_printf("-----in child pro %d----\n", sh->last_return);
 	return (sh->last_return);
