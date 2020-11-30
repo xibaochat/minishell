@@ -144,15 +144,12 @@ void	exec_not_build_in_cmd(char *bin_path, char **arr, t_mini *sh);
 int		free_empty_tab(char **arr);
 int		redirection_syntax_error(char *s);
 int		valid_red_char_combinaison(char *cmd, int i);
-void redirection_message_err(char c);
-void redirection_message_err_2();
-int is_redir_char(const char c);
-int redir_in_str(const char *s);
-int is_white_space(const char c);
-int has_pluseur_red_char(char *cmd, int i);
-int has_mix_red_char(char *cmd, int i);
-int has_only_red_char(char *cmd, int i);
-
-
+void	redirection_message_err(char c);
+void	redirection_message_err_2(void);
+int		is_redir_char(const char c);
+int		redir_in_str(const char *s);
+int		has_pluseur_red_char(char *cmd, int i);
+int		has_mix_red_char(char *cmd, int i);
+int		has_only_red_char(char *cmd, int i);
 
 #endif

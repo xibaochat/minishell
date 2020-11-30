@@ -1,19 +1,19 @@
-#	include "minishell.h"
+#include "minishell.h"
 
-int has_pluseur_red_char(char *cmd, int i)
+int	has_pluseur_red_char(char *cmd, int i)
 {
 	if (cmd[i] && cmd[i + 1] && cmd[i + 2] && cmd[i] == '>' && cmd[i + 1] == '>'
 		&& (cmd[i + 2] == '>' || cmd[i + 2] == '<'))
 		return (1);
-	else if (cmd[i] && cmd[i + 1] && cmd[i + 2] && cmd[i] == '<' && cmd[i + 1] == '<'
-			 && (cmd[i + 2] == '<' || cmd[i + 2] == '>'))
+	else if (cmd[i] && cmd[i + 1] && cmd[i + 2] && cmd[i] == '<'
+		&& cmd[i + 1] == '<' && (cmd[i + 2] == '<' || cmd[i + 2] == '>'))
 		return (1);
 	else if (cmd[i] && cmd[i + 1] && cmd[i] == '<' && cmd[i + 1] == '<')
 		return (1);
 	return (0);
 }
 
-int has_mix_red_char(char *cmd, int i)
+int	has_mix_red_char(char *cmd, int i)
 {
 	if (cmd[i] && cmd[i + 1] && cmd[i] == '>' && cmd[i + 1] == '<')
 		return (1);
@@ -22,25 +22,26 @@ int has_mix_red_char(char *cmd, int i)
 	return (0);
 }
 
-int has_only_red_char(char *cmd, int i)
+int	has_only_red_char(char *cmd, int i)
 {
-	if (cmd[i]  && cmd[i + 1] && cmd[i] == '>' && cmd[i + 1] == '>' && !cmd[i + 2])
+	if (cmd[i] && cmd[i + 1] && cmd[i] == '>'
+		&& cmd[i + 1] == '>' && !cmd[i + 2])
 		return (1);
-	if (cmd[i]  && !cmd[i + 1] && (cmd[i] == '>' || cmd[i] == '<'))
+	if (cmd[i] && !cmd[i + 1] && (cmd[i] == '>' || cmd[i] == '<'))
 		return (1);
 	else
 		return (0);
 }
 
-static int	redirection_syntax_error_return()
+static int	redirection_syntax_error_return(void)
 {
 	ft_putstr("minishell: syntax error near unexpected token\n");
 	return (1);
 }
 
-int redirection_syntax_error(char *s)
+int	redirection_syntax_error(char *s)
 {
-	int i;
+	int		i;
 	t_quo	quo;
 
 	quo = init_quotes_struct();
@@ -52,11 +53,10 @@ int redirection_syntax_error(char *s)
 			return (redirection_syntax_error_return());
 		if (s[i] && s[i + 1] && s[i] == '>' && s[i + 1] == '>')
 			i++;
-		if ((s[i] == '>' || s[i] == '<')
-			&& !quo.have_quote)
+		if ((s[i] == '>' || s[i] == '<') && !quo.have_quote)
 		{
 			i++;
-			while (s[i] && is_white_space(s[i]))
+			while (s[i] && ft_strchr(SPACE, s[i]))
 				i++;
 			if (!s[i])
 				return (redirection_syntax_error_return());
