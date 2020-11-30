@@ -125,7 +125,7 @@ char	**check_for_redir(char **arr, t_mini *sh)
 		j = -1;
 		while (arr[i][++j])
 		{
-			if (ft_strchr("<>", arr[i][j]) && !(j > 0 && arr[i][j - 1] == '\\'))
+			if (ft_strchr("<>", arr[i][j]) && (j > 0 && !(arr[i][j - 1] == '\\')))
 			{
 				if (!exec_redir(sh, arr, i, j))
 					return (NULL);
