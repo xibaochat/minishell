@@ -34,7 +34,7 @@ void	new_cmd_2(char **arr, int i, int j, char **new)
 	int	sticked;
 
 	if (!new)
-		return (NULL);
+		return ;
 	k = -1;
 	while (++k < i)
 		new[k] = ft_strdup(arr[k]);
