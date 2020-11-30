@@ -51,7 +51,7 @@ int	manage_redir(t_mini *sh, char *file, char *elem, int j)
 char	*file_name(char **arr, int i, int j, char c)
 {
 	char	*file;
-	int	k;
+	int		k;
 
 	k = 0;
 	if (!arr[i][j + 1] || (arr[i][j + 1] == c && !arr[i][j + 2]))

@@ -1,13 +1,5 @@
 #include "minishell.h"
 
-
-int is_white_space(const char c)
-{
-    return (c == ' ' || c == '\t' || c == '\n' ||
-            c == '\v' || c == '\f' ||c == '\r');
-}
-
-
 /*
  ** sticked_next_redir() checks if the next redirection is not separated from the first one
  ** in the original command.
