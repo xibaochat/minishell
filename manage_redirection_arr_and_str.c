@@ -25,7 +25,7 @@ void store_red_filename(char *str, int i, t_red *red)
 	red->filename = filename;
 }
 
-int store_fd_from_filename(t_red *red)
+int store_fd_from_filename(t_red *red, t_mini *sh)
 {
 	char *f;
 
@@ -39,6 +39,7 @@ int store_fd_from_filename(t_red *red)
 	if (red->fd == -1)
 	{
 		free_str(f);
+		sh->last_return = 1;
 		ft_putstr("Permission denied\n");
 		return (-1);
 	}

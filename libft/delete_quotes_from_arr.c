@@ -1,27 +1,47 @@
 #include "libft.h"
 
-static int	str_is_all_quote(char *s, char c)
+static int	str_is_all_quote(char *s)
 {
 	int	i;
 
-	i = 0;
-	while (s[i])
+	i = -1;
+	while (s[++i])
 	{
-		if (s[i] != c)
+		//	if (s[i] != SINGLE && s[i] != DOUBLE)
+		//	return (0);
+		if (s[0] == SINGLE)
+		{
+			if (s[i] != SINGLE)
+				return (0);
+		}
+		else if (s[0] == DOUBLE)
+		{
+			if (s[i] != DOUBLE)
+				return (0);
+		}
+		else
 			return (0);
-		i++;
 	}
 	return (1);
 }
 
 static void	cmd_is_cd_and_q(char **arr)
 {
+	int		i;
 	char	*tmp;
 
-	tmp = arr[1];
-	arr[1] = ft_strnew(2);
-	arr[1][0] = '.';
-	free_str(tmp);
+	i = 1;
+	while (arr[i])
+	{
+		if (str_is_all_quote(arr[i]))
+		{
+			tmp = arr[i];
+			arr[i] = ft_strnew(2);
+			arr[i][0] = '.';
+			free_str(tmp);
+		}
+		i++;
+	}
 }
 
 static int	cmd_is_echo_and_q(char **arr)
@@ -31,8 +51,7 @@ static int	cmd_is_echo_and_q(char **arr)
 	i = 1;
 	while (arr[i])
 	{
-		if (str_is_all_quote(arr[i], DOUBLE)
-			|| str_is_all_quote(arr[i], SINGLE))
+		if (str_is_all_quote(arr[i]))
 			return (1);
 		i++;
 	}
@@ -47,8 +66,7 @@ void	change_q_by_space(char **arr)
 	i = 1;
 	while (arr[i])
 	{
-		if (str_is_all_quote(arr[i], DOUBLE)
-			|| str_is_all_quote(arr[i], SINGLE))
+		if (str_is_all_quote(arr[i]))
 		{
 			tmp = arr[i];
 			arr[i] = ft_strnew(2);
@@ -66,9 +84,10 @@ void	delete_quotes_from_arr(char **arr, int has_sub)
 	i = -1;
 	if (!arr)
 		return ;
-	if (!ft_strcmp(arr[0], "cd") && ft_tablen(arr) == 2
-		&&  (str_is_all_quote(arr[1], DOUBLE) || str_is_all_quote(arr[1], SINGLE)))
+	if (!ft_strcmp(arr[0], "cd"))
 	{
+		if (ft_tablen(arr) != 2)
+			return ;
 		cmd_is_cd_and_q(arr);
 		return ;
 	}

@@ -84,8 +84,10 @@ void	delete_quotes_from_arr(char **arr, int has_sub)
 	i = -1;
 	if (!arr)
 		return ;
-	else if (!ft_strcmp(arr[0], "cd"))
+	if (!ft_strcmp(arr[0], "cd"))
 	{
+		if (ft_tablen(arr) != 2)
+			return ;
 		cmd_is_cd_and_q(arr);
 		return ;
 	}

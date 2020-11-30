@@ -13,25 +13,17 @@ char **merge_redir_str_and_redirection(char **arr, t_mini *sh)
 		{
 			if (lonely_redir_char(arr[i]))
 			{
-				if (manage_lonely_redir_char(i, &arr) == -1)
-				{
-					sh->last_return = 2;
+				if (manage_lonely_redir_char(i, &arr, sh) == -1)
 					return (NULL);
-				}
 			}
-			redir_res = manage_redir_in_str(&arr[i]);
+			redir_res = manage_redir_in_str(&arr[i], sh);
 			if (redir_res == -1)
-			{
-				sh->last_return = 2;
-				redirection_message_err(arr[i + 1][0]);
 				return (NULL);
-			}
 			else
 				sh->has_redir = 1;
 		}
 	}
 	return (arr);
-	(void)sh;
 }
 
 static int	get_merge_tab_lens(char **arr)
@@ -61,24 +53,27 @@ char **maobe_check_for_redir(char **arr, t_mini *sh)
 	merge_arr = merge_redir_str_and_redirection(arr, sh);
 	new_arr = NULL;
 	j = 0;
-	if (!merge_arr)
-		sh->last_return = 2;
-	if (merge_arr && sh->has_redir)
+	if (merge_arr)
 	{
-		lens = get_merge_tab_lens(merge_arr);
-		i = -1;
-		new_arr = (char **) malloc(sizeof(char *) * (lens + 1));
-		while (++i <= lens)
-			new_arr[i] = NULL;
-		i = -1;
-		while (merge_arr[++i])
+		if (sh->has_redir)
 		{
-			if (merge_arr[i][0] != 2)
-				new_arr[j++] = merge_arr[i];
-			else
-				free_str(merge_arr[i]);
+			lens = get_merge_tab_lens(merge_arr);
+			i = -1;
+			new_arr = (char **) malloc(sizeof(char *) * (lens + 1));
+			while (++i <= lens)
+				new_arr[i] = NULL;
+			i = -1;
+			while (merge_arr[++i])
+			{
+				if (merge_arr[i][0] != 2)
+					new_arr[j++] = merge_arr[i];
+				else
+					free_str(merge_arr[i]);
+			}
+			return(new_arr);
 		}
-		return(new_arr);
+		else
+			return (merge_arr);
 	}
 	return (NULL);
 }

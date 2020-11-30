@@ -170,21 +170,21 @@ int		has_mix_red_char(char *cmd, int i);
 int		has_only_red_char(char *cmd, int i);
 int		redirection_syntax_error(char *s);
 void	merge_two_args(char ***arr, int index);
-int		merge_str_and_create_new_arr(char ***arr, int i);
-int		manage_lonely_redir_char(int i, char ***arr);
+int		merge_str_and_create_new_arr(char ***arr, int i, t_mini *sh);
+int		manage_lonely_redir_char(int i, char ***arr, t_mini *sh);
 int		lonely_redir_char(char *str);
 t_red	init_red_struct(void);
-int		manage_redir_in_str(char **str);
+int		manage_redir_in_str(char **str, t_mini *sh);
 int		jump_to_redir_char(const char *cmd, int *i);
 int		get_filename_len(const char *cmd, int i);
 int		jump_i_to_filename(char *str, int i);
-int		extract_red(char *str, int i, t_red *red);
+int		extract_red(char *str, int i, t_red *red, t_mini *sh);
 int		dup_fd_redirection(t_red *red);
 void	remove_redir_from_cmd(t_red *red, char **str, int i);
 int		is_white_space(const char c);
 void	set_red_type(char *str, int i, t_red *red);
 void	store_red_filename(char *str, int i, t_red *red);
-int		store_fd_from_filename(t_red *red);
+int		store_fd_from_filename(t_red *red, t_mini *sh);
 
 
 
