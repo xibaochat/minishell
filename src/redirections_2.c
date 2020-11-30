@@ -28,7 +28,7 @@ int	sticked_next_redir(char *str)
  ** For ex2 : new_cmd("echo jojo > lulu > dodo") = "echo jojo > dodo"
  */
 
-void new_cmd_2(char **arr, int i, int j, char **new)
+void	new_cmd_2(char **arr, int i, int j, char **new)
 {
 	int	k;
 	int	sticked;
@@ -37,9 +37,7 @@ void new_cmd_2(char **arr, int i, int j, char **new)
 		return (NULL);
 	k = -1;
 	while (++k < i)
-	{
 		new[k] = ft_strdup(arr[k]);
-	}
 	if (j)
 		new[k++] = ft_substr(arr[i], 0, j);
 	sticked = sticked_next_redir(arr[i]);
