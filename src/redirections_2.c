@@ -36,7 +36,7 @@ int	sticked_next_redir(char *str)
  ** For ex2 : new_cmd("echo jojo > lulu > dodo") = "echo jojo > dodo"
  */
 
-char	**new_cmd_2(char **arr, int i, int j, char **new)
+void new_cmd_2(char **arr, int i, int j, char **new)
 {
 	int	k;
 	int	sticked;
@@ -60,7 +60,6 @@ char	**new_cmd_2(char **arr, int i, int j, char **new)
 	while (arr[i])
 		new[k++] = ft_strdup(arr[i++]);
 	new[k] = NULL;
-	return (new);
 }
 
 char	**new_cmd(char **arr, int i, int j)
@@ -80,6 +79,6 @@ char	**new_cmd(char **arr, int i, int j)
 	if (sticked)
 		len++;
 	new = malloc(sizeof(char *) * (len + 1));
-	new = new_cmd_2(arr, i, j, new);
+	new_cmd_2(arr, i, j, new);
 	return (new);
 }
