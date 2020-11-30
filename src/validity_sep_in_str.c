@@ -24,9 +24,9 @@ int	sep_is_between_space(char *s, char c)
 			if (!lens)
 				return (1);
 			lens--;
-			while (s[lens] && s[lens] == ' ')
+			while (lens >= 0 && s[lens] && s[lens] == ' ')
 				lens--;
-			if (s[lens] == c || lens == -1)
+			if (lens < 0 || s[lens] == c)
 				return (1);
 		}
 	}
