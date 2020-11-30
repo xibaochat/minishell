@@ -16,10 +16,8 @@ static int	str_is_all_quote(char *s, char c)
 
 static void	cmd_is_cd_and_q(char **arr)
 {
-	int		i;
 	char	*tmp;
 
-	i = 1;
 	tmp = arr[1];
 	arr[1] = ft_strnew(2);
 	arr[1][0] = '.';

@@ -83,5 +83,6 @@ void	remove_redir_from_cmd(t_red *red, char **str, int i)
 		new_str[0] = 2;
 	}
 	free_str(*str);
+	free_str(red->filename);
 	*str = new_str;
 }

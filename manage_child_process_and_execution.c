@@ -67,6 +67,8 @@ int	child_process(char **split_input, t_mini *sh)
 		}
 		else if (!tmp && !sh->last_return)
 			sh->last_return = child_no_pipe(split_input, sh);
+		else
+			return (sh->last_return);
 	}
 	//ft_printf("-----in child pro %d----\n", sh->last_return);
 	return (sh->last_return);

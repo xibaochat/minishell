@@ -14,11 +14,15 @@ char **merge_redir_str_and_redirection(char **arr, t_mini *sh)
 			if (lonely_redir_char(arr[i]))
 			{
 				if (manage_lonely_redir_char(i, &arr) == -1)
+				{
+					sh->last_return = 2;
 					return (NULL);
+				}
 			}
 			redir_res = manage_redir_in_str(&arr[i]);
 			if (redir_res == -1)
 			{
+				sh->last_return = 2;
 				redirection_message_err(arr[i + 1][0]);
 				return (NULL);
 			}
