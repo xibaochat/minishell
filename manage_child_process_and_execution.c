@@ -64,7 +64,8 @@ int	child_process(char **split_input, t_mini *sh)
 			return (sh->last_return);
 		else if (sh->has_redir)
 		{
-			sh->last_return = child_no_pipe(tmp, sh);
+			if (tmp[0])
+				sh->last_return = child_no_pipe(tmp, sh);
 			ft_tabfree(tmp);
 		}
 		else

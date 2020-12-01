@@ -70,6 +70,7 @@ char **maobe_check_for_redir(char **arr, t_mini *sh)
 				else
 					free_str(merge_arr[i]);
 			}
+			free(merge_arr);
 			return(new_arr);
 		}
 		else
