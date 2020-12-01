@@ -53,6 +53,7 @@ int	child_no_pipe(char **split_input, t_mini *sh)
 int	child_process(char **split_input, t_mini *sh)
 {
 	char	**tmp;
+	int		i;
 
 	if (sh->is_pipe == 1)
 	{
@@ -61,9 +62,12 @@ int	child_process(char **split_input, t_mini *sh)
 	}
 	else
 	{
-		tmp = check_for_redir(split_input, sh);
+		i = -1;
+		tmp = check_for_redir(split_input, sh, i);
 		if (tmp)
 		{
+			delete_quotes_from_arr(tmp, sh->has_sub);
+			delete_slash_from_arr(tmp);
 			sh->last_return = child_no_pipe(tmp, sh);
 			ft_tabfree(tmp);
 		}

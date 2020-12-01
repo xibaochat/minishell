@@ -42,8 +42,11 @@ int	split_and_execute_2(int last_ret, char **arr, char delim, t_mini *sh)
 		if (!sh->last_return)
 		{
 			replace_var_sub_by_true_value(arr, sh);
-			delete_quotes_from_arr(arr, sh->has_sub);
-			delete_slash_from_arr(arr);
+			if (!has_redirection_in_arr(arr))
+			{
+				delete_quotes_from_arr(arr, sh->has_sub);
+				delete_slash_from_arr(arr);
+			}
 			last_ret = exec_command(arr, sh);
 		}
 	}

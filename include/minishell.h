@@ -38,6 +38,7 @@
 
 # define SPACE " \f\t\n\r\v"
 
+# include <stdio.h>
 # include <unistd.h>
 # include <errno.h>
 # include <sys/types.h>
@@ -66,6 +67,7 @@ typedef struct s_mini
 	int			has_sub;
 }				t_mini;
 
+int		has_redirection_in_arr(char **arr);
 void	display_animals(char *ani, char *age);
 int		empty_cmd(char **arr);
 int		ft_forking(char **split_input, t_mini *sh);
@@ -135,7 +137,7 @@ void	replace_var_by_value(char **s, int *i, char *v, t_mini *sh);
 char	*get_value_from_env(char *s, t_mini *sh);
 void	manage_substitution_in_str(t_mini *sh, char **str);
 int		replace_var_condition(t_quo *q, char *s, int i);
-char	**check_for_redir(char **arr, t_mini *sh);
+char	**check_for_redir(char **arr, t_mini *sh, int i);
 int		split_and_execute(char *str, char *sep, int i, t_mini *sh);
 int		ft_max(int a, int b);
 int		sep_in_str_is_invalid(char *str, char c);

@@ -8,13 +8,9 @@ int	manage_redir_input(t_mini *sh, char *file)
 {
 	sh->newfd = open(file, O_RDWR, 0600);
 	if (sh->newfd == -1)
-	{
 		ft_error("CAN'T OPEN FILE", errno);
-	}
 	if (dup2(sh->newfd, 0) < 0)
-	{
 		ft_error("DUP2 FAILED", errno);
-	}
 	close(sh->newfd);
 	return (0);
 }
@@ -48,6 +44,10 @@ int	manage_redir(t_mini *sh, char *file, char *elem, int j)
 	return (0);
 }
 
+/*
+ ** Note : file_name() can also be used to get the parameter of "<<" even if it is not a file.
+ */
+
 char	*file_name(char **arr, int i, int j, char c)
 {
 	char	*file;
@@ -74,26 +74,6 @@ char	*file_name(char **arr, int i, int j, char c)
 }
 
 /*
- ** Note : file_name() can also be used to get the parameter of "<<" even if it is not a file.
- */
-/*
-char	*file_name(char **arr, int i, int j, char c)
-{
-	char	*file;
-
-	if (!arr[i][j + 1] || (arr[i][j + 1] == c && !arr[i][j + 2]))
-		file = ft_strdup(arr[i + 1]);
-	else
-	{
-		if (arr[i][j + 1] == c)
-			file = ft_strdup(arr[i] + j + 2);
-		else
-			file = ft_strdup(arr[i] + j + 1);
-	}
-	return (file);
-}*/
-
-/*
  ** exec_redir() will get the name of the redirection file and then call manage_redir()
  */
 
@@ -112,20 +92,21 @@ char	**exec_redir(t_mini *sh, char **arr, int i, int j)
 	return (arr);
 }
 
-char	**check_for_redir(char **arr, t_mini *sh)
+char	**check_for_redir(char **arr, t_mini *sh, int i)
 {
-	int		i;
-	int		j;
 	char	**tmp;
+	t_quo	q;
+	int		j;
 
 	tmp = NULL;
-	i = -1;
 	while (arr[++i])
 	{
+		q = init_quotes_struct();
 		j = -1;
 		while (arr[i][++j])
 		{
-			if (ft_strchr("<>", arr[i][j]))
+			manage_struct_quotes(&q, arr[i], j);
+			if (ft_strchr("<>", arr[i][j]) && !q.have_quote)
 			{
 				if (!exec_redir(sh, arr, i, j))
 					return (NULL);

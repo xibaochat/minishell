@@ -1,5 +1,27 @@
 #include "minishell.h"
 
+int	has_redirection_in_arr(char **arr)
+{
+	t_quo	q;
+	int		i;
+	int		j;
+
+	i = -1;
+	while (arr[++i])
+	{
+		j = -1;
+		q = init_quotes_struct();
+		while (arr[i][++j])
+		{
+			manage_struct_quotes(&q, arr[i], j);
+			if (arr[i][j] && is_redir_char(arr[i][j])
+				&& !q.have_quote)
+				return (1);
+		}
+	}
+	return (0);
+}
+
 /*
  ** sticked_next_redir() checks if the next redirection is not separated from the first one
  ** in the original command.
