@@ -109,7 +109,7 @@ int	main(int ac, char **av, char **env)
 {
 	t_mini	**sh;
 
-	show_cat();
+//	show_cat();
 //	show_welcome_mes();
 	sh = get_sh();
 	init_sh(env, sh);

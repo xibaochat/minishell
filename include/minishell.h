@@ -40,13 +40,11 @@
 
 # include <unistd.h>
 # include <errno.h>
-# include <stdio.h>
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <stdlib.h>
 # include <signal.h>
 # include <dirent.h>
-# include <stdio.h>
 
 # include "libft.h"
 

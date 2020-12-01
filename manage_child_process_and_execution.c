@@ -34,6 +34,8 @@ int	child_no_pipe(char **split_input, t_mini *sh)
 		env(sh);
 	else if (!ft_strcmp(split_input[0], "sophie"))
 		sophie_la_girafe(ft_atoi(split_input[1]));
+	else if (!ft_strcmp(split_input[0], "bao"))
+		show_cat();
 	else
 	{
 		if (has_space(split_input[0]))
