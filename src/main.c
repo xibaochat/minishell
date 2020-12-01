@@ -1,7 +1,4 @@
 #include "minishell.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 
 int	exec_command(char **split_input, t_mini *sh)
 {
@@ -92,8 +89,7 @@ void	manage_input(t_mini *sh)
 	sep = ";| ";
 	input = NULL;
 	ft_signal(sh);
-	//	while (print_prompt(sh) && get_next_line(0, &input))
-	while (get_next_line(0, &input))
+	while (print_prompt(sh) && get_next_line(0, &input))
 	{
 		if (is_syntax_error(input, sh))
 			continue ;
@@ -113,6 +109,8 @@ int	main(int ac, char **av, char **env)
 {
 	t_mini	**sh;
 
+	show_cat();
+	show_welcome_mes();
 	sh = get_sh();
 	init_sh(env, sh);
 	if (!ft_find_env(ENV_HOME, (*sh)->env))
