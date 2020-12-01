@@ -50,8 +50,6 @@ int manage_redir_in_str(char **str, t_mini *sh)
 	t_red red;
 	int i;
 	int res;
-	int val_extract;
-	int has_redir_c;
 
 	red =  init_red_struct();
 	i = 0;
@@ -61,9 +59,7 @@ int manage_redir_in_str(char **str, t_mini *sh)
 		sh->last_return = 2;
 		return (-1);
 	}
-	has_redir_c = redir_in_str(*str);
-	val_extract = extract_red(*str, i, &red, sh);
-	while (val_extract && has_redir_c)
+	while (redir_in_str(*str) &&  extract_red(*str, i, &red, sh))
 	{
 		res = dup_fd_redirection(&red);
 		if (res == -1)
@@ -73,11 +69,10 @@ int manage_redir_in_str(char **str, t_mini *sh)
 			return (-1);
 		}
 		remove_redir_from_cmd(&red, str, i);
-		has_redir_c	= redir_in_str(*str);
-		if (has_redir_c)
-			val_extract = extract_red(*str, i, &red, sh);
-		else
-			break;
+		/* if (has_redir_c) */
+		/* 	val_extract = extract_red(*str, i, &red, sh); */
+		/* else */
+		/* 	break; */
 	}
 	if (!sh->last_return)
 		return (0);
