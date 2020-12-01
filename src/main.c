@@ -28,6 +28,28 @@ int	exec_command(char **split_input, t_mini *sh)
 	return (0);
 }
 
+int	has_redirection_in_arr(char **arr)
+{
+	 t_quo   q;
+	 int	i;
+	 int j;
+
+	 i = -1;
+	 while (arr[++i])
+	 {
+		 j = -1;
+		 q = init_quotes_struct();
+		 while(arr[i][++j])
+		 {
+			 manage_struct_quotes(&q, arr[i], j);
+			 if (arr[i][j] && is_redir_char(arr[i][j])
+				 && !q.have_quote)
+				 return (1);
+		 }
+	 }
+	 return (0);
+}
+
 int	split_and_execute_2(int last_ret, char **arr, char delim, t_mini *sh)
 {
 	if (delim == '|' && ft_tablen(arr) > 1)
@@ -42,8 +64,11 @@ int	split_and_execute_2(int last_ret, char **arr, char delim, t_mini *sh)
 		if (!sh->last_return)
 		{
 			replace_var_sub_by_true_value(arr, sh);
-			delete_quotes_from_arr(arr, sh->has_sub);
-			delete_slash_from_arr(arr);
+			if (!has_redirection_in_arr(arr))
+			{
+				delete_quotes_from_arr(arr, sh->has_sub);
+				delete_slash_from_arr(arr);
+			}
 			last_ret = exec_command(arr, sh);
 		}
 	}
@@ -89,7 +114,8 @@ void	manage_input(t_mini *sh)
 	sep = ";| ";
 	input = NULL;
 	ft_signal(sh);
-	while (print_prompt(sh) && get_next_line(0, &input))
+//	while (print_prompt(sh) && get_next_line(0, &input))
+	while (get_next_line(0, &input))
 	{
 		if (is_syntax_error(input, sh))
 			continue ;
@@ -109,8 +135,8 @@ int	main(int ac, char **av, char **env)
 {
 	t_mini	**sh;
 
-	show_cat();
-	show_welcome_mes();
+	/* show_cat(); */
+	/* show_welcome_mes(); */
 	sh = get_sh();
 	init_sh(env, sh);
 	if (!ft_find_env(ENV_HOME, (*sh)->env))

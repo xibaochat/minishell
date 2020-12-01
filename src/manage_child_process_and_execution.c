@@ -61,6 +61,8 @@ int	child_process(char **split_input, t_mini *sh)
 		tmp = check_for_redir(split_input, sh);
 		if (tmp)
 		{
+			delete_quotes_from_arr(tmp, sh->has_sub);
+			delete_slash_from_arr(tmp);
 			sh->last_return = child_no_pipe(tmp, sh);
 			ft_tabfree(tmp);
 		}

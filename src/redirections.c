@@ -117,15 +117,18 @@ char	**check_for_redir(char **arr, t_mini *sh)
 	int		i;
 	int		j;
 	char	**tmp;
+	t_quo	q;
 
 	tmp = NULL;
 	i = -1;
 	while (arr[++i])
 	{
 		j = -1;
+		q = init_quotes_struct();
 		while (arr[i][++j])
 		{
-			if (ft_strchr("<>", arr[i][j]))
+			manage_struct_quotes(&q, arr[i], j);
+			if (ft_strchr("<>", arr[i][j]) && !q.have_quote)
 			{
 				if (!exec_redir(sh, arr, i, j))
 					return (NULL);
