@@ -1,0 +1,49 @@
+#include "minishell.h"
+/*
+static void	show_smile_face(void)
+{
+	char	*s;
+
+	s = "\U0001F600";
+	ft_printf("%s[%s] ", GR, s);
+}
+
+static void	show_sad_face(void)
+{
+	char	*s;
+
+	s = "\U0001F61E";
+	ft_printf("%s[%s] ", RED, s);
+}
+*/
+
+static void	show_smile_face(int ret)
+{
+	ft_printf("%s[%d]", GR, ret);
+}
+
+static void	show_sad_face(int ret)
+{
+	ft_printf("%s[%d]", RED, ret);
+}
+
+int	print_prompt(t_mini *sh)
+{
+	char	*user;
+
+	if (!sh->ctrl_c)
+	{
+		if (!sh->last_return)
+			show_smile_face(sh->last_return);
+		else
+			show_sad_face(sh->last_return);
+		user = ft_find_env(ENV_USER, sh->env);
+		if (!user)
+			user = "maobe";
+		ft_printf("%sx%sX%sx %s%s", GR, YELLOW, RED, "\033[0;44m", user);
+		ft_printf("%s %sx%sX%sx%s> ", "\033[32;0m", GR, YELLOW, RED, WHITE);
+	}
+	else
+		sh->ctrl_c = 0;
+	return (1);
+}
