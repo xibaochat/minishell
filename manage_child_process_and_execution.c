@@ -32,10 +32,9 @@ int	child_no_pipe(char **split_input, t_mini *sh)
 		pwd(sh);
 	else if (!ft_strcmp(split_input[0], "env"))
 		env(sh);
-	else if (!ft_strcmp(split_input[0], "sophie"))
-		sophie_la_girafe(ft_atoi(split_input[1]));
-	else if (!ft_strcmp(split_input[0], "bao"))
-		show_cat();
+	else if (!ft_strcmp(split_input[0], "bao")
+		|| !ft_strcmp(split_input[0], "sophie"))
+		display_animals(split_input[0], split_input[1]);
 	else
 	{
 		if (has_space(split_input[0]))
@@ -71,7 +70,6 @@ int	child_process(char **split_input, t_mini *sh)
 		else
 			sh->last_return = child_no_pipe(split_input, sh);
 	}
-	//ft_printf("-----in child pro %d----\n", sh->last_return);
 	return (sh->last_return);
 }
 

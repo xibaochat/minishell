@@ -61,8 +61,6 @@ int	split_and_execute(char *str, char *sep, int i, t_mini *sh)
 	arr = ft_split_w_quotes(str, sep[i]);
 	if (!arr || !arr[0])
 		return (free_empty_tab(arr));
-	/* if (sep[i] == ';' && empty_cmd(arr)) */
-	/* 	return (2); */
 	if ((sep[i] == '|' && ft_tablen(arr) > 1) || sep[i] == ' ')
 		last_ret = split_and_execute_2(last_ret, arr, sep[i], sh);
 	else

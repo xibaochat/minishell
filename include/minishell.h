@@ -66,6 +66,7 @@ typedef struct s_mini
 	int			has_sub;
 }				t_mini;
 
+void	display_animals(char *ani, char *age);
 int		empty_cmd(char **arr);
 int		ft_forking(char **split_input, t_mini *sh);
 void	sophie_la_girafe(int length);

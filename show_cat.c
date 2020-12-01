@@ -1,5 +1,13 @@
 #include "minishell.h"
 
+void	display_animals(char *ani, char *age)
+{
+	if (!ft_strcmp(ani, "sophie"))
+		sophie_la_girafe(ft_atoi(age));
+	if (!ft_strcmp(ani, "bao"))
+		show_cat();
+}
+
 static void	show_cat_1(void)
 {
 	ft_printf("%s▐%s▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒%s█%s▒%s█▀%s\n", B, DF, B,
