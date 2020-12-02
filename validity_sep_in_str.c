@@ -15,18 +15,21 @@ static int	is_all_space(char *s)
 int	sep_is_between_space(char *s, char c)
 {
 	int	lens;
+	t_quo	q;
 
 	lens = ft_strlen(s);
+	q = init_quotes_struct();
 	while (--lens >= 0)
 	{
-		if (s[lens] == c)
+		manage_struct_quotes(&q, s, lens);
+		if (s[lens] == c && !q.have_quote)
 		{
 			if (!lens)
 				return (1);
 			lens--;
 			while (lens >= 0 && s[lens] && s[lens] == ' ')
 				lens--;
-			if (lens < 0 || s[lens] == c)
+			if ((lens < 0 || s[lens] == c) && !q.have_quote)
 				return (1);
 		}
 	}
