@@ -61,6 +61,7 @@ char	*file_name(char **arr, int i, int j, char c)
 		while (arr[i + 1][k] && !ft_strchr("<>", arr[i + 1][k]))
 			k++;
 		file = ft_substr(arr[i + 1], 0, k);
+		delete_quotes_from_s(&file);
 	}
 	else
 	{
@@ -69,6 +70,7 @@ char	*file_name(char **arr, int i, int j, char c)
 		while (arr[i][j + 1 + k] && !ft_strchr("<>", arr[i][j + 1 + k]))
 			k++;
 		file = ft_substr(arr[i], j + 1, k);
+		delete_quotes_from_s(&file);
 	}
 	return (file);
 }

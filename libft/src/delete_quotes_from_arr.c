@@ -66,12 +66,17 @@ void	delete_quotes_from_arr(char **arr, int has_sub)
 	i = -1;
 	if (!arr)
 		return ;
-	if (!ft_strcmp(arr[0], "cd") && ft_tablen(arr) == 2
-		&& (str_is_all_quote(arr[1], DOUBLE)
-					|| str_is_all_quote(arr[1], SINGLE)))
+	if (!ft_strcmp(arr[0], "cd"))
 	{
-		cmd_is_cd_and_q(arr);
-		return ;
+		if (ft_tablen(arr) > 2)
+			return ;
+		else if (ft_tablen(arr) == 2
+			&& (str_is_all_quote(arr[1], DOUBLE)
+				|| str_is_all_quote(arr[1], SINGLE)))
+		{
+			cmd_is_cd_and_q(arr);
+			return ;
+		}
 	}
 	if (!ft_strcmp(arr[0], "echo") && cmd_is_echo_and_q(arr) && !has_sub)
 		change_q_by_space(arr);
