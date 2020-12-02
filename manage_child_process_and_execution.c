@@ -37,7 +37,7 @@ int	child_no_pipe(char **split_input, t_mini *sh)
 		display_animals(split_input[0], split_input[1]);
 	else
 	{
-		if (has_space(split_input[0]))
+		if (sh->has_sub && has_space(split_input[0]))
 		{
 			new_arr = ft_split_w_quotes(split_input[0], ' ');
 			ft_tabfree(split_input);
