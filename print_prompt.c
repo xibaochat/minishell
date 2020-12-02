@@ -1,5 +1,5 @@
 #include "minishell.h"
-/*
+
 static void	show_smile_face(void)
 {
 	char	*s;
@@ -15,17 +15,6 @@ static void	show_sad_face(void)
 	s = "\U0001F61E";
 	ft_printf("%s[%s] ", RED, s);
 }
-*/
-
-static void	show_smile_face(int ret)
-{
-	ft_printf("%s[%d]", GR, ret);
-}
-
-static void	show_sad_face(int ret)
-{
-	ft_printf("%s[%d]", RED, ret);
-}
 
 int	print_prompt(t_mini *sh)
 {
@@ -34,9 +23,9 @@ int	print_prompt(t_mini *sh)
 	if (!sh->ctrl_c)
 	{
 		if (!sh->last_return)
-			show_smile_face(sh->last_return);
+			show_smile_face();
 		else
-			show_sad_face(sh->last_return);
+			show_sad_face();
 		user = ft_find_env(ENV_USER, sh->env);
 		if (!user)
 			user = "maobe";
