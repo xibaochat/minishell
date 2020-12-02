@@ -14,7 +14,7 @@ static int	is_all_space(char *s)
 
 int	sep_is_between_space(char *s, char c)
 {
-	int	lens;
+	int		lens;
 	t_quo	q;
 
 	lens = ft_strlen(s);
