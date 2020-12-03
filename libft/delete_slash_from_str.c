@@ -23,8 +23,8 @@ int	get_len_wo_extra_slash(char *s)
 		else
 			i++;
 	}
-	/* if (nb_slash % 2) */
-	/* 	return (i - j + (nb_slash / 2) + 1); */
+	if (nb_slash % 2)
+		return (i - j + (nb_slash / 2) + 1);
 	return (i - j + (nb_slash / 2));
 }
 
@@ -39,10 +39,10 @@ void	copy_part_str_wo_slash(char *s, int *i, char *new, int *j)
 		(*i)++;
 		nb_slash++;
 	}
-	/* if (nb_slash % 2) */
-	/* 	k = nb_slash / 2; */
-	/* else */
-	k = nb_slash / 2;
+	if (nb_slash % 2)
+		k = (nb_slash + 1) / 2;
+	else
+		k = nb_slash / 2;
 	while (k--)
 		new[(*j)++] = '\\';
 }

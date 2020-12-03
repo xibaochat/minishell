@@ -89,7 +89,7 @@ void	manage_input(t_mini *sh)
 	i = 0;
 	sep = ";| ";
 	input = NULL;
-//	ft_signal(sh);
+	ft_signal(sh);
 	while (print_prompt(sh) && get_next_line(0, &input))
 	{
 		if (is_syntax_error(input, sh))
