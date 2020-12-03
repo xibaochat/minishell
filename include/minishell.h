@@ -152,5 +152,6 @@ int		redir_in_str(const char *s);
 int		has_pluseur_red_char(char *cmd, int i);
 int		has_mix_red_char(char *cmd, int i);
 int		has_only_red_char(char *cmd, int i);
+void	ft_cold_quit(int sig);
 
 #endif

@@ -44,7 +44,6 @@ void	ft_not_quit(int sig)
 
 void	ft_signal(t_mini *sh)
 {
-//receive ctrl-C signal, works like mlx_hook
 	signal(SIGINT, ft_not_quit);
 	signal(SIGQUIT, ft_cold_quit);
 	(void)sh;
