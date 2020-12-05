@@ -17,7 +17,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
-# define BUFFER_SIZE 128
+# define BUFFER_SIZE 20000
 # define SINGLE 39
 # define DOUBLE 34
 
