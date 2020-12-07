@@ -47,7 +47,8 @@ int	pipe_parent(t_mini *sh, int *fd, int i, int nb_pipes)
 
 void	ft_piping(t_mini *sh, int *fd)
 {
-	pipe(sh->p);
+	if (pipe(sh->p) == -1)
+		ft_error("PIPE FAILED", errno);
 	if (pipe(fd) == -1)
 		ft_error("PIPE FAILED", errno);
 	sh->last_pid = fork();

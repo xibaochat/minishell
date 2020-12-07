@@ -89,7 +89,6 @@ int	parent_process(t_mini *sh)
 	// ex: touch /filename, you will get error: permission denied
 	else if (WIFEXITED(status) && WEXITSTATUS(status))
 		sh->last_return = status >> 8;
-	//ft_printf("-----in papa pro %d----\n", sh->last_return);
 	return (sh->last_return);
 }
 
@@ -106,7 +105,7 @@ int	ft_forking(char **split_input, t_mini *sh)
 		ft_error("Fork failed", errno);
 		exit(EXIT_FAILURE);
 	}
-	else if (!sh->last_pid) //not built in, child process
+	else if (!sh->last_pid)
 	{
 		last_ret_child = child_process(split_input, sh);
 		exit(sh->last_return);
