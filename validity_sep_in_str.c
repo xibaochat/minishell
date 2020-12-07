@@ -28,7 +28,11 @@ int	sep_is_between_space(char *s, char c)
 				return (1);
 			lens--;
 			while (lens >= 0 && s[lens] && s[lens] == ' ')
+			{
+				manage_struct_quotes(&q, s, lens);
 				lens--;
+			}
+			manage_struct_quotes(&q, s, lens);
 			if ((lens < 0 || s[lens] == c) && !q.have_quote)
 				return (1);
 		}
