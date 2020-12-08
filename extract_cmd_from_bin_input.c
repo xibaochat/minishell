@@ -28,7 +28,7 @@ char	*extract_cmd_from_bin_cmd(int index, char *bin_cmd)
 	return (bin_cmd);
 }
 
-static int	cmd_is_in_bin_dir(char *bin_dir, char *cmd)
+int	cmd_is_in_bin_dir(char *bin_dir, char *cmd)
 {
 	DIR				*d;
 	struct dirent	*dir;

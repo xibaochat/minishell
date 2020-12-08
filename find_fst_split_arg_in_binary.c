@@ -27,14 +27,27 @@ char	*find_full_binary_path(char *cmd, t_mini *sh)
 {
 	char	**bin_path;
 	char	*full_path;
+	char	*current_place;
+	char	*tmp;
 
 	bin_path = NULL;
 	full_path = NULL;
+	tmp = NULL;
+	current_place = getcwd(NULL, 0);
+	if (cmd_is_in_bin_dir(current_place, cmd))
+	{
+		tmp = ft_strjoin(current_place, "/");
+		full_path = ft_strjoin(tmp, cmd);
+		free_str(cmd);
+		free_str(tmp);
+		free_str(current_place);
+		return (full_path);
+	}
+	free_str(current_place);
 	if (is_binary_path(cmd)) //ex: /bin/ls, cmd is ls, bin_path is /bin/
 		return (manage_binary_cmd(cmd, sh));
 	else
 		bin_path = get_bin_path_arr(sh);
-	// check ls is inside $PATH or not
 	full_path = check_cmd_and_return_full_bin_path(cmd, bin_path);
 	if (!full_path)
 	{
