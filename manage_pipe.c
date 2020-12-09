@@ -4,11 +4,10 @@
 void	pipe_child(int *fd, char **arr, int i, t_mini *sh)
 {
 	int	nb_pipes;
-//	int	last_ret;
+	int	last_ret;
 
 	nb_pipes = ft_tablen(arr) - 1;
 	close(fd[0]);
-//	close(sh->p[0]);
 	printf("child0\n");
 	if (i != nb_pipes)
 	{
@@ -21,10 +20,12 @@ void	pipe_child(int *fd, char **arr, int i, t_mini *sh)
 		fd[1] = 1;
 	}
 	printf("child1\n");
-/*	last_ret =*/ split_and_execute(arr[i], " ", 0, sh);
-//	write(sh->p[1], &last_ret, sizeof(int));
+	last_ret = split_and_execute(arr[i], " ", 0, sh);
 	close(fd[1]);
-//	close(sh->p[1]);
+	write(sh->p[1], &last_ret, sizeof(int));
+	close(sh->p[1]);
+	read(sh->p[0], &last_ret, sizeof(int));
+	close(sh->p[0]);
 	printf("child2\n");
 	write(1, "EXIT cHILD\n", 11);
 	exit(1);
@@ -35,16 +36,15 @@ int	pipe_parent(t_mini *sh, int *fd, int i, int nb_pipes)
 	int	last_ret;
 
 	last_ret = 0;
-//	close(sh->p[1]);
+	close(sh->p[1]);
+	close(sh->p[0]);
 	close(fd[1]);
 	if (i != nb_pipes)
 	{
 		if (dup2(fd[0], 0) == -1)
 			ft_error("DUP2 FAILED", errno);
 	}
-//	read(sh->p[0], &last_ret, sizeof(int));
 	close(fd[0]);
-//	close(sh->p[0]);
 	printf("parent\n");
 	return (last_ret);
 	(void)sh;
@@ -52,8 +52,8 @@ int	pipe_parent(t_mini *sh, int *fd, int i, int nb_pipes)
 
 void	ft_piping(t_mini *sh, int *fd)
 {
-//	if (pipe(sh->p) == -1)
-//		ft_error("PIPE FAILED", errno);
+	if (pipe(sh->p) == -1)
+		ft_error("PIPE FAILED", errno);
 	if (pipe(fd) == -1)
 		ft_error("PIPE FAILED", errno);
 	sh->last_pid = fork();
