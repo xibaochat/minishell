@@ -6,7 +6,7 @@ void	pipe_child(int *fd, char **arr, int i, t_mini *sh, int fd_in)
 	int	nb_pipes;
 	int	last_ret;
 
-	dup2(fd_in, STDIN_FILENO);
+	dup2(fd_in, STDIN_FILENO); // if pipe before : connecting to previous cmd
 	nb_pipes = ft_tablen(arr) - 1;
 	close(fd[0]);
 	if (i != nb_pipes)
@@ -14,16 +14,14 @@ void	pipe_child(int *fd, char **arr, int i, t_mini *sh, int fd_in)
 		if (dup2(fd[1], 1) == -1)
 			ft_error("DUP2 FAILED", errno);
 	}
-	else
+	else // if last pipe, setting back to normal
 	{
 		fd[0] = 0;
 		fd[1] = 1;
 	}
 	last_ret = split_and_execute(arr[i], " ", 0, sh);
-	write(sh->p[1], &last_ret, sizeof(int));
+	write(sh->p[1], &last_ret, sizeof(int)); // getting return value
 	close(sh->p[1]);
-	read(sh->p[0], &last_ret, sizeof(int));
-	close(sh->p[0]);
 	close(fd[1]);
 	exit(1);
 }
@@ -34,7 +32,6 @@ int	pipe_parent(t_mini *sh, int *fd, int i, int nb_pipes)
 
 	last_ret = 0;
 	close(sh->p[1]);
-	close(sh->p[0]);
 	close(fd[1]);
 /*	if (i != nb_pipes)
 	{
@@ -91,6 +88,8 @@ int	ft_manage_pipe(t_mini *sh, char	**arr)
 	i = -1;
 	while (++i <= nb_pipes)
 		waitpid(tab[i], &status, 0);
+	read(sh->p[0], &last_ret, sizeof(int));
+	close(sh->p[0]);
 	close(fd_in);
 	free(tab);
 	return (last_ret);
