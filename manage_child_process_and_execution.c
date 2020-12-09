@@ -31,7 +31,7 @@ int	child_no_pipe(char **split_input, t_mini *sh)
 	else if (!ft_strcmp(split_input[0], "pwd"))
 		pwd(sh);
 	else if (!ft_strcmp(split_input[0], "env"))
-		env(sh);
+		env(sh, split_input);
 	else if (!ft_strcmp(split_input[0], "bao")
 		|| !ft_strcmp(split_input[0], "sophie"))
 		display_animals(split_input[0], split_input[1]);

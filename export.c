@@ -28,19 +28,12 @@ int	replace_var_value(char **env, char *s)
 void	add_new_var_in_env(char *str, t_mini *sh)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (str[i] && str[i] != '=')
+	while (str[i] && str[i] != '=' && str[i] != '+')
 		i++;
-	while (sh->env[j])
-	{
-		if (ft_strncmp(sh->env[j], str, i + 1))
-			j++;
-		else
-			return ;
-	}
+	if (str[i] == '+')
+		ft_strlcpy(str + i, str + i + 1, ft_strlen(str + i + 1) + 1);
 	ft_envadd(str, sh);
 }
 
@@ -57,24 +50,18 @@ void	ft_export(char **arr, t_mini *sh)
 	int	i;
 
 	i = 0;
-	//only type: export
 	if (ft_tablen(arr) == 1)
-	{
 		print_sort_env(sh->env, sh);
-		sh->last_return = 0;
-	}
-	//ep: xibao!=miao
-	else
+	while (arr[++i])
 	{
-		while (arr[++i])
+		if (!ft_strcmp(arr[i], "") && sh->has_sub)
+			print_sort_env(sh->env, sh);
+		else if (has_invalid_char_in_env_name(arr[i]))
 		{
-			if (has_invalid_char_in_env_name(arr[i]))
-			{
-				show_key_error_message(EXPORT, arr[i]);
-				sh->last_return = 1;
-			}
-			else if (has_equal_sign(arr[i]))
-				export_add_var(arr[i], sh);
+			show_key_error_message(EXPORT, arr[i]);
+			sh->last_return = 1;
 		}
+		else
+			export_add_var(arr[i], sh);
 	}
 }

@@ -83,7 +83,7 @@ void	manage_signals(void);
 void	manage_input(t_mini *sh);
 void	ft_putendl(char *str);
 void	ft_envadd(char *expt, t_mini *sh);
-void	env(t_mini *sh);
+void	env(t_mini *sh, char **arr);
 void	pwd(t_mini *sh);
 void	ft_cd(char **arr, t_mini *sh);
 void	echo(char **arr);

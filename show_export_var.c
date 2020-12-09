@@ -51,6 +51,7 @@ void	print_sort_env(char **env, t_mini *sh)
 	int		i;
 	char	**tmp;
 	char	*name;
+	char	*value;
 
 	i = 0;
 	tmp = get_sort_env(env);
@@ -64,9 +65,14 @@ void	print_sort_env(char **env, t_mini *sh)
 		{
 			ft_putstr_fd("declare -x ", 1);
 			ft_putstr_fd(name, 1);
-			ft_printf("\"%s\"\n", ft_find_env(name, tmp));
+			value = ft_find_env(name, tmp);
+			if (value)
+				ft_printf("\"%s\"\n", value);
+			else
+				ft_putstr_fd("\n", 1);
 			i++;
 		}
 		free_str(name);
 	}
+	sh->last_return = 0;
 }

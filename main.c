@@ -122,6 +122,7 @@ void	add_variables_in_env(t_mini *sh)
 	ft_envadd("LESSCLOSE=/usr/bin/lesspipe %s %s", sh);
 	ft_envadd("LESSOPEN=| /usr/bin/lesspipe %s", sh);
 	ft_envadd(BASIC_ENV_PATH, sh);
+	ft_envadd("OLDPWD", sh);
 }
 
 int	main(int ac, char **av, char **env)
