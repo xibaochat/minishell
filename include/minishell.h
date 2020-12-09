@@ -60,11 +60,14 @@ typedef struct s_mini
 	int			exit_v;
 	int			cmd_is_bin;
 	int			newfd;
-	int			is_pipe;
 	char		*file;
 	int			p[2];
 	int			fst_init;
 	int			has_sub;
+	int			is_pipe;
+	int			nb_pipes;
+	int			fd[2];
+	int			status;
 }				t_mini;
 
 int		has_redirection_in_arr(char **arr);
