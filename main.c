@@ -106,6 +106,24 @@ void	manage_input(t_mini *sh)
 	free_str(input);
 }
 
+void	add_variables_in_env(t_mini *sh)
+{
+	char *path;
+	char *tmp;
+
+	path = getcwd(NULL, 0);
+	tmp = ft_strjoin("PWD=", path);
+	free_str(path);
+	path = tmp;
+	ft_envadd(path, sh);
+	ft_envadd("SHLVL=1", sh);
+	ft_envadd("LS_COLORS=", sh);
+	ft_envadd("_=/usr/bin/env", sh);
+	ft_envadd("LESSCLOSE=/usr/bin/lesspipe %s %s", sh);
+	ft_envadd("LESSOPEN=| /usr/bin/lesspipe %s", sh);
+	ft_envadd(BASIC_ENV_PATH, sh);
+}
+
 int	main(int ac, char **av, char **env)
 {
 	t_mini	**sh;
@@ -113,11 +131,16 @@ int	main(int ac, char **av, char **env)
 //	show_welcome_mes();
 	sh = get_sh();
 	init_sh(env, sh);
+	if (!env[0])
+	{
+		(*sh)->has_env_i = 1;
+		add_variables_in_env(*sh);
+	}
 	if (!ft_find_env(ENV_HOME, (*sh)->env))
 		ft_printf(HOME_ERROR, RED, WHITE);
 	manage_input(*sh);
 	free_var(sh);
+	return (0);
 	(void)ac;
 	(void)av;
-	return (0);
 }

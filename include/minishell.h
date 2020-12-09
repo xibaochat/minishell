@@ -32,6 +32,7 @@
 # define ENV_HOME "HOME="
 # define ENV_PWD "PWD="
 # define ENV_OLDPWD "OLDPWD="
+# define BASIC_ENV_PATH "PATH=/bin:/usr/bin:/sbin:/usr/sbin"
 # define BASIC_ENV_USER "USER=maobe"
 # define HOME_ERROR "%s/!\\ NO HOME DEFINE /!\\ \n%s"
 # define CD_HOME_ERR "[-] Home env variable is not define"
@@ -65,6 +66,7 @@ typedef struct s_mini
 	int			p[2];
 	int			fst_init;
 	int			has_sub;
+	int			has_env_i;
 }				t_mini;
 
 int		has_redirection_in_arr(char **arr);

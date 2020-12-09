@@ -20,4 +20,5 @@ void	init_sh(char **env, t_mini **sh)
 	(*sh)->newfd = 0;
 	(*sh)->fst_init = 1;
 	(*sh)->has_sub = 0;
+	(*sh)->has_env_i = 0;
 }

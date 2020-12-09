@@ -9,7 +9,10 @@ void	env(t_mini *sh)
 	{
 		while ((sh->env)[++i])
 		{
-			if ((sh->env)[i][0])
+			if (sh->has_env_i
+				&& !ft_strcmp((sh->env)[i], BASIC_ENV_PATH))
+				i++;
+			else if ((sh->env)[i][0])
 			{
 				ft_putstr((sh->env)[i]);
 				ft_putstr("\n");
