@@ -100,7 +100,6 @@ int		has_invalid_char_in_env_name(char *str);
 int		has_equal_sign(char *s);
 void	ft_tabfree(char **tab);
 void	show_export_error_message(char *s);
-void	display_env_w_prefix(char **av, char **env);
 void	unset(char **arr, t_mini *sh);
 int		get_matched_var_in_env(char **env, char *var);
 void	cpy_env(t_mini *sh, char **env);
@@ -156,6 +155,7 @@ int		has_mix_red_char(char *cmd, int i);
 int		has_only_red_char(char *cmd, int i);
 void	ft_cold_quit(int sig);
 int		cmd_is_in_bin_dir(char *bin_dir, char *cmd);
+void	print_sort_env(char **env, t_mini *sh);
 
 
 #endif

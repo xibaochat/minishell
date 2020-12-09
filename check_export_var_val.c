@@ -7,11 +7,17 @@ int	has_invalid_char_in_env_name(char *str)
 	i = 0;
 	if (!i && (str[i] == '=' || ft_isdigit(str[i])))
 		return (1);
-	while (str[i] && str[i] != '=')
+	while (str[i] && str[i] != '=' && str[i] != '+')
 	{
 		if (!ft_isalnum(str[i]) && str[i] != '_')
 			return (1);
 		i++;
+	}
+	if (str[i] && str[i + 1] && str[i] == '+')
+	{
+		if (str[i + 1] == '=')
+			return (0);
+		return (1);
 	}
 	return (0);
 }

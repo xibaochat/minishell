@@ -60,7 +60,7 @@ void	ft_export(char **arr, t_mini *sh)
 	//only type: export
 	if (ft_tablen(arr) == 1)
 	{
-		display_env_w_prefix(arr, sh->env);
+		print_sort_env(sh->env, sh);
 		sh->last_return = 0;
 	}
 	//ep: xibao!=miao
