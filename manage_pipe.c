@@ -21,13 +21,13 @@ void	pipe_child(int *fd, char **arr, int i, t_mini *sh)
 	}
 	printf("child1\n");
 	last_ret = split_and_execute(arr[i], " ", 0, sh);
-	close(fd[1]);
 	write(sh->p[1], &last_ret, sizeof(int));
 	close(sh->p[1]);
 	read(sh->p[0], &last_ret, sizeof(int));
 	close(sh->p[0]);
 	printf("child2\n");
-	write(1, "EXIT cHILD\n", 11);
+	write(1, "EXIT cHIIIIIIIIILD\n", 20);
+	close(fd[1]);
 	exit(1);
 }
 
