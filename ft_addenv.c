@@ -60,12 +60,15 @@ void	cpy_env(t_mini *sh, char **env)
 
 	i = 0;
 	j = 0;
-	while (env[i])
-		i++;
-	sh->env = (char **)malloc(sizeof(char *) * (i + 1));
-	while (j < i + 1)
-		sh->env[j++] = NULL;
-	j = -1;
-	while (++j < i)
-		sh->env[j] = ft_strdup(env[j]);
+	if (env)
+	{
+		while (env[i])
+			i++;
+		sh->env = (char **)malloc(sizeof(char *) * (i + 1));
+		while (j < i + 1)
+			sh->env[j++] = NULL;
+		j = -1;
+		while (++j < i)
+			sh->env[j] = ft_strdup(env[j]);
+	}
 }

@@ -90,7 +90,6 @@ void	manage_input(t_mini *sh)
 	sep = ";| ";
 	input = NULL;
 	ft_signal(sh);
-	manage_shellvl(sh);
 	while (print_prompt(sh) && get_next_line(0, &input))
 	{
 		if (is_syntax_error(input, sh))
@@ -123,7 +122,8 @@ void	add_variables_in_env(t_mini *sh)
 	ft_envadd("LESSOPEN=| /usr/bin/lesspipe %s", sh);
 	ft_envadd(BASIC_ENV_PATH, sh);
 	ft_envadd("OLDPWD", sh);
-	manage_shellvl(sh);
+	ft_envadd("SHLVL=1", sh);
+
 }
 
 int	main(int ac, char **av, char **env)
@@ -138,6 +138,7 @@ int	main(int ac, char **av, char **env)
 		(*sh)->has_env_i = 1;
 		add_variables_in_env(*sh);
 	}
+	manage_shellvl(*sh);
 	if (!ft_find_env(ENV_HOME, (*sh)->env))
 		ft_printf(HOME_ERROR, RED, WHITE);
 	manage_input(*sh);
