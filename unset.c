@@ -36,18 +36,20 @@ static void	remove_var_in_env(char *str, t_mini *sh)
 {
 	int		i;
 	int		lens;
-	char	*tmp;
 
 	i = 0;
 	lens = ft_strlen(str);
 	while (sh->env[i])
 	{
 		if (!ft_strncmp(str, sh->env[i], lens)
-			&& sh->env[i][lens] && sh->env[i][lens] == '=')
+			&& ((sh->env[i][lens] && sh->env[i][lens] == '=')
+				|| !sh->env[i][lens]))
 		{
-			tmp = sh->env[i];
-			sh->env[i] = ft_strnew(1);
-			free_str(tmp);
+		/* 	tmp = sh->env[i]; */
+		/* 	sh->env[i] = ft_strnew(1); */
+		/* 	free_str(tmp); */
+			unset_var_recpy_env(sh, sh->env, i);
+			break;
 		}
 		i++;
 	}

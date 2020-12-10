@@ -53,6 +53,28 @@ void	ft_envadd(char *expt, t_mini *sh)
 	ft_envadd_2(expt, sh, env);
 }
 
+void	unset_var_recpy_env(t_mini *sh, char **env, int i)
+{
+	int nb;
+	int j;
+	char **tmp;
+
+	nb = ft_tablen(env);
+	j = 0;
+	tmp = (char **)malloc(sizeof(char *) * nb);
+	while (j < nb)
+		tmp[j++] = NULL;
+	j = 0;
+	while (env[j])
+	{
+		if (j != i)
+			tmp[j] = ft_strdup(env[j]);
+		j++;
+	}
+	ft_tabfree(env);
+	sh->env = tmp;
+}
+
 void	cpy_env(t_mini *sh, char **env)
 {
 	int	i;
