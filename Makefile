@@ -30,7 +30,7 @@ SRC = main.c  env.c pwd.c  ft_tablen.c  unset.c \
 	cd.c check_cd_arg.c change_env_var_value.c  init_env_var.c \
 	validity_sep_in_str.c split_fst_arg.c error_2.c \
 	check_redirection_in_line.c  check_redirection_in_arr.c \
-	redirections.c redirections_2.c
+	redirections.c redirections_2.c manage_shellvl.c
 
 SRC_PATH = $(addprefix $(SRCS_PATH)/,$(SRC))
 
