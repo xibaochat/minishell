@@ -54,16 +54,16 @@ void	ft_exit(char **split_input, t_mini *sh)
 //		ft_putstr("exit\n");
 		exit(EXIT_SUCCESS);
 	}
-	else if (tab_len > 2 && !ft_check_exit(split_input))
-	{
-		ft_putstr_fd("./minishell: exit: too many arguments\n", 2);
-		sh->last_return = 1;
-	}
 	else if (ft_check_exit(split_input))
 	{
 		ft_printf("exit\n./minishell: exit: %s : ", split_input[1]);
 		ft_printf("numeric argument required\n");
 		exit(2);
+	}
+	else if (tab_len > 2)
+	{
+		ft_putstr_fd("./minishell: exit: too many arguments\n", 2);
+		sh->last_return = 1;
 	}
 	else
 	{
