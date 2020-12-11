@@ -130,6 +130,7 @@ void	add_variables_in_env(t_mini *sh)
 int	main(int ac, char **av, char **env)
 {
 	t_mini	**sh;
+	int		return_val;
 
 //	show_welcome_mes();
 	sh = get_sh();
@@ -143,8 +144,9 @@ int	main(int ac, char **av, char **env)
 	if (!ft_find_env(ENV_HOME, (*sh)->env))
 		ft_printf(HOME_ERROR, RED, WHITE);
 	manage_input(*sh);
+	return_val = (*sh)->last_return;
 	free_var(sh);
-	return (0);
+	return (return_val);
 	(void)ac;
 	(void)av;
 }
