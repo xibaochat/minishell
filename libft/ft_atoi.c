@@ -25,11 +25,11 @@ static int	get_start_index(char *str)
 	return (i);
 }
 
-int	ft_atoi(const char *s)
+long	ft_atoi(const char *s)
 {
-	int		sign;
-	int		res;
-	int		i;
+	long		sign;
+	long		res;
+	long		i;
 	char	*str;
 
 	str = (char *)s;
@@ -47,5 +47,5 @@ int	ft_atoi(const char *s)
 		res = res * 10 + (str[i] - '0');
 		i++;
 	}
-	return (sign * res);
+	return ((long)sign * res);
 }

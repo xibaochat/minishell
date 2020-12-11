@@ -7,10 +7,7 @@ static int	has_alpha(char *s)
 	i = -1;
 	while (s[++i])
 	{
-		if (ft_isalpha(s[i]))
-			return (1);
-//		if (i > 0 && ((s[i] == '+' || s[i] == '-')))
-		if (i > 0 && (s[i] != ' ') && !ft_isdigit(s[i]))
+		if (!ft_isdigit(s[i]))
 			return (1);
 	}
 	return (0);
@@ -31,35 +28,46 @@ static int	ft_check_exit(char **s)
 	return (0);
 }
 
+int arg_is_all_vide(char **split_input)
+{
+	int i;
+
+	i = 1;
+	while (split_input[i])
+	{
+		if (!split_input[i][0])
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
 void	ft_exit(char **split_input, t_mini *sh)
 {
 	int	tab_len;
 
 	tab_len = ft_tablen(split_input);
-	if (tab_len == 1)
+	if (arg_is_all_vide(split_input) || tab_len == 1)
 	{
 		ft_tabfree(sh->env);
 //		ft_putstr("exit\n");
 		exit(EXIT_SUCCESS);
 	}
-	else if (tab_len > 2)
+	else if (tab_len > 2 && !ft_check_exit(split_input))
 	{
 		ft_putstr_fd("./minishell: exit: too many arguments\n", 2);
 		sh->last_return = 1;
 	}
-	else if (tab_len == 2)
+	else if (ft_check_exit(split_input))
 	{
-		ft_tabfree(sh->env);
-		if (ft_check_exit(split_input))
-		{
-			ft_printf("exit\n./minishell: exit: %s : ", split_input[1]);
-			ft_printf("numeric argument required\n");
-			exit(2);
-		}
-		else
-		{
+		ft_printf("exit\n./minishell: exit: %s : ", split_input[1]);
+		ft_printf("numeric argument required\n");
+		exit(2);
+	}
+	else
+	{
 //			ft_putstr("exit\n");
-			exit(ft_atoi(split_input[1]));
-		}
+		exit(ft_atoi(split_input[1]));
 	}
 }

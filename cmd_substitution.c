@@ -1,19 +1,4 @@
 #include "minishell.h"
-/*
-static int	is_invalid_varname(t_quo *q, const char *s, int i)
-{
-	(void)q;
-	return (!((ft_isalnum(s[i]) || s[i] == '_')));
-	 return (s[i] &&
-	 		(is_unescapted_c(q, s, i, '$')
-	 		 || is_unescapted_c(q, s, i, '?')
-	 		 || is_unescapted_c(q, s, i, '\\')
-	  		 || is_unescapted_c(q, s, i, '/')
-	 		 || is_unescapted_c(q, s, i, SINGLE)
-	   	     || is_unescapted_c(q, s, i, DOUBLE)));
-}
-*/
-/*var name length*/
 
 int	get_varname_len(const char *s, int i)
 {
@@ -75,8 +60,11 @@ void	manage_substitution_in_str(t_mini *sh, char **str)
 		{
 			if (next_char_is_question_mark(*str, i))
 				manage_question_mark(str, &i, sh->exit_v);
-			else if (is_unescapted_c(&q, *str, i + 1, '/'))
+			else if (is_unescapted_c(&q, *str, i + 1, '/')
+					 || is_unescapted_c(&q, *str, i + 1, '='))
 				i++;
+			else if ((*str)[i + 1] && ft_isdigit((*str)[i + 1]))
+				ft_strlcpy(*str + i, *str + i + 2, ft_strlen(*str + i + 2) + 1);
 			else if (replace_var_condition(&q, *str, i))
 				replace_sub_by_true_value(str, &i, sh);
 			else

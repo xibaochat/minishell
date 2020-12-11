@@ -79,9 +79,8 @@ ${OBJS_DIR}/%.o: %.c
 			@${CC} ${FLAGS} -I ${HEADER_DIR}  -c $< -o $@
 
 
-${NAME}: header  ${OBJS}
+${NAME}: header  libft_compile ${OBJS}
 	@printf "${BLUE}MINISHELL${NC}:    ${GREEN}Completed         ${YELLOW}----${NC}          \r\n"
-	@make -C ./libft all
 	@printf "${BLUE}LIBFT${NC}:        ${GREEN}Completed         ${YELLOW}----${NC}          \r\n"
 	@${CC} ${FLAGS} ${OBJS} -L ./libft -lft -o ${NAME}
 	@printf "\n${NC}⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤⏤\n"
@@ -107,7 +106,7 @@ header:
 
 libft_compile:
 	@make -C ./libft all
-	@printf "${BLUE}LIBFT${NC}:        ${GREEN}Completed         ${YELLOW}----${NC}          \r\n"
+
 clean : libft_clean
 		@rm -fr $(OBJ) $(CD_OBJ) $(EXP_OBJ) ${OBJS_DIR}
 		@printf "${BLUE}PROJECT${NC}:      ${GREEN}Cleaned${NC}\n"

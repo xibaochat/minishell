@@ -2,11 +2,13 @@
 
 void	show_key_error_message(int key, char *s)
 {
+	ft_putstr_fd("bash:", STDERR_FILENO);
 	if (key == EXPORT)
-		ft_putstr_fd("export: `", STDERR_FILENO);
+		ft_putstr_fd(" export: `", STDERR_FILENO);
 	if (key == UNSET)
-		ft_putstr_fd("unset: `", STDERR_FILENO);
+		ft_putstr_fd(" unset: `", STDERR_FILENO);
 	ft_putstr_fd(s, STDERR_FILENO);
+	ft_putstr_fd("\'", STDERR_FILENO);
 	ft_putstr_w_new_line_fd(VAL_ERROR, STDERR_FILENO);
 	return ;
 }
