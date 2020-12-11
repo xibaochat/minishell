@@ -32,27 +32,30 @@ static int	has_invalid_var(t_mini *sh, char **arr)
 	return (0);
 }
 
-static void	remove_var_in_env(char *str, t_mini *sh)
+void	unset_var_recpy_env(char *name, t_mini *sh)
 {
-	int		i;
-	int		lens;
+	int nb;
+	int j;
+	int i;
+	char **tmp;
 
+	nb = ft_tablen(sh->env);
+	j = 0;
 	i = 0;
-	lens = ft_strlen(str);
-	while (sh->env[i])
+	tmp = (char **)malloc(sizeof(char *) * nb);
+	while (j < nb)
+		tmp[j++] = NULL;
+	j = 0;
+	while (sh->env[j])
 	{
-		if (!ft_strncmp(str, sh->env[i], lens)
-			&& ((sh->env[i][lens] && sh->env[i][lens] == '=')
-				|| !sh->env[i][lens]))
-		{
-		/* 	tmp = sh->env[i]; */
-		/* 	sh->env[i] = ft_strnew(1); */
-		/* 	free_str(tmp); */
-			unset_var_recpy_env(sh, sh->env, i);
-			break;
-		}
-		i++;
+		if (!ft_strncmp(name, sh->env[j], ft_strlen(name))
+			&& ((int)ft_strlen(name) == len_var_name(sh->env[j])))
+			j++;
+		else
+			tmp[i++] = ft_strdup(sh->env[j++]);
 	}
+	ft_tabfree(sh->env);
+	sh->env = tmp;
 }
 
 void	unset(char **arr, t_mini *sh)
@@ -63,7 +66,10 @@ void	unset(char **arr, t_mini *sh)
 	while (arr[++i])
 	{
 		if (unset_var_is_valid(sh, arr[i]))
-			remove_var_in_env(arr[i], sh);
+		{
+			if (!is_new_var(arr[i], sh->env))
+				unset_var_recpy_env(arr[i], sh);
+		}
 		else
 			show_key_error_message(UNSET, arr[i]);
 	}

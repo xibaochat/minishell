@@ -158,6 +158,8 @@ int		cmd_is_in_bin_dir(char *bin_dir, char *cmd);
 void	print_sort_env(char **env, t_mini *sh);
 void	replace_var_value(char *s, char **env);
 void	manage_shellvl(t_mini *sh);
-void	unset_var_recpy_env(t_mini *sh, char **env, int i);
+void	unset_var_recpy_env(char *name, t_mini *sh);
+int		len_var_name(char *var);
+int		is_new_var(char *s, char **env);
 
 #endif
