@@ -90,7 +90,8 @@ void	manage_input(t_mini *sh)
 	sep = ";| ";
 	input = NULL;
 	ft_signal(sh);
-	while (print_prompt(sh) && get_next_line(0, &input))
+//	while (print_prompt(sh) && get_next_line(0, &input))
+	while (get_next_line(0, &input))
 	{
 		if (is_syntax_error(input, sh))
 			continue ;
@@ -102,7 +103,7 @@ void	manage_input(t_mini *sh)
 		free_str(input);
 		sh->has_sub = 0;
 	}
-	ft_putstr_fd("exit", 2);
+//	ft_putstr_fd("exit", 2);
 	free_str(input);
 }
 

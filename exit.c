@@ -39,7 +39,7 @@ void	ft_exit(char **split_input, t_mini *sh)
 	if (tab_len == 1)
 	{
 		ft_tabfree(sh->env);
-		ft_putstr("exit\n");
+//		ft_putstr("exit\n");
 		exit(EXIT_SUCCESS);
 	}
 	else if (tab_len > 2)
@@ -58,7 +58,7 @@ void	ft_exit(char **split_input, t_mini *sh)
 		}
 		else
 		{
-			ft_putstr("exit\n");
+//			ft_putstr("exit\n");
 			exit(ft_atoi(split_input[1]));
 		}
 	}
