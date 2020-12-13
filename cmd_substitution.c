@@ -61,7 +61,7 @@ void	manage_substitution_in_str(t_mini *sh, char **str)
 			if (next_char_is_question_mark(*str, i))
 				manage_question_mark(str, &i, sh->exit_v);
 			else if (is_unescapted_c(&q, *str, i + 1, '/')
-					 || is_unescapted_c(&q, *str, i + 1, '='))
+				|| is_unescapted_c(&q, *str, i + 1, '='))
 				i++;
 			else if ((*str)[i + 1] && ft_isdigit((*str)[i + 1]))
 				ft_strlcpy(*str + i, *str + i + 2, ft_strlen(*str + i + 2) + 1);
