@@ -1,6 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   manage_substitution_in_str.c                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:43:38 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:43:41 by pnielly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-/*calculate variable name lenth*/
+/*
+** calculate variable name lenth
+*/
 
 char	*extract_str_wo_quote(char *s)
 {
@@ -12,8 +26,10 @@ char	*extract_str_wo_quote(char *s)
 	return (ft_strncat(new, s, len));
 }
 
-/*check var is inside ENV or not,
-  if it is, return its value*/
+/*
+** check var is inside ENV or not,
+** if it is, return its value
+*/
 
 char	*varname_is_in_env(char *s, t_mini *sh)
 {
@@ -31,7 +47,9 @@ char	*varname_is_in_env(char *s, t_mini *sh)
 	return (NULL);
 }
 
-/*remplir var value by its variable in arr*/
+/*
+** remplir var value by its variable in arr
+*/
 
 void	replace_var_by_value(char **s, int *i, char *v, t_mini *sh)
 {

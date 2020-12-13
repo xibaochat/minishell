@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_prompt.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:43:48 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:43:49 by pnielly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 static void	show_smile_face(void)
@@ -16,7 +28,7 @@ static void	show_sad_face(void)
 	ft_printf("%s[%s] ", RED, s);
 }
 
-int	print_prompt(t_mini *sh)
+int			print_prompt(t_mini *sh)
 {
 	char	*user;
 

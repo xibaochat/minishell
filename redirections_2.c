@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redirections_2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:44:11 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:44:13 by pnielly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-int	has_redirection_in_arr(char **arr)
+int		has_redirection_in_arr(char **arr)
 {
 	t_quo	q;
 	int		i;
@@ -23,12 +35,13 @@ int	has_redirection_in_arr(char **arr)
 }
 
 /*
- ** sticked_next_redir() checks if the next redirection is not separated from the first one
- ** in the original command.
- ** For example : "echo jojo>lulu>dodo"
- */
+** sticked_next_redir() checks if the next redirection
+** is not separated from the first one
+** in the original command.
+** For example : "echo jojo>lulu>dodo"
+*/
 
-int	sticked_next_redir(char *str)
+int		sticked_next_redir(char *str)
 {
 	int	i;
 
@@ -45,10 +58,11 @@ int	sticked_next_redir(char *str)
 }
 
 /*
- ** new_cmd() returns the copy of the old cmd WITHOUT the redirection currently handled.
- ** For ex : new_cmd("echo jojo > lulu") = "echo jojo"
- ** For ex2 : new_cmd("echo jojo > lulu > dodo") = "echo jojo > dodo"
- */
+** new_cmd() returns the copy of the old cmd
+** WITHOUT the redirection currently handled.
+** For ex : new_cmd("echo jojo > lulu") = "echo jojo"
+** For ex2 : new_cmd("echo jojo > lulu > dodo") = "echo jojo > dodo"
+*/
 
 void	new_cmd_2(char **arr, int i, int j, char **new)
 {

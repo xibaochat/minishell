@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cd.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:38:47 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 17:05:53 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-void	cd_error_message(char *str)
+void			cd_error_message(char *str)
 {
 	ft_putstr_fd("cd: ", 2);
 	ft_putstr_fd(strerror(errno), 2);
@@ -8,12 +20,12 @@ void	cd_error_message(char *str)
 	ft_putstr_w_new_line_fd(str, 2);
 }
 
-int	cd_to_current_dir_opt(char **arr)
+int				cd_to_current_dir_opt(char **arr)
 {
 	return (arr[1] && !ft_strcmp(arr[1], "."));
 }
 
-void	cd_to_home(t_mini *sh, char *curr_p)
+void			cd_to_home(t_mini *sh, char *curr_p)
 {
 	char	*path;
 	char	*dest;
@@ -32,7 +44,7 @@ void	cd_to_home(t_mini *sh, char *curr_p)
 	}
 }
 
-static void	cd_to_required_place(char **arr, t_mini *sh)
+static void		cd_to_required_place(char **arr, t_mini *sh)
 {
 	char	*curr_p;
 	char	*valid_path;
@@ -47,7 +59,7 @@ static void	cd_to_required_place(char **arr, t_mini *sh)
 	}
 }
 
-void	ft_cd(char **arr, t_mini *sh)
+void			ft_cd(char **arr, t_mini *sh)
 {
 	char	*curr_p;
 

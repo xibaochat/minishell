@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrmv.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user42 <pnielly@student.42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 17:42:47 by user42            #+#    #+#             */
+/*   Updated: 2020/12/13 17:43:06 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /*
-**	ft_strrmv removes all char of sep in s and returns the new string
+** ft_strrmv removes all char of sep in s and returns the new string
 */
 
 static int	get_new_len(char *s, char *sep)
@@ -20,7 +32,7 @@ static int	get_new_len(char *s, char *sep)
 	return (lens);
 }
 
-char	*ft_strrmv(char *s, char *sep)
+char		*ft_strrmv(char *s, char *sep)
 {
 	int		i;
 	int		len;

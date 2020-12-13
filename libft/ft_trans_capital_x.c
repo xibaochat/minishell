@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_trans_capital_x.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 01:25:59 by xinwang           #+#    #+#             */
-/*   Updated: 2019/12/02 21:16:26 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/12/13 17:42:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*get_converted_str(char *str, uintmax_t res, int *i)
 	return (str);
 }
 
-char	*ft_trans_capital_x(uintmax_t n)
+char		*ft_trans_capital_x(uintmax_t n)
 {
 	int				i;
 	uintmax_t		res;

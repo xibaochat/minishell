@@ -1,4 +1,16 @@
-#	include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split_w_quotes.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user42 <pnielly@student.42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 17:47:21 by user42            #+#    #+#             */
+/*   Updated: 2020/12/13 17:47:40 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 static int	quote_condition(t_quo q, char *s, int i)
 {
@@ -44,7 +56,7 @@ static int	get_word_len(char *str, int i, char sep)
 	return (lens);
 }
 
-char	**split_into_tab(char **arr, char *str, char sep)
+char		**split_into_tab(char **arr, char *str, char sep)
 {
 	int			i;
 	int			j;
@@ -71,7 +83,7 @@ char	**split_into_tab(char **arr, char *str, char sep)
 	return (arr);
 }
 
-char	**ft_split_w_quotes(char const *s, char c)
+char		**ft_split_w_quotes(char const *s, char c)
 {
 	char		*str;
 	int			words_nb;

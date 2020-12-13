@@ -1,6 +1,18 @@
-#	include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   delete_slash_from_str.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user42 <pnielly@student.42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 17:50:43 by user42            #+#    #+#             */
+/*   Updated: 2020/12/13 17:51:05 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	get_len_wo_extra_slash(char *s)
+#include "libft.h"
+
+int		get_len_wo_extra_slash(char *s)
 {
 	int	i;
 	int	nb_slash;

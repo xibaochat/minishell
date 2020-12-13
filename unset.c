@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   unset.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:44:51 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 17:08:47 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 static int	unset_var_is_valid(t_mini *sh, char *str)
@@ -32,12 +44,12 @@ static int	has_invalid_var(t_mini *sh, char **arr)
 	return (0);
 }
 
-void	unset_var_recpy_env(char *name, t_mini *sh)
+void		unset_var_recpy_env(char *name, t_mini *sh)
 {
-	int nb;
-	int j;
-	int i;
-	char **tmp;
+	int		nb;
+	int		j;
+	int		i;
+	char	**tmp;
 
 	nb = ft_tablen(sh->env);
 	j = 0;
@@ -58,7 +70,7 @@ void	unset_var_recpy_env(char *name, t_mini *sh)
 	sh->env = tmp;
 }
 
-void	unset(char **arr, t_mini *sh)
+void		unset(char **arr, t_mini *sh)
 {
 	int		i;
 

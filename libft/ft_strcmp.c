@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: osshit <osshit@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user42 <pnielly@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/04 06:25:13 by osshit            #+#    #+#             */
-/*   Updated: 2020/10/01 00:36:52 by maobe            ###   ########.fr       */
-/*   Updated: 2020/04/20 14:22:15 by osshit           ###   ########.fr       */
+/*   Created: 2020/12/13 17:54:25 by user42            #+#    #+#             */
+/*   Updated: 2020/12/13 17:58:43 by pnielly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(const char *s1, const char *s2)
+#include "libft.h"
+
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 

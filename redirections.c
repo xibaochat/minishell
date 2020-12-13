@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redirections.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:44:02 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:44:03 by pnielly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 /*
- ** manage_redir_input() handles "<" situation, ">" and ">>" are directly handled in manage_redir()
- */
+** manage_redir_input() handles "<" situation,
+** ">" and ">>" are directly handled in manage_redir()
+*/
 
-int	manage_redir_input(t_mini *sh, char *file)
+int		manage_redir_input(t_mini *sh, char *file)
 {
 	sh->newfd = open(file, O_RDWR, 0600);
 	if (sh->newfd == -1)
@@ -16,10 +29,10 @@ int	manage_redir_input(t_mini *sh, char *file)
 }
 
 /*
- ** manage_redir() will open (or create) the file for the redirection
- */
+** manage_redir() will open (or create) the file for the redirection
+*/
 
-int	manage_redir(t_mini *sh, char *file, char *elem, int j)
+int		manage_redir(t_mini *sh, char *file, char *elem, int j)
 {
 	if (elem[j] == '<')
 		return (manage_redir_input(sh, file));
@@ -45,8 +58,9 @@ int	manage_redir(t_mini *sh, char *file, char *elem, int j)
 }
 
 /*
- ** Note : file_name() can also be used to get the parameter of "<<" even if it is not a file.
- */
+** Note : file_name() can also be used
+** to get the parameter of "<<" even if it is not a file.
+*/
 
 char	*file_name(char **arr, int i, int j, char c)
 {
@@ -76,8 +90,9 @@ char	*file_name(char **arr, int i, int j, char c)
 }
 
 /*
- ** exec_redir() will get the name of the redirection file and then call manage_redir()
- */
+** exec_redir() will get the name of
+** the redirection file and then call manage_redir()
+*/
 
 char	**exec_redir(t_mini *sh, char **arr, int i, int j)
 {

@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 18:27:03 by xinwang           #+#    #+#             */
-/*   Updated: 2019/10/18 04:06:12 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/12/13 17:47:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	get_lens(char *str, int i, char c)
 	return (lens);
 }
 
-char	**get_tab(char **arr, char *str, char c)
+char		**get_tab(char **arr, char *str, char c)
 {
 	int			i;
 	int			j;
@@ -69,7 +69,7 @@ char	**get_tab(char **arr, char *str, char c)
 	return (arr);
 }
 
-char	**empty_arr(void)
+char		**empty_arr(void)
 {
 	char		**res;
 
@@ -78,7 +78,7 @@ char	**empty_arr(void)
 	return (res);
 }
 
-char	**ft_split(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
 	char		*str;
 	int			words_nb;

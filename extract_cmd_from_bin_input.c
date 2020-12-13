@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   extract_cmd_from_bin_input.c                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:41:10 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:41:11 by pnielly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-int	get_bin_directory_index(char *str)
+int			get_bin_directory_index(char *str)
 {
 	int	lens;
 	int	index;
@@ -18,7 +30,7 @@ static int	is_invalid_bin_path(int index, char *cmd)
 		|| (cmd[0] == '/' && index == (int)(ft_strlen(cmd) - 1)));
 }
 
-char	*extract_cmd_from_bin_cmd(int index, char *bin_cmd)
+char		*extract_cmd_from_bin_cmd(int index, char *bin_cmd)
 {
 	char	*tmp;
 
@@ -28,7 +40,7 @@ char	*extract_cmd_from_bin_cmd(int index, char *bin_cmd)
 	return (bin_cmd);
 }
 
-int	cmd_is_in_bin_dir(char *bin_dir, char *cmd)
+int			cmd_is_in_bin_dir(char *bin_dir, char *cmd)
 {
 	DIR				*d;
 	struct dirent	*dir;
@@ -51,7 +63,11 @@ int	cmd_is_in_bin_dir(char *bin_dir, char *cmd)
 	return (0);
 }
 
-char	*manage_binary_cmd(char *bin_cmd, t_mini *sh)
+/*
+** "if (is_invalid_bin_path(index, bin_cmd))" // ex: "/path" OR "/path/sth/"
+*/
+
+char		*manage_binary_cmd(char *bin_cmd, t_mini *sh)
 {
 	char	*bin_dir;
 	char	*cmd;
@@ -60,7 +76,7 @@ char	*manage_binary_cmd(char *bin_cmd, t_mini *sh)
 
 	index = get_bin_directory_index(bin_cmd);
 	path = NULL;
-	if (is_invalid_bin_path(index, bin_cmd)) // ex: "/path" OR "/path/sth/"
+	if (is_invalid_bin_path(index, bin_cmd))
 	{
 		show_error_message(bin_cmd, BIN_ERROR, sh);
 		return (NULL);

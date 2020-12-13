@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:14:40 by xinwang           #+#    #+#             */
-/*   Updated: 2020/01/23 01:32:44 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/12/13 17:45:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	manage_conversion(va_list *ap, char **format, int *i, int *nb_out)
 		++(*i);
 }
 
-int	printf_core(va_list *ap, char *format)
+int			printf_core(va_list *ap, char *format)
 {
 	int	i;
 	int	nb_output;
@@ -52,7 +52,7 @@ int	printf_core(va_list *ap, char *format)
 	return (nb_output);
 }
 
-int	ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	char	*new_format;

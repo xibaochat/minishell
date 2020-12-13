@@ -1,11 +1,23 @@
-# include "minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   manage_shellvl.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:43:30 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:43:33 by pnielly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void manage_shellvl(t_mini *sh)
+#include "minishell.h"
+
+void	manage_shellvl(t_mini *sh)
 {
-	char *value;
-	int nb;
-	char *new_value;
-	char *nb_str;
+	char	*value;
+	int		nb;
+	char	*new_value;
+	char	*nb_str;
 
 	if (!sh->has_env_i)
 	{

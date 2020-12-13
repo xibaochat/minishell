@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 01:04:48 by xinwang           #+#    #+#             */
-/*   Updated: 2020/01/23 01:20:05 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/12/13 17:36:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	special_case_one(t_flag *my_flags, char *value, char c)
 		&& (size_t)my_flags->f_precision < ft_strlen(value));
 }
 
-void	tweak_flags_values(t_flag *my_flags, char *value, char c)
+void		tweak_flags_values(t_flag *my_flags, char *value, char c)
 {
 	if (special_case_one(my_flags, value, c))
 	{

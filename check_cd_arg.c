@@ -1,6 +1,18 @@
-#	include "minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_cd_arg.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:39:18 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:53:27 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	has_multi_valid_arg(char **arr)
+#include "minishell.h"
+
+int		has_multi_valid_arg(char **arr)
 {
 	int	i;
 	int	lens;
@@ -29,7 +41,7 @@ char	*extract_target_path(char **arr)
 	return (NULL);
 }
 
-int	arg_is_empty(char **arr)
+int		arg_is_empty(char **arr)
 {
 	int	i;
 
@@ -42,7 +54,7 @@ int	arg_is_empty(char **arr)
 	return (1);
 }
 
-int	is_go_home_opt(char **arr, t_mini *sh)
+int		is_go_home_opt(char **arr, t_mini *sh)
 {
 	(void)sh;
 	if (ft_tablen(arr) == 1

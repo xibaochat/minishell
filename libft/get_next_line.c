@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 19:10:21 by xinwang           #+#    #+#             */
-/*   Updated: 2020/10/01 00:40:11 by maobe            ###   ########.fr       */
+/*   Updated: 2020/12/13 17:55:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	nb_read_is_zero(char *buff, int fd, char **buffer)
 	return (0);
 }
 
-int	get_content_from_file(int fd, char **buffer)
+int			get_content_from_file(int fd, char **buffer)
 {
 	int		nb_read;
 	char	*s;
@@ -97,7 +97,7 @@ static int	manage_buffer(char **buffer, char **line)
 	return (1);
 }
 
-int	get_next_line(int fd, char **line)
+int			get_next_line(int fd, char **line)
 {
 	char	**buffer;
 

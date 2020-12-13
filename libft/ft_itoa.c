@@ -6,7 +6,7 @@
 /*   By: xinwang <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:49:03 by xinwang           #+#    #+#             */
-/*   Updated: 2020/04/16 10:05:25 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/12/13 17:48:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*get_converted_str(char *str, unsigned int res, int *i)
 	return (str);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	int				i;
 	unsigned int	res;

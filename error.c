@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:40:47 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:56:30 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-void	show_key_error_message(int key, char *s)
+void			show_key_error_message(int key, char *s)
 {
 	ft_putstr_fd("bash:", STDERR_FILENO);
 	if (key == EXPORT)
@@ -17,7 +29,7 @@ void	show_key_error_message(int key, char *s)
 ** If can't find cmd : show error message
 */
 
-void	show_error_message(char *cmd, char *err, t_mini *sh)
+void			show_error_message(char *cmd, char *err, t_mini *sh)
 {
 	ft_putstr_fd(cmd, 2);
 	ft_putstr_w_new_line_fd(err, 2);
@@ -25,20 +37,19 @@ void	show_error_message(char *cmd, char *err, t_mini *sh)
 }
 
 /*
-** ft_error() uses errno (which is automatically set when failure of malloc, dup2, etc.))
+** ft_error() uses errno (which is automatically set
+** when failure of malloc, dup2, etc.))
 */
 
-int	ft_error(char *str, int errno_value)
+int				ft_error(char *str, int errno_value)
 {
 	ft_putstr_w_new_line_fd(strerror(errno_value), 2);
-	//sh->last_return = errno_value;
 	exit(EXIT_FAILURE);
 	(void)str;
-//	(void)sh;
 	return (0);
 }
 
-static int	line_has_multi_sep(char *s, int i, char c, t_quo *q)
+static int		line_has_multi_sep(char *s, int i, char c, t_quo *q)
 {
 	if (s[i] && s[i + 1]
 		&& is_unescapted_c(q, s, i, c)
@@ -51,7 +62,7 @@ static int	line_has_multi_sep(char *s, int i, char c, t_quo *q)
 	return (0);
 }
 
-int	is_syntax_error(char *s, t_mini *sh)
+int				is_syntax_error(char *s, t_mini *sh)
 {
 	int		i;
 	t_quo	quo;
@@ -59,8 +70,8 @@ int	is_syntax_error(char *s, t_mini *sh)
 	quo = init_quotes_struct();
 	i = -1;
 	if (sep_in_str_is_invalid(s, ';')
-		|| sep_in_str_is_invalid(s, '|')
-		||redirection_syntax_error(s))
+			|| sep_in_str_is_invalid(s, '|')
+			|| redirection_syntax_error(s))
 	{
 		free_str(s);
 		sh->last_return = 2;

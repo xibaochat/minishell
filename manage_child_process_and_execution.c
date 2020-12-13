@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   manage_child_process_and_execution.c               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:43:06 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:43:07 by pnielly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-// Note concerning the if (execve(...) == -1) control structure :
-//----pour eviter child process in the dead situation-
-// if execve this fnction its self failed, not the result is bad
-// if execve is success, it will kill the fork, child process
+/*
+** Note concerning the if (execve(...) == -1) control structure :
+**----pour eviter child process in the dead situation-
+** if execve this fnction its self failed, not the result is bad
+** if execve is success, it will kill the fork, child process
+*/
 
 int	has_space(char *s)
 {
@@ -77,16 +91,19 @@ int	child_process(char **split_input, t_mini *sh)
 	return (sh->last_return);
 }
 
+/*
+** first "if" = program execution successful
+** "else if" = program terminated normally, but returned a non-zero status
+** ex: touch /filename, you will get error: permission denied
+*/
+
 int	parent_process(t_mini *sh)
 {
 	int	status;
 
 	waitpid(sh->last_pid, &status, 0);
-	//program execution successful
 	if (WIFEXITED(status) && !WEXITSTATUS(status))
 		sh->last_return = 0;
-	//program terminated normally,but returned a non-zero status
-	// ex: touch /filename, you will get error: permission denied
 	else if (WIFEXITED(status) && WEXITSTATUS(status))
 		sh->last_return = status >> 8;
 	return (sh->last_return);

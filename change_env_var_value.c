@@ -1,8 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   change_env_var_value.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:39:07 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:39:08 by pnielly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-/*cherche ENV VAR exists or not, and return its index in the ENV*/
+/*
+** cherche ENV VAR exists or not, and return its index in the ENV
+*/
 
-int	get_matched_var_in_env(char **env, char *var)
+int		get_matched_var_in_env(char **env, char *var)
 {
 	int	i;
 
@@ -32,7 +46,6 @@ void	go_to_required_directory(t_mini *sh, char *dest, char *src)
 		sh->last_return = 0;
 		free_str(pwd);
 	}
-//	free_str(src);
 	free_str(dest);
 }
 

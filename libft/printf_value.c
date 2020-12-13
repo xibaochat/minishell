@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 23:51:34 by xinwang           #+#    #+#             */
-/*   Updated: 2020/10/09 21:56:09 by maobe            ###   ########.fr       */
+/*   Updated: 2020/12/13 17:37:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_backslash_zero(char *s)
 	}
 }
 
-int	print_value(char **value, int is_backslash_zero)
+int		print_value(char **value, int is_backslash_zero)
 {
 	int	count;
 

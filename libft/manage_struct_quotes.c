@@ -1,4 +1,16 @@
-#	include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   manage_struct_quotes.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user42 <pnielly@student.42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 17:41:18 by user42            #+#    #+#             */
+/*   Updated: 2020/12/13 17:41:27 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 static void	char_is_double_quote(t_quo *q)
 {
@@ -14,7 +26,7 @@ static void	char_is_double_quote(t_quo *q)
 	}
 }
 
-void	manage_struct_quotes(t_quo *q, const char *str, int i)
+void		manage_struct_quotes(t_quo *q, const char *str, int i)
 {
 	char	c;
 

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_redirection_in_arr.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:39:51 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:54:35 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-int	valid_red_char_combinaison(char *cmd, int i)
+int		valid_red_char_combinaison(char *cmd, int i)
 {
 	if (!cmd[i])
 		return (0);
@@ -22,12 +34,12 @@ void	redirection_message_err_2(void)
 	ft_putstr("minishell: syntax error near unexpected token `newline\n");
 }
 
-int	is_redir_char(const char c)
+int		is_redir_char(const char c)
 {
 	return (c == '>' || c == '<');
 }
 
-int	redir_in_str(const char *s)
+int		redir_in_str(const char *s)
 {
 	int	i;
 

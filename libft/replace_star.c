@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 17:12:43 by xinwang           #+#    #+#             */
-/*   Updated: 2020/01/23 01:21:17 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/12/13 17:36:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*manage_precision_star(va_list *ap, char *format, int i)
 	return (new_str);
 }
 
-int	precision_star(char *format, int i)
+int		precision_star(char *format, int i)
 {
 	return (format[i] == '.' && format[i + 1] && format[i + 1] == '*');
 }

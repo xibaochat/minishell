@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validity_sep_in_str.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:44:56 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:44:58 by pnielly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 static int	is_all_space(char *s)
@@ -12,7 +24,7 @@ static int	is_all_space(char *s)
 	return (0);
 }
 
-int	sep_is_between_space(char *s, char c)
+int			sep_is_between_space(char *s, char c)
 {
 	int		lens;
 	t_quo	q;
@@ -47,7 +59,7 @@ static int	display_error_and_free(char **arr_tmp, char c)
 	return (1);
 }
 
-int	sep_in_str_is_invalid(char *str, char c)
+int			sep_in_str_is_invalid(char *str, char c)
 {
 	char	**arr_tmp;
 	int		i;

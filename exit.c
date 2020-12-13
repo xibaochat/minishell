@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:40:56 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:40:57 by pnielly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 static int	has_alpha(char *s)
@@ -28,7 +40,7 @@ static int	ft_check_exit(char **s)
 	return (0);
 }
 
-int arg_is_all_vide(char **split_input)
+int			arg_is_all_vide(char **split_input)
 {
 	int i;
 
@@ -43,7 +55,7 @@ int arg_is_all_vide(char **split_input)
 	return (1);
 }
 
-void	ft_exit(char **split_input, t_mini *sh)
+void		ft_exit(char **split_input, t_mini *sh)
 {
 	int	tab_len;
 
@@ -51,25 +63,21 @@ void	ft_exit(char **split_input, t_mini *sh)
 	if (arg_is_all_vide(split_input) || tab_len == 1)
 	{
 		ft_tabfree(sh->env);
-//		ft_putstr("exit\n");
 		exit(EXIT_SUCCESS);
 	}
 	else if (ft_check_exit(split_input))
 	{
-		//	ft_printf("exit\n./minishell: exit: %s: ", split_input[1]);
 		ft_printf("bash: line 1: exit: %s: ", split_input[1]);
 		ft_printf("numeric argument required\n");
 		exit(2);
 	}
 	else if (tab_len > 2)
 	{
-//		ft_putstr_fd("./minishell: exit: too many arguments\n", 2);
 		ft_putstr_fd("bash: line 1: exit: too many arguments\n", 2);
 		sh->last_return = 1;
 	}
 	else
 	{
-//			ft_putstr("exit\n");
 		exit(ft_atoi(split_input[1]));
 	}
 }

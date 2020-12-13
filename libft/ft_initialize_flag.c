@@ -6,13 +6,13 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 23:58:27 by xinwang           #+#    #+#             */
-/*   Updated: 2020/01/23 01:31:14 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/12/13 17:53:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	not_zero_width(char *format, int i)
+int		not_zero_width(char *format, int i)
 {
 	while (format[++i] == '0')
 		;
@@ -21,14 +21,14 @@ int	not_zero_width(char *format, int i)
 	return (0);
 }
 
-int	valid_precision_from_zero_cchar(char c)
+int		valid_precision_from_zero_cchar(char c)
 {
 	if (char_is_n(c) || c == 's' || c == '_')
 		return (1);
 	return (0);
 }
 
-int	ft_get_width(t_flag *my_flags, char *format, int *i, char c)
+int		ft_get_width(t_flag *my_flags, char *format, int *i, char c)
 {
 	if (valid_precision_from_zero_cchar(c)
 		&& !dot_in_conversion(format, *i)

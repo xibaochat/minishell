@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_signal.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:41:48 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 17:03:48 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	ft_cold_quit(int sig)
@@ -15,12 +27,17 @@ void	ft_cold_quit(int sig)
 	(void)sig;
 }
 
+/*
+** "buffer = get_buffer()" : empty gnl buffer in case
+** we use ctrl_D to provide a EOF
+** "if ((*sh)->is_cmd)" // ls -R / in the process of execution
+*/
+
 void	ft_not_quit(int sig)
 {
 	char	**buffer;
 	t_mini	**sh;
 
-//empty gnl buffer in case we use ctrl_D to provide a EOF
 	buffer = get_buffer();
 	sh = get_sh();
 	(*sh)->last_return = 130;
@@ -29,9 +46,8 @@ void	ft_not_quit(int sig)
 		free(*buffer);
 		*buffer = NULL;
 	}
-	// jusqu'a ici
 	ft_putstr_w_new_line_fd("", STDERR_FILENO);
-	if ((*sh)->is_cmd) // ls -R / in the process of execution
+	if ((*sh)->is_cmd)
 	{
 		print_prompt(*sh);
 		if ((*sh)->ctrl_c == 0)

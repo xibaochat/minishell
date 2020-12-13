@@ -6,13 +6,13 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 16:03:30 by xinwang           #+#    #+#             */
-/*   Updated: 2020/01/18 09:58:19 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/12/13 17:41:08 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	is_allowed_char_in_flag(char c)
+int			is_allowed_char_in_flag(char c)
 {
 	return ((c >= '0' && c <= '9') || c == '*' || c == '.'
 		|| c == '-');
@@ -50,7 +50,7 @@ static	int	nb_stars(char *format, int *i)
 	return (nb_stars);
 }
 
-int	valide_star_nb_combi(char *format, int i)
+int			valide_star_nb_combi(char *format, int i)
 {
 	if (has_nb_and_star(format, &i))
 		return (0);
@@ -63,7 +63,7 @@ int	valide_star_nb_combi(char *format, int i)
 	return (1);
 }
 
-int	is_conversion(char *format, int *i)
+int			is_conversion(char *format, int *i)
 {
 	int	j;
 

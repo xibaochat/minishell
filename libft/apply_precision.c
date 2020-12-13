@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 18:22:14 by xinwang           #+#    #+#             */
-/*   Updated: 2020/01/23 01:26:34 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/12/13 17:49:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	*apply_precision_on_neg(t_flag *my_flags, char *str)
 	return (NULL);
 }
 
-char	*apply_precision(t_flag *my_flags, char *str)
+char		*apply_precision(t_flag *my_flags, char *str)
 {
 	char	*new_str;
 
@@ -48,7 +48,7 @@ char	*apply_precision(t_flag *my_flags, char *str)
 	return (NULL);
 }
 
-char	*apply_precision_on_str(t_flag my_flags, char *value)
+char		*apply_precision_on_str(t_flag my_flags, char *value)
 {
 	char	*new_value;
 

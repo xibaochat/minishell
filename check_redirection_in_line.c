@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_redirection_in_line.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:40:04 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 17:05:25 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-int	has_pluseur_red_char(char *cmd, int i)
+int			has_pluseur_red_char(char *cmd, int i)
 {
 	if (cmd[i] && cmd[i + 1] && cmd[i + 2] && cmd[i] == '>' && cmd[i + 1] == '>'
 		&& (cmd[i + 2] == '>' || cmd[i + 2] == '<'))
@@ -13,7 +25,7 @@ int	has_pluseur_red_char(char *cmd, int i)
 	return (0);
 }
 
-int	has_mix_red_char(char *cmd, int i)
+int			has_mix_red_char(char *cmd, int i)
 {
 	if (cmd[i] && cmd[i + 1] && cmd[i] == '>' && cmd[i + 1] == '<')
 		return (1);
@@ -22,7 +34,7 @@ int	has_mix_red_char(char *cmd, int i)
 	return (0);
 }
 
-int	has_only_red_char(char *cmd, int i)
+int			has_only_red_char(char *cmd, int i)
 {
 	if (cmd[i] && cmd[i + 1] && cmd[i] == '>'
 		&& cmd[i + 1] == '>' && !cmd[i + 2])
@@ -39,7 +51,7 @@ static int	redirection_syntax_error_return(void)
 	return (1);
 }
 
-int	redirection_syntax_error(char *s)
+int			redirection_syntax_error(char *s)
 {
 	int		i;
 	t_quo	quo;

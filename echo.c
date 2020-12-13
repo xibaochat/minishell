@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   echo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:40:27 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:55:10 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 /*
@@ -17,7 +29,7 @@ static int	str_is_all_n(char *s)
 		return (0);
 }
 
-int	has_n_option(char *s)
+int			has_n_option(char *s)
 {
 	if (s)
 	{
@@ -27,7 +39,7 @@ int	has_n_option(char *s)
 	return (0);
 }
 
-void	echo(char **args)
+void		echo(char **args)
 {
 	int	i;
 	int	mark;

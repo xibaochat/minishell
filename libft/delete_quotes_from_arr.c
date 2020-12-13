@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   delete_quotes_from_arr.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user42 <pnielly@student.42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 17:49:28 by user42            #+#    #+#             */
+/*   Updated: 2020/12/13 17:49:44 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	str_is_all_quote(char *s, char c)
@@ -41,7 +53,7 @@ static int	cmd_is_echo_and_q(char **arr)
 	return (0);
 }
 
-void	change_q_by_space(char **arr)
+void		change_q_by_space(char **arr)
 {
 	int		i;
 	char	*tmp;
@@ -61,7 +73,7 @@ void	change_q_by_space(char **arr)
 	}
 }
 
-void	delete_quotes_from_arr(char **arr, int has_sub)
+void		delete_quotes_from_arr(char **arr, int has_sub)
 {
 	int	i;
 

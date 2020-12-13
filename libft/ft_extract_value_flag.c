@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 19:53:34 by xinwang           #+#    #+#             */
-/*   Updated: 2020/01/23 01:30:30 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/12/13 17:53:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	skip_zeroes_and_minus(char *s, int *i)
 		++(*i);
 }
 
-int	ft_get_flag_value(char *str, int *i)
+int		ft_get_flag_value(char *str, int *i)
 {
 	int	s;
 
@@ -70,7 +70,7 @@ void	ft_init_precision(t_flag *my_flags, char *format, int *i)
 	}
 }
 
-int	dot_in_conversion(char *format, int i)
+int		dot_in_conversion(char *format, int i)
 {
 	while (!is_conversion_char(format[i]))
 	{

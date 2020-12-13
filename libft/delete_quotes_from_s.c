@@ -1,4 +1,16 @@
-#	include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   delete_quotes_from_s.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user42 <pnielly@student.42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 17:49:59 by user42            #+#    #+#             */
+/*   Updated: 2020/12/13 17:50:11 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 static int	is_valid_char(char *s, int i, t_quo q)
 {
@@ -45,7 +57,7 @@ static void	copy_wo_quotes(char *new, char *s)
 	}
 }
 
-void	delete_quotes_from_s(char **s)
+void		delete_quotes_from_s(char **s)
 {
 	int		final_len;
 	char	*new;

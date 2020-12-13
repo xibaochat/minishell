@@ -1,13 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   manage_question_mark.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:43:24 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 17:00:21 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-/*if the char apres $ is ?*/
+/*
+** if the char apres $ is ?
+*/
 
-int	next_char_is_question_mark(char *s, int i)
+int		next_char_is_question_mark(char *s, int i)
 {
 	return (s[i + 1] && s[i + 1] == '?');
 }
 
-/*replace $? by exit value  in the str*/
+/*
+** replace $? by exit value in the str
+*/
 
 void	replace_question_mark_by_exit_value(char **str, int i, int n)
 {

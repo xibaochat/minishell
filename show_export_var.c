@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   show_export_var.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:44:31 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 17:20:22 by pnielly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-int	get_equal_index(char *s)
+int		get_equal_index(char *s)
 {
 	int i;
 
@@ -16,8 +28,8 @@ int	get_equal_index(char *s)
 
 char	**get_sort_env(char **env)
 {
-	int	i;
-	char *s;
+	int		i;
+	char	*s;
 
 	i = 0;
 	while (env[i] && env[i + 1])
@@ -34,10 +46,10 @@ char	**get_sort_env(char **env)
 	return (env);
 }
 
-char *extract_name(char *s)
+char	*extract_name(char *s)
 {
-	int i;
-	char *str;
+	int		i;
+	char	*str;
 
 	i = 0;
 	i = get_equal_index(s);
@@ -53,15 +65,13 @@ void	print_sort_env(char **env, t_mini *sh)
 	char	*name;
 	char	*value;
 
-	i = 0;
+	i = -1;
 	tmp = get_sort_env(env);
-	while (tmp[i])
+	while (tmp[++i])
 	{
 		name = extract_name(tmp[i]);
-		if ((sh->has_env_i && !ft_strcmp(name, "PATH="))
-			|| !ft_strcmp(name, "_="))
-			i++;
-		else
+		if (!((sh->has_env_i && !ft_strcmp(name, "PATH="))
+			|| !ft_strcmp(name, "_=")))
 		{
 			ft_putstr_fd("declare -x ", 1);
 			ft_putstr_fd(name, 1);
@@ -70,7 +80,6 @@ void	print_sort_env(char **env, t_mini *sh)
 				ft_printf("\"%s\"\n", value);
 			else
 				ft_putstr_fd("\n", 1);
-			i++;
 		}
 		free_str(name);
 	}

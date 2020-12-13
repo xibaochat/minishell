@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 18:29:06 by xinwang           #+#    #+#             */
-/*   Updated: 2020/04/16 09:53:47 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/12/13 17:44:53 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 		tmp = i;
 		j = 0;
 		while (s[tmp] && to_find[j]
-			   && (s[tmp] == to_find[j]) && tmp < len)
+				&& (s[tmp] == to_find[j]) && tmp < len)
 		{
 			tmp++;
 			j++;

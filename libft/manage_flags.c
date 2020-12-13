@@ -6,13 +6,13 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 01:04:48 by xinwang           #+#    #+#             */
-/*   Updated: 2020/01/23 01:20:05 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/12/13 17:55:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	char_is_n(char c)
+int			char_is_n(char c)
 {
 	return (c == 'x' || c == 'X' || c == 'd' || c == 'i' || c == 'u');
 }
@@ -23,12 +23,12 @@ static int	no_flags_to_apply(t_flag my_flags, char conversion_char)
 		&& !(my_flags.f_max_width) && conversion_char != 'p');
 }
 
-int	no_conversion_char(char c)
+int			no_conversion_char(char c)
 {
 	return (c == '_');
 }
 
-void	manage_flags(char *format, char **value, char conversion_char)
+void		manage_flags(char *format, char **value, char conversion_char)
 {
 	t_flag	my_flags;
 	int		v_lens;

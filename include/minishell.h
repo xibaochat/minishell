@@ -61,14 +61,21 @@ typedef struct s_mini
 	int			exit_v;
 	int			cmd_is_bin;
 	int			newfd;
-	int			is_pipe;
 	char		*file;
 	int			p[2];
 	int			fst_init;
 	int			has_sub;
 	int			has_env_i;
+	int			is_pipe;
+	int			fd[2];
+	int			status;
+	int			nb_pipes;
 }				t_mini;
 
+void	ft_export_alone(char **arr, t_mini *sh);
+int		len_var_name(char *var);
+int		is_new_var(char *s, char **env);
+void	add_variables_in_env(t_mini *sh);
 int		has_redirection_in_arr(char **arr);
 void	display_animals(char *ani, char *age);
 int		empty_cmd(char **arr);

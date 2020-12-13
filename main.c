@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:42:56 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:42:57 by pnielly          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-int	exec_command(char **split_input, t_mini *sh)
+int		exec_command(char **split_input, t_mini *sh)
 {
 	int	ret;
 
@@ -28,7 +40,7 @@ int	exec_command(char **split_input, t_mini *sh)
 	return (0);
 }
 
-int	split_and_execute_2(int last_ret, char **arr, char delim, t_mini *sh)
+int		split_and_execute_2(int last_ret, char **arr, char delim, t_mini *sh)
 {
 	if (delim == '|' && ft_tablen(arr) > 1)
 	{
@@ -53,7 +65,7 @@ int	split_and_execute_2(int last_ret, char **arr, char delim, t_mini *sh)
 	return (last_ret);
 }
 
-int	split_and_execute(char *str, char *sep, int i, t_mini *sh)
+int		split_and_execute(char *str, char *sep, int i, t_mini *sh)
 {
 	char	**arr;
 	int		j;
@@ -90,8 +102,7 @@ void	manage_input(t_mini *sh)
 	sep = ";| ";
 	input = NULL;
 	ft_signal(sh);
-//	while (print_prompt(sh) && get_next_line(0, &input))
-	while (get_next_line(0, &input))
+	while (print_prompt(sh) && get_next_line(0, &input))
 	{
 		if (is_syntax_error(input, sh))
 			continue ;
@@ -103,36 +114,15 @@ void	manage_input(t_mini *sh)
 		free_str(input);
 		sh->has_sub = 0;
 	}
-//	ft_putstr_fd("exit", 2);
 	free_str(input);
 }
 
-void	add_variables_in_env(t_mini *sh)
-{
-	char *path;
-	char *tmp;
-
-	path = getcwd(NULL, 0);
-	tmp = ft_strjoin("PWD=", path);
-	free_str(path);
-	path = tmp;
-	ft_envadd(path, sh);
-	ft_envadd("LS_COLORS=", sh);
-	ft_envadd("_=/usr/bin/env", sh);
-	ft_envadd("LESSCLOSE=/usr/bin/lesspipe %s %s", sh);
-	ft_envadd("LESSOPEN=| /usr/bin/lesspipe %s", sh);
-	ft_envadd(BASIC_ENV_PATH, sh);
-	ft_envadd("OLDPWD", sh);
-	ft_envadd("SHLVL=1", sh);
-
-}
-
-int	main(int ac, char **av, char **env)
+int		main(int ac, char **av, char **env)
 {
 	t_mini	**sh;
 	int		return_val;
 
-//	show_welcome_mes();
+	show_welcome_mes();
 	sh = get_sh();
 	init_sh(env, sh);
 	if (!env[0])

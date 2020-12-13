@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 17:36:57 by xinwang           #+#    #+#             */
-/*   Updated: 2020/01/23 01:28:12 by xinwang          ###   ########.fr       */
+/*   Updated: 2020/12/13 17:51:32 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static char	get_conversion_char(char *format, int i)
 	return (format[i]);
 }
 
-int	do_conversion(va_list *ap, char *format, int i)
+int			do_conversion(va_list *ap, char *format, int i)
 {
 	char	conversion_char;
 	char	*value;

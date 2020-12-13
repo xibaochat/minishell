@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_fst_split_arg_in_binary.c                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/13 16:41:18 by pnielly           #+#    #+#             */
+/*   Updated: 2020/12/13 16:57:27 by user42           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 static char	**get_bin_path_arr(t_mini *sh)
@@ -10,7 +22,7 @@ static char	**get_bin_path_arr(t_mini *sh)
 	return (bin_path);
 }
 
-int	is_binary_path(char *s)
+int			is_binary_path(char *s)
 {
 	int	i;
 
@@ -23,7 +35,7 @@ int	is_binary_path(char *s)
 	return (0);
 }
 
-char	*cmd_is_inside_current_dir(char *cmd)
+char		*cmd_is_inside_current_dir(char *cmd)
 {
 	char	*tmp;
 	char	*current_place;
@@ -44,7 +56,11 @@ char	*cmd_is_inside_current_dir(char *cmd)
 	return (NULL);
 }
 
-char	*find_full_binary_path(char *cmd, t_mini *sh)
+/*
+** "if (is_binary_path(cmd))" //ex: /bin/ls, cmd is ls, bin_path is /bin/
+*/
+
+char		*find_full_binary_path(char *cmd, t_mini *sh)
 {
 	char	**bin_path;
 	char	*full_path;
@@ -53,7 +69,7 @@ char	*find_full_binary_path(char *cmd, t_mini *sh)
 	full_path = cmd_is_inside_current_dir(cmd);
 	if (full_path)
 		return (full_path);
-	if (is_binary_path(cmd)) //ex: /bin/ls, cmd is ls, bin_path is /bin/
+	if (is_binary_path(cmd))
 		return (manage_binary_cmd(cmd, sh));
 	else
 		bin_path = get_bin_path_arr(sh);
