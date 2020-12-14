@@ -38,8 +38,7 @@ void	manage_shellvl(t_mini *sh)
 		value = ft_find_env("SHLVL=", sh->env);
 		if (!value[0] || (value[0] == '=' && !value[1]))
 			nb = 1;
-		else if (value && (value[0] && value[0] != '+' &&  value[0] != '-')
-				 && (value + 1) && !ft_strisdigit(value + 1))
+		else if (value  && (value + 1) && !ft_strisdigit(value + 1))
 			nb = 1;
 		else if (ft_atoi(value) < 0 || ft_atoi(value) >= 999)
 		{
