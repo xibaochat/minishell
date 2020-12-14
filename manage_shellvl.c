@@ -12,6 +12,20 @@
 
 #include "minishell.h"
 
+int		ft_strisdigit(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (!ft_isdigit(s[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	manage_shellvl(t_mini *sh)
 {
 	char	*value;
@@ -22,7 +36,12 @@ void	manage_shellvl(t_mini *sh)
 	if (!sh->has_env_i)
 	{
 		value = ft_find_env("SHLVL=", sh->env);
-		if (ft_atoi(value) < 0 || ft_atoi(value) >= 999)
+		if (!value[0] || (value[0] == '=' && !value[1]))
+			nb = 1;
+		else if (value && (value[0] && value[0] != '+' &&  value[0] != '-')
+				 && (value + 1) && !ft_strisdigit(value + 1))
+			nb = 1;
+		else if (ft_atoi(value) < 0 || ft_atoi(value) >= 999)
 		{
 			if (ft_atoi(value) >= 999)
 				ft_putstr_fd("shell level (1000) too high, resetting to 0\n",
