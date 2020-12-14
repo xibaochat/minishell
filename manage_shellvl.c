@@ -22,7 +22,10 @@ void	manage_shellvl(t_mini *sh)
 	if (!sh->has_env_i)
 	{
 		value = ft_find_env("SHLVL=", sh->env);
-		nb = ft_atoi(value) + 1;
+		if (ft_atoi(value) < 0)
+			nb = 0;
+		else
+			nb = ft_atoi(value) + 1;
 		nb_str = ft_itoa(nb);
 		new_value = ft_strjoin("SHLVL=", nb_str);
 		free_str(nb_str);
