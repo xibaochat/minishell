@@ -34,8 +34,7 @@ static int	ft_check_exit(char **s)
 		return (1);
 	if ((s[1][0] == '+' || s[1][0] == '-') && !s[1][1])
 		return (1);
-	if ((s[1][0] != '-' && ft_atoi(s[1]) < 0)
-		|| (s[1][0] == '-' && ft_atoi(s[1]) > 0))
+	if (s[1][0] == '-' && ft_atoi(s[1]) > 0)
 		return (1);
 	return (0);
 }

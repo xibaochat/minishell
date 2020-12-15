@@ -37,7 +37,7 @@ typedef struct	s_quo
 int				ft_max(int a, int b);
 int				ft_min(int a, int b);
 size_t			ft_tablen(char **arr);
-int				ft_atoi(const char *str);
+long long		ft_atoi(const char *str);
 void			ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t nmemb, size_t size);
 int				ft_isalpha(int c);
