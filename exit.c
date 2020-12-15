@@ -68,12 +68,12 @@ void		ft_exit(char **split_input, t_mini *sh)
 	else if (ft_check_exit(split_input))
 	{
 		ft_printf("bash: line 1: exit: %s: ", split_input[1]);
-	  	ft_printf("numeric argument required\n");
+		ft_printf("numeric argument required\n");
 		exit(2);
 	}
 	else if (tab_len > 2)
 	{
-	  	ft_putstr_fd("bash: line 1: exit: too many arguments\n", 2);
+		ft_putstr_fd("bash: line 1: exit: too many arguments\n", 2);
 		sh->last_return = 1;
 	}
 	else
