@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 01:04:48 by xinwang           #+#    #+#             */
-/*   Updated: 2020/10/09 22:06:25 by maobe            ###   ########.fr       */
+/*   Updated: 2020/12/15 12:42:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdarg.h>
 # include "libft.h"
 
-typedef struct s_flag
+typedef struct	s_flag
 {
 	int			is_signed;
 	int			f_max_width;
