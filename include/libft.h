@@ -6,7 +6,7 @@
 /*   By: xinwang <xinwang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:57:30 by xinwang           #+#    #+#             */
-/*   Updated: 2020/10/18 00:59:06 by maobe            ###   ########.fr       */
+/*   Updated: 2020/12/15 12:43:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,27 @@
 # include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
-# define BUFFER_SIZE 1000
+# define BUFFER_SIZE 20000
 # define SINGLE 39
 # define DOUBLE 34
 
-typedef struct s_list
+typedef struct	s_list
 {
 	void			*content;
 	struct s_list	*next;
-}					t_list;
+}				t_list;
 
-typedef struct s_quo {
+typedef struct	s_quo
+{
 	int	have_quote;
 	int	double_quote;
 	int	single_quote;
-}					t_quo;
+}				t_quo;
 
 int				ft_max(int a, int b);
 int				ft_min(int a, int b);
 size_t			ft_tablen(char **arr);
-long				ft_atoi(const char *str);
+int				ft_atoi(const char *str);
 void			ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t nmemb, size_t size);
 int				ft_isalpha(int c);

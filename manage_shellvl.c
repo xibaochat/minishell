@@ -6,7 +6,7 @@
 /*   By: pnielly <pnielly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 16:43:30 by pnielly           #+#    #+#             */
-/*   Updated: 2020/12/14 15:49:37 by user42           ###   ########.fr       */
+/*   Updated: 2020/12/15 12:38:46 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	manage_shellvl(t_mini *sh)
 		value = ft_find_env("SHLVL=", sh->env);
 		if (!value[0] || (value[0] == '=' && !value[1]))
 			nb = 1;
-		else if (value  && (value + 1) && !ft_strisdigit(value + 1))
+		else if (value && (value + 1) && !ft_strisdigit(value + 1))
 			nb = 1;
 		else if (ft_atoi(value) < 0 || ft_atoi(value) >= 999)
 		{
