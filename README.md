@@ -23,6 +23,10 @@
 </tr>
 </table>
 
+## Subject
+[minishell.pdf](https://github.com/xibaochat/minishell/blob/master/minishell.pdf)
+
+
 ## Usage
 
 In the root of the repo, run:
