@@ -8,7 +8,7 @@
   <table  align="center">
 <td>
  <b face="arial" >final mark<br><br></font></b></p>
- <img src="https://github.com/xibaochat/minishell/blob/master/minishell_success.png">
+ <img src="https://github.com/xibaochat/minishell/blob/master/minishell_mark.png">
  
 
 </td>
