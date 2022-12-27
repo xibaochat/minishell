@@ -50,5 +50,8 @@ echo 'hello' > myfile.txt | echo "world" >> myfile.txt | cat myfile.txt
 bao
 sophie 4
 exit
-```
+``` 
+
+<img src="https://github.com/xibaochat/minishell/blob/master/minishell_screenshot.png">
+
 ![gif](https://github.com/xibaochat/minishell/blob/master/minishell.gif)
