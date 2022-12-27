@@ -3,7 +3,7 @@
    <p align="center">
   "As beautiful as a shell" <br>
   In this case we had to understand how processes, redirections, pipes, execve and bash builtins work. We also had to learn how bash handle a command line (lexer / parser / exec).
-  </a>.</br>
+  </a>.</br>.</br>
   <img src="https://img.shields.io/badge/c-007ACC?style=for-the-badge&logo=c&logoColor=white">
   <table  align="center">
 <td>
